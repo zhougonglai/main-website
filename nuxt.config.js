@@ -7,15 +7,28 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
     ],
+    script: [
+      {
+        attr: "nomodule",
+        src: "//unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js",
+      },
+      {
+        type: "module",
+        src: "//unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js",
+      },
+    ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
-  css: [],
+  css: ["@/assets/css/global.scss"],
   plugins: [],
   components: true,
   buildModules: ["@nuxtjs/tailwindcss"],
   modules: ["@nuxtjs/axios", "@nuxtjs/pwa", "@nuxt/content"],
   axios: {
-    baseURL: "/",
+    proxy: true,
+  },
+  proxy: {
+    "/api.php": "http://admin.ks33.work/",
   },
   pwa: {
     manifest: {
