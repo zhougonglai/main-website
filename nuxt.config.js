@@ -9,7 +9,7 @@ export default {
     ],
     script: [
       {
-        attr: "nomodule",
+        nomodule: true,
         src: "//unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js",
       },
       {
@@ -19,10 +19,13 @@ export default {
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
-  css: ["@/assets/css/global.scss"],
+  css: ["@/assets/css/global.scss", "@/assets/css/tailwind.css"],
   plugins: [],
   components: true,
-  buildModules: ["@nuxtjs/tailwindcss"],
+  buildModules: [
+    // "@nuxtjs/tailwindcss",
+    "@nuxt/postcss8",
+  ],
   modules: ["@nuxtjs/axios", "@nuxtjs/pwa", "@nuxt/content"],
   axios: {
     proxy: true,
@@ -36,5 +39,12 @@ export default {
     },
   },
   content: {},
-  build: {},
+  build: {
+    postcss: {
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+      },
+    },
+  },
 };
