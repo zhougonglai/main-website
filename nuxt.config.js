@@ -10,7 +10,7 @@ export default {
     script: [
       {
         nomodule: true,
-        src: "//unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js",
+        src: "//npm.elemecdn.com/ionicons@5.5.2/dist/ionicons/ionicons.js",
       },
       {
         type: "module",
