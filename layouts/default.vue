@@ -1,7 +1,7 @@
 <template lang="pug">
 main.flex.flex-col.items-center
   header.flex.h-20
-    .logo.flex.items-center
+    nuxt-link.logo.flex.items-center(to='/')
       img(src='~/assets/img/logo.png' alt="创远仪器" width="226")
     .flex-1
     .nav-list.flex.justify-center.items-center
@@ -64,12 +64,11 @@ export default {
   },
   mounted() {
     this.getMenus();
+    this.closeMenus();
     window.addEventListener('click', e => {
       if (Number.isFinite(this.active) && this.$refs.menus) {
         if (!this.$refs.menus.contains(e.target)) {
-          this.leaActive = '';
-          this.subActive = '';
-          this.active = '';
+          this.closeMenus();
         }
       }
     })
@@ -79,16 +78,40 @@ export default {
       const { data } = await this.$axios.$get('/api.php/api/getCate')
       this.menus = data;
     },
-    selectMenu(menu, active) {
-      this.active = active
-      this.subActive = '';
+    closeMenus() {
       this.leaActive = '';
+      this.subActive = '';
+      this.active = '';
+    },
+    selectMenu(menu, active) {
+      if (menu.child) {
+        this.active = active
+        this.subActive = '';
+        this.leaActive = '';
+        return
+      }
+      this.$router.push({
+        path: 'service'
+      })
+      this.closeMenus();
     },
     selectSubmenu(menu, active) {
-      this.subActive = active
+      if (menu.child) {
+        return this.subActive = active
+      }
+      this.$router.push({
+        path: 'service'
+      })
+      this.closeMenus();
     },
     selectLeamenu(menu, active) {
-      this.leaActive = active
+      if (menu.child) {
+        return this.leaActive = active
+      }
+      this.$router.push({
+        path: 'service'
+      })
+      this.closeMenus();
     }
   }
 }
