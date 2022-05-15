@@ -10,11 +10,11 @@ export default {
     script: [
       {
         attr: "nomodule",
-        src: "//unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js",
+        src: "//npm.elemecdn.com/ionicons@5.5.2/dist/ionicons/ionicons.js",
       },
       {
         type: "module",
-        src: "//unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js",
+        src: "//npm.elemecdn.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js",
       },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
