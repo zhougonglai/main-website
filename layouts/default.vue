@@ -40,6 +40,7 @@ main.flex.flex-col.items-center
   AppFooter(:menus="menus")
 </template>
 <script>
+import menus from '@/assets/constant/menus';
 
 export default {
   name: 'default',
@@ -92,27 +93,33 @@ export default {
         this.leaActive = '';
         return
       }
-      this.$router.push({
-        path: 'service'
-      })
+      if (menu.id in menus) {
+        this.$router.push({
+          path: menus[menu.id]
+        })
+      }
       this.closeMenus();
     },
     selectSubmenu(menu, active) {
       if (menu.child) {
         return this.subActive = active
       }
-      this.$router.push({
-        path: 'service'
-      })
+      if (menu.id in menus) {
+        this.$router.push({
+          path: menus[menu.id]
+        })
+      }
       this.closeMenus();
     },
     selectLeamenu(menu, active) {
       if (menu.child) {
         return this.leaActive = active
       }
-      this.$router.push({
-        path: 'service'
-      })
+      if (menu.id in menus) {
+        this.$router.push({
+          path: menus[menu.id]
+        })
+      }
       this.closeMenus();
     }
   }

@@ -30,7 +30,7 @@
       <div class="sp-3__block py-20">
         <h1 class="text-4xl font-bold">相关解决方案</h1>
         <div class="resolve bg-gray-100 flex items-end justify-center gap-x-10 mt-80 pb-10">
-          <div class="card flex flex-col">
+          <div class="card flex flex-col cursor-pointer hover:shadow">
             <div class="card-cover">
               <img class="object-center object-cover" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
             </div>
@@ -42,7 +42,7 @@
             </div>
           </div>
 
-          <div class="card flex flex-col">
+          <div class="card flex flex-col cursor-pointer hover:shadow">
             <div class="card-cover">
               <img class="object-center object-cover" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
             </div>
@@ -61,7 +61,7 @@
       <div class="sp-4__block py-20">
         <h1 class="text-4xl font-bold">相关产品</h1>
         <div class="products bg-gray-100 flex items-end justify-center gap-x-10 p-10 mt-10">
-          <div class="card flex flex-col">
+          <div class="card flex flex-col cursor-pointer hover:shadow">
             <div class="card-cover">
               <img class="object-center object-cover" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
             </div>
@@ -71,7 +71,7 @@
             </div>
           </div>
 
-          <div class="card flex flex-col">
+          <div class="card flex flex-col cursor-pointer hover:shadow">
             <div class="card-cover">
               <img class="object-center object-cover" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
             </div>
@@ -81,7 +81,7 @@
             </div>
           </div>
 
-          <div class="card flex flex-col">
+          <div class="card flex flex-col cursor-pointer hover:shadow">
             <div class="card-cover">
               <img class="object-center object-cover" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
             </div>
