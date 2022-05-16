@@ -1,4 +1,5 @@
 export default {
+  ssr: false,
   head: {
     title: "main-website",
     meta: [
