@@ -75,7 +75,9 @@ export default {
   },
   methods: {
     async getMenus() {
-      const { data } = await this.$axios.$get('/api.php/api/getCate')
+      // const { data } = await this.$axios.$get('/api.php/api/getCate')
+      const { data } = await this.$axios.$get('/api/menus')
+      console.log('getMenus', data)
       this.menus = data;
     },
     closeMenus() {
