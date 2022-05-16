@@ -5,7 +5,7 @@ main.flex.flex-col.items-center
       img(src='~/assets/img/logo.png' alt="创远仪器" width="226")
     .flex-1
     .nav-list.flex.justify-center.items-center
-      ion-icon(name="search-outline")
+      ion-icon(v-cloak name="search-outline")
   .bg-gray-100.w-full.flex.justify-center
     nav.menus.flex.items-center.h-10.relative(ref="menus")
       .nav-link.px-5.cursor-pointer(v-for="(menu, i) in menus.filter(menu => menu.display)" :key="menu.id" :class="{ active: i === active }" @click="selectMenu(menu, i)" v-text="menu.title")

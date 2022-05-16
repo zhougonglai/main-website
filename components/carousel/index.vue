@@ -2,7 +2,7 @@
   <div class="carousel relative" v-if="items && items.length" @mouseenter="stopInterval" @mouseleave="updateInterval">
     <div class="carousel-prev cursor-pointer transition absolute left-0 top-1/2 -translate-y-1/2 z-10"
       @click="switcher(false)">
-      <ion-icon name="chevron-back-outline"></ion-icon>
+      <ion-icon v-cloak name="chevron-back-outline"></ion-icon>
     </div>
 
     <div class="carousel-item px-10 flex inset-0 absolute" v-for="(b, i) in items" :key="b.key">
@@ -28,7 +28,7 @@
 
     <div class="carousel-next cursor-pointer transition absolute right-0 top-1/2 -translate-y-1/2 z-10"
       @click="switcher()">
-      <ion-icon name="chevron-forward-outline"></ion-icon>
+      <ion-icon v-cloak name="chevron-forward-outline"></ion-icon>
     </div>
   </div>
 </template>
