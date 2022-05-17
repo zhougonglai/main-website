@@ -21,19 +21,19 @@
 </style>
 <template>
   <div class="flex items-center pager">
-    <a :href="pager.getlink(1)"
+    <NuxtLink :to="pager.getlink(1)"
       ><ion-icon name="chevron-back-outline"></ion-icon
-    ></a>
-    <a
-      :href="pager.getlink(pi)"
+    ></NuxtLink>
+    <NuxtLink
+      :to="pager.getlink(pi)"
       v-for="pi in list"
       :key="pi"
       :class="{ active: pi == pager.pageIndex }"
-      >{{ pi }}</a
+      >{{ pi }}</NuxtLink
     >
-    <a :href="pager.getlink(pager.pageTotal)"
+    <NuxtLink :to="pager.getlink(pager.pageTotal)"
       ><ion-icon name="chevron-forward-outline"></ion-icon
-    ></a>
+    ></NuxtLink>
   </div>
 </template>
 <script>

@@ -2,7 +2,7 @@
 .w-full.flex.flex-col.items-center
   .container
     nav.Bread-crumbs.flex.items-center
-      a(href="/")
+      NuxtLink(to="/")
         ion-icon(name='home-outline') 
       ion-icon(name='chevron-forward-outline') 
       | 招贤纳士
@@ -17,19 +17,19 @@
       p 职位招聘
   section.container.flex.justify-center.table.text-left
     .header.flex
-      .flex-1 
+      .flex-1.text-center 
         ion-icon(name='star-outline')
-      .flex-3 职位名称
-      .flex-1 职能范围
-      .flex-1 学历水平
-      .flex-2 城市
-    .item.flex(v-for="db,i in 10" :key="i")
-      .flex-1 
+      .flex-4 职位名称
+      .flex-2 职能范围
+      .flex-2 学历水平
+      .flex-1 城市
+    NuxtLink.item.flex(v-for="db,i in 10" :key="i" to="")
+      .flex-1.text-center.star 
         ion-icon(name='star')
-      .flex-3 销售工程师（2020应届生）
-      .flex-1 职能范围
-      .flex-1 学历水平
-      .flex-2 城市
+      .flex-4.jobname 销售工程师（2020应届生）
+      .flex-2 市场
+      .flex-2 本科及以上
+      .flex-1 上海
   section.container.flex.justify-center
     Pager(:pager="pager")
 </template>
@@ -68,6 +68,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$blue: #005fab;
 nav.Bread-crumbs {
   height: 66px;
   font-size: 20px;
@@ -98,7 +99,7 @@ nav.Bread-crumbs {
 .add {
   margin: 90px 0 40px;
   ion-icon {
-    color: #005fab;
+    color: $blue;
     font-size: 85px;
     margin-right: 15px;
   }
@@ -111,12 +112,37 @@ nav.Bread-crumbs {
     font-size: 24px;
   }
 }
-.table{
-  .flex-2{
-    flex:2
+
+.table {
+  .flex-2 {
+    flex: 2;
   }
-  .flex-3{
-    flex:3
+  .flex-3 {
+    flex: 3;
+  }
+  .flex-4 {
+    flex: 4;
+  }
+  font-size: 18px;
+  line-height: 74px;
+  .header {
+    background: #fbfbfb;
+    border: 1px solid #626262;
+  }
+  .item {
+    color: #666666;
+    &:nth-child(even) {
+      background: #fbfbfb;
+    }
+    &:hover {
+      background: #efefef;
+    }
+  }
+  .star ion-icon {
+    color: $blue;
+  }
+  .jobname {
+    color: $blue;
   }
 }
 </style>
