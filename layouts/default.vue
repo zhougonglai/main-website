@@ -7,11 +7,11 @@ main.flex.flex-col.items-center
     .nav-list.flex.justify-center.items-center
       ion-icon(v-cloak name="search-outline")
   .bg-gray-100.w-full.flex.justify-center
-    nav.menus.flex.items-center.h-10.relative(ref="menus")
+    nav.menus.flex.items-center.h-10.leading-10.relative(ref="menus")
       .nav-link.text-center.cursor-pointer(
         v-for="(menu, i) in menus.filter(menu => menu.display)"
         @click="selectMenu(menu, i)" v-text="menu.title"
-        :class="{ active: i === active }"
+        :class="{ active: i == activeNav }"
         :key="menu.id")
       transition(
         enter-active-class="transition duration-100 ease-out"
@@ -20,7 +20,7 @@ main.flex.flex-col.items-center
         leave-active-class="transition duration-75 ease-in"
         leave-from-class="transform scale-100 opacity-100"
         leave-to-class="transform scale-95 opacity-0")
-        .nav-panel.absolute.top-14.left-0.right-0.z-10.bg-white.shadow-lg(v-if="Number.isFinite(active)")
+        .nav-panel.absolute.top-14.left-0.right-0.z-10.bg-white.filter.drop-shadow(v-if="Number.isFinite(active)")
           .nav-panel__icon(:style="{ left: (55 + active * 120) + 'px' }")
           .nav-panel-content.flex
             .nav-panel-list.flex.flex-col.w-60.p-5
@@ -48,16 +48,18 @@ main.flex.flex-col.items-center
 </template>
 <script>
 import menus from '@/assets/constant/menus';
+import { mapState } from 'vuex';
 
 export default {
   name: 'default',
+  middleware: 'router',
   data() {
     return {
       menus: [],
       active: '',
       subActive: '',
       leaActive: '',
-      links: menus
+      links: menus,
     }
   },
   computed: {
@@ -69,7 +71,8 @@ export default {
     },
     leaMenus() {
       return Number.isFinite(this.leaActive) ? this.subMenus.child[this.leaActive] : null
-    }
+    },
+    ...mapState(['activeNav'])
   },
   mounted() {
     this.getMenus();
@@ -86,7 +89,7 @@ export default {
     async getMenus() {
       // const { data } = await this.$axios.$get('/api.php/api/getCate')
       const { data } = await this.$axios.$get('/api/menus')
-      console.log('getMenus', data)
+      // console.log('getMenus', data)
       this.menus = data;
     },
     closeMenus() {
