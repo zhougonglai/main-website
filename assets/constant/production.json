@@ -1,0 +1,38 @@
+[
+  {
+    "id": 5260,
+    "url": "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+    "title": "T5260C系列",
+    "type": "台式",
+    "qz": "26.5GHz",
+    "port": "2/4",
+    "types": ["T5260C-265", "465", "285", "485", "2K5"]
+  },
+  {
+    "id": 5261,
+    "url": "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+    "title": "T5260C系列",
+    "type": "台式",
+    "qz": "26.5GHz",
+    "port": "2/4",
+    "types": ["T5260C-265", "465", "285", "485", "2K5"]
+  },
+  {
+    "id": 5262,
+    "url": "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+    "title": "T5260C系列",
+    "type": "台式",
+    "qz": "26.5GHz",
+    "port": "2/4",
+    "types": ["T5260C-265", "465", "285", "485", "2K5"]
+  },
+  {
+    "id": 5263,
+    "url": "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+    "title": "T5260C系列",
+    "type": "台式",
+    "qz": "26.5GHz",
+    "port": "2/4",
+    "types": ["T5260C-265", "465", "285", "485", "2K5"]
+  }
+]

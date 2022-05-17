@@ -19,17 +19,19 @@ main.flex.flex-col.items-center
         .nav-panel.absolute.top-10.left-0.right-0.z-10.bg-white.shadow-lg(v-if="Number.isFinite(active)")
           .nav-panel-content.flex
             .nav-panel-list.flex.flex-col.w-60.p-5
-              .nav-panel-list-item.leading-8.flex.items-center.cursor-pointer(
+              button.nav-panel-list-item.leading-8.text-left.cursor-pointer(
                 v-for="(item, i) in activeMenu.child.filter(menu => menu.display)"
                 :key="item.id"
                 :class="{ active: i === subActive }"
+                :disabled="!item.child && !links[item.id]"
                 @click="selectSubmenu(item, i)"
                 v-text="item.title")
             .nav-panel-list.flex.flex-col.w-60.p-5(v-if="Number.isFinite(subActive)")
-              .nav-panel-list-item.leading-8.flex.items-center.cursor-pointer(
+              button.nav-panel-list-item.leading-8.text-left.cursor-pointer(
                 v-for="(item, i) in subMenus.child"
                 :key="item.id"
                 @click="selectLeamenu(item, i)"
+                :disabled="!item.child && !links[item.id]"
                 v-text="item.title")
             //- .nav-panel-list.flex.flex-col.w-60.p-5(v-if="Number.isFinite(leaActive)")
             //-   .nav-panel-list-item.leading-8.flex.items-center.cursor-pointer(
@@ -50,6 +52,7 @@ export default {
       active: '',
       subActive: '',
       leaActive: '',
+      links: menus
     }
   },
   computed: {
@@ -138,34 +141,56 @@ main {
 
   nav.menus {
     width: 1200px;
+  }
+}
 
-    .nav {
-      &-link {
-        color: var(--color);
+.nav {
+  &-link {
+    color: var(--color);
 
-        &:hover,
-        &:active,
-        &.active {
-          color: var(--primary);
-        }
+    &:not(:disabled) {
+
+      &:hover,
+      &:active,
+      &.active {
+        color: var(--primary);
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      color: darkgray;
+    }
+  }
+
+  &-panel {
+    &-list {
+
+      &:not(:last-child) {
+        border-right: 1px solid lightgray;
       }
 
-      &-panel {
-        &-list {
+      &-item {
+        color: var(--color);
+        word-break: keep-all;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
 
-          &:not(:last-child) {
-            border-right: 1px solid lightgray;
+        &:not(:disabled) {
+
+          &:hover,
+          &:active,
+          &.active {
+            color: var(--primary);
           }
+        }
 
-          &-item {
-            color: var(--color);
-
-            &:hover,
-            &:active,
-            &.active {
-              color: var(--primary);
-            }
-          }
+        &:disabled,
+        &[disabled],
+        &.disabled {
+          cursor: not-allowed;
+          color: darkgray;
         }
       }
     }
