@@ -8,7 +8,11 @@ main.flex.flex-col.items-center
       ion-icon(v-cloak name="search-outline")
   .bg-gray-100.w-full.flex.justify-center
     nav.menus.flex.items-center.h-10.relative(ref="menus")
-      .nav-link.px-5.cursor-pointer(v-for="(menu, i) in menus.filter(menu => menu.display)" :key="menu.id" :class="{ active: i === active }" @click="selectMenu(menu, i)" v-text="menu.title")
+      .nav-link.text-center.cursor-pointer(
+        v-for="(menu, i) in menus.filter(menu => menu.display)"
+        @click="selectMenu(menu, i)" v-text="menu.title"
+        :class="{ active: i === active }"
+        :key="menu.id")
       transition(
         enter-active-class="transition duration-100 ease-out"
         enter-from-class="transform scale-95 opacity-0"
@@ -16,7 +20,8 @@ main.flex.flex-col.items-center
         leave-active-class="transition duration-75 ease-in"
         leave-from-class="transform scale-100 opacity-100"
         leave-to-class="transform scale-95 opacity-0")
-        .nav-panel.absolute.top-10.left-0.right-0.z-10.bg-white.shadow-lg(v-if="Number.isFinite(active)")
+        .nav-panel.absolute.top-14.left-0.right-0.z-10.bg-white.shadow-lg(v-if="Number.isFinite(active)")
+          .nav-panel__icon(:style="{ left: (55 + active * 120) + 'px' }")
           .nav-panel-content.flex
             .nav-panel-list.flex.flex-col.w-60.p-5
               button.nav-panel-list-item.leading-8.text-left.cursor-pointer(
@@ -147,6 +152,7 @@ main {
 .nav {
   &-link {
     color: var(--color);
+    width: 120px;
 
     &:not(:disabled) {
 
@@ -164,6 +170,17 @@ main {
   }
 
   &-panel {
+    &__icon {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-bottom: 10px solid white;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid transparent;
+      top: -20px;
+    }
+
     &-list {
 
       &:not(:last-child) {
