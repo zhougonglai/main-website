@@ -36,7 +36,7 @@ section.w-full.flex.flex-col
               Checkbox(@change="selectChange($event, prod.id)" :disabled="selected[prod.id] ? false : selectedLength >= 3")
                 img.ml-5.object-center.object-cover(:src="prod.url")
             td.prod-ti.flex-1.p-5
-              button(v-text="prod.title")
+              nuxt-link(to="/production/t526c" v-text="prod.title")
             td.prod-ti.flex-1.p-5.text-center(v-text="prod.type")
             td.prod-ti.flex-1.p-5.text-center(v-text="prod.qz")
             td.prod-ti.flex-1.p-5.text-center(v-text="prod.port")
