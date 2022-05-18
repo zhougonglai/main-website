@@ -49,10 +49,48 @@
   .form
    h2.title 需要更多信息
    p.info 如果您有任何疑问或需要了解更多信息，请填写此表格，我们会尽快回复您。
+   .row.radio
+    input(type="radio" id="sex-1" v-model="db.sex" value="1")
+    label(for="sex-1") 男
+    input(type="radio" id="sex-0" v-model="db.sex" value="0")
+    label(for="sex-0") 女
+   .field.flex
+    .flex-1
+      label 姓 名
+      input(v-model="db.name")
+    .flex-1
+      label 公司名称
+      input(v-model="db.company")
+   .field.flex
+    .flex-1
+      label 公司邮箱
+      input(v-model="db.name")
+    .flex-1
+      label 城市
+      input(v-model="db.company")
+   .field.flex
+    .flex-1
+      label 电话号码
+      input(v-model="db.name")
+    .flex-1
+      label 询问
+      input(v-model="db.company")
+   .field
+    textarea(v-model="db.company" placeholder="具体问题描述")
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      db: {
+        sex: 1,
+        name: "",
+        company: "",
+      },
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -74,14 +112,16 @@ nav.Bread-crumbs {
   font-size: 28px;
   color: #464646;
   line-height: 48px;
-  margin: 144px 0 128px;
+  margin: 114px 0 128px;
+  p {
+    margin-top: 30px;
+  }
 }
 .contact {
   width: 1560px;
-  height: 1235px;
   background: #f5f5f5;
   border-radius: 6px;
-  padding: 98px 111px;
+  padding: 98px 70px;
   .item {
     padding: 23px 33px;
     font-size: 23px;
@@ -94,9 +134,9 @@ nav.Bread-crumbs {
       font-weight: bold;
       color: #6d6d6d;
       line-height: 36px;
-       margin: 40px 0;
+      margin: 40px 0;
     }
-    b{
+    b {
       margin: 4px 0 14px;
     }
   }
@@ -109,7 +149,50 @@ nav.Bread-crumbs {
     }
   }
 }
-.form{
-  
+.form {
+  width: 1340px;
+  padding: 85px 0;
+  font-size: 26px;
+  color: #252525;
+  h2 {
+    font-size: 40px;
+  }
+  > p {
+    margin-top: 40px;
+    font-size: 26px;
+    color: #626363;
+  }
+  .radio {
+    input {
+      height: 20px;
+      width: 20px;
+      margin-right: 15px;
+    }
+    label {
+      margin-right: 85px;
+    }
+  }
+  .field {
+    min-height: 200px;
+    label {
+      display: block;
+      color: #252525;
+      margin: 25px 0;
+    }
+    input {
+      width: 499px;
+      height: 50px;
+      background: #eeeeed;
+      border: 1px solid #8a8a8a;
+      text-indent: 10px;
+    }
+    textarea {
+      margin-top: 20px;
+      width: 100%;
+      height: 283px;
+      background: #eeeeed;
+      border: 1px solid #303131;
+    }
+  }
 }
 </style>
