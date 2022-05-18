@@ -2,7 +2,7 @@ const nav = [
   ["service"],
   ["production"],
   ["maintenance", "openfile"],
-  [],
+  ["about", "honorary"],
   ["joinus"],
 ];
 const activeNav = (path) =>
