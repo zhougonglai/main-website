@@ -33,18 +33,18 @@ section.w-full.flex.flex-col
           tr.prod-tl.border-top.border-gray-200.h-20.flex.items-center(v-for="(prod, i) in productions" :key="i")
             td.prod-ti.flex-1.p-5
               //- input(type="checkbox" v-model="selected[prod.id]")
-              Checkbox(@change="selectChange($event, prod.id)" :disabled="selected[prod.id] ? false : selectedLength >= 3")
-                img.ml-5.object-center.object-cover(:src="prod.url")
+              //- Checkbox(@change="selectChange($event, prod.id)" :disabled="selected[prod.id] ? false : selectedLength >= 3")
+              img.ml-5.object-center.object-cover(:src="prod.url")
             td.prod-ti.flex-1.p-5
-              nuxt-link(to="/production/t526c" v-text="prod.title")
+              nuxt-link(class="hover:text-blue-500" to="/production/t526c" v-text="prod.title")
             td.prod-ti.flex-1.p-5.text-center(v-text="prod.type")
             td.prod-ti.flex-1.p-5.text-center(v-text="prod.qz")
             td.prod-ti.flex-1.p-5.text-center(v-text="prod.port")
             td.prod-ti.flex-1.p-5(v-text="prod.types.join('/')")
             td.prod-ti.flex-1.p-5.flex.items-center.justify-center
               button.bg-blue-500.px-5.py-2.text-white 询价
-        tfoot.prod-tfd.absolute.w-full.flex.items-center.justify-center
-          button.bg-blue-500.px-5.py-2.text-white.-mt-5(:disabled="selectedLength < 2") {{ selectedLength }}/3 产品比较
+        //- tfoot.prod-tfd.absolute.w-full.flex.items-center.justify-center
+        //-   button.bg-blue-500.px-5.py-2.text-white.-mt-5(:disabled="selectedLength < 2") {{ selectedLength }}/3 产品比较
 </template>
 
 <script>

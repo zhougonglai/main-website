@@ -16,7 +16,7 @@ section.w-full.flex.flex-col.items-center.justify-center
         leave-active-class="transition duration-75 ease-in"
         leave-from-class="transform scale-100 opacity-100"
         leave-to-class="transform scale-95 opacity-0")
-        ul.nav-drops.absolute.bg-white.top-full.w-full.py-2.shadow(v-if="show")
+        ul.nav-drops.absolute.bg-white.top-full.w-full.py-2.z-10.shadow(v-if="show")
           li.nav-link.pl-4(v-for="(prod, i) in productions" :key="i" class="hover:bg-gray-300")
             nuxt-link.truncate(to="/production/t526c") {{ prod.title }}
   .sc-1.w-full.flex.flex-col.items-center.py-10
@@ -25,17 +25,16 @@ section.w-full.flex.flex-col.items-center.justify-center
       .flex.w-full.my-5.gap-x-5
         .flex.flex-col.flex-1.relative
           img.object-center.object-cover.overflow-hidden(src="https://img01.yzcdn.cn/vant/cat.jpeg" width="600" height="400")
-          ion-icon.absolute.right-0.bottom-0.text-blue-500(name="expand-sharp" size="large")
+          ion-icon.absolute.right-2.bottom-2.text-blue-500(name="expand-sharp" size="large")
         .flex.flex-col.flex-1
           h3.text-2xl 关键特性
-          ul.mt-5
-            li 频率范围：300kHz~8.5GHz
-            li 大动态范围：＞ 125 dB @(IFBW=10 Hz )，typ.130 dB
-            li 低迹线噪声：2 mdB rms @(IFBW=3 kHz )
-            li 测量速度快：42 μs/point @(IFBW=500 kHz)
-            li 高等效方向性：＞ 45 dB
-            li 支持远程控制： LAN
-
+          ul.mt-5.leading-8.flex.flex-col.gap-y-4
+            li.pl-4.border-l-4.border-gray-300 频率范围：300kHz~8.5GHz
+            li.pl-4.border-l-4.border-gray-300 大动态范围：＞ 125 dB @(IFBW=10 Hz )，typ.130 dB
+            li.pl-4.border-l-4.border-gray-300 低迹线噪声：2 mdB rms @(IFBW=3 kHz )
+            li.pl-4.border-l-4.border-gray-300 测量速度快：42 μs/point @(IFBW=500 kHz)
+            li.pl-4.border-l-4.border-gray-300 高等效方向性：＞ 45 dB
+            li.pl-4.border-l-4.border-gray-300 支持远程控制： LAN
 
 </template>
 <script>
@@ -67,6 +66,10 @@ nav {
 .sc-1 {
   &__block {
     width: 1200px;
+
+    ul {
+      li {}
+    }
   }
 }
 </style>
