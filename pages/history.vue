@@ -1,25 +1,27 @@
 <template lang="pug">
 .w-full.flex.flex-col.items-center
   .banner.w-full
-  section.container.desc
-    h5 发展历程
-    .content 上海创远仪器技术股份有限公司成立于　2005 年，2015 年在新三板挂牌（831961），是一家自主研发射频通信测试仪器和提供整体测试解决方案的专业仪器仪表公司。
-    hr
-    .content 重点专注于无线通信网络运营测试、无线电监测和北斗导航测试、无线通信智能制造测试等三个方向，是我国高端无线通信测试仪器行业的代表性企业。自 TD-SCDMA 时代伊始，创远仪器便积极参与中国自主知识产权移动通信标准和产业发展，在 TD-LTE 时代更是取得丰硕成果，多款产品获得广泛商用。2017 年 1 月与中国移动、华为、中兴、展讯等 14 家企业共同荣获国家科学技术进步特等奖。
-  .banner2
   section.w-full.flex.flex-col.items-center.desc2
-   
- 
+   .title 发展历程
+   .list
+     .flex.items-center.item(v-for="x in 10" :key="x")
+      .year {{2023-x}}
+      .info
+        p 成功首批登入北交所
+        p 所有国家专项通过审计署审计
+        p 复审通过2021年上海“专精特新”
+          br
+          |中小企业评审
+      img.img(src="../assets/img/bg_sunset.jpg")
+
+
 </template>
 
 <script>
-import banner from '@/assets/constant/banner.json'
 export default {
   name: "about-page",
   data() {
-    return {
-      banner,
-    };
+    return {};
   },
 };
 </script>
@@ -58,7 +60,49 @@ $blue: #005fab;
   margin: 84px 0;
   background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
 }
-.desc2 {
-  
+.title {
+  width: 1551px;
+  font-size: 48px;
+  color: #222222;
+  padding: 117px 0 87px 170px;
+  text-align: left;
+}
+.list {
+  width: 1551px;
+  padding-bottom: 200px;
+  .item {
+    padding: 0 174px;
+    height: 302px;
+    background: #eaecec;
+    .year {
+      font-size: 97px;
+      font-family: Arial;
+      color: #000000;
+      margin-right: 75px;
+    }
+    .info {
+      flex: 1;
+      font-size: 24px;
+      color: #1a1a1a;
+      p {
+        margin: 18px 0;
+      }
+    }
+    .img {
+      width: 350px;
+      height: 222px;
+      margin-right: 20px;
+      box-shadow: 12px 12px #c2c2c2;
+    }
+    &:nth-child(even) {
+      background: #b5b9b9;
+      .year {
+        color: #c70008;
+      }
+      .img {
+        box-shadow: 12px 12px #eaecec;
+      }
+    }
+  }
 }
 </style>
