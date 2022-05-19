@@ -8,10 +8,10 @@ main.flex.flex-col.items-center
       ion-icon(v-cloak name="search-outline")
   .bg-gray-100.w-full.flex.justify-center
     nav.menus.flex.items-center.h-10.leading-10.relative(ref="menus")
-      .nav-link.text-center.cursor-pointer(
+      .nav-link.pl-2.cursor-pointer(
         v-for="(menu, i) in menus.filter(menu => menu.display)"
         @click="selectMenu(menu, i)" v-text="menu.title"
-        :class="{ active: i == activeNav }"
+        :class="{ active: i == activeMenu }"
         :key="menu.id")
       transition(
         enter-active-class="transition duration-100 ease-out"
@@ -21,11 +21,11 @@ main.flex.flex-col.items-center
         leave-from-class="transform scale-100 opacity-100"
         leave-to-class="transform scale-95 opacity-0")
         .nav-panel.absolute.top-14.left-0.right-0.z-10.bg-white.filter.drop-shadow(v-if="Number.isFinite(active)")
-          .nav-panel__icon(:style="{ left: (55 + active * 120) + 'px' }")
+          .nav-panel__icon(:style="{ left: (25 + active * 120) + 'px' }")
           .nav-panel-content.flex
             .nav-panel-list.flex.flex-col.w-60.p-5
               button.nav-panel-list-item.leading-8.text-left.cursor-pointer(
-                v-for="(item, i) in activeMenu.child.filter(menu => menu.display)"
+                v-for="(item, i) in activeLink.child.filter(menu => menu.display)"
                 :key="item.id"
                 :class="{ active: i === subActive }"
                 :disabled="!item.child && !links[item.id]"
@@ -43,11 +43,34 @@ main.flex.flex-col.items-center
             //-     v-for="(item, i) in leaMenus.child"
             //-     :key="item.id"
             //-     v-text="item.title")
+  section.breadcrumbs
+    nav.py-4.breadcrumb.flex.items-center(aria-label="breadcrumbs")
+      nuxt-link(to="/")
+        ion-icon(name="home-sharp" v-cloak)
+      template(v-if="activeMenu >= 0")
+        ion-icon.mx-5(name="chevron-forward-sharp"  v-cloak)
+        nuxt-link(:to="links[activeNav]") {{ labels[activeNav] }}
+      .relative.cursor-pointer(v-if="lea" ref="lea" @click.stop="show = !show")
+        ion-icon.mx-5(name="chevron-forward-sharp"  v-cloak)
+        nuxt-link(:to="lea.path") {{ lea.meta.title }}
+        ion-icon.ml-5(name="chevron-down-sharp"  v-cloak)
+        transition(
+          enter-active-class="transition duration-100 ease-out"
+          enter-from-class="transform scale-95 opacity-0"
+          enter-to-class="transform scale-100 opacity-100"
+          leave-active-class="transition duration-75 ease-in"
+          leave-from-class="transform scale-100 opacity-100"
+          leave-to-class="transform scale-95 opacity-0")
+          ul.nav-drops.absolute.bg-white.top-full.left-10.w-full.py-2.z-10.shadow-2xl.shadow-slate-600.translate-y-2(v-if="show")
+            li.nav-drop.pl-4.leading-10(v-for="(prod, i) in lea.meta.productions" :key="i" class="hover:bg-gray-300")
+              nuxt-link.truncate(:to="prod.link") {{ prod.title }}
   nuxt
   AppFooter(:menus="menus")
 </template>
 <script>
 import menus from '@/assets/constant/menus';
+import navs from '@/assets/constant/navs';
+import labels from '@/assets/constant/labels';
 import { mapState } from 'vuex';
 
 export default {
@@ -60,19 +83,22 @@ export default {
       subActive: '',
       leaActive: '',
       links: menus,
+      navs,
+      labels,
+      show: false,
     }
   },
   computed: {
-    activeMenu() {
+    activeLink() {
       return Number.isFinite(this.active) ? this.menus[this.active] : null
     },
     subMenus() {
-      return Number.isFinite(this.subActive) ? this.activeMenu.child[this.subActive] : null
+      return Number.isFinite(this.subActive) ? this.activeLink.child[this.subActive] : null
     },
     leaMenus() {
       return Number.isFinite(this.leaActive) ? this.subMenus.child[this.leaActive] : null
     },
-    ...mapState(['activeNav'])
+    ...mapState(['activeNav', 'activeMenu', 'lea'])
   },
   mounted() {
     this.getMenus();
@@ -82,6 +108,9 @@ export default {
         if (!this.$refs.menus.contains(e.target)) {
           this.closeMenus();
         }
+      }
+      if (!this.$refs?.lea?.contains(e.target)) {
+        this.show = false;
       }
     })
   },
@@ -149,6 +178,12 @@ main {
 
   nav.menus {
     width: 1200px;
+  }
+
+  section.breadcrumbs {
+    width: min(1200px, 100vw);
+
+    nav.breadcrumb {}
   }
 }
 

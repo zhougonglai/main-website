@@ -1,24 +1,24 @@
 <template lang="pug">
 section.w-full.flex.flex-col.items-center.justify-center
-  nav.flex.leading-10.py-2.items-center
-    nuxt-link(to="/")
-      ion-icon(name="home-sharp" v-cloak)
-    ion-icon.mx-5(name="chevron-forward-sharp"  v-cloak)
-    nuxt-link(to="/production") 矢量网络分析
-    ion-icon.mx-5(name="chevron-forward-sharp"  v-cloak)
-    .nav-menus.flex.items-center.relative.cursor-pointer(ref="menus")
-      .nav-menu(@click.stop="show = !show") T5260C 485矢量网络分析仪
-        ion-icon.ml-5(name="chevron-down-sharp"  v-cloak)
-      transition(
-        enter-active-class="transition duration-100 ease-out"
-        enter-from-class="transform scale-95 opacity-0"
-        enter-to-class="transform scale-100 opacity-100"
-        leave-active-class="transition duration-75 ease-in"
-        leave-from-class="transform scale-100 opacity-100"
-        leave-to-class="transform scale-95 opacity-0")
-        ul.nav-drops.absolute.bg-white.top-full.w-full.py-2.z-10.shadow(v-if="show")
-          li.nav-link.pl-4(v-for="(prod, i) in productions" :key="i" class="hover:bg-gray-300")
-            nuxt-link.truncate(to="/production/t526c") {{ prod.title }}
+  //- nav.flex.leading-10.py-2.items-center
+  //-   nuxt-link(to="/")
+  //-     ion-icon(name="home-sharp" v-cloak)
+  //-   ion-icon.mx-5(name="chevron-forward-sharp"  v-cloak)
+  //-   nuxt-link(to="/production") 矢量网络分析
+  //-   ion-icon.mx-5(name="chevron-forward-sharp"  v-cloak)
+  //-   .nav-menus.flex.items-center.relative.cursor-pointer(ref="menus")
+  //-     .nav-menu(@click.stop="show = !show") T5260C 485矢量网络分析仪
+  //-       ion-icon.ml-5(name="chevron-down-sharp"  v-cloak)
+  //-     transition(
+  //-       enter-active-class="transition duration-100 ease-out"
+  //-       enter-from-class="transform scale-95 opacity-0"
+  //-       enter-to-class="transform scale-100 opacity-100"
+  //-       leave-active-class="transition duration-75 ease-in"
+  //-       leave-from-class="transform scale-100 opacity-100"
+  //-       leave-to-class="transform scale-95 opacity-0")
+  //-       ul.nav-drops.absolute.bg-white.top-full.w-full.py-2.z-10.shadow(v-if="show")
+  //-         li.nav-link.pl-4(v-for="(prod, i) in productions" :key="i" class="hover:bg-gray-300")
+  //-           nuxt-link.truncate(to="/production/t526c") {{ prod.title }}
   .sc-1.w-full.flex.flex-col.items-center.py-10
     .sc-1__block
       h1.text-2xl T5260C系列矢量网络分析仪
@@ -54,6 +54,16 @@ export default {
         this.show = false
       }
     })
+    this.$store.commit('updateLea', {
+      path: '/production/t526c',
+      meta: {
+        title: 'T5260C 485矢量网络分析仪',
+        productions: productions.filter((p, i) => i)
+      }
+    })
+  },
+  beforeDestroy() {
+    this.$store.commit('updateLea', '')
   }
 }
 </script>

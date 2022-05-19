@@ -1,0 +1,7 @@
+[
+  ["/service"],
+  ["/production"],
+  ["/maintenance", "/openfile"],
+  ["/about", "/honorary", "/history", "/contact"],
+  ["/joinus"]
+]
