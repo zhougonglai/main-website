@@ -1,11 +1,5 @@
 <template lang="pug">
 .w-full.flex.flex-col.items-center
-  .container
-    nav.Bread-crumbs.flex.items-center
-      NuxtLink(to="/")
-        ion-icon(name='home-outline') 
-      ion-icon(name='chevron-forward-outline') 
-      | 关于我们
   .banner.w-full
   section.container.desc
     h5 关于我们
@@ -62,11 +56,6 @@ export default {
 
 <style lang="scss" scoped>
 $blue: #005fab;
-nav.Bread-crumbs {
-  height: 66px;
-  font-size: 20px;
-  color: #606060;
-}
 .banner {
   height: 584px;
   background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;

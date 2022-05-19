@@ -1,13 +1,5 @@
 <template lang="pug">
 .w-full.flex.flex-col.items-center
-  .container
-    nav.Bread-crumbs.flex.items-center
-      NuxtLink(to="/")
-        ion-icon(name='home-outline') 
-      ion-icon(name='chevron-forward-outline') 
-      NuxtLink(to="/about") 关于我们       
-      ion-icon(name='chevron-forward-outline') 
-      | 联系我们
   .banner.w-full
   .container.desc
     p 上海创远仪器技术股份有限公司（简称创远仪器）成立于 2005 年，总部位于上海，首批北交所上市（831961），是一家自主研发射频通信测试仪器和提供整体测试解决方案的专业仪器仪表公司。专注于无线通信、射频微波、无线电监测、北斗导航及智能制造测试领域，拥有自主品牌和一系列测试仪器核心专利技术，集研发、生产和销售为一体，是一家具有自主知识产权的高新技术企业。荣获 2016 年度国家科学技术进步奖特等奖和 2020 年度江苏省科学技术奖一等奖。
@@ -95,11 +87,6 @@ export default {
 
 <style lang="scss" scoped>
 $blue: #005fab;
-nav.Bread-crumbs {
-  height: 66px;
-  font-size: 20px;
-  color: #606060;
-}
 .banner {
   height: 484px;
   background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
