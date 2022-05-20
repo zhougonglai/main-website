@@ -58,12 +58,12 @@ section.w-full.flex.flex-col.items-center.justify-center
             p.mt-3.card-desc.text-gray-500 主要性能展示
       h1.text-2xl.mt-10 相关型号
       .types.bg-gray-100.grid.grid-cols-3.my-10.p-10.gap-10
-        .card.flex.flex-col.cursor-pointer.bg-white(class="hover:shadow hover:border-b-2 hover:border-blue-300")
+        .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(class="hover:shadow hover:border-blue-300")
           .card-cover
             img.object-center.object-cover(src="https://img01.yzcdn.cn/vant/cat.jpeg")
           .card-content.p-5
             h3.card-title.text-xl.truncate T5260C系列矢量网络分析仪 285
-        .card.flex.flex-col.cursor-pointer.bg-white(class="hover:shadow hover:border-b-2 hover:border-blue-300")
+        .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(class="hover:shadow hover:border-blue-300")
           .card-cover
             img.object-center.object-cover(src="https://img01.yzcdn.cn/vant/cat.jpeg")
           .card-content.p-5
