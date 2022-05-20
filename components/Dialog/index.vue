@@ -15,6 +15,7 @@ export default {
     showModal() {
       this.$refs.dialog.showModal();
     },
+
     dismiss(e) {
       if (e.target.nodeName === 'DIALOG') {
         this.$refs.dialog.close();

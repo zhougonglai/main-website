@@ -7,12 +7,12 @@ section.w-full.flex.flex-col.items-center.justify-center
       h1.text-2xl T5260C系列矢量网络分析仪
       .flex.w-full.my-5.gap-x-5
         .flex.flex-col.flex-1
-          .relative.box
+          .relative.box.rounded.overflow-hidden
             img.object-center.object-cover.overflow-hidden(:src="cover.src" width="600" height="400")
             ion-icon.absolute.cursor-pointer.right-2.bottom-2.text-blue-500(name="expand-sharp" size="large" @click="openModal")
           CarouselBox.py-2(
             :items="banner"
-            item-class="h-20 item"
+            item-class="h-20 item rounded overflow-hidden"
             content-class="flex content overflow-hidden"
             @select="updateCover")
         .flex.flex-col.flex-1
@@ -37,35 +37,73 @@ section.w-full.flex.flex-col.items-center.justify-center
       h1.text-2xl.mt-10 技术规范
       .tabs.my-10
         .tab-bar.flex.leading-10.border-b.border-gray-300
-          .tab.flex-1.pl-5 产品特色及应用
-          .tab.flex-1.pl-5 技术指标
-          .tab.flex-1.pl-5 配置清单
-          .tab.flex-1.pl-5 面板说明
+          .tab.flex-1.pl-5.cursor-pointer(v-for="(tab, i) in tabs" :key="tab.name" :class="{ 'text-blue-500': i === tabActive, 'text-gray-500': i !== tabActive }" @click="tabActive = i" v-text="tab.tab")
         .tab-content.p-5
-          template(v-if="tabActive === 0")
-            h2.text-lg 产品特色及应用
-            ul
-              li 多种分析功能（如时域分析、夹具仿真等）
-              li 支持标准 VISA 通讯协议
-              li 简单快捷的人机操作界面
+          h2.text-xl(v-text="tabs[tabActive].tab")
+          ul.mt-5(v-if="tabs[tabActive].desc.length")
+            li.text-gray-500(v-for="(d, i) in tabs[tabActive].desc" :key="i" v-text="d")
+      h1.text-2xl.mt-10 产品视频
+      .prod.bg-gray-100.flex.items-end.justify-center.gap-x-10.mt-60.pb-10
+        .card.flex.flex-col.cursor-pointer.bg-white(class="hover:shadow hover:border-b-2 hover:border-blue-300")
+          .card-cover
+            video(src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" controls)
+          .card-content.p-5
+            h3.text-xl.card-title 产品简介视频
+            p.mt-3.card-desc.text-gray-500 主要性能展示
+        .card.flex.flex-col.cursor-pointer.bg-white(class="hover:shadow hover:border-b-2 hover:border-blue-300")
+          .card-cover
+            video(src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" controls)
+          .card-content.p-5
+            h3.text-xl.card-title 产品简介视频
+            p.mt-3.card-desc.text-gray-500 主要性能展示
+      h1.text-2xl.mt-10 相关型号
+      .types.bg-gray-100.grid.grid-cols-3.my-10.p-10.gap-10
+        .card.flex.flex-col.cursor-pointer.bg-white(class="hover:shadow hover:border-b-2 hover:border-blue-300")
+          .card-cover
+            img.object-center.object-cover(src="https://img01.yzcdn.cn/vant/cat.jpeg")
+          .card-content.p-5
+            h3.card-title.text-xl.truncate T5260C系列矢量网络分析仪 285
+        .card.flex.flex-col.cursor-pointer.bg-white(class="hover:shadow hover:border-b-2 hover:border-blue-300")
+          .card-cover
+            img.object-center.object-cover(src="https://img01.yzcdn.cn/vant/cat.jpeg")
+          .card-content.p-5
+            h3.card-title.text-xl.truncate T5260C系列矢量网络分析仪 285
+        .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(class="hover:shadow hover:border-blue-300")
+          .card-cover
+            img.object-center.object-cover(src="https://img01.yzcdn.cn/vant/cat.jpeg")
+          .card-content.p-5
+            h3.card-title.text-xl.truncate T5260C系列矢量网络分析仪 285
+      h1.text-2xl.mt-10 相关解决方案
+      .types.bg-gray-100.grid.grid-cols-2.my-10.p-10.gap-10
+        .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(class="hover:shadow hover:border-blue-300")
+          .card-cover
+            img.object-center.object-cover(src="https://img01.yzcdn.cn/vant/cat.jpeg")
+          .card-content.p-5
+            h3.card-title.text-xl.truncate S参数测试
+        .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(class="hover:shadow hover:border-blue-300")
+          .card-cover
+            img.object-center.object-cover(src="https://img01.yzcdn.cn/vant/cat.jpeg")
+          .card-content.p-5
+            h3.card-title.text-xl.truncate MIMO天线测试
 </template>
 <script>
 import productions from '@/assets/constant/productions.json';
 import banner from '@/assets/constant/banner.json';
 import Dialog from '@/components/Dialog/index.vue';
+import tabs from '@/assets/constant/tabs.json';
 
 export default {
   name: "production-detail-page",
-  comments: {
-    Dialog
-  },
+  components: { Dialog },
   data() {
     return {
       productions: productions.filter((p, i) => i),
       show: false,
       banner,
       cover: banner[0],
+      tabs,
       tabActive: 0,
+      types: []
     };
   },
   mounted() {
@@ -88,7 +126,6 @@ export default {
       this.$refs.dialog.showModal()
     },
   },
-  components: { Dialog, Dialog }
 }
 </script>
 
@@ -129,11 +166,16 @@ nav {
         }
       }
     }
+
+    .prod {
+      height: 340px;
+
+      .card {
+        width: 380px;
+        height: 420px;
+      }
+    }
+
   }
-}
-
-.tab {
-  &s {}
-
 }
 </style>
