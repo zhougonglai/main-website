@@ -1,5 +1,8 @@
 <template>
-  <footer class="flex justify-center bg-gray-100">
+  <footer class="flex flex-col justify-center items-center bg-gray-100">
+    <Dialog ref="qrcode">
+      <img src="@/assets/img/wechat.png" alt="微信公众号">
+    </Dialog>
     <div class="footer-block flex flex-col py-10">
       <div class="fc-0 flex">
         <div class="fb-1">
@@ -22,7 +25,9 @@
       <div class="fc-1 flex leading-8">
         <h4 class="font-bold font-5xl">创远仪器</h4>
         <div class="flex-1" />
-        <div class="font-sm">官方公众号</div>
+        <div class="font-sm cursor-pointer" @click="showQRcode">
+          官方公众号
+        </div>
       </div>
       <hr>
       <div class="fc-2 flex gap-x-5 leading-8">
@@ -37,8 +42,14 @@
 
 <script>
 export default {
-  name: 'app-footer',
-  props: ['menus']
+  name: "app-footer",
+  props: ["menus"],
+  // components: { Dialog }
+  methods: {
+    showQRcode() {
+      this.$refs.qrcode.showModal();
+    }
+  }
 }
 </script>
 
