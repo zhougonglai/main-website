@@ -14,13 +14,13 @@ main.flex.flex-col.items-center
         :class="{ active: i == activeMenu }"
         :key="menu.id")
       transition(
-        enter-active-class="transition duration-100 ease-out"
+        enter-active-class="transition duration-200 ease-out"
         enter-from-class="transform scale-95 opacity-0"
         enter-to-class="transform scale-100 opacity-100"
-        leave-active-class="transition duration-75 ease-in"
+        leave-active-class="transition duration-200 ease-in"
         leave-from-class="transform scale-100 opacity-100"
         leave-to-class="transform scale-95 opacity-0")
-        .nav-panel.absolute.top-14.left-0.right-0.z-10.bg-white.filter.drop-shadow(v-if="Number.isFinite(active)")
+        .nav-panel.absolute.top-14.left-0.right-0.z-10.bg-white(v-if="Number.isFinite(active)")
           .nav-panel__icon(:style="{ left: (25 + active * 120) + 'px' }")
           .nav-panel-content.flex
             .nav-panel-list.flex.flex-col.w-60.p-5
@@ -206,6 +206,8 @@ main {
   }
 
   &-panel {
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.4));
+
     &__icon {
       position: absolute;
       width: 0;
