@@ -3,6 +3,7 @@
   .checkbox-con
     input.checkbox(
       type="checkbox"
+      :id="id"
       :value="value"
       :disabled="disabled"
       @input="e => $emit('update:value', e.target.value)"
@@ -12,7 +13,8 @@
         span
           .line1
           .line2
-  slot
+  label.pl-5(:for="id")
+    slot
 </template>
 <script>
 export default {
@@ -25,6 +27,11 @@ export default {
     disabled: {
       type: Boolean,
       default: false,
+    }
+  },
+  data() {
+    return {
+      id: Math.random().toString(16).substr(-10)
     }
   }
 }

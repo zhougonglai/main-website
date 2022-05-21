@@ -80,6 +80,13 @@ section.w-full
             input(v-model="db.ask")
         .field
           textarea.p-5(v-model="db.desc" placeholder="具体问题描述")
+        .flex-1.mt-10
+          h4.text-2xl 营销许可
+          .w-full.my-5
+            Checkbox
+              span.text-gray-500 我希望通过电子邮件从创远仪器实体或子公司
+          .flex.items-center.justify-end.mt-5
+            button.bg-blue-500.px-5.py-2.text-white(class="hover:bg-blue-600") 获取信息
 </template>
 
 <script>
@@ -96,13 +103,15 @@ export default {
         sex: 1,
         name: "",
         company: "",
-        desc: '',
-        city: '',
-        phone: '',
-        ask: '',
+        desc: "",
+        city: "",
+        phone: "",
+        ask: "",
+        status: false,
       },
     };
   },
+  // components: { Checkbox }
 }
 </script>
 
