@@ -23,7 +23,7 @@ export default {
 <style lang="scss" scoped>
 .banner {
   height: 438px;
-  background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
+  background: url("../../assets/img/bg_sunset.jpg") no-repeat center / cover;
   margin-bottom: 136px;
   line-height: 1;
   .box {
@@ -44,7 +44,7 @@ export default {
     margin: 24px 13px;
     .img {
       height: 246px;
-      background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
+      background: url("../../assets/img/bg_sunset.jpg") no-repeat center / cover;
     }
     .title {
       padding: 20px;
