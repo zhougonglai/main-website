@@ -1,5 +1,5 @@
 [
-  ["/resolve", "/service"],
+  ["/communication", "/resolve", "/service"],
   ["/production"],
   ["/maintenance", "/openfile"],
   ["/about", "/honorary", "/history", "/contact"],

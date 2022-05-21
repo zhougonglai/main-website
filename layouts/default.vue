@@ -69,7 +69,6 @@ main.flex.flex-col.items-center
 </template>
 <script>
 import menus from '@/assets/constant/menus';
-import navs from '@/assets/constant/navs';
 import labels from '@/assets/constant/labels';
 import { mapState } from 'vuex';
 
@@ -83,7 +82,6 @@ export default {
       subActive: '',
       leaActive: '',
       links: menus,
-      navs,
       labels,
       show: false,
     }
