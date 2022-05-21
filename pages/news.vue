@@ -7,7 +7,7 @@
       br
       | 快速发展的测试技术以及创远为国产仪器所作出的卓越贡献。
   .new-list
-    .new(v-for="db,i in 16" :key="i" :href="'news/_id?id='+i") 
+    a.new(v-for="db,i in 16" :key="i" :href="'news/_id?id='+i") 
       .img
       .title
         h5 创远仪器参加2021年mwc
@@ -17,28 +17,10 @@
 </template>
 <script>
 export default {
-  mounted() {
-    //console.log();
-  },
-  computed: {
-    // test() {
-    //   return 0;
-    // }
-  },
-  data() {
-    return {
-      //id:1
-    };
-  },
-  methods: {
-    // test() {
-    //   return 0;
-    // }
-  },
+
 };
 </script>
 <style lang="scss" scoped>
-$blue: #005fab;
 .banner {
   height: 438px;
   background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
