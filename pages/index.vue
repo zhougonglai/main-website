@@ -34,7 +34,7 @@ section.w-full.flex.flex-col
           button.news-btn.absolute.bottom-5.right-5 更多信息
   .sc-link.flex.justify-center.py-10
     .link-block
-      h1.text-2xl.font-bold.ml-10 快速链接
+      h1.text-4xl.font-bold.ml-10 快速链接
       ul.links.flex.gap-x-5.mt-10.justify-between
         li.link.bg-gray-100.cursor-pointer(v-for="(l, i) in link" :key="i" class="hover:shadow" v-text="l.title")
 </template>

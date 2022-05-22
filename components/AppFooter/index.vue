@@ -3,7 +3,7 @@
     <Dialog ref="qrcode">
       <img src="@/assets/img/wechat.png" alt="微信公众号">
     </Dialog>
-    <div class="footer-block flex flex-col py-10">
+    <div class="footer-block flex flex-col py-20">
       <div class="fc-0 flex">
         <div class="fb-1">
           <img class="" src="@/assets/img/logo.png" alt="创远仪器" width="225" />
