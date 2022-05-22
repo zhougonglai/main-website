@@ -7,11 +7,11 @@ main.flex.flex-col.items-center
     .nav-list.flex.justify-center.items-center
       ion-icon(v-cloak name="search-outline")
   .bg-gray-100.w-full.flex.justify-center
-    nav.menus.flex.items-center.h-10.leading-10.relative(ref="menus")
-      .nav-link.pl-2.cursor-pointer(
+    nav.menus.flex.items-center.leading-10.relative(ref="menus")
+      .nav-link.px-8.py-4.cursor-pointer.text-lg.text-center(
         v-for="(menu, i) in menus.filter(menu => menu.display)"
         @click="selectMenu(menu, i)" v-text="menu.title"
-        :class="{ active: i == activeMenu }"
+        :class="{ active: i == activeMenu, '-ml-2': !i }"
         :key="menu.id")
       transition(
         enter-active-class="transition duration-200 ease-out"
@@ -20,8 +20,8 @@ main.flex.flex-col.items-center
         leave-active-class="transition duration-200 ease-in"
         leave-from-class="transform scale-100 opacity-100"
         leave-to-class="transform scale-95 opacity-0")
-        .nav-panel.absolute.top-14.left-0.right-0.z-10.bg-white(v-if="Number.isFinite(active)")
-          .nav-panel__icon(:style="{ left: (25 + active * 120) + 'px' }")
+        .nav-panel.absolute.top-20.left-0.right-0.z-10.bg-white(v-if="Number.isFinite(active)")
+          .nav-panel__icon(:style="{ left: stageIndex[active] + 'px' }")
           .nav-panel-content.flex
             .nav-panel-list.flex.flex-col.w-60.p-5
               button.nav-panel-list-item.leading-8.text-left.cursor-pointer(
@@ -43,7 +43,7 @@ main.flex.flex-col.items-center
             //-     v-for="(item, i) in leaMenus.child"
             //-     :key="item.id"
             //-     v-text="item.title")
-  section.breadcrumbs
+  section.breadcrumbs(v-if="$route.name != 'index'")
     nav.py-4.breadcrumb.flex.items-center(aria-label="breadcrumbs")
       nuxt-link(to="/")
         ion-icon(name="home-sharp" v-cloak)
@@ -84,6 +84,7 @@ export default {
       links: menus,
       labels,
       show: false,
+      stageIndex: [25, 130, 260, 400, 540],
     }
   },
   computed: {
@@ -111,6 +112,7 @@ export default {
         this.show = false;
       }
     })
+    console.log(this.$route)
   },
   methods: {
     async getMenus() {
@@ -188,7 +190,6 @@ main {
 .nav {
   &-link {
     color: var(--color);
-    width: 120px;
 
     &:not(:disabled) {
 
