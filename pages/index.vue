@@ -7,11 +7,18 @@ section.w-full.flex.flex-col
       h1.text-2xl.font-bold 创远仪器
       article.text-base.mt-10 上海创远仪器技术股份有限公司成立于 2005 年，2021年作为首批企业成功登陆北交所，是一家自主研发射频通信测试仪器和提供整体测试解决方案的专业仪器仪表公司。
   .sc-carousels.bg-gray-100.flex.items-center.justify-center
-    .sc-block.flex.items-center.justify-center
-      Carousel(:items="banner")
+    .sc-block.flex.items-center.justify-center.py-20
+      //- Carousel(:items="banner")
+      carousel-card(size="1" :max-size="banner.length" contentClass="mx-10 items-center justify-between")
+        carousel-item.flex.gap-x-10.w-full(v-for="b in banner" :key="b.id" :item="b.id")
+          .content.flex-1
+            .title.text-2xl.font-bold {{ b.title }}
+            .desc.mt-10.text-xl(v-text="b.subTitle")
+          .cover.flex-1
+            img.object-contain.object-center.w-full.h-full(:src="b.src")
   .sc-news.flex.items-center.justify-center
     .news-block.flex.flex-col.justify-center.py-10
-      h1.text-2xl.font-bold.ml-10 新闻
+      h1.text-4xl.font-bold.ml-10 新闻
       .news-content.bg-gray-100.flex.flex-col-reverse.items-center.mt-40.relative
         .news-more.bg-white.flex.items-center.justify-center.absolute.-bottom-5
           button.news-action(v-text="'更多新闻'")

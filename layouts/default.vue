@@ -5,7 +5,10 @@ main.flex.flex-col.items-center
       img(src='~/assets/img/logo.png' alt="创远仪器" width="226")
     .flex-1
     .nav-list.flex.justify-center.items-center
-      ion-icon(v-cloak name="search-outline")
+      nuxt-link(to="/contact" class="hover:text-blue-500") 联系我们
+      .search.ml-5.relative
+        input.search-input.rounded-full.caret-blue-500.border.border-gray-500.px-5.leading-10
+        ion-icon.absolute.right-5.z-10.cursor-pointer(v-cloak name="search-outline" class="top-1/2 -translate-y-1/2")
   .bg-gray-100.w-full.flex.justify-center
     nav.menus.flex.items-center.leading-10.relative(ref="menus")
       .nav-link.px-8.py-4.cursor-pointer.text-lg.text-center(

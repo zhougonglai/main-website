@@ -3,7 +3,7 @@
   button.carousel-prev.cursor-pointer.absolute.left-0.z-10.text-blue-300(
     class="top-1/2 -translate-y-1/2 hover:text-blue-500" @click="prev")
     ion-icon.v-cloak(name="chevron-back-outline" size="large")
-  .carousel-content(:class="[contentClass]" ref="content")
+  .carousel-content.flex.overflow-hidden(:class="[contentClass]" ref="content")
     slot
   button.carousel-next.cursor-pointer.absolute.right-0.z-10.text-blue-300(
     class="top-1/2 -translate-y-1/2 hover:text-blue-500" @click="next")
