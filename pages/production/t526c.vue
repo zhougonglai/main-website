@@ -111,7 +111,7 @@ export default {
       path: "/production/t526c",
       meta: {
         title: "T5260C 485矢量网络分析仪",
-        productions: productions.filter((p, i) => i)
+        paths: productions.filter((p, i) => i)
       }
     });
   },

@@ -72,12 +72,12 @@ footer {
   text-indent: 50px;
 
   .ft {
-    color: var(--primary-1);
+    color: var(--primary);
   }
 
   li {
     &:hover {
-      color: var(--primary-2);
+      color: var(--primary);
     }
   }
 }

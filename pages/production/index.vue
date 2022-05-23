@@ -1,7 +1,7 @@
 <template lang="pug">
 section.w-full.flex.flex-col
-  .carousels.h-80
-    img.object-center.object-cover.w-full.h-80(src="~/assets/img/bg_sunset.jpg")
+  .carousels
+    img.object-center.object-cover.w-full.h-480(src="~/assets/img/bg_sunset.jpg")
   .sc-1.flex.items-center.justify-center
     .sc-1__block.py-10
       h1.text-4xl.font-bold.leading-relaxed
@@ -16,7 +16,7 @@ section.w-full.flex.flex-col
     .sc-2__block.py-20
       table.prod.border-collapse.border-gray-200.border.table-fixed.w-full.relative
         thead.prod-header
-          tr.flex.p-5.flex.items-center.justify-between.text-blue-500
+          tr.flex.p-5.flex.items-center.justify-between.text-primary
             .prod-title.flex-1.text-2xl.leading-relaxed 产品清单
             .prod-icon
               ion-icon.text-4xl(name="remove-outline")
@@ -36,13 +36,13 @@ section.w-full.flex.flex-col
               //- Checkbox(@change="selectChange($event, prod.id)" :disabled="selected[prod.id] ? false : selectedLength >= 3")
               img.ml-5.object-center.object-cover(:src="prod.url")
             td.prod-ti.flex-1.p-5
-              nuxt-link(class="hover:text-blue-500" to="/production/t526c" v-text="prod.title")
+              nuxt-link(class="hover-text-primary" to="/production/t526c" v-text="prod.title")
             td.prod-ti.flex-1.p-5.text-center(v-text="prod.type")
             td.prod-ti.flex-1.p-5.text-center(v-text="prod.qz")
             td.prod-ti.flex-1.p-5.text-center(v-text="prod.port")
             td.prod-ti.flex-1.p-5(v-text="prod.types.join('/')")
             td.prod-ti.flex-1.p-5.flex.items-center.justify-center
-              button.bg-blue-500.px-5.py-2.text-white 询价
+              button.bg-primary.px-5.py-2.text-white 询价
         //- tfoot.prod-tfd.absolute.w-full.flex.items-center.justify-center
         //-   button.bg-blue-500.px-5.py-2.text-white.-mt-5(:disabled="selectedLength < 2") {{ selectedLength }}/3 产品比较
 </template>

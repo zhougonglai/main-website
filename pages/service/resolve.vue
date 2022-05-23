@@ -70,7 +70,28 @@ section.w-full
 
 <script>
 export default {
-
+  name: "resolve-page",
+  mounted() {
+    this.$store.commit("updateLea", {
+      path: "/service/resolve",
+      meta: {
+        title: "解决方案",
+        paths: [
+          {
+            title: '固定站新建与改造',
+            link: '/service/resolve'
+          },
+          {
+            title: '车载监测测向系统',
+            link: '/service/resolve'
+          },
+        ]
+      }
+    });
+  },
+  beforeDestroy() {
+    this.$store.commit("updateLea", "");
+  },
 }
 </script>
 

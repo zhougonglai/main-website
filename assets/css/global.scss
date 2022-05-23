@@ -1,6 +1,6 @@
 :root {
-  --primary: #1e6eb2;
-  --primary-1: #00a0e9;
+  --primary: #01a0e9;
+  --primary-1: #01a0e9;
   --primary-2: #5ec4ff;
   --color: #606060;
   --color-1: #262626;
@@ -9,4 +9,29 @@
   --color-4: #181818;
   --color-5: #242424;
   --color-6: #021734;
+
+  --h-480: 480px;
+}
+
+.h-480 {
+  height: var(--h-480);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+.hover-bg-primary {
+  &:hover {
+    background-color: var(--primary);
+  }
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.hover-text-primary {
+  &:hover {
+    color: var(--primary);
+  }
 }

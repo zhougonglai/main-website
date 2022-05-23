@@ -30,7 +30,8 @@
       <div class="sp-3__block py-20">
         <h1 class="text-4xl font-bold">相关解决方案</h1>
         <div class="resolve bg-gray-100 flex items-end justify-center gap-x-10 mt-80 pb-10">
-          <div class="card flex flex-col cursor-pointer hover:shadow">
+          <nuxt-link to="/service/resolve"
+            class="card flex flex-col cursor-pointer border-b-2 border-color-white hover:border-blue-300 hover:shadow">
             <div class="card-cover">
               <img class="object-center object-cover" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
             </div>
@@ -40,9 +41,10 @@
                 创远仪器经过多年的积累，已经承接与实施了多个大型固定站无线电监测测向站的新建工作，目前创远仪器具备按照国家标准划分的一、二、三、四类站建设能力。
               </p>
             </div>
-          </div>
+          </nuxt-link>
 
-          <div class="card flex flex-col cursor-pointer hover:shadow">
+          <nuxt-link to="/service/resolve"
+            class="card flex flex-col cursor-pointer border-b-2 border-color-white hover:border-blue-300 hover:shadow">
             <div class="card-cover">
               <img class="object-center object-cover" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
             </div>
@@ -52,7 +54,7 @@
                 本方案是基于主流轻型卡车或SUV等高承载能力底盘，提供一批多通道无线电监测测向与车载附属设备设备供用户选择。通过改车集成，可实现无线电信号监测、测向、单站移动定位、专用业务信号解码等功能，适应日常无线电监管的工作需要。
               </p>
             </div>
-          </div>
+          </nuxt-link>
         </div>
       </div>
     </div>
@@ -99,7 +101,7 @@
 </template>
 <script>
 export default {
-  name: 'service-page'
+  name: 'service-page',
 }
 </script>
 

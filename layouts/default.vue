@@ -67,7 +67,7 @@ main.flex.flex-col.items-center
           leave-from-class="transform scale-100 opacity-100"
           leave-to-class="transform scale-95 opacity-0")
           ul.nav-drops.absolute.bg-white.top-full.left-10.w-full.py-2.z-10.shadow-2xl.shadow-slate-600.translate-y-2(v-if="show")
-            li.nav-drop.pl-4.leading-10(v-for="(prod, i) in lea.meta.productions" :key="i" class="hover:bg-gray-300")
+            li.nav-drop.pl-4.leading-10(v-for="(prod, i) in lea.meta.paths" :key="i" class="hover:bg-gray-300")
               nuxt-link.truncate(:to="prod.link") {{ prod.title }}
   nuxt
   AppFooter(:menus="menus")
