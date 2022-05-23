@@ -13,7 +13,9 @@ main.flex.flex-col.items-center
     nav.menus.flex.items-center.leading-10.relative(ref="menus")
       .nav-link.px-8.py-4.cursor-pointer.text-lg.text-center(
         v-for="(menu, i) in menus.filter(menu => menu.display)"
-        @click="selectMenu(menu, i)" v-text="menu.title"
+        @click="selectMenu(menu, i)"
+        @mouseenter="selectMenu(menu, i)"
+        v-text="menu.title"
         :class="{ active: i == activeMenu, '-ml-2': !i }"
         :key="menu.id")
       transition(
@@ -88,6 +90,7 @@ export default {
       labels,
       show: false,
       stageIndex: [25, 130, 260, 400, 540],
+      timer: 0,
     }
   },
   computed: {
