@@ -4,7 +4,7 @@
     .box
       h1.text-4xl.text-white 公司历史
   section.w-full.flex.flex-col.items-center.desc2
-   .title 发展历程
+   .title.text-4xl 发展历程
    .list
      .flex.items-center.item(v-for="x in 10" :key="x")
       .year {{2023-x}}
@@ -66,7 +66,6 @@ $blue: #005fab;
 }
 .title {
   width: 1200px;
-  font-size: 48px;
   color: #222222;
   padding: 100px 0 80px 140px;
   text-align: left;
