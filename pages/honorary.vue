@@ -8,26 +8,53 @@
   section.container.desc
     .content.text-gray-500.text-lg 公司自2005年成立以来，一直围绕技术创新和市场开拓优化知识产权布局，力争做到知识产权具有数量规模、质量优势的资源储备，有效支撑企业不断创新发展。
     hr
-  section.w-full.flex.flex-col.items-center.desc2
+  section.w-full.flex.flex-col.items-center.desc2.bg-gray-100.p-20
     .container
       h2.text-4xl 国际权威机构测试认证
-      Carousel(:items="banner")
+      carousel-card.mt-10( size="4"  content-class="flex-1 mx-10")
+        carousel-item(v-for="l in imgs" :key="l.name" class="w-1/4")
+          .flex.items-center.justify-center.mx-2.hover-border-primary.cursor-pointer
+            .Certificate
+              .img(:alt="l.name")
+              .title {{l.name}}
   section.w-full.flex.flex-col.items-center.desc2
     .container
       h2.text-4xl 我们拥有140项已授权行业专利
-      Carousel(:items="banner")
+      carousel-card.mt-10( size="4"  content-class="flex-1 mx-10")
+        carousel-item(v-for="l in imgs" :key="l.name" class="w-1/4")
+          .flex.items-center.justify-center.mx-2.hover-border-primary.cursor-pointer
+            .Certificate
+              .img(:alt="l.name")
+              .title {{l.name}}
   section.w-full.flex.flex-col.items-center.desc2
     .container
       h2.text-4xl 获得奖项
-      Carousel(:items="banner")
+      carousel-card.mt-10( size="4"  content-class="flex-1 mx-10")
+        carousel-item(v-for="l in imgs" :key="l.name" class="w-1/4")
+          .flex.items-center.justify-center.mx-2.hover-border-primary.cursor-pointer
+            .Certificate
+              .img(:alt="l.name")
+              .title {{l.name}}
 </template>
 <script>
-import banner from "@/assets/constant/banner.json";
 export default {
   name: "about-honorary",
   data() {
     return {
-      banner,
+      imgs: [
+        {
+          name: "专利证书",
+        },
+        {
+          name: "专利证书",
+        },
+        {
+          name: "专利证书",
+        },
+        {
+          name: "专利证书",
+        },
+      ],
     };
   },
 };
@@ -44,6 +71,18 @@ $blue: #005fab;
 }
 .container {
   width: 1200px;
+}
+.Certificate {
+  .img {
+    background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
+    width: 222px;
+    height: 281px;
+  }
+  .title {
+    border-left: 1px solid #ccc;
+    padding-left: 15px;
+    margin: 10px 0;
+  }
 }
 .desc {
   width: 1047px;
