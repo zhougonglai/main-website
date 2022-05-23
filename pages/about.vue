@@ -1,6 +1,6 @@
 <template lang="pug">
 .w-full.flex.flex-col.items-center
-  .banner.w-full
+  .banner.w-full.h-480
   section.container.desc
     h5 关于我们
     .content 上海创远仪器技术股份有限公司成立于　2005 年，2015 年在新三板挂牌（831961），是一家自主研发射频通信测试仪器和提供整体测试解决方案的专业仪器仪表公司。
@@ -35,20 +35,78 @@
           .title 射频微波电路
             br
             | 设计及制造
-            
-  section.w-full.flex.flex-col.items-center.desc2.bg-white.desc4
-    .container
-      h2 重点客户
-      Carousel(:items="banner")
+
+  section.w-full.flex.flex-col.items-center.bg-gray-100.desc4
+    .container.py-20
+      h2.text-4xl 重点客户
+      carousel-card.mt-10(v-for="(logo, i) in logos" size="4" :max-size="logo.length" :key="i" content-class="flex-1 mx-10")
+        carousel-item(v-for="l in logo" :key="l.name" class="w-1/4")
+          .flex.items-center.bg-white.justify-center.mx-2.h-20.hover-border-primary.border-b-2.border-gray-100.cursor-pointer
+            ion-icon(:name="l.name")
 </template>
 
 <script>
 import banner from '@/assets/constant/banner.json'
+
 export default {
   name: "about-page",
   data() {
     return {
       banner,
+      logos: [
+        [
+          {
+            name: 'logo-alipay',
+          },
+          {
+            name: 'logo-amazon',
+          },
+          {
+            name: 'logo-amplify',
+          },
+          {
+            name: 'logo-android',
+          },
+          {
+            name: 'logo-angular',
+          },
+          {
+            name: 'logo-apple',
+          },
+          {
+            name: 'logo-apple-appstore',
+          },
+          {
+            name: 'logo-apple-ar',
+          },
+        ],
+        [
+          {
+            name: 'logo-behance',
+          },
+          {
+            name: 'logo-bitbucket',
+          },
+          {
+            name: 'logo-bitcoin',
+          },
+          {
+            name: 'logo-buffer',
+          },
+          {
+            name: 'logo-capacitor',
+          },
+          {
+            name: 'logo-chrome',
+          },
+          {
+            name: 'logo-closed-captioning',
+          },
+          {
+            name: 'logo-codepen',
+          },
+        ],
+      ]
     };
   },
 };
@@ -56,25 +114,30 @@ export default {
 
 <style lang="scss" scoped>
 $blue: #005fab;
+
 .banner {
-  height: 584px;
   background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
 }
+
 .container {
   width: 1200px;
 }
+
 .desc {
   width: 1047px;
+
   h5 {
     margin-top: 100px;
     font-size: 36px;
     font-weight: 400;
     color: #262626;
   }
+
   hr {
     border-bottom: 2px solid #666666;
     margin: 30px 0;
   }
+
   .content {
     margin-top: 43px;
     font-size: 24px;
@@ -82,41 +145,51 @@ $blue: #005fab;
     line-height: 42px;
   }
 }
+
 .banner2 {
   width: 1047px;
   height: 562px;
   margin: 84px 0;
   background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
 }
+
 .desc2 {
   .container {
     width: 1047px;
   }
+
   background: #f9f9f9;
   margin-top: -160px;
   position: relative;
   z-index: -1;
   padding-top: 220px;
+
   h2 {
     font-size: 48px;
     color: #222222;
   }
+
   img {
     margin: 100px auto 60px;
   }
 }
+
 .desc3 {
   margin-top: 0;
   padding-top: 0;
+
   .list {
     margin: 0 -13px;
+
     .item {
       width: 250px;
       margin: 13px;
+
       .img {
         height: 252px;
         background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
       }
+
       .title {
         padding: 20px;
         height: 110px;
@@ -125,6 +198,7 @@ $blue: #005fab;
     }
   }
 }
+
 .desc4 {
   margin-top: 0;
   padding-top: 0;

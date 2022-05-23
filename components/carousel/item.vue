@@ -1,5 +1,5 @@
 <template lang="pug">
-.carousel-item.cursor-pointer.flex-shrink-0
+.carousel-item.flex-shrink-0
   slot
 </template>
 <script>

@@ -1,7 +1,7 @@
 <template>
   <section class="sp w-full flex flex-col">
-    <div class="carousels h-80">
-      <img src="~/assets/img/bg_sunset.jpg" alt="" class="object-center object-cover w-full h-80">
+    <div class="carousels">
+      <img src="~/assets/img/bg_sunset.jpg" alt="" class="object-center object-cover w-full h-480">
     </div>
 
     <div class="sp-1 flex items-center justify-center">
@@ -63,31 +63,34 @@
       <div class="sp-4__block py-20">
         <h1 class="text-4xl font-bold">相关产品</h1>
         <div class="products bg-gray-100 flex items-end justify-center gap-x-10 p-10 mt-10">
-          <div class="card flex flex-col cursor-pointer hover:shadow">
+          <div
+            class="card flex flex-col cursor-pointer bg-white border-b-2 border-gray-100 hover:border-blue-300 hover:shadow">
             <div class="card-cover">
               <img class="object-center object-cover" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
             </div>
-            <div class="card-content flex-1 pt-5 px-5">
+            <div class="card-content flex-1 p-5">
               <h5 class="card-title text-2xl font-bold">ME208数字宽带接收机</h5>
               <p class="card-desc leading-8 mt-5">鹰眼ME208数字宽带接收机是创远仪器经过多年技术积累，充分利用当代射频接收技术和高速数字信号处理技术研制的中等性能无线电接收机</p>
             </div>
           </div>
 
-          <div class="card flex flex-col cursor-pointer hover:shadow">
+          <div
+            class="card flex flex-col cursor-pointer bg-white border-b-2 border-gray-100 hover:border-blue-300 hover:shadow">
             <div class="card-cover">
               <img class="object-center object-cover" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
             </div>
-            <div class="card-content flex-1 pt-5 px-5">
+            <div class="card-content flex-1 p-5">
               <h5 class="card-title text-2xl font-bold">ME208数字宽带接收机</h5>
               <p class="card-desc leading-8 mt-5">鹰眼ME208数字宽带接收机是创远仪器经过多年技术积累，充分利用当代射频接收技术和高速数字信号处理技术研制的中等性能无线电接收机</p>
             </div>
           </div>
 
-          <div class="card flex flex-col cursor-pointer hover:shadow">
+          <div
+            class="card flex flex-col cursor-pointer bg-white border-b-2 border-gray-100 hover:border-blue-300 hover:shadow">
             <div class="card-cover">
               <img class="object-center object-cover" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
             </div>
-            <div class="card-content flex-1 pt-5 px-5">
+            <div class="card-content flex-1 p-5">
               <h5 class="card-title text-2xl font-bold">ME208数字宽带接收机</h5>
               <p class="card-desc leading-8 mt-5">鹰眼ME208数字宽带接收机是创远仪器经过多年技术积累，充分利用当代射频接收技术和高速数字信号处理技术研制的中等性能无线电接收机</p>
             </div>

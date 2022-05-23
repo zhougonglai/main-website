@@ -35,3 +35,13 @@
     color: var(--primary);
   }
 }
+
+.border-primary {
+  border-color: var(--primary);
+}
+
+.hover-border-primary {
+  &:hover {
+    border-color: var(--primary);
+  }
+}
