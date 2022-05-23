@@ -1,5 +1,30 @@
 <template lang="pug">
 .w-full.flex.flex-col.items-center
+  Dialog(ref="dialog")
+    table.m-5.table-fixed.border-collapse.border.border-slate-400
+      table-body
+        tr
+          td.p-5.border.border-slate-300 性别
+          td.p-5.border.border-slate-300 不限
+        tr
+          td.p-5.border.border-slate-300 年龄
+          td.p-5.border.border-slate-300 不限
+        tr
+          td.p-5.border.border-slate-300 外语要求
+          td.p-5.border.border-slate-300 CET4
+        tr
+          td.p-5.border.border-slate-300 职责
+          td.p-5.border.border-slate-300
+            ul
+              li 1、所辖区域的产品和技术解决方案的销售工作的策划与执行，完成销售目标；
+              li 2、负责区域市场的客户开拓与维护相应客户关系，为客户展示和介绍创远公司仪器产品和解决方案；
+        tr
+          td.p-5.border.border-slate-300 要求
+          td.p-5.border.border-slate-300
+            ul
+              li 1、通信工程、电子信息工程、测控仪器等理工科专业，本科/硕士学历；
+              li 2、具备较强的客户沟通能力和商务处理能力，学习能力强；
+              li 3、喜欢有挑战性的工作并有强烈的成功愿望，愿意出差。
   .banner.w-full
   section.container.desc
     h5 为什么要加入我们
@@ -11,16 +36,16 @@
       p 职位招聘
   section.container.flex.justify-center.table.text-left
     .header.flex
-      .flex-1.text-center 
+      .flex-1.text-center
         ion-icon(name='star-outline')
       .flex-4 职位名称
       .flex-2 职能范围
       .flex-2 学历水平
       .flex-1 城市
-    NuxtLink.item.flex(v-for="db,i in 10" :key="i" to="")
-      .flex-1.text-center.star 
+    .item.flex.cursor-pointer(v-for="db, i in 10" :key="i")
+      .flex-1.text-center.star
         ion-icon(name='star')
-      .flex-4.jobname 销售工程师（2020应届生）
+      .flex-4.jobname(@click="$refs.dialog.showModal()") 销售工程师（2020应届生）
       .flex-2 市场
       .flex-2 本科及以上
       .flex-1 上海
@@ -46,21 +71,26 @@ export default {
 
 <style lang="scss" scoped>
 $blue: #005fab;
+
 .banner {
   height: 438px;
   background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
 }
+
 .container {
   width: 1200px;
 }
+
 .desc {
   padding: 0 58px;
+
   h5 {
     margin-top: 100px;
     font-size: 36px;
     font-weight: 400;
     color: #262626;
   }
+
   .content {
     margin-top: 75px;
     font-size: 24px;
@@ -68,18 +98,23 @@ $blue: #005fab;
     line-height: 42px;
   }
 }
+
 .add {
   margin: 90px 0 40px;
+
   ion-icon {
     color: $blue;
     font-size: 85px;
     margin-right: 15px;
   }
+
   color: #666;
   line-height: 1;
+
   b {
     font-size: 72px;
   }
+
   p {
     font-size: 24px;
   }
@@ -89,30 +124,39 @@ $blue: #005fab;
   .flex-2 {
     flex: 2;
   }
+
   .flex-3 {
     flex: 3;
   }
+
   .flex-4 {
     flex: 4;
   }
+
   font-size: 18px;
   line-height: 74px;
+
   .header {
     background: #fbfbfb;
     border: 1px solid #626262;
   }
+
   .item {
     color: #666666;
+
     &:nth-child(even) {
       background: #fbfbfb;
     }
+
     &:hover {
       background: #efefef;
     }
   }
+
   .star ion-icon {
     color: $blue;
   }
+
   .jobname {
     color: $blue;
   }
