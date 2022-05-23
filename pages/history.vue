@@ -1,6 +1,8 @@
 <template lang="pug">
 .w-full.flex.flex-col.items-center
-  .banner.w-full
+  .banner.w-full.h-480.flex.items-center.justify-center.h-96.bg-gradient-to-r.from-blue-300.to-red-300
+    .box
+      h1.text-4xl.text-white 公司历史
   section.w-full.flex.flex-col.items-center.desc2
    .title 发展历程
    .list
@@ -29,8 +31,10 @@ export default {
 <style lang="scss" scoped>
 $blue: #005fab;
 .banner {
-  height: 434px;
-  background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
+  // background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
+  .box {
+    width: 1123px;
+  }
 }
 .container {
   width: 1200px;
@@ -61,38 +65,38 @@ $blue: #005fab;
   background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
 }
 .title {
-  width: 1551px;
+  width: 1200px;
   font-size: 48px;
   color: #222222;
-  padding: 117px 0 87px 170px;
+  padding: 100px 0 80px 140px;
   text-align: left;
 }
 .list {
-  width: 1551px;
-  padding-bottom: 200px;
+  width: 1200px;
+  padding-bottom: 2016px;
   .item {
-    padding: 0 174px;
-    height: 302px;
+    padding: 0 139px;
+    height: 241px;
     background: #eaecec;
     .year {
-      font-size: 97px;
+      font-size: 77px;
       font-family: Arial;
       color: #000000;
-      margin-right: 75px;
+      margin-right: 60px;
     }
     .info {
       flex: 1;
-      font-size: 24px;
+      font-size: 18px;
       color: #1a1a1a;
       p {
-        margin: 18px 0;
+        margin: 14px 0;
       }
     }
     .img {
-      width: 350px;
-      height: 222px;
-      margin-right: 20px;
-      box-shadow: 12px 12px #c2c2c2;
+      width: 280px;
+      height: 177px;
+      margin-right: 16px;
+      box-shadow: 10px 10px #c2c2c2;
     }
     &:nth-child(even) {
       background: #b5b9b9;
@@ -100,7 +104,7 @@ $blue: #005fab;
         color: #c70008;
       }
       .img {
-        box-shadow: 12px 12px #eaecec;
+        box-shadow: 10px 10px #eaecec;
       }
     }
   }

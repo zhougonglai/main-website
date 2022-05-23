@@ -1,6 +1,9 @@
 <template lang="pug">
 .w-full.flex.flex-col.items-center
-  .banner.w-full
+  .banner.w-full.h-480.flex.items-center.justify-center.h-96.bg-gradient-to-r.from-blue-300.to-red-300
+    .box
+      h1.text-4xl.text-white 荣誉资质
+      .desc 创远仪器获得多方认可
   section.container.desc
     .content 公司自2005年成立以来，一直围绕技术创新和市场开拓优化知识产权布局，力争做到知识产权具有数量规模、质量优势的资源储备，有效支撑企业不断创新发展。
     hr
@@ -28,12 +31,15 @@ export default {
   },
 };
 </script>
-
 <style lang="scss" scoped>
 $blue: #005fab;
 .banner {
-  height: 484px;
-  background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
+  .box {
+    width: 1000px;
+  }
+  .desc {
+    font-size: 36px;
+  }
 }
 .container {
   width: 1200px;

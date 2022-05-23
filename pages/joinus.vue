@@ -25,7 +25,9 @@
               li 1、通信工程、电子信息工程、测控仪器等理工科专业，本科/硕士学历；
               li 2、具备较强的客户沟通能力和商务处理能力，学习能力强；
               li 3、喜欢有挑战性的工作并有强烈的成功愿望，愿意出差。
-  .banner.w-full
+  .banner.w-full.h-480.flex.items-center.justify-center.h-96.bg-gradient-to-r.from-blue-300.to-red-300
+    .box
+      h1.text-4xl.text-white 加入我们
   section.container.desc
     h5 为什么要加入我们
     .content 上海创远仪器技术股份有限公司成立于 2005 年，总部位于上海 G60 科创走廊 5G 产业基地，2015年在新三板挂牌（831961），2020年7月作为首批企业成功晋级新三板精选层，是一家自主研发射频通信测试仪器和提供整体测试解决方案的专业仪器仪表公司。
@@ -73,7 +75,6 @@ export default {
 $blue: #005fab;
 
 .banner {
-  height: 438px;
   background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
 }
 
