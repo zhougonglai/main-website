@@ -38,17 +38,17 @@
     .header.flex
       .flex-1.text-center
         ion-icon(name='star-outline')
-      .flex-4 职位名称
-      .flex-2 职能范围
-      .flex-2 学历水平
-      .flex-1 城市
+      .flex-3 职位名称
+      .flex-1 职能范围
+      .flex-1 学历水平
+      .flex-2 城市
     .item.flex.cursor-pointer(v-for="db, i in 10" :key="i")
       .flex-1.text-center.star
         ion-icon(name='star')
-      .flex-4.jobname(@click="$refs.dialog.showModal()") 销售工程师（2020应届生）
-      .flex-2 市场
-      .flex-2 本科及以上
-      .flex-1 上海
+      .flex-3.jobname(@click="$refs.dialog.showModal()") 销售工程师（2020应届生）
+      .flex-1 市场
+      .flex-1 本科及以上
+      .flex-2 中国/上海/浦东/静安
   section.container.flex.justify-center
     Pager(:pager="pager")
 </template>
