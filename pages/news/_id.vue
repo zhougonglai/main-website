@@ -37,7 +37,7 @@ export default {
   margin-bottom: 86px;
   line-height: 1;
   .box {
-    width: 770px;
+    width: 1000px;
   }
   h1 {
     font-size: 36px;
@@ -48,8 +48,8 @@ export default {
 article {
   margin-bottom: 80px;
   .time {
-    font-size: 18px;
-    color: #737373;
+    font-size: 16px;
+    color: #aaa;
   }
   h1.title {
     font-size: 30px;
