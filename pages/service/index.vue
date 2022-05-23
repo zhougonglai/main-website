@@ -31,7 +31,7 @@
         <h1 class="text-4xl font-bold">相关解决方案</h1>
         <div class="resolve bg-gray-100 flex items-end justify-center gap-x-10 mt-80 pb-10">
           <nuxt-link to="/service/resolve"
-            class="card flex flex-col cursor-pointer border-b-2 border-color-white hover:border-blue-300 hover:shadow">
+            class="card flex flex-col cursor-pointer border-b-2 border-white hover:border-blue-300 hover:shadow">
             <div class="card-cover">
               <img class="object-center object-cover" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
             </div>
@@ -44,7 +44,7 @@
           </nuxt-link>
 
           <nuxt-link to="/service/resolve"
-            class="card flex flex-col cursor-pointer border-b-2 border-color-white hover:border-blue-300 hover:shadow">
+            class="card flex flex-col cursor-pointer border-b-2 border-white hover:border-blue-300 hover:shadow">
             <div class="card-cover">
               <img class="object-center object-cover" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
             </div>

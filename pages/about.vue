@@ -1,42 +1,61 @@
 <template lang="pug">
-.w-full.flex.flex-col.items-center
+.w-full.flex.flex-col.items-center.bg-gray-100
   .banner.w-full.h-480
-  section.container.desc
-    h5 关于我们
-    .content 上海创远仪器技术股份有限公司成立于　2005 年，2015 年在新三板挂牌（831961），是一家自主研发射频通信测试仪器和提供整体测试解决方案的专业仪器仪表公司。
-    hr
-    .content 重点专注于无线通信网络运营测试、无线电监测和北斗导航测试、无线通信智能制造测试等三个方向，是我国高端无线通信测试仪器行业的代表性企业。自 TD-SCDMA 时代伊始，创远仪器便积极参与中国自主知识产权移动通信标准和产业发展，在 TD-LTE 时代更是取得丰硕成果，多款产品获得广泛商用。2017 年 1 月与中国移动、华为、中兴、展讯等 14 家企业共同荣获国家科学技术进步特等奖。
+  section.container.desc.py-20
+    h1.text-4xl 关于我们
+    article.mt-10
+      p.text-xl.leading-8.text-gray-500 上海创远仪器技术股份有限公司成立于　2005 年，2015 年在新三板挂牌（831961），是一家自主研发射频通信测试仪器和提供整体测试解决方案的专业仪器仪表公司。
+      hr.my-10
+      p.text-xl.leading-8.text-gray-500 重点专注于无线通信网络运营测试、无线电监测和北斗导航测试、无线通信智能制造测试等三个方向，是我国高端无线通信测试仪器行业的代表性企业。自 TD-SCDMA 时代伊始，创远仪器便积极参与中国自主知识产权移动通信标准和产业发展，在 TD-LTE 时代更是取得丰硕成果，多款产品获得广泛商用。2017 年 1 月与中国移动、华为、中兴、展讯等 14 家企业共同荣获国家科学技术进步特等奖。
   .banner2
-  section.w-full.flex.flex-col.items-center.desc2
+  section.w-full.flex.flex-col.items-center
     .container
-      h2 公司战略
-      img(src="../assets/img/about/about-1.png")
-  section.w-full.flex.flex-col.items-center.desc2.bg-white.desc3
-    .container
-      h2 核心技术
-      .list.flex.justify-center
-        .item
-          .img
-          .title 射频微波电路
-            br
-            | 设计及制造
-        .item
-          .img
-          .title 射频微波电路
-            br
-            | 设计及制造
-        .item
-          .img
-          .title 射频微波电路
-            br
-            | 设计及制造
-        .item
-          .img
-          .title 射频微波电路
-            br
-            | 设计及制造
+      h1.text-4xl 公司战略
+      .strategy.relative.flex.flex-col.items-center.justify-between.p-10.text-primary
+        .step-title.text-7xl.text-blue.mt-40.font-bold 1+3
+        .step.step-1.absolute.flex.flex-col.items-center.justify-center
+          .step-icon
+            ion-icon(name="logo-facebook")
+          label.mt-5 无线通信测试
+        .step.step-2.absolute.flex.flex-col.items-center.justify-center
+          .step-icon
+            ion-icon(name="logo-google")
+          label.mt-5 车联网测试
+        .step.step-3.absolute.flex.flex-col.items-center.justify-center
+          .step-icon
+            ion-icon(name="logo-alipay")
+          label.mt-5 无线通信设备
+        img(src="@/assets/img/about/state.svg" width="775" height="300")
+  section.w-full.flex.flex-col.items-center
+    .container.py-20
+      h1.text-4xl 核心技术
+      .flex.justify-center.mt-10.gap-x-5
+        .card.cursor-pointer.border-b-2.border-white.bg-white(class="hover:border-blue-300")
+          .card-cover
+            img.object-center.object-cover(src="https://img01.yzcdn.cn/vant/cat.jpeg")
+          .card-content.p-5
+            .card-title.text-xl 射频微波电路
+            .card-desc.mt-2 设计及制造
+        .card.cursor-pointer.border-b-2.border-white.bg-white(class="hover:border-blue-300")
+          .card-cover
+            img.object-center.object-cover(src="https://img01.yzcdn.cn/vant/cat.jpeg")
+          .card-content.p-5
+            .card-title.text-xl 射频微波电路
+            .card-desc.mt-2 设计及制造
+        .card.cursor-pointer.border-b-2.border-white.bg-white(class="hover:border-blue-300")
+          .card-cover
+            img.object-center.object-cover(src="https://img01.yzcdn.cn/vant/cat.jpeg")
+          .card-content.p-5
+            .card-title.text-xl 射频微波电路
+            .card-desc.mt-2 设计及制造
+        .card.cursor-pointer.border-b-2.border-white.bg-white(class="hover:border-blue-300")
+          .card-cover
+            img.object-center.object-cover(src="https://img01.yzcdn.cn/vant/cat.jpeg")
+          .card-content.p-5
+            .card-title.text-xl 射频微波电路
+            .card-desc.mt-2 设计及制造
 
-  section.w-full.flex.flex-col.items-center.bg-gray-100.desc4
+  section.w-full.flex.flex-col.items-center.desc4
     .container.py-20
       h2.text-4xl 重点客户
       carousel-card.mt-10(v-for="(logo, i) in logos" size="4" :max-size="logo.length" :key="i" content-class="flex-1 mx-10")
@@ -123,29 +142,6 @@ $blue: #005fab;
   width: 1200px;
 }
 
-.desc {
-  width: 1047px;
-
-  h5 {
-    margin-top: 100px;
-    font-size: 36px;
-    font-weight: 400;
-    color: #262626;
-  }
-
-  hr {
-    border-bottom: 2px solid #666666;
-    margin: 30px 0;
-  }
-
-  .content {
-    margin-top: 43px;
-    font-size: 24px;
-    color: #585858;
-    line-height: 42px;
-  }
-}
-
 .banner2 {
   width: 1047px;
   height: 562px;
@@ -153,54 +149,34 @@ $blue: #005fab;
   background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
 }
 
-.desc2 {
-  .container {
-    width: 1047px;
-  }
+.strategy {
+  height: 800px;
 
-  background: #f9f9f9;
-  margin-top: -160px;
-  position: relative;
-  z-index: -1;
-  padding-top: 220px;
+  .step {
+    &-icon {
+      width: 120px;
+      height: 120px;
+      font-size: 120px;
+      line-height: 120px;
+    }
 
-  h2 {
-    font-size: 48px;
-    color: #222222;
-  }
+    label {
+      font-size: 24px;
+    }
 
-  img {
-    margin: 100px auto 60px;
-  }
-}
+    &-1 {
+      left: 180px;
+      bottom: 400px;
+    }
 
-.desc3 {
-  margin-top: 0;
-  padding-top: 0;
+    &-2 {
+      bottom: 150px;
+    }
 
-  .list {
-    margin: 0 -13px;
-
-    .item {
-      width: 250px;
-      margin: 13px;
-
-      .img {
-        height: 252px;
-        background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
-      }
-
-      .title {
-        padding: 20px;
-        height: 110px;
-        background: #ffffff;
-      }
+    &-3 {
+      right: 180px;
+      bottom: 400px;
     }
   }
-}
-
-.desc4 {
-  margin-top: 0;
-  padding-top: 0;
 }
 </style>
