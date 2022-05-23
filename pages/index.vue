@@ -21,7 +21,7 @@ section.w-full.flex.flex-col
       h1.text-4xl.font-bold.ml-10 新闻
       .news-content.bg-gray-100.flex.flex-col-reverse.items-center.mt-40.relative
         .news-more.bg-white.flex.items-center.justify-center.absolute.-bottom-5
-          button.news-action(v-text="'更多新闻'")
+          nuxt-link.news-action(to="/news") 更多新闻
         .news-item.bg-white.flex.relative.shadow(v-for="(n, i) in news" :key="i" class="hover:shadow-lg")
           .news-cover
             img.object-cover.object-center.w-full.h-full(src="https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg")
@@ -132,6 +132,7 @@ export default {
       padding: 0 1rem;
       font-size: 24px;
       height: 50px;
+      line-height: 50px;
       background-color: var(--primary-1);
       border: 1px solid var(--primary-1);
       transition: all 0.2s ease-in-out;

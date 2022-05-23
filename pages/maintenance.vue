@@ -19,22 +19,22 @@ section.w-full.flex.flex-col
         p.text-lg 上海创远服务中心，是对本公司生产、销售的全部产品进行维修、校准、升级服务。
         p.text-lg.leading-8.mt-10 同时上海创远技术股份有限公司与美国BIRD公司合资成立的上海播德电子技术服务有限公司，是专门从事对所有在中国大陆境内销售的BIRD产品的维修，校准、升级服务。同时也是美国BIRD唯一指定的售后服务公司，且未指定任何其它代理公司。
       .products.bg-gray-100.flex.items-end.justify-center.gap-x-10.p-10.mt-80.w-full
-        .card.flex.flex-col.cursor-pointer(class="hover:shadow")
+        .card.flex.flex-col.cursor-pointer.border-b-2.border-gray-100(class="hover:shadow hover:border-blue-300")
           .card-cover
             img.object-center.object-cover(src="https://img01.yzcdn.cn/vant/cat.jpeg")
           .card-content.flex-1.p-5.bg-white.flex.flex-col
-            h4.card-title.text-2xl.font-bold
-              ion-icon(name="reload-sharp")
+            h4.card-title.text-2xl.font-bold.flex.items-center
+              ion-icon.mr-2(name="reload-sharp")
               | 升级服务
             p.card-desc.flex-1.leading-8.mt-5 创远公司开发的设备具备灵活的功能拓展空间，使您现有的设备具有可升级性不断适应发展要求，节约成本，减轻投资压力，提高使用效率。创远公司面向广大用户提供仪器功能升级服务，使仪器具有合理化和经济型的配置。
             .card-action
               button.card-btn.text-2xl.text-blue-500 了解详情
-        .card.flex.flex-col.cursor-pointer(class="hover:shadow")
+        .card.flex.flex-col.cursor-pointer.border-b-2.border-gray-100(class="hover:shadow hover:border-blue-300")
           .card-cover
             img.object-center.object-cover(src="https://img01.yzcdn.cn/vant/cat.jpeg")
           .card-content.flex-1.p-5.bg-white.flex.flex-col
-            h4.card-title.text-2xl.font-bold
-              ion-icon(name="locate-sharp")
+            h4.card-title.text-2xl.font-bold.flex.items-center
+              ion-icon.mr-2(name="locate-sharp")
               | 校准服务
             p.card-desc.flex-1.leading-8.mt-5 公司配置有专业的大功率校准仪器设备，为用户提供全面的计量解决方案。并且对所有BIRD产品进行校准服务。我们为您提供灵活的校准服务，根据客户要求可以安排现场校准。
             .card-action
@@ -127,6 +127,12 @@ export default {
         img {
           width: inherit;
           height: 250px;
+        }
+      }
+
+      &:hover {
+        .card-content {
+          border-bottom: 2px solid rgb(147, 197, 253);
         }
       }
     }
