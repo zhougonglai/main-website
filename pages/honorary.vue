@@ -8,10 +8,11 @@
   section.container.desc
     .content.text-gray-500.text-lg 公司自2005年成立以来，一直围绕技术创新和市场开拓优化知识产权布局，力争做到知识产权具有数量规模、质量优势的资源储备，有效支撑企业不断创新发展。
     hr
-  section.w-full.flex.flex-col.items-center.desc2.bg-gray-100.p-20
+  section.w-full.flex.flex-col.items-center.desc2
     .container
-      h2.text-4xl 国际权威机构测试认证
-      carousel-card.mt-10( size="4"  content-class="flex-1 mx-10")
+      h2.text-4xl.m-10 国际权威机构测试认证
+  section.w-full.flex.flex-col.items-center.desc2.bg-gray-100
+      carousel-card.mt-10.mb-10.container( size="4"  content-class="flex-1 mx-10")
         carousel-item(v-for="l in imgs" :key="l.name" class="w-1/4")
           .flex.items-center.justify-center.mx-2.hover-border-primary.cursor-pointer
             .Certificate
@@ -19,8 +20,9 @@
               .title {{l.name}}
   section.w-full.flex.flex-col.items-center.desc2
     .container
-      h2.text-4xl 我们拥有140项已授权行业专利
-      carousel-card.mt-10( size="4"  content-class="flex-1 mx-10")
+     h2.text-4xl.m-10 我们拥有140项已授权行业专利
+  section.w-full.flex.flex-col.items-center.desc2.bg-gray-100
+      carousel-card.mt-10.mb-10.container( size="4"  content-class="flex-1 mx-10")
         carousel-item(v-for="l in imgs" :key="l.name" class="w-1/4")
           .flex.items-center.justify-center.mx-2.hover-border-primary.cursor-pointer
             .Certificate
@@ -28,8 +30,9 @@
               .title {{l.name}}
   section.w-full.flex.flex-col.items-center.desc2
     .container
-      h2.text-4xl 获得奖项
-      carousel-card.mt-10( size="4"  content-class="flex-1 mx-10")
+     h2.text-4xl.m-10 获得奖项
+  section.w-full.flex.flex-col.items-center.desc2.bg-gray-100.mb-20
+      carousel-card.mt-10.mb-10.container( size="4"  content-class="flex-1 mx-10")
         carousel-item(v-for="l in imgs" :key="l.name" class="w-1/4")
           .flex.items-center.justify-center.mx-2.hover-border-primary.cursor-pointer
             .Certificate
