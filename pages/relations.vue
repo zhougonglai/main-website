@@ -1,12 +1,12 @@
 <template lang="pug">
-section.w-full
+section.w-full.pb-20
   .sc-1.flex.items-center.justify-center.h-96.bg-gradient-to-r.from-blue-300.to-red-300
     .sc-1__block
       h1.text-4xl.text-white 投资者关系
   .sc-2.flex.items-center.justify-center
     .sc-2__block.py-10
       article
-        p.text-gray-500.leading-relax.text-lg 上海创远仪器技术股份有限公司经全国中小企业股份转让系统有限责任公司股转系统函[2015]187号文核准，于2015年3月17日，在全国中小企业股份转让系统以做市方式挂牌上市。公司主办券商为中信建投证券股份有限公司。 证券简称：创远仪器 证券代码：831961
+        p.text-gray-500.leading-8.text-lg 上海创远仪器技术股份有限公司经全国中小企业股份转让系统有限责任公司股转系统函[2015]187号文核准，于2015年3月17日，在全国中小企业股份转让系统以做市方式挂牌上市。公司主办券商为中信建投证券股份有限公司。 证券简称：创远仪器 证券代码：831961
   .sc-3.flex.items-center.justify-center.relative
     .sc-3__bg.absolute.inset-x-0.bottom-0.top-40.bg-gray-100
     .sc-3__block.pb-10.z-1

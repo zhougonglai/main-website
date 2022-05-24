@@ -1,5 +1,5 @@
 <template lang="pug">
-section.w-full
+section.w-full.pb-20
   .sc-1.flex.items-center.justify-center.bg-gradient-to-r.from-blue-300.to-red-300
     .sc-1__block.h-96.flex.items-center
       h1.text-4xl.text-white 解决方案

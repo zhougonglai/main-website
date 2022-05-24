@@ -1,5 +1,5 @@
 <template lang="pug">
-section.w-full.flex.flex-col
+section.w-full.flex.flex-col.pb-20
   .carousels.h-80
     img.object-center.object-cover.w-full.h-80(src="~/assets/img/bg_sunset.jpg")
   .sc-1.flex.items-center.justify-center

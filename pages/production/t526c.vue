@@ -1,5 +1,5 @@
 <template lang="pug">
-section.w-full.flex.flex-col.items-center.justify-center
+section.w-full.flex.flex-col.items-center.justify-center.pb-20
   Dialog(ref="dialog" modal-mode="mega")
     img(:src="cover.src")
   .sc-1.w-full.flex.flex-col.items-center.py-10

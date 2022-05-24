@@ -1,5 +1,5 @@
 <template>
-  <section class="sp w-full flex flex-col">
+  <section class="sp w-full flex flex-col pb-20">
     <div class="carousels">
       <img src="~/assets/img/bg_sunset.jpg" alt="" class="object-center object-cover w-full h-480">
     </div>

@@ -1,5 +1,5 @@
 <template lang="pug">
-.w-full.flex.flex-col.items-center
+.w-full.flex.flex-col.items-center.pb-20
   .banner.w-full.h-480.flex.items-center.justify-center.h-480.bg-gradient-to-r.from-blue-300.to-red-300
     .box
       h1.text-4xl.text-white 公司历史

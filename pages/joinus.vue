@@ -1,5 +1,5 @@
 <template lang="pug">
-.w-full.flex.flex-col.items-center
+.w-full.flex.flex-col.items-center.pb-20
   Dialog(ref="dialog")
     table.m-5.table-fixed.border-collapse.border.border-slate-400
       table-body

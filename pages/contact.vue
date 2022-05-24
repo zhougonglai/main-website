@@ -1,5 +1,5 @@
 <template lang="pug">
-.w-full.flex.flex-col.items-center
+.w-full.flex.flex-col.items-center.pb-20
   .banner.w-full.h-480.flex.items-center.justify-center.h-96.bg-gradient-to-r.from-blue-300.to-red-300
     .box
       h1.text-4xl.text-white  联系我们
@@ -34,47 +34,47 @@
         b 西安分公司
         .row 西安市高新区锦业一路 56 号研祥城市广场 B 座 2217 室
         .row 电话：029- 81028261
-        .row  
+        .row
     .item
-        .title 深圳
-        b 深圳办事处
-        .row 深圳市南山区桃园街道大学城创客小镇 17 栋 309-2 室
-        .row 电话：13817170735
+      .title 深圳
+      b 深圳办事处
+      .row 深圳市南山区桃园街道大学城创客小镇 17 栋 309-2 室
+      .row 电话：13817170735
   .form
-   h2.title 需要更多信息
-   p.info 如果您有任何疑问或需要了解更多信息，请填写此表格，我们会尽快回复您。
-   .row.radio
-    input(type="radio" id="sex-1" v-model="db.sex" value="1")
-    label(for="sex-1") 男
-    input(type="radio" id="sex-0" v-model="db.sex" value="0")
-    label(for="sex-0") 女
-   .field.flex
-    .flex-1
-      label 姓 名
-      input(v-model="db.name" placeholder="姓名")
-    .flex-1
-      label 公司名称
-      input(v-model="db.company")
-   .field.flex
-    .flex-1
-      label 公司邮箱
-      input(v-model="db.name")
-    .flex-1
-      label 城市
-      select(v-model="db.company")
-        option(disable selected value="" style="display:none") 请选择
-   .field.flex
-    .flex-1
-      label 电话号码
-      input(v-model="db.name")
-    .flex-1
-      label 询问
-      select(v-model="db.question")
-        option(disable selected value="" style="display:none") 请选择
-        option 想具体了解产品报价及指标
-        option 需要售后指导及维修方面问询
-   .field
-    textarea(v-model="db.company" placeholder="具体问题描述")
+    h2.title 需要更多信息
+    p.info 如果您有任何疑问或需要了解更多信息，请填写此表格，我们会尽快回复您。
+    .row.radio
+      input(type="radio" id="sex-1" v-model="db.sex" value="1")
+      label(for="sex-1") 男
+      input(type="radio" id="sex-0" v-model="db.sex" value="0")
+      label(for="sex-0") 女
+    .field.flex
+      .flex-1
+        label 姓 名
+        input(v-model="db.name" placeholder="姓名")
+      .flex-1
+        label 公司名称
+        input(v-model="db.company")
+    .field.flex
+      .flex-1
+        label 公司邮箱
+        input(v-model="db.name")
+      .flex-1
+        label 城市
+        select(v-model="db.company")
+          option(disable selected value="" style="display:none") 请选择
+    .field.flex
+      .flex-1
+        label 电话号码
+        input(v-model="db.name")
+      .flex-1
+        label 询问
+        select(v-model="db.question")
+          option(disable selected value="" style="display:none") 请选择
+          option 想具体了解产品报价及指标
+          option 需要售后指导及维修方面问询
+    .field
+      textarea(v-model="db.company" placeholder="具体问题描述")
 </template>
 
 <script>
@@ -94,27 +94,33 @@ export default {
 
 <style lang="scss" scoped>
 $blue: #005fab;
+
 .banner {
   .box {
     width: 1123px;
   }
 }
+
 .container {
   width: 1200px;
 }
+
 .desc {
   width: 1123px;
   color: #464646;
   margin: 60px 0 70px;
+
   p {
     margin-top: 28px;
   }
 }
+
 .contact {
   width: 1248px;
   background: #f5f5f5;
   border-radius: 6px;
   padding: 78px 56px;
+
   .item {
     padding: 18px 26px;
     font-size: 18px;
@@ -122,6 +128,7 @@ $blue: #005fab;
     color: #525252;
     line-height: 40px;
     background: #fff;
+
     .title {
       font-size: 32px;
       font-weight: bold;
@@ -129,49 +136,60 @@ $blue: #005fab;
       line-height: 28px;
       margin: 32px 0;
     }
+
     b {
       margin: 4px 0 14px;
     }
   }
+
   .item1 {
     padding: 30px 32px;
     font-size: 22px;
     line-height: 28px;
+
     .title {
       margin: 48px 0;
     }
   }
 }
+
 .form {
   width: 1072px;
   padding: 68px 0;
   font-size: 20px;
   color: #252525;
+
   h2 {
     font-size: 32px;
   }
-  > p {
+
+  >p {
     margin-top: 32px;
     font-size: 20px;
     color: #626363;
   }
+
   .radio {
     input {
       height: 20px;
       width: 20px;
       margin-right: 15px;
     }
+
     label {
       margin-right: 85px;
     }
   }
+
   .field {
     min-height: 140px;
+
     label {
       display: block;
       color: #252525;
       margin: 25px 0;
     }
+
     select,
     input {
       width: 499px;
@@ -179,10 +197,12 @@ $blue: #005fab;
       background: #eeeeed;
       border: 1px solid #8a8a8a;
       text-indent: 10px;
+
       &::placeholder {
         color: #8a8a8a;
       }
     }
+
     textarea {
       margin-top: 20px;
       width: 1035px;

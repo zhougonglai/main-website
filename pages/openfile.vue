@@ -1,6 +1,6 @@
 <template lang="pug">
-section.w-full
-  .sc-1.h-96.bg-gradient-to-r.from-blue-300.to-red-300.flex.flex-col.items-center.justify-center
+section.w-full.pb-20
+  .sc-1.h-480.bg-gradient-to-r.from-blue-300.to-red-300.flex.flex-col.items-center.justify-center
     .sc-1__block
       h1.text-4xl 文档搜索
       .search.mt-4.flex
