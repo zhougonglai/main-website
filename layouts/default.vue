@@ -6,9 +6,10 @@ main.flex.flex-col.items-center
     .flex-1
     .nav-list.flex.justify-center.items-center
       nuxt-link(to="/contact" class="hover:text-blue-500") 联系我们
-      .search.ml-5.relative
-        input.search-input.rounded-full.caret-blue-500.border.border-gray-500.px-5.leading-10
-        ion-icon.absolute.right-5.z-10.cursor-pointer(v-cloak name="search-outline" class="top-1/2 -translate-y-1/2")
+      .search.ml-5.relative.flex.items-center.justify-center(:class="{ input: search.show }")
+        input.search-input.w-0.caret-blue-500.leading-10(ref="search" @blur="search.show = false")
+        .search-icon.inline-flex.items-center.justify-center.cursor-pointer(@click="searcher")
+          ion-icon(v-cloak name="search-outline")
   .bg-gray-100.w-full.flex.justify-center
     nav.menus.flex.items-center.leading-10.relative(ref="menus")
       .nav-link.px-8.py-4.cursor-pointer.text-lg.text-center(
@@ -16,7 +17,7 @@ main.flex.flex-col.items-center
         @click="selectMenu(menu, i)"
         @mouseenter="selectMenu(menu, i)"
         v-text="menu.title"
-        :class="{ active: i == activeMenu, '-ml-2': !i }"
+        :class="{ active: i == activeMenu, 'pl-0': !i }"
         :key="menu.id")
       transition(
         enter-active-class="transition duration-200 ease-out"
@@ -89,8 +90,12 @@ export default {
       links: menus,
       labels,
       show: false,
-      stageIndex: [25, 130, 260, 400, 540],
+      stageIndex: [5, 110, 235, 380, 515],
       timer: 0,
+      search: {
+        show: false,
+
+      }
     }
   },
   computed: {
@@ -121,6 +126,12 @@ export default {
     console.log(this.$route)
   },
   methods: {
+    searcher() {
+      if (!this.search.show) {
+        this.search.show = true;
+        this.$refs.search.focus();
+      }
+    },
     async getMenus() {
       // const { data } = await this.$axios.$get('/api.php/api/getCate')
       const { data } = await this.$axios.$get('/api/menus')
@@ -254,6 +265,28 @@ main {
           cursor: not-allowed;
           color: darkgray;
         }
+      }
+    }
+  }
+}
+
+.search {
+  &.input {
+
+    input {
+      border-radius: 0;
+      border: none;
+      border-bottom: 1px solid var(--color);
+      background: transparent;
+      color: var(--color);
+      padding: 0;
+      font-size: 16px;
+      width: 100%;
+      height: 40px;
+      outline: none;
+
+      &::placeholder {
+        color: var(--color);
       }
     }
   }

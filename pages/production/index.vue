@@ -4,7 +4,7 @@ section.w-full.flex.flex-col
     img.object-center.object-cover.w-full.h-480(src="~/assets/img/bg_sunset.jpg")
   .sc-1.flex.items-center.justify-center
     .sc-1__block.py-10
-      h1.text-4xl.font-bold.leading-relaxed
+      h1.text-4xl.leading-relaxed
         | 创远仪器矢量网络分析仪产品组合。
         br
         | 精确，快速，多功能。
@@ -15,12 +15,12 @@ section.w-full.flex.flex-col
   .sc-2.flex.items-center.justify-center
     .sc-2__block.py-20
       table.prod.border-collapse.border-gray-200.border.table-fixed.w-full.relative
-        thead.prod-header
+        thead.prod-header.bg-gray-100
           tr.flex.p-5.flex.items-center.justify-between.text-primary
             .prod-title.flex-1.text-2xl.leading-relaxed 产品清单
             .prod-icon
               ion-icon.text-4xl(name="remove-outline")
-        thead.prod-thd
+        thead.prod-thd.bg-gray-100
           tr.flex.leading-relaxed.border-gray-200.border
             th.prod-td.flex-1.p-5 对比
             th.prod-td.flex-1.p-5 产品名称
@@ -31,17 +31,17 @@ section.w-full.flex.flex-col
             th.prod-td.flex-1.p-5
         tbody.prod-tbd
           tr.prod-tl.border-top.border-gray-200.h-20.flex.items-center(v-for="(prod, i) in productions" :key="i")
-            td.prod-ti.flex-1.p-5
+            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center
               //- input(type="checkbox" v-model="selected[prod.id]")
               //- Checkbox(@change="selectChange($event, prod.id)" :disabled="selected[prod.id] ? false : selectedLength >= 3")
-              img.ml-5.object-center.object-cover(:src="prod.url")
-            td.prod-ti.flex-1.p-5
-              nuxt-link(class="hover-text-primary" to="/production/t526c" v-text="prod.title")
-            td.prod-ti.flex-1.p-5.text-center(v-text="prod.type")
-            td.prod-ti.flex-1.p-5.text-center(v-text="prod.qz")
-            td.prod-ti.flex-1.p-5.text-center(v-text="prod.port")
-            td.prod-ti.flex-1.p-5(v-text="prod.types.join('/')")
-            td.prod-ti.flex-1.p-5.flex.items-center.justify-center
+              img.object-center.object-cover(:src="prod.url")
+            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.bg-gray-100
+              nuxt-link.w-full.h-full.flex.items-center.justify-center.opacity-80(class="text-primary hover:opacity-100" to="/production/t526c" v-text="prod.title")
+            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.text-center(v-text="prod.type")
+            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.text-center.bg-gray-100(v-text="prod.qz")
+            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.text-center(v-text="prod.port")
+            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.bg-gray-100(v-text="prod.types.join('/')")
+            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center
               button.bg-primary.px-5.py-2.text-white 询价
         //- tfoot.prod-tfd.absolute.w-full.flex.items-center.justify-center
         //-   button.bg-blue-500.px-5.py-2.text-white.-mt-5(:disabled="selectedLength < 2") {{ selectedLength }}/3 产品比较
@@ -91,8 +91,10 @@ export default {
 .prod {
   &-ti {
     img {
-      max-width: 100px;
-      max-height: 100px;
+      // max-width: 100px;
+      // max-height: 100px;
+      max-width: 100%;
+      max-height: 100%;
     }
   }
 

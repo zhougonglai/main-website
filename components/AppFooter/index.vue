@@ -1,5 +1,5 @@
 <template>
-  <footer class="flex flex-col justify-center items-center bg-gray-100">
+  <footer class="flex flex-col justify-center items-center bg-gray-100 mt-20">
     <Dialog ref="qrcode">
       <img src="@/assets/img/wechat.png" alt="微信公众号">
     </Dialog>

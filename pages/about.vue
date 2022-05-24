@@ -60,7 +60,7 @@
       h2.text-4xl 重点客户
       carousel-card.mt-10(v-for="(logo, i) in logos" size="4" :max-size="logo.length" :key="i" content-class="flex-1 mx-10")
         carousel-item(v-for="l in logo" :key="l.name" class="w-1/4")
-          .flex.items-center.bg-white.justify-center.mx-2.h-20.hover-border-primary.border-b-2.border-gray-100.cursor-pointer
+          .flex.items-center.bg-white.justify-center.mx-2.h-28.hover-border-primary.border-b-2.border-gray-100.cursor-pointer
             ion-icon(:name="l.name")
 </template>
 
