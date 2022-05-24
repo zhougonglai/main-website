@@ -166,7 +166,7 @@ $blue: #005fab;
     }
   }
   .field {
-    min-height: 200px;
+    min-height: 140px;
     label {
       display: block;
       color: #252525;

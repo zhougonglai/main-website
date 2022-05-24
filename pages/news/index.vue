@@ -32,27 +32,27 @@ export default {
 }
 
 .new-list {
-  width: 1482px;
+  width: 1200px;
   margin: 0 -13px 100px;
 
   .new {
     display: inline-block;
-    width: 468px;
-    margin: 24px 13px;
+    width: 375px;
+    margin: 19px 10px;
 
     .img {
-      height: 246px;
+      height: 196px;
       background: url("../../assets/img/bg_sunset.jpg") no-repeat center / cover;
     }
 
     .title {
-      padding: 20px;
-      height: 188px;
+      padding: 12px;
+      height: 150px;
       background: #efefef;
 
       h5 {
-        margin-top: 10px;
-        font-size: 24px;
+        margin-top: 8px;
+        font-size: 19px;
         color: #222222;
         white-space: nowrap;
         overflow: hidden;
@@ -61,15 +61,16 @@ export default {
 
       .desc {
         justify-content: space-between;
-        margin-top: 50px;
-        font-size: 24px;
+        margin-top: 40px;
+        font-size: 16px;
         color: #111111;
-
         .link {
           border-bottom: 1px solid #383838;
         }
-
-        .time {}
+        .time {
+          color: #999;
+          font-size: 14px;
+        }
       }
     }
   }

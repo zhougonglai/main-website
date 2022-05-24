@@ -11,9 +11,7 @@
       .info
         p 成功首批登入北交所
         p 所有国家专项通过审计署审计
-        p 复审通过2021年上海“专精特新”
-          br
-          |中小企业评审
+        p 复审通过2021年上海“专精特新” 中小企业评审
       img.img(src="../assets/img/bg_sunset.jpg")
 
 
@@ -72,9 +70,9 @@ $blue: #005fab;
 }
 .list {
   width: 1200px;
-  padding-bottom: 2016px;
+  padding-bottom: 100px;
   .item {
-    padding: 0 139px;
+    padding: 0 90px;
     height: 241px;
     background: #eaecec;
     .year {

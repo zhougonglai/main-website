@@ -3,9 +3,9 @@
   .banner.w-full.h-480.flex.items-center.justify-center.h-96.bg-gradient-to-r.from-blue-300.to-red-300
     .box
       h1.text-4xl.text-white 新闻资讯
-      .desc 及时了解我们所有的新闻发布、产品发布和生态合作——帮助您了解
-      br
-      | 快速发展的测试技术以及创远为国产仪器所作出的卓越贡献。
+      .desc.text-white 及时了解我们所有的新闻发布、产品发布和生态合作——帮助您了解
+        br
+        | 快速发展的测试技术以及创远为国产仪器所作出的卓越贡献。
   article
     .time 2022年2月13日
     h1.title 创远仪器参加2021年mwc
