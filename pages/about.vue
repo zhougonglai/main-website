@@ -1,5 +1,5 @@
 <template lang="pug">
-.w-full.flex.flex-col.items-center.bg-gray-100
+.w-full.flex.flex-col.items-center.bg-gray-100.pb-20
   .banner.w-full.h-480
   section.container.desc.py-20
     h1.text-4xl 关于我们

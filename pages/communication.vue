@@ -1,7 +1,7 @@
 <template lang="pug">
 section.w-full
-  .sc-1.flex.items-center.justify-center.bg-gradient-to-r.from-blue-300.to-red-300
-    .sc-1__block.color-white.py-20
+  .sc-1.flex.items-center.justify-center.bg-gradient-to-r.from-blue-300.to-red-300.h-480
+    .sc-1__block.color-white
       h1.text-4xl.text-white 无线通信
       article.mt-5
         p.text-white.text-2xl.leading-relaxed 现如今无线通信技术遍布全球的每个角落，全世界无时无刻在互联互通。同时用户还在追求更快、更高效和更稳定的连接，推动通信技术的发展，加快无线技术创新的步伐。
