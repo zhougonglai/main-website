@@ -1,7 +1,7 @@
 <template lang="pug">
 section.w-full.flex.flex-col
-  .carousels.h-80
-    img.object-center.object-cover.w-full.h-80(src="~/assets/img/bg_sunset.jpg")
+  .carousels
+    img.object-center.object-cover.w-full.h-480(src="~/assets/img/bg_sunset.jpg")
   .sc-1.bg-white.flex.items-center.justify-center
     .sc-1-block.h-80.flex.flex-col.justify-center(class="w-1/2")
       h1.text-2xl.font-bold 创远仪器
