@@ -49,44 +49,7 @@ section.w-full
                   | 产品信息
   .sc-6.flex.items-center.justify-center
     .sc-6__block.flex.flex-col.py-20
-      .form
-        h2.text-2xl 需要更多信息
-        p.text-lg.text-gray-500.mt-5 如果您有任何疑问或需要了解更多信息，请填写此表格，我们会尽快回复您。
-        .row.radio.mt-10
-          input(type="radio" id="sex-1" v-model="db.sex" value="1")
-          label(for="sex-1") 男
-          input(type="radio" id="sex-0" v-model="db.sex" value="0")
-          label(for="sex-0") 女
-        .field.flex
-          .flex-1
-            label 姓 名
-            input(v-model="db.name")
-          .flex-1
-            label 公司名称
-            input(v-model="db.company")
-        .field.flex
-          .flex-1
-            label 公司邮箱
-            input(v-model="db.name")
-          .flex-1
-            label 城市
-            input(v-model="db.city")
-        .field.flex
-          .flex-1
-            label 电话号码
-            input(v-model="db.phone")
-          .flex-1
-            label 询问
-            input(v-model="db.ask")
-        .field
-          textarea.p-5(v-model="db.desc" placeholder="具体问题描述")
-        .flex-1.mt-10
-          h4.text-2xl 营销许可
-          .w-full.my-5
-            Checkbox
-              span.text-gray-500 我希望通过电子邮件从创远仪器实体或子公司
-          .flex.items-center.justify-end.mt-5
-            button.bg-primary.px-5.py-2.text-white 获取信息
+      Submit
 </template>
 
 <script>
@@ -198,25 +161,24 @@ export default {
 
     label {
       display: block;
-      color: #252525;
       margin: 25px 0;
     }
 
-    input {
-      width: 499px;
-      height: 50px;
-      background: #eeeeed;
-      border: 1px solid #8a8a8a;
-      text-indent: 10px;
-    }
+    // input {
+    //   width: 499px;
+    //   height: 50px;
+    //   background: #eeeeed;
+    //   border: 1px solid #8a8a8a;
+    //   text-indent: 10px;
+    // }
 
-    textarea {
-      margin-top: 20px;
-      width: 100%;
-      height: 283px;
-      background: #eeeeed;
-      border: 1px solid #303131;
-    }
+    // textarea {
+    //   margin-top: 20px;
+    //   width: 100%;
+    //   height: 283px;
+    //   background: #eeeeed;
+    //   border: 1px solid #303131;
+    // }
   }
 }
 </style>

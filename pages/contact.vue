@@ -40,48 +40,7 @@
       b 深圳办事处
       .row 深圳市南山区桃园街道大学城创客小镇 17 栋 309-2 室
       .row 电话：13817170735
-  .form
-    h2.title 需要更多信息
-    p.info 如果您有任何疑问或需要了解更多信息，请填写此表格，我们会尽快回复您。
-    .row.radio
-      input(type="radio" id="sex-1" v-model="db.sex" value="1")
-      label(for="sex-1") 男
-      input(type="radio" id="sex-0" v-model="db.sex" value="0")
-      label(for="sex-0") 女
-    .field.flex
-      .flex-1
-        label 姓 名
-        input(v-model="db.name" placeholder="姓名")
-      .flex-1
-        label 公司名称
-        input(v-model="db.company")
-    .field.flex
-      .flex-1
-        label 公司邮箱
-        input(v-model="db.name")
-      .flex-1
-        label 城市
-        select(v-model="db.company")
-          option(disable selected value="" style="display:none") 请选择
-    .field.flex
-      .flex-1
-        label 电话号码
-        input(v-model="db.name")
-      .flex-1
-        label 询问
-        select(v-model="db.question")
-          option(disable selected value="" style="display:none") 请选择
-          option 想具体了解产品报价及指标
-          option 需要售后指导及维修方面问询
-    .field.mt-5
-      textarea(v-model="db.company" placeholder="具体问题描述")
-    .filed.mt-5
-      h4.text-2xl 营销许可
-      .w-full.my-5
-        Checkbox
-          span.text-gray-500 我希望通过电子邮件从创远仪器实体或子公司
-      .flex.items-center.justify-end.mt-5
-        button.bg-primary.px-5.py-2.mr-10.text-white 获取信息
+  Submit
 </template>
 
 <script>

@@ -5,7 +5,7 @@ section.w-full.flex.flex-col.pb-20
   .sc-1.bg-white.flex.items-center.justify-center
     .sc-1-block.h-80.flex.flex-col.justify-center(class="w-1/2")
       h1.text-4xl 创远仪器
-      p.text-xl.text-base.mt-10 上海创远仪器技术股份有限公司成立于 2005 年，2021年作为首批企业成功登陆北交所，是一家自主研发射频通信测试仪器和提供整体测试解决方案的专业仪器仪表公司。
+      p.text-xl.mt-10 上海创远仪器技术股份有限公司成立于 2005 年，2021年作为首批企业成功登陆北交所，是一家自主研发射频通信测试仪器和提供整体测试解决方案的专业仪器仪表公司。
   .sc-carousels.bg-gray-100.flex.items-center.justify-center
     .sc-block.flex.items-center.justify-center
       //- Carousel(:items="banner")

@@ -1,6 +1,6 @@
 <template lang="pug">
 .app-checkbox
-  .checkbox-con
+  .checkbox-con.flex-shrink-0
     input.checkbox(
       type="checkbox"
       :id="id"
@@ -44,7 +44,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   clear: left;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: flex-start;
 
   .checkbox-con {

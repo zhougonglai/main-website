@@ -225,7 +225,7 @@ main {
   }
 
   &-panel {
-    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
 
     &__icon {
       position: absolute;
