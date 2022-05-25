@@ -1,5 +1,5 @@
 <template lang="pug">
-.w-full.flex.flex-col.items-center.bg-gray-100.pb-20
+.w-full.flex.flex-col.items-center
   .banner.w-full.h-480
   section.container.desc.py-20
     h1.text-4xl 关于我们
@@ -28,7 +28,7 @@
         img(src="@/assets/img/about/state.svg" width="775" height="300")
   section.w-full.flex.flex-col.items-center.bg-white.relative
     .bg-gray-100.absolute.z-0.inset-x-0.bottom-0.h-60
-    .container.py-20.z-10
+    .container.py-10.z-10
       h1.text-4xl 核心技术
       .flex.justify-center.mt-10.gap-x-5
         .card.cursor-pointer.border-b-2.border-white.bg-white(class="hover:border-blue-300")
@@ -56,7 +56,7 @@
             .card-title.text-xl 射频微波电路
             .card-desc.mt-2 设计及制造
 
-  section.w-full.flex.flex-col.items-center.desc4.relative
+  section.w-full.flex.flex-col.items-center.desc4.relative.bg-gray-100.pb-20
     .bg-white.absolute.z-0.inset-x-0.h-40
     .container.py-20.z-10
       h2.text-4xl.mb-28 重点客户
