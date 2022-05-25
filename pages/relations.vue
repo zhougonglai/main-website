@@ -48,7 +48,7 @@ section.w-full.pb-20
       ul
         li.py-2.text-gray-500.px-5.flex.items-center.cursor-pointer.border-b.border-gray-100(v-for="(file, i) in files" :key="i" class="hover:text-blue-500 hover:bg-gray-100")
           .flex-1 {{ file.title }}
-          time.flex-1(v-text="file.time")
+          time.w-40.text-center(v-text="file.time")
           button.text-blue-500.rounded.py-2.px-5(class="hover:bg-gray-200")
             ion-icon.mr-2(name="download-outline")
             | 下载

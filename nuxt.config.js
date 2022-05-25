@@ -1,7 +1,7 @@
 export default {
   ssr: false,
   head: {
-    title: "main-website",
+    title: "创远仪器",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -11,11 +11,11 @@ export default {
     script: [
       {
         nomodule: true,
-        src: "//npm.elemecdn.com/ionicons@5.5.2/dist/ionicons/ionicons.js",
+        src: "https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/ionicons/5.5.4/ionicons/ionicons.min.js",
       },
       {
         type: "module",
-        src: "//npm.elemecdn.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js",
+        src: "https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/ionicons/5.5.4/ionicons/ionicons.esm.min.js",
       },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
