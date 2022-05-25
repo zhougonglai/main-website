@@ -1,7 +1,11 @@
 <template lang="pug">
 section.w-full.flex.flex-col.pb-20
-  .carousels
-    img.object-center.object-cover.w-full.h-480(src="~/assets/img/bg_sunset.jpg")
+  carousel-card(size="1" :max-size="banner.length" dot
+  dot-active-class="w-2 h-2 bg-white rounded-full scale-150"
+  dot-class="bg-white w-2 h-2 rounded-full hover:scale-125"
+  )
+    carousel-item.flex.w-full(v-for="b in banner" :key="b.id")
+      img.object-center.object-cover.w-full.h-480(:src="b.src")
   .sc-1.bg-white.flex.items-center.justify-center
     .sc-1-block.h-80.flex.flex-col.justify-center(class="w-1/2")
       h1.text-4xl 创远仪器
@@ -9,7 +13,11 @@ section.w-full.flex.flex-col.pb-20
   .sc-carousels.bg-gray-100.flex.items-center.justify-center
     .sc-block.flex.items-center.justify-center
       //- Carousel(:items="banner")
-      carousel-card.py-20(size="1" :max-size="banner.length" dot dot-active-class="bg-red-600 shadow hover:shadow-red-600" dot-class="border border-gray-500 transition shadow hover:bg-red-500 hover:shadow-red-500" dot-content-class="" contentClass="items-center justify-between")
+      carousel-card.py-20(size="1" :max-size="banner.length" dot
+      dot-active-class="bg-red-600 rounded-full w-2 h-2"
+      dot-class="border border-gray-500 w-2 h-2 hover:bg-red-500 rounded-full"
+      dot-content-class=""
+      contentClass="items-center justify-between")
         carousel-item.flex.gap-x-10.w-full.px-16(v-for="b in banner" :key="b.id" :item="b.id")
           .content.flex-1
             .title.text-4xl {{ b.title }}

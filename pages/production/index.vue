@@ -13,7 +13,7 @@ section.w-full.flex.flex-col.pb-20
         p.my-5 创远仪器提供广泛的多功能、高性能网络分析仪（最高26.5GHz）和标准多端口解决方案。创远仪器的矢量网络分析仪非常适用于分析无源及有源器件，比如滤波器、放大器、混频器及多端口模块。
         p 网络分析仪具有出色的射频特性以及丰富的分析功能，有助于用户快速评估重要参数。
   .sc-2.flex.items-center.justify-center
-    .sc-2__block.py-20
+    .sc-2__block.py-10
       table.prod.border-collapse.border-gray-200.border.table-fixed.w-full.relative
         thead.prod-header.bg-gray-100
           tr.flex.p-5.flex.items-center.justify-between.text-primary

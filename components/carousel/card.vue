@@ -9,7 +9,7 @@
     class="top-1/2 -translate-y-1/2 hover:text-blue-500" @click="next")
     ion-icon.v-cloak(name="chevron-forward-outline" size="large")
   .dot-container.absolute.bottom-5.left-0.right-0.flex.justify-center.items-center.gap-x-2.z-10(v-if="dot" :class="dotContentClass")
-    .dot.flex.items-center.justify-center.rounded-full.cursor-pointer(v-for="i in maxSize" :key="i" @click="moveTo(i - 1)" :class="{ [dotActiveClass]: (i - 1) == index, [dotClass]: (i - 1) != index }")
+    .dot.flex.items-center.justify-center.cursor-pointer.transition(v-for="i in maxSize" :key="i" @click="moveTo(i - 1)" :class="{ [dotActiveClass]: (i - 1) == index, [dotClass]: (i - 1) != index }")
 </template>
 <script>
 export default {
@@ -96,10 +96,5 @@ export default {
 <style lang="scss" scoped>
 .carousel {
   &-card {}
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
 }
 </style>
