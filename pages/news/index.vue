@@ -6,7 +6,7 @@
       p.text-xl.mt-5.leading-8.desc.text-white 及时了解我们所有的新闻发布、产品发布和生态合作——帮助您了解
         br
         | 快速发展的测试技术以及创远为国产仪器所作出的卓越贡献。
-  .new-list
+  .new-list.mt-20
     nuxt-link.new(v-for="db, i in 16" :key="i" :to="'news/_id?id=' + i")
       .img
       .title
@@ -22,8 +22,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .banner {
-  margin-bottom: 136px;
-
   .box {
     width: 1200px;
   }
@@ -31,7 +29,6 @@ export default {
 
 .new-list {
   width: 1200px;
-  margin: 0 -13px 100px;
 
   .new {
     display: inline-block;
