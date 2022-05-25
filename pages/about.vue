@@ -8,7 +8,7 @@
       hr.my-10
       p.text-xl.leading-8.text-gray-500 重点专注于无线通信网络运营测试、无线电监测和北斗导航测试、无线通信智能制造测试等三个方向，是我国高端无线通信测试仪器行业的代表性企业。自 TD-SCDMA 时代伊始，创远仪器便积极参与中国自主知识产权移动通信标准和产业发展，在 TD-LTE 时代更是取得丰硕成果，多款产品获得广泛商用。2017 年 1 月与中国移动、华为、中兴、展讯等 14 家企业共同荣获国家科学技术进步特等奖。
   .banner2
-  section.w-full.flex.flex-col.items-center
+  section.w-full.flex.flex-col.items-center.mt-20
     .container
       h1.text-4xl 公司战略
       .strategy.relative.flex.flex-col.items-center.justify-between.p-10.text-primary
@@ -147,7 +147,6 @@ $blue: #005fab;
 .banner2 {
   width: 1047px;
   height: 562px;
-  margin: 84px 0;
   background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
 }
 
