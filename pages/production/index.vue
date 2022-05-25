@@ -49,7 +49,7 @@ section.w-full.flex.flex-col.pb-20
 
 <script>
 import productions from '@/assets/constant/production.json';
-// import Checkbox from '~/components/Checkbox/index.vue';
+import { mapActions } from 'vuex';
 
 export default {
   name: "production-page",
@@ -65,10 +65,14 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['getProduct']),
     selectChange(checked, id) {
       console.log('checked', checked, id);
       this.$set(this.selected, id, checked)
     }
+  },
+  mounted() {
+    this.getProduct();
   }
 }
 </script>

@@ -77,7 +77,7 @@ main.flex.flex-col.items-center
 <script>
 import menus from '@/assets/constant/menus';
 import labels from '@/assets/constant/labels';
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'default',
@@ -124,9 +124,11 @@ export default {
         this.show = false;
       }
     })
-    console.log(this.$route)
+    this.getCate();
+    this.getBanner();
   },
   methods: {
+    ...mapActions(['getCate', 'getBanner']),
     searcher() {
       if (!this.search.show) {
         this.search.show = true;
@@ -134,9 +136,7 @@ export default {
       }
     },
     async getMenus() {
-      // const { data } = await this.$axios.$get('/api.php/api/getCate')
       const { data } = await this.$axios.$get('/api/menus')
-      // console.log('getMenus', data)
       this.menus = data;
     },
     closeMenus() {
