@@ -22,7 +22,7 @@ section.w-full.flex.flex-col.pb-20
               ion-icon.text-4xl(name="remove-outline")
         thead.prod-thd.bg-gray-100
           tr.flex.leading-relaxed.border-gray-200.border
-            th.prod-td.flex-1.p-5 对比
+            th.prod-td.flex-1.p-5 产品图
             th.prod-td.flex-1.p-5 产品名称
             th.prod-td.flex-1.p-5 产品形态
             th.prod-td.flex-1.p-5 最大频率
