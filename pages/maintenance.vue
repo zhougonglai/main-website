@@ -1,7 +1,7 @@
 <template lang="pug">
 section.w-full.flex.flex-col.pb-20
-  .carousels.h-80
-    img.object-center.object-cover.w-full.h-80(src="~/assets/img/bg_sunset.jpg")
+  .carousels
+    img.object-center.object-cover.w-full.h-480(src="~/assets/img/bg_sunset.jpg")
   .sc-1.flex.items-center.justify-center
     .sc-1__block.py-20.flex.items-center.flex-col.justify-center
       h1.text-4xl.w-full 简介
