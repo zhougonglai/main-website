@@ -12,7 +12,7 @@
     .container
       h1.text-4xl 公司战略
       .strategy.relative.flex.flex-col.items-center.justify-between.p-10.text-primary
-        .step-title.text-7xl.text-blue.mt-40.font-bold 1+3
+        .step-title.text-7xl.text-blue.mt-0.font-bold 1+3
         .step.step-1.absolute.flex.flex-col.items-center.justify-center
           .step-icon
             ion-icon(name="logo-facebook")
@@ -26,8 +26,9 @@
             ion-icon(name="logo-alipay")
           label.mt-5 无线通信设备
         img(src="@/assets/img/about/state.svg" width="775" height="300")
-  section.w-full.flex.flex-col.items-center
-    .container.py-20
+  section.w-full.flex.flex-col.items-center.bg-white.relative
+    .bg-gray-100.absolute.z-0.inset-x-0.bottom-0.h-60
+    .container.py-20.z-10
       h1.text-4xl 核心技术
       .flex.justify-center.mt-10.gap-x-5
         .card.cursor-pointer.border-b-2.border-white.bg-white(class="hover:border-blue-300")
@@ -55,9 +56,10 @@
             .card-title.text-xl 射频微波电路
             .card-desc.mt-2 设计及制造
 
-  section.w-full.flex.flex-col.items-center.desc4
-    .container.py-20
-      h2.text-4xl 重点客户
+  section.w-full.flex.flex-col.items-center.desc4.relative
+    .bg-white.absolute.z-0.inset-x-0.h-40
+    .container.py-20.z-10
+      h2.text-4xl.mb-28 重点客户
       carousel-card.mt-10(v-for="(logo, i) in logos" size="4" :max-size="logo.length" :key="i" content-class="flex-1 mx-10")
         carousel-item(v-for="l in logo" :key="l.name" class="w-1/4")
           .flex.items-center.bg-white.justify-center.mx-2.h-28.hover-border-primary.border-b-2.border-gray-100.cursor-pointer
@@ -150,7 +152,7 @@ $blue: #005fab;
 }
 
 .strategy {
-  height: 800px;
+  min-height: 650px;
 
   .step {
     &-icon {

@@ -3,7 +3,7 @@ section.w-full.flex.flex-col.pb-20
   .carousels
     img.object-center.object-cover.w-full.h-480(src="~/assets/img/bg_sunset.jpg")
   .sc-1.flex.items-center.justify-center
-    .sc-1__block.py-20.flex.items-center.flex-col.justify-center
+    .sc-1__block.py-10.flex.items-center.flex-col.justify-center
       h1.text-4xl.w-full 简介
       .grid.grid-cols-3.justify-center.my-20.justify-items-center
         .flex.flex-col
@@ -40,7 +40,7 @@ section.w-full.flex.flex-col.pb-20
             .card-action
               button.card-btn.text-2xl.text-blue-500 了解详情
   .sc-2.flex.items-center.justify-center
-    .sc-2__block.py-20
+    .sc-2__block.py-10
       h1.text-4xl 送修仪器说明
       .products.bg-gray-100.flex.flex-col.justify-end.gap-x-10.p-10.mt-40.w-full
         .card.flex.cursor-pointer.shadow(class="hover:shadow-xl")
@@ -51,7 +51,7 @@ section.w-full.flex.flex-col.pb-20
             p.leading-8.text-gray-500.mt-5 如果您送修的仪器仍在出厂保修期内，且仪器故障属于正常保修范围内，创远公司将承担维修费用。
         p.mt-10.leading-8.text-gray-500 如果您送修的仪器已超过保修期，或仪器虽在保修期但故障属于人为原因造成，创远公司将对仪器进行初检和维修费用估算，并将维修费用报价单传真给您进行确认。如您同意，请在报价单上签字盖章后回传，我们会立即进行维修工作，直至修复仪器。维修完成后，我们将用《付款通知》通知您付款取机事宜。在维修费用报价确认之前，用户有权中止维修。在这种情况下，用户需支付初检费用及仪器往返的运输/保险费用。
   .sc-3.flex.items-center.justify-center
-    .sc-3__block.py-20.flex.items-center.justify-center.flex-col
+    .sc-3__block.py-10.flex.items-center.justify-center.flex-col
       h1.text-4xl.w-full 文档下载区
       .grid.grid-cols-2.justify-center.my-20.justify-items-center
         .flex.flex-col.text-center.items-center

@@ -30,13 +30,14 @@ main.flex.flex-col.items-center
           .nav-panel__icon(:style="{ left: stageIndex[active] + 'px' }")
           .nav-panel-content.flex
             .nav-panel-list.flex.flex-col.w-60.p-5
-              button.nav-panel-list-item.leading-8.text-left.cursor-pointer(
+              button.nav-panel-list-item.leading-8.flex.items-center.text-left.cursor-pointer(
                 v-for="(item, i) in activeLink.child.filter(menu => menu.display)"
                 :key="item.id"
                 :class="{ active: i === subActive }"
                 :disabled="!item.child && !links[item.id]"
-                @click="selectSubmenu(item, i)"
-                v-text="item.title")
+                @click="selectSubmenu(item, i)")
+                .flex-1(v-text="item.title")
+                ion-icon(name="chevron-forward" v-show="i === subActive")
             .nav-panel-list.flex.flex-col.w-60.p-5(v-if="Number.isFinite(subActive)")
               button.nav-panel-list-item.leading-8.text-left.cursor-pointer(
                 v-for="(item, i) in subMenus.child"
