@@ -81,7 +81,7 @@
         Checkbox
           span.text-gray-500 我希望通过电子邮件从创远仪器实体或子公司
       .flex.items-center.justify-end.mt-5
-        button.bg-blue-500.px-5.py-2.mr-10.text-white(class="hover:bg-blue-600") 获取信息
+        button.bg-primary.px-5.py-2.mr-10.text-white 获取信息
 </template>
 
 <script>
