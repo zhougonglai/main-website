@@ -35,12 +35,12 @@ section.w-full.flex.flex-col.pb-20
               //- input(type="checkbox" v-model="selected[prod.id]")
               //- Checkbox(@change="selectChange($event, prod.id)" :disabled="selected[prod.id] ? false : selectedLength >= 3")
               img.object-center.object-cover(:src="prod.url")
-            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.bg-gray-100
+            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.bg-gray-50
               nuxt-link.w-full.h-full.flex.items-center.justify-center.opacity-80(class="text-primary hover:opacity-100" to="/production/t526c" v-text="prod.title")
             td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.text-center(v-text="prod.type")
-            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.text-center.bg-gray-100(v-text="prod.qz")
+            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.text-center.bg-gray-50(v-text="prod.qz")
             td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.text-center(v-text="prod.port")
-            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.bg-gray-100(v-text="prod.types.join('/')")
+            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.bg-gray-50(v-text="prod.types.join('/')")
             td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center
               button.bg-primary.px-5.py-2.text-white 询价
         //- tfoot.prod-tfd.absolute.w-full.flex.items-center.justify-center

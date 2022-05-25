@@ -26,7 +26,7 @@ main.flex.flex-col.items-center
         leave-active-class="transition duration-200 ease-in"
         leave-from-class="transform scale-100 opacity-100"
         leave-to-class="transform scale-95 opacity-0")
-        .nav-panel.absolute.top-20.left-0.right-0.z-10.bg-white(v-if="Number.isFinite(active)")
+        .nav-panel.absolute.top-20.-left-5.right-0.z-10.bg-white(v-if="Number.isFinite(active)")
           .nav-panel__icon(:style="{ left: stageIndex[active] + 'px' }")
           .nav-panel-content.flex
             .nav-panel-list.flex.flex-col.w-60.p-5
@@ -90,7 +90,7 @@ export default {
       links: menus,
       labels,
       show: false,
-      stageIndex: [5, 110, 235, 380, 515],
+      stageIndex: [25, 130, 250, 400, 535],
       timer: 0,
       search: {
         show: false,
