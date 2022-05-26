@@ -59,7 +59,7 @@
               <p class="card-desc leading-8 my-5 flex-1">
                 本方案是基于主流轻型卡车或SUV等高承载能力底盘，提供一批多通道无线电监测测向与车载附属设备设备供用户选择。通过改车集成，可实现无线电信号监测、测向、单站移动定位、专用业务信号解码等功能，适应日常无线电监管的工作需要。
               </p>
-              <div class="card-action px-5 flex">
+              <div class="card-action px-5 flex justify-end">
                 <button class="card-btn text-blue-500 flex items-center hover:text-blue-600">
                   <ion-icon class="mr-2" name="arrow-forward-outline" />
                   更 多 信 息
