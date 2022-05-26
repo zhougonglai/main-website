@@ -19,13 +19,18 @@
       input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="email" class="hover:bg-white")
     .flex-1
       label.text-xl(for="city") 城市
-      input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="city" class="hover:bg-white")
+      submit-select.mt-5(id="city"
+      content-class="hover:bg-white h-14 border border-gray-500 w-full bg-gray-100 transition pl-5"
+      :options="city")
     .flex-1
       label.text-xl(for="phone") 电话号码
       input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="phone" class="hover:bg-white")
     .flex-1
       label.text-xl(for="ask") 询问
-      input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="ask" class="hover:bg-white")
+      submit-select.mt-5(id="ask"
+      class="hover:bg-white"
+      content-class="hover:bg-white h-14 border border-gray-500 w-full bg-gray-100 transition pl-5"
+      :options="ask")
   .mt-10
     textarea.p-5.w-full.border.border-gray-500.bg-gray-100.transition.pl-5(placeholder="具体问题描述" class="hover:bg-white")
   .flex-1.mt-10
@@ -42,8 +47,36 @@ export default {
   data() {
     return {
       form: {
-        sex: 1
-      }
+        sex: 1,
+      },
+      city: [
+        {
+          label: '上海',
+          value: '001'
+        },
+        {
+          label: '北京',
+          value: '002'
+        },
+        {
+          label: '杭州',
+          value: '003'
+        },
+        {
+          label: '武汉',
+          value: '004'
+        },
+      ],
+      ask: [
+        {
+          label: '想具体了解产品报价及指标',
+          value: 'price'
+        },
+        {
+          label: '需要售后指导及维修方面问询',
+          value: 'service'
+        }
+      ]
     }
   }
 }

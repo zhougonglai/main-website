@@ -56,6 +56,7 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
           .card-content.p-5
             h3.text-xl.card-title 产品简介视频
             p.mt-3.card-desc.text-gray-500 主要性能展示
+
       h1.text-2xl.mt-10 相关型号
       .types.bg-gray-100.grid.grid-cols-3.my-10.p-10.gap-10
         .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(class="hover:shadow hover:border-blue-300")

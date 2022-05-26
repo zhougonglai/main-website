@@ -17,15 +17,15 @@ section.w-full.pb-20
         .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(class="hover:shadow hover:border-blue-300")
           .card-cover
             img.object-center.object-cover(src="https://img01.yzcdn.cn/vant/cat.jpeg")
-          .card-content.p-5
+          .card-content.flex.flex-col.p-5
             h3.text-2xl.card-title 相关特色
-            p.mt-3.card-desc.text-gray-500.leading-8 创远公司开发的设备具备灵活的功能拓展空间，使您现有的设备具有可升级性不断适应发展要求，节约成本，减轻投资压力，提高使用效率。创远公司面向广大用户提供仪器功能升级服务，使仪器具有合理化和经济型的配置。
+            p.mt-3.card-desc.flex-1.text-gray-500.leading-8 创远公司开发的设备具备灵活的功能拓展空间，使您现有的设备具有可升级性不断适应发展要求，节约成本，减轻投资压力，提高使用效率。创远公司面向广大用户提供仪器功能升级服务，使仪器具有合理化和经济型的配置。
         .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(class="hover:shadow hover:border-blue-300")
           .card-cover
             img.object-center.object-cover(src="https://img01.yzcdn.cn/vant/cat.jpeg")
-          .card-content.p-5
+          .card-content.p-5.flex.flex-col
             h3.text-2xl.card-title 相关特色
-            p.mt-3.card-desc.text-gray-500.leading-8 创远公司开发的设备具备灵活的功能拓展空间，使您现有的设备具有可升级性不断适应发展要求，节约成本，减轻投资压力，提高使用效率。创远公司面向广大用户提供仪器功能升级服务，使仪器具有合理化和经济型的配置。
+            p.mt-3.card-desc.flex-1.text-gray-500.leading-8 创远公司开发的设备具备灵活的功能拓展空间，使您现有的设备具有可升级性不断适应发展要求，节约成本，减轻投资压力，提高使用效率。创远公司面向广大用户提供仪器功能升级服务，使仪器具有合理化和经济型的配置。
       h1.text-4xl.mt-20 典型应用
       .application.bg-gray-100.flex.items-end.justify-center.gap-x-10.my-10.p-10
         .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(class="hover:shadow hover:border-blue-300")
