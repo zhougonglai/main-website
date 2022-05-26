@@ -33,7 +33,7 @@ main.flex.flex-col.items-center
               button.nav-panel-list-item.leading-8.flex.items-center.text-left.cursor-pointer(
                 v-for="(item, i) in activeLink.child.filter(menu => menu.display)"
                 :key="item.id"
-                :class="{ active: i === subActive }"
+                :class="{ active: item.id == activeNav }"
                 :disabled="!item.child && !links[item.id]"
                 @click="selectSubmenu(item, i)")
                 .flex-1(v-text="item.title")
