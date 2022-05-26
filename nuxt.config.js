@@ -32,7 +32,7 @@ export default {
     proxy: true,
   },
   proxy: {
-    "/api.php": "http://admin.ks33.work/",
+    "/api.php": process.env.PUBLIC_URL,
   },
   pwa: {
     manifest: {
