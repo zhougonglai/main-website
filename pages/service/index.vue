@@ -35,9 +35,9 @@
             <div class="card-cover">
               <img class="object-center object-cover" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
             </div>
-            <div class="card-content bg-white flex-1 p-5 flex flex-col justify-center">
+            <div class="card-content bg-white flex-1 p-5 flex flex-col">
               <div class="card-title text-2xl">固定站新建与改造</div>
-              <p class="card-desc leading-8 my-5">
+              <p class="card-desc leading-8 my-5 flex-1">
                 创远仪器经过多年的积累，已经承接与实施了多个大型固定站无线电监测测向站的新建工作，目前创远仪器具备按照国家标准划分的一、二、三、四类站建设能力。
               </p>
               <div class="card-action px-5 flex justify-end">
@@ -54,12 +54,12 @@
             <div class="card-cover">
               <img class="object-center object-cover" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
             </div>
-            <div class="card-content bg-white flex-1 p-5 flex flex-col justify-center">
+            <div class="card-content bg-white flex-1 p-5 flex flex-col">
               <div class="card-title text-2xl">车载监测测向系统</div>
-              <p class="card-desc leading-8 my-5">
+              <p class="card-desc leading-8 my-5 flex-1">
                 本方案是基于主流轻型卡车或SUV等高承载能力底盘，提供一批多通道无线电监测测向与车载附属设备设备供用户选择。通过改车集成，可实现无线电信号监测、测向、单站移动定位、专用业务信号解码等功能，适应日常无线电监管的工作需要。
               </p>
-              <div class="card-action px-5 flex justify-end">
+              <div class="card-action px-5 flex">
                 <button class="card-btn text-blue-500 flex items-center hover:text-blue-600">
                   <ion-icon class="mr-2" name="arrow-forward-outline" />
                   更 多 信 息
