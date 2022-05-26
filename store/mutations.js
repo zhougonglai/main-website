@@ -1,4 +1,13 @@
 export default {
+  activeNav(state, data) {
+    state.activeNav = data;
+  },
+  activeMenu(state, data) {
+    state.activeMenu = data;
+  },
+  updateLea(state, data) {
+    state.lea = data;
+  },
   updateCate(state, data) {
     state.cate = data;
   },

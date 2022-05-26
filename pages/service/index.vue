@@ -27,7 +27,7 @@
     </div>
 
     <div class="sp-3 flex items-center justify-center">
-      <div class="sp-3__block py-20">
+      <div class="sp-3__block py-10">
         <h1 class="text-4xl">相关解决方案</h1>
         <div class="resolve bg-gray-100 flex items-end justify-center gap-x-10 mt-80 pb-10">
           <nuxt-link to="/service/resolve"
@@ -60,7 +60,7 @@
     </div>
 
     <div class="sp-4 flex items-center justify-center">
-      <div class="sp-4__block py-20">
+      <div class="sp-4__block py-10">
         <h1 class="text-4xl">相关产品</h1>
         <div class="products bg-gray-100 flex items-end justify-center gap-x-10 p-10 mt-10">
           <div

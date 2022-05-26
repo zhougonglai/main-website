@@ -4,4 +4,7 @@ export default () => ({
   product: "",
   products: {},
   summary: "",
+  activeNav: "",
+  activeMenu: "",
+  lea: "",
 });

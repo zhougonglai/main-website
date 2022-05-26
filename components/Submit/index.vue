@@ -5,26 +5,26 @@
   .grid.grid-cols-2.gap-x-20.gap-y-5
     .flex.items-center.col-span-2.my-10
       input.w-5.h-5.mr-5(type="radio" id="sex-1" v-model="form.sex" value="1")
-      label.mr-20(for="sex-1") 男
+      label.text-xl.mr-20(for="sex-1") 男
       input.w-5.h-5.mr-5(type="radio" id="sex-0" v-model="form.sex" value="0")
-      label(for="sex-0") 女
+      label.text-xl(for="sex-0") 女
     .flex-1.fex
-      label(for="name") 姓 名
+      label.text-xl(for="name") 姓 名
       input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="name" class="hover:bg-white")
     .flex-1
-      label(for="company") 公司名称
+      label.text-xl(for="company") 公司名称
       input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="company" class="hover:bg-white")
     .flex-1
-      label(for="email") 公司邮箱
+      label.text-xl(for="email") 公司邮箱
       input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="email" class="hover:bg-white")
     .flex-1
-      label(for="city") 城市
+      label.text-xl(for="city") 城市
       input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="city" class="hover:bg-white")
     .flex-1
-      label(for="phone") 电话号码
+      label.text-xl(for="phone") 电话号码
       input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="phone" class="hover:bg-white")
     .flex-1
-      label(for="ask") 询问
+      label.text-xl(for="ask") 询问
       input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="ask" class="hover:bg-white")
   .mt-10
     textarea.p-5.w-full.border.border-gray-500.bg-gray-100.transition.pl-5(placeholder="具体问题描述" class="hover:bg-white")

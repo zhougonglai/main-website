@@ -6,7 +6,7 @@ section.w-full
       article.mt-5
         p.text-white.text-2xl.leading-relaxed 现如今无线通信技术遍布全球的每个角落，全世界无时无刻在互联互通。同时用户还在追求更快、更高效和更稳定的连接，推动通信技术的发展，加快无线技术创新的步伐。
   .sc-2.flex.items-center.justify-center
-    .sc-2__block.py-20
+    .sc-2__block.py-10
       article
         p.text-2xl.leading-relaxed 创远仪器提供多种测试设备和测量解决方案，覆盖从基站到用户，从实验室到现场的各种使用场景，向广大无线通信技术的研发人员及工程师提供支持。
   .sc-3.flex.items-center.justify-center.relative
@@ -126,59 +126,6 @@ export default {
 .sc-6 {
   &__block {
     width: min(1200px, 100%);
-  }
-}
-
-.form {
-  padding: 85px 0;
-  font-size: 26px;
-  color: #252525;
-
-  h2 {
-    font-size: 40px;
-  }
-
-  >p {
-    margin-top: 40px;
-    font-size: 26px;
-    color: #626363;
-  }
-
-  .radio {
-    input {
-      height: 20px;
-      width: 20px;
-      margin-right: 15px;
-    }
-
-    label {
-      margin-right: 85px;
-    }
-  }
-
-  .field {
-    min-height: 200px;
-
-    label {
-      display: block;
-      margin: 25px 0;
-    }
-
-    // input {
-    //   width: 499px;
-    //   height: 50px;
-    //   background: #eeeeed;
-    //   border: 1px solid #8a8a8a;
-    //   text-indent: 10px;
-    // }
-
-    // textarea {
-    //   margin-top: 20px;
-    //   width: 100%;
-    //   height: 283px;
-    //   background: #eeeeed;
-    //   border: 1px solid #303131;
-    // }
   }
 }
 </style>

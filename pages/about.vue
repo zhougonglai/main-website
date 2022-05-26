@@ -56,8 +56,9 @@
             .card-title.text-xl 射频微波电路
             .card-desc.mt-2 设计及制造
 
-  section.w-full.flex.flex-col.items-center.desc4.relative.bg-gray-100.pb-20.border-b.border-white
+  section.w-full.flex.flex-col.items-center.desc4.relative.bg-gray-100.pb-20
     .bg-white.absolute.z-0.inset-x-0.h-40
+    .bg-white.absolute.z-0.inset-x-0.bottom-0.h-20
     .container.py-20.z-10
       h2.text-4xl.mb-28 重点客户
       carousel-card.mt-10(v-for="(logo, i) in logos" size="4" :max-size="logo.length" :key="i" content-class="flex-1 mx-10")

@@ -44,7 +44,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   clear: left;
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   justify-content: flex-start;
 
   .checkbox-con {
