@@ -103,7 +103,6 @@ export default {
     ...mapState(['activeNav', 'lea', 'cate'])
   },
   mounted() {
-    this.getMenus();
     this.closeMenus();
     window.addEventListener('click', e => {
       if (Number.isFinite(this.active) && this.$refs.menus) {
@@ -124,10 +123,6 @@ export default {
         this.search.show = true;
         this.$refs.search.focus();
       }
-    },
-    async getMenus() {
-      const { data } = await this.$axios.$get('/api/menus')
-      this.menus = data;
     },
     closeMenus() {
       this.leaActive = '';

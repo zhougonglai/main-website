@@ -32,6 +32,7 @@ export default {
   ],
   modules: ["@nuxtjs/axios", "@nuxtjs/pwa", "@nuxt/content"],
   axios: {
+    baseURL: process.env.BASE_API,
     proxy: true,
   },
   proxy: {
