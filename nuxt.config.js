@@ -35,6 +35,11 @@ export default {
     baseURL: process.env.BASE_API,
     proxy: true,
   },
+  publicRuntimeConfig: {
+    axios: {
+      browserBaseURL: process.env.BASE_API,
+    },
+  },
   proxy: {
     "/api.php": process.env.BASE_API,
   },
