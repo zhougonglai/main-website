@@ -32,7 +32,7 @@ export default {
     proxy: true,
   },
   proxy: {
-    "/api.php": process.env.PUBLIC_URL,
+    "/api.php": process.env.BASE_API,
   },
   pwa: {
     manifest: {
