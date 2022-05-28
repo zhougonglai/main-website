@@ -89,7 +89,6 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
 </template>
 <script>
 import productions from '@/assets/constant/productions.json';
-import banner from '@/assets/constant/banner.json';
 import Dialog from '@/components/Dialog/index.vue';
 import tabs from '@/assets/constant/tabs.json';
 
@@ -100,7 +99,7 @@ export default {
     return {
       productions: productions.filter((p, i) => i),
       show: false,
-      banner,
+      banner: [],
       cover: banner[0],
       tabs,
       tabActive: 0,

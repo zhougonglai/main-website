@@ -68,13 +68,11 @@
 </template>
 
 <script>
-import banner from '@/assets/constant/banner.json'
 
 export default {
   name: "about-page",
   data() {
     return {
-      banner,
       logos: [
         [
           {

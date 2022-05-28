@@ -6,6 +6,7 @@ export default {
   },
   async getBanner({ commit }) {
     const { data } = await this.$axios.$get("/api.php/api/getBanner");
+    console.log("getBanner", process.env.BASE_API);
     commit("updateBanner", data);
     return data;
   },
@@ -58,6 +59,19 @@ export default {
     const { data } = await this.$axios.$get("/api.php/api/postFormData", {
       params,
     });
+    commit("updateSummary", data);
+    return data;
+  },
+  /**
+   * 表单数据提交
+   * @param {c_id} param0
+   * @returns
+   */
+  async getIndexData({ commit }, params) {
+    const { data } = await this.$axios.$get("/api.php/api/getIndex", {
+      params,
+    });
+    commit("indexData", data);
     return data;
   },
 };

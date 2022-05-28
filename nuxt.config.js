@@ -1,5 +1,8 @@
 export default {
   ssr: false,
+  env: {
+    BASE_API: process.env.BASE_API,
+  },
   head: {
     title: "创远仪器",
     meta: [

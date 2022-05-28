@@ -81,7 +81,7 @@ export default {
 <style lang="scss" scoped>
 .sc-1 {
   &__block {
-    width: min(800px, 100%);
+    width: min(1200px, 100%);
   }
 }
 

@@ -1,0 +1,71 @@
+{
+  "20001": {
+    "label": "概述",
+    "link": "/communication",
+    "pid": 130,
+    "level": 2,
+    "tab": 0
+  },
+  "10002": {
+    "label": "无线连接测试",
+    "link": "/service",
+    "pid": 130,
+    "level": 2,
+    "tab": 0
+  },
+  "197": {
+    "label": "投资者关系",
+    "link": "/relations",
+    "tab": 3
+  },
+  "185": {
+    "label": "矢量网络分析",
+    "link": "/production",
+    "tab": 1
+  },
+  "193": {
+    "label": "维修校准",
+    "link": "/maintenance",
+    "tab": 2
+  },
+  "194": {
+    "label": "资料下载",
+    "link": "/openfile",
+    "tab": 2
+  },
+  "196": {
+    "label": "公司简介",
+    "link": "/about",
+    "tab": 3
+  },
+  "198": {
+    "label": "公司历史",
+    "link": "/history",
+    "tab": 3
+  },
+  "200": {
+    "label": "资质证书",
+    "link": "/honorary",
+    "tab": 3
+  },
+  "202": {
+    "label": "联系我们",
+    "link": "/contact",
+    "tab": 3
+  },
+  "203": {
+    "label": "新闻资讯",
+    "link": "/news",
+    "tab": 3
+  },
+  "205": {
+    "label": "校园招聘",
+    "link": "/joinus",
+    "tab": 4
+  },
+  "206": {
+    "label": "社会招聘",
+    "link": "/joinus",
+    "tab": 4
+  }
+}

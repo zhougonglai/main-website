@@ -11,13 +11,13 @@ main.flex.flex-col.items-center
         .search-icon.inline-flex.items-center.justify-center.cursor-pointer(@click="searcher")
           ion-icon(v-cloak name="search-outline")
   .bg-gray-100.w-full.flex.justify-center
-    nav.menus.flex.items-center.leading-10.relative(ref="menus")
+    nav.menus.flex.items-center.leading-10.relative(ref="menus" v-if="cate.length" v-cloak)
       .nav-link.px-8.py-4.cursor-pointer.text-lg.text-center(
-        v-for="(menu, i) in menus.filter(menu => menu.display)"
+        v-for="(menu, i) in cate.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)"
         @click="selectMenu(menu, i)"
         @mouseenter="selectMenu(menu, i)"
         v-text="menu.title"
-        :class="{ active: i == activeMenu, 'pl-0': !i }"
+        :class="{ active: activeNav ? i == activeNav.tab : false, 'pl-0': !i }"
         :key="menu.id")
       transition(
         enter-active-class="transition duration-200 ease-out"
@@ -31,32 +31,27 @@ main.flex.flex-col.items-center
           .nav-panel-content.flex
             .nav-panel-list.flex.flex-col.w-60.p-5
               button.nav-panel-list-item.leading-8.flex.items-center.text-left.cursor-pointer(
-                v-for="(item, i) in activeLink.child.filter(menu => menu.display)"
+                v-for="(item, i) in activeLink.child.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)"
                 :key="item.id"
-                :class="{ active: item.id == activeNav }"
-                :disabled="!item.child && !links[item.id]"
+                :class="{ active: activeNav ? item.id == subActive : false }"
+                :disabled="!item.child && !route[item.id]"
                 @click="selectSubmenu(item, i)")
                 .flex-1(v-text="item.title")
                 ion-icon(name="chevron-forward" v-show="i === subActive")
             .nav-panel-list.flex.flex-col.w-60.p-5(v-if="Number.isFinite(subActive)")
               button.nav-panel-list-item.leading-8.text-left.cursor-pointer(
-                v-for="(item, i) in subMenus.child"
+                v-for="(item, i) in subMenus.child.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)"
                 :key="item.id"
                 @click="selectLeamenu(item, i)"
-                :disabled="!item.child && !links[item.id]"
+                :disabled="!item.child && !route[item.id]"
                 v-text="item.title")
-            //- .nav-panel-list.flex.flex-col.w-60.p-5(v-if="Number.isFinite(leaActive)")
-            //-   .nav-panel-list-item.leading-8.flex.items-center.cursor-pointer(
-            //-     v-for="(item, i) in leaMenus.child"
-            //-     :key="item.id"
-            //-     v-text="item.title")
   section.breadcrumbs(v-if="$route.name != 'index'")
     nav.py-4.breadcrumb.flex.items-center(aria-label="breadcrumbs")
       nuxt-link(to="/")
         ion-icon(name="home-sharp" v-cloak)
-      template(v-if="activeMenu >= 0")
+      template(v-if="activeNav")
         ion-icon.mx-5(name="chevron-forward-sharp"  v-cloak)
-        nuxt-link(:to="links[activeNav]") {{ labels[activeNav] }}
+        nuxt-link(:to="activeNav.link") {{ activeNav.label }}
       .relative.cursor-pointer(v-if="lea" ref="lea" @click.stop="show = !show")
         ion-icon.mx-5(name="chevron-forward-sharp"  v-cloak)
         nuxt-link(:to="lea.path") {{ lea.meta.title }}
@@ -72,36 +67,32 @@ main.flex.flex-col.items-center
             li.nav-drop.pl-4.leading-10(v-for="(prod, i) in lea.meta.paths" :key="i" class="hover:bg-gray-300")
               nuxt-link.truncate(:to="prod.link") {{ prod.title }}
   nuxt
-  AppFooter(:menus="menus")
+  AppFooter(:menus="cate")
 </template>
 <script>
-import menus from '@/assets/constant/menus';
-import labels from '@/assets/constant/labels';
 import { mapState, mapActions } from 'vuex';
+import route from '@/assets/constant/route';
 
 export default {
   name: 'default',
   middleware: 'router',
   data() {
     return {
-      menus: [],
       active: '',
       subActive: '',
       leaActive: '',
-      links: menus,
-      labels,
+      route,
       show: false,
       stageIndex: [25, 130, 250, 400, 535],
       timer: 0,
       search: {
         show: false,
-
       }
     }
   },
   computed: {
     activeLink() {
-      return Number.isFinite(this.active) ? this.menus[this.active] : null
+      return Number.isFinite(this.active) ? this.cate[this.active] : null
     },
     subMenus() {
       return Number.isFinite(this.subActive) ? this.activeLink.child[this.subActive] : null
@@ -109,7 +100,7 @@ export default {
     leaMenus() {
       return Number.isFinite(this.leaActive) ? this.subMenus.child[this.leaActive] : null
     },
-    ...mapState(['activeNav', 'activeMenu', 'lea'])
+    ...mapState(['activeNav', 'lea', 'cate'])
   },
   mounted() {
     this.getMenus();
@@ -125,7 +116,6 @@ export default {
       }
     })
     this.getCate();
-    this.getBanner();
   },
   methods: {
     ...mapActions(['getCate', 'getBanner']),
@@ -151,9 +141,9 @@ export default {
         this.leaActive = '';
         return
       }
-      if (menu.id in menus) {
+      if (menu.id in route) {
         this.$router.push({
-          path: menus[menu.id]
+          path: route[menu.id].link
         })
       }
       this.closeMenus();
@@ -162,9 +152,9 @@ export default {
       if (menu.child) {
         return this.subActive = active
       }
-      if (menu.id in menus) {
+      if (menu.id in route) {
         this.$router.push({
-          path: menus[menu.id]
+          path: route[menu.id].link
         })
       }
       this.closeMenus();
@@ -173,9 +163,9 @@ export default {
       if (menu.child) {
         return this.leaActive = active
       }
-      if (menu.id in menus) {
+      if (menu.id in route) {
         this.$router.push({
-          path: menus[menu.id]
+          path: route[menu.id].link
         })
       }
       this.closeMenus();
@@ -200,8 +190,6 @@ main {
 
   section.breadcrumbs {
     width: min(1200px, 100vw);
-
-    nav.breadcrumb {}
   }
 }
 

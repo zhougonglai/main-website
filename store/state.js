@@ -1,10 +1,10 @@
 export default () => ({
-  cate: "",
+  cate: [],
   banner: "",
   product: "",
   products: {},
   summary: "",
+  indexData: {},
   activeNav: "",
-  activeMenu: "",
   lea: "",
 });
