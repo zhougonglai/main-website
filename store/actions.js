@@ -94,7 +94,7 @@ export default {
    * @param {pages} param0
    * @returns
    */
-  async getIndexData({ commit }, params) {
+  async getNewsList({ commit }, params) {
     const { data } = await this.$axios.$get("/api.php/api/getNewsList", {
       params,
     });
@@ -105,7 +105,7 @@ export default {
    * @param {id} param0
    * @returns
    */
-  async getIndexData({ commit }, params) {
+  async getNewsDetail({ commit }, params) {
     const { data } = await this.$axios.$get("/api.php/api/getNewsDetail", {
       params,
     });

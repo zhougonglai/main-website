@@ -51,7 +51,7 @@ section.w-full.flex.flex-col.pb-20
 
 <script>
 import link from '@/assets/constant/link.json'
-import { mapState, mapActions, mapGetters } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'IndexPage',
