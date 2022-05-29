@@ -54,8 +54,7 @@ main.flex.flex-col.items-center
         nuxt-link(:to="activeNav.link") {{ activeNav.label }}
       .relative.cursor-pointer(v-if="lea" ref="lea" @click.stop="show = !show")
         ion-icon.mx-5(name="chevron-forward-sharp"  v-cloak)
-        //- nuxt-link(:to="lea.path") {{ lea.meta.title }}
-        span {{ lea.meta.title }}
+        nuxt-link(:to="lea.path") {{ lea.meta.title }}
         ion-icon.ml-5(name="chevron-down-sharp"  v-cloak v-if="lea.meta.paths.length")
         transition(
           enter-active-class="transition duration-100 ease-out"
