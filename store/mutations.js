@@ -30,6 +30,9 @@ export default {
   updateSummary(state, data) {
     state.summary = data;
   },
+  updateApply(state, data) {
+    state.apply = data;
+  },
   indexData(state, data) {
     state.indexData = {
       ...data,

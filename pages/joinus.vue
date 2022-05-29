@@ -25,7 +25,7 @@
               li 1、通信工程、电子信息工程、测控仪器等理工科专业，本科/硕士学历；
               li 2、具备较强的客户沟通能力和商务处理能力，学习能力强；
               li 3、喜欢有挑战性的工作并有强烈的成功愿望，愿意出差。
-  .banner.w-full.h-480.flex.items-center.justify-center.h-96.bg-gradient-to-r.from-blue-300.to-red-300
+  .banner.w-full.h-480.flex.items-center.justify-center.h-480.bg-gradient-to-r.from-blue-300.to-red-300
     .box
       h1.text-4xl.text-white 加入我们
   section.container.desc

@@ -63,11 +63,16 @@ export default {
   },
   /**
    * 获取应用数据
-   * @param {c_id} param0
+   * @param {id} param0
    * @returns
    */
-  async getApply({ commit }, body) {
-    const { data } = await this.$axios.$post("/api.php/api/getApply", body);
+  async getApply({ state, commit }) {
+    const { data } = await this.$axios.$get("/api.php/api/getApply", {
+      params: {
+        id: state.activeNav.id,
+      },
+    });
+    commit("updateApply", data);
     return data;
   },
   /**

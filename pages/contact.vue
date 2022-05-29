@@ -1,6 +1,6 @@
 <template lang="pug">
 .w-full.flex.flex-col.items-center.pb-20
-  .banner.w-full.h-480.flex.items-center.justify-center.h-96.bg-gradient-to-r.from-blue-300.to-red-300
+  .banner.w-full.h-480.flex.items-center.justify-center.bg-gradient-to-r.from-blue-300.to-red-300
     .box
       h1.text-4xl.text-white  联系我们
   .container.desc.text-gray-500.text-lg

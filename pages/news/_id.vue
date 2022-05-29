@@ -1,6 +1,6 @@
 <template lang="pug">
 .w-full.flex.flex-col.items-center.pb-20
-  .banner.w-full.h-480.flex.items-center.justify-center.h-96.bg-gradient-to-r.from-blue-300.to-red-300
+  .banner.w-full.h-480.flex.items-center.justify-center.h-480.bg-gradient-to-r.from-blue-300.to-red-300
     .box
       h1.text-4xl.text-white 新闻资讯
       .desc.text-white 及时了解我们所有的新闻发布、产品发布和生态合作——帮助您了解

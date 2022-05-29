@@ -5,6 +5,7 @@ export default () => ({
   product: [],
   products: {},
   summary: "",
+  apply: "",
   indexData: {},
   activeNav: "",
   lea: "",

@@ -1,6 +1,6 @@
 <template lang="pug">
 section.w-full.pb-20
-  .sc-1.flex.items-center.justify-center.h-96.bg-gradient-to-r.from-blue-300.to-red-300
+  .sc-1.flex.items-center.justify-center.h-480.bg-gradient-to-r.from-blue-300.to-red-300
     .sc-1__block
       h1.text-4xl.text-white 投资者关系
   .sc-2.flex.items-center.justify-center
