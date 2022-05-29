@@ -4,6 +4,7 @@
     "link": "/communication",
     "pid": 130,
     "level": 2,
+    "id": 20001,
     "tab": 0
   },
   "10002": {
@@ -11,61 +12,73 @@
     "link": "/service",
     "pid": 130,
     "level": 2,
+    "id": 10002,
     "tab": 0
-  },
-  "197": {
-    "label": "投资者关系",
-    "link": "/relations",
-    "tab": 3
   },
   "185": {
     "label": "矢量网络分析",
     "link": "/production",
+    "id": 185,
     "tab": 1
   },
   "193": {
     "label": "维修校准",
     "link": "/maintenance",
+    "id": 193,
     "tab": 2
   },
   "194": {
     "label": "资料下载",
     "link": "/openfile",
+    "id": 194,
     "tab": 2
   },
   "196": {
     "label": "公司简介",
     "link": "/about",
+    "id": 196,
+    "tab": 3
+  },
+  "197": {
+    "label": "投资者关系",
+    "link": "/relations",
+    "id": 197,
     "tab": 3
   },
   "198": {
     "label": "公司历史",
     "link": "/history",
+    "id": 198,
     "tab": 3
   },
   "200": {
     "label": "资质证书",
     "link": "/honorary",
+    "id": 200,
     "tab": 3
   },
   "202": {
     "label": "联系我们",
     "link": "/contact",
+    "id": 202,
     "tab": 3
   },
   "203": {
     "label": "新闻资讯",
     "link": "/news",
+    "id": 203,
     "tab": 3
   },
   "205": {
     "label": "校园招聘",
     "link": "/joinus",
+    "id": 205,
     "tab": 4
   },
   "206": {
     "label": "社会招聘",
     "link": "/joinus",
+    "id": 206,
     "tab": 4
   }
 }

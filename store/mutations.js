@@ -18,10 +18,14 @@ export default {
     }));
   },
   updateProduct(state, data) {
-    state.product = data;
+    state.product = data.map((p) => ({
+      ...p,
+      cover_path: process.env.BASE_API + p.cover_path,
+    }));
   },
   updateProducts(state, data) {
     state.products[data.id] = data;
+    state.prod = data;
   },
   updateSummary(state, data) {
     state.summary = data;

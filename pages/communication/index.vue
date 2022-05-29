@@ -55,6 +55,7 @@ section.w-full
 <script>
 import communication from '@/assets/constant/communication'
 import prod from '@/assets/constant/prods'
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: "communication-page",
@@ -74,7 +75,15 @@ export default {
       },
     };
   },
-  // components: { Checkbox }
+  computed: {
+    ...mapState(['summary']),
+  },
+  mounted() {
+    this.getSummaryData()
+  },
+  methods: {
+    ...mapActions(['getSummaryData'])
+  }
 }
 </script>
 

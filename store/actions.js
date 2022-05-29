@@ -18,7 +18,7 @@ export default {
   async getProduct({ commit, state }) {
     const { data } = await this.$axios.$get("/api.php/api/getProductByCateid", {
       params: {
-        c_id: state.activeNav,
+        c_id: state.activeNav.id,
       },
     });
     commit("updateProduct", data);
@@ -44,7 +44,7 @@ export default {
   async getSummaryData({ commit, state }) {
     const { data } = await this.$axios.$get("/api.php/api/getSummaryData", {
       params: {
-        c_id: state.activeNav,
+        c_id: state.activeNav.id,
       },
     });
     commit("updateSummary", data);
@@ -55,23 +55,60 @@ export default {
    * @param {c_id} param0
    * @returns
    */
-  async getSummaryData({ commit }, params) {
+  async postFormData({ commit }, params) {
     const { data } = await this.$axios.$get("/api.php/api/postFormData", {
       params,
     });
-    commit("updateSummary", data);
     return data;
   },
   /**
-   * 表单数据提交
+   * 获取应用数据
+   * @param {c_id} param0
+   * @returns
+   */
+  async getApply({ commit }, body) {
+    const { data } = await this.$axios.$post("/api.php/api/getApply", body);
+    return data;
+  },
+  /**
+   * 解决方案页面接口
+   * @param {c_id} param0
+   * @returns
+   */
+  async getSolution({ commit }, params) {
+    const { data } = await this.$axios.$get("/api.php/api/getSolution");
+    return data;
+  },
+  /**
+   * 首页数据
    * @param {c_id} param0
    * @returns
    */
   async getIndexData({ commit }, params) {
-    const { data } = await this.$axios.$get("/api.php/api/getIndex", {
+    const { data } = await this.$axios.$get("/api.php/api/getIndex");
+    commit("indexData", data);
+    return data;
+  },
+  /**
+   * 新闻列表
+   * @param {pages} param0
+   * @returns
+   */
+  async getIndexData({ commit }, params) {
+    const { data } = await this.$axios.$get("/api.php/api/getNewsList", {
       params,
     });
-    commit("indexData", data);
+    return data;
+  },
+  /**
+   * 获取新闻详情
+   * @param {id} param0
+   * @returns
+   */
+  async getIndexData({ commit }, params) {
+    const { data } = await this.$axios.$get("/api.php/api/getNewsDetail", {
+      params,
+    });
     return data;
   },
 };

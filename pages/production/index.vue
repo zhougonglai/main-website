@@ -24,32 +24,32 @@ section.w-full.flex.flex-col.pb-20
           tr.flex.leading-relaxed.border-gray-200.border
             th.prod-td.flex-1.p-5 产品图
             th.prod-td.flex-1.p-5 产品名称
-            th.prod-td.flex-1.p-5 产品形态
-            th.prod-td.flex-1.p-5 最大频率
-            th.prod-td.flex-1.p-5 端口数
+            th.prod-td.w-20.py-5 产品形态
+            th.prod-td.w-20.py-5 最大频率
+            th.prod-td.w-20.py-5 端口数
             th.prod-td.flex-1.p-5 型号
-            th.prod-td.flex-1.p-5
+            th.prod-td.w-28.p-5
         tbody.prod-tbd
-          tr.prod-tl.border-top.border-gray-200.h-20.flex.items-center(v-for="(prod, i) in productions" :key="i")
+          tr.prod-tl.border-top.border-gray-200.h-20.flex.items-center(v-for="(prod, i) in product" :key="i")
             td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center
               //- input(type="checkbox" v-model="selected[prod.id]")
               //- Checkbox(@change="selectChange($event, prod.id)" :disabled="selected[prod.id] ? false : selectedLength >= 3")
-              img.object-center.object-cover(:src="prod.url")
+              img.object-center.object-cover(:src="prod.cover_path" :alt="prod.name")
             td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.bg-gray-50
-              nuxt-link.w-full.h-full.flex.items-center.justify-center.opacity-80(class="text-primary hover:opacity-100" to="/production/t526c" v-text="prod.title")
-            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.text-center(v-text="prod.type")
-            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.text-center.bg-gray-50(v-text="prod.qz")
-            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.text-center(v-text="prod.port")
-            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.bg-gray-50(v-text="prod.types.join('/')")
-            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center
-              button.bg-primary.px-5.py-2.text-white 询价
+              nuxt-link.w-full.h-full.flex.items-center.justify-center.opacity-80(class="text-primary hover:opacity-100" :to="`/production/${prod.id}`" v-text="prod.name")
+            td.prod-ti.w-20.p-2.h-full.flex.items-center.justify-center.text-center(v-text="prod.content")
+            td.prod-ti.w-20.p-2.h-full.flex.items-center.justify-center.text-center.bg-gray-50(v-text="prod.content2")
+            td.prod-ti.w-20.p-2.h-full.flex.items-center.justify-center.text-center(v-text="prod.content3")
+            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.bg-gray-50(v-text="prod.content4")
+            td.prod-ti.w-28.p-2.h-full.flex.items-center.justify-center
+              nuxt-link.bg-primary.px-5.py-2.text-white(to="/contact") 询价
         //- tfoot.prod-tfd.absolute.w-full.flex.items-center.justify-center
         //-   button.bg-blue-500.px-5.py-2.text-white.-mt-5(:disabled="selectedLength < 2") {{ selectedLength }}/3 产品比较
 </template>
 
 <script>
 import productions from '@/assets/constant/production.json';
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: "production-page",
@@ -60,6 +60,7 @@ export default {
     };
   },
   computed: {
+    ...mapState(['product']),
     selectedLength() {
       return Object.values(this.selected).filter(v => v).length
     }

@@ -54,8 +54,9 @@ main.flex.flex-col.items-center
         nuxt-link(:to="activeNav.link") {{ activeNav.label }}
       .relative.cursor-pointer(v-if="lea" ref="lea" @click.stop="show = !show")
         ion-icon.mx-5(name="chevron-forward-sharp"  v-cloak)
-        nuxt-link(:to="lea.path") {{ lea.meta.title }}
-        ion-icon.ml-5(name="chevron-down-sharp"  v-cloak)
+        //- nuxt-link(:to="lea.path") {{ lea.meta.title }}
+        span {{ lea.meta.title }}
+        ion-icon.ml-5(name="chevron-down-sharp"  v-cloak v-if="lea.meta.paths.length")
         transition(
           enter-active-class="transition duration-100 ease-out"
           enter-from-class="transform scale-95 opacity-0"
@@ -64,8 +65,8 @@ main.flex.flex-col.items-center
           leave-from-class="transform scale-100 opacity-100"
           leave-to-class="transform scale-95 opacity-0")
           ul.nav-drops.absolute.bg-white.top-full.left-10.w-full.py-2.z-10.shadow-2xl.shadow-slate-600.translate-y-2(v-if="show")
-            li.nav-drop.pl-4.leading-10(v-for="(prod, i) in lea.meta.paths" :key="i" class="hover:bg-gray-300")
-              nuxt-link.truncate(:to="prod.link") {{ prod.title }}
+            li.nav-drop(v-for="(prod, i) in lea.meta.paths" :key="i")
+              nuxt-link.pl-4.leading-10.truncate.block.w-full.h-full(:to="prod.link" class="hover:bg-gray-100") {{ prod.title }}
   nuxt
   AppFooter(:menus="cate")
 </template>
