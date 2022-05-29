@@ -1,11 +1,11 @@
 <template lang="pug">
 .carousel-card.relative.w-full.flex.items-center.justify-center
-  button.carousel-prev.cursor-pointer.absolute.left-0.z-10.text-blue-300.flex.items-center.justify-center(
+  button.carousel-prev.cursor-pointer.absolute.left-0.z-10.text-blue-300.flex.items-center.justify-center.z-1(
     class="top-1/2 -translate-y-1/2 hover:text-blue-500" @click="prev")
     ion-icon.v-cloak(name="chevron-back-outline" size="large")
   .carousel-content.flex.overflow-hidden(:class="[contentClass]" ref="content")
     slot
-  button.carousel-next.cursor-pointer.absolute.right-0.z-10.text-blue-300.flex.items-center.justify-center(
+  button.carousel-next.cursor-pointer.absolute.right-0.z-10.text-blue-300.flex.items-center.justify-center.z-1(
     class="top-1/2 -translate-y-1/2 hover:text-blue-500" @click="next")
     ion-icon.v-cloak(name="chevron-forward-outline" size="large")
   .dot-container.absolute.bottom-5.left-0.right-0.flex.justify-center.items-center.gap-x-2.z-10(v-if="dot" :class="dotContentClass")

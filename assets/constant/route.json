@@ -15,6 +15,14 @@
     "id": 10002,
     "tab": 0
   },
+  "10010": {
+    "label": "无线电监测与测向",
+    "link": "/wxdjcycx",
+    "pid": 132,
+    "level": 2,
+    "id": 10010,
+    "tab": 0
+  },
   "185": {
     "label": "矢量网络分析",
     "link": "/production",
