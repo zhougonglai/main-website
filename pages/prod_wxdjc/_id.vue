@@ -113,14 +113,14 @@ export default {
     }
   },
   async mounted() {
-    if (!this.product.length) this.getProduct();
+    if (!this.product.production?.length) this.getProduct();
     console.log(this.$route)
     const data = await this.getProductDetail({ id: this.$route.params.id })
     this.$store.commit("updateLea", {
       path: `/prod_wxdjc/${this.$route.params.id}`,
       meta: {
         title: data.name,
-        paths: this.product.map(p => ({ link: `/prod_wxdjc/${p.id}`, title: p.name }))
+        paths: this.product.production.map(p => ({ link: `/prod_wxdjc/${p.id}`, title: p.name }))
       }
     });
   },
