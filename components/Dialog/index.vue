@@ -1,5 +1,5 @@
 <template lang="pug">
-dialog.grid.round.shadow(:open="open" inert ref="dialog" @click="dismiss")
+dialog.grid.round.shadow(:open="open" :inert="inert" ref="dialog" @click.stop="dismiss")
   slot
 </template>
 <script>
@@ -11,14 +11,26 @@ export default {
       default: false
     }
   },
+  data() {
+    return {
+      inert: true
+    }
+  },
   methods: {
     showModal() {
       this.$refs.dialog.showModal();
+      this.inert = false;
+      document.body.classList.add('overflow-hidden');
+    },
+    close() {
+      this.$refs.dialog.close();
+      this.inert = true;
+      document.body.classList.remove('overflow-hidden');
     },
 
     dismiss(e) {
       if (e.target.nodeName === 'DIALOG') {
-        this.$refs.dialog.close();
+        this.close();
       }
     }
   }
@@ -69,6 +81,14 @@ dialog {
     margin-block-end: 0;
     border-end-end-radius: 0;
     border-end-start-radius: 0;
+  }
+}
+</style>
+
+<style lang="scss">
+html {
+  &:has(dialog[open][modal-mode="mega"]) {
+    overflow: hidden;
   }
 }
 </style>

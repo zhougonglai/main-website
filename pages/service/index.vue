@@ -115,8 +115,23 @@
   </section>
 </template>
 <script>
+import { mapActions, mapState } from 'vuex'
+
+
 export default {
   name: 'service-page',
+  computed: {
+    basePath() {
+      return process.env.BASE_API
+    },
+    ...mapState(['apply'])
+  },
+  mounted() {
+    this.getApply();
+  },
+  methods: {
+    ...mapActions(['getApply'])
+  }
 }
 </script>
 

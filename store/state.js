@@ -2,7 +2,7 @@ export default () => ({
   cate: [],
   banner: "",
   prod: "",
-  product: [],
+  product: "",
   products: {},
   summary: "",
   apply: "",

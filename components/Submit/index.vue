@@ -1,5 +1,5 @@
 <template lang="pug">
-.form
+form.form(novalidate)
   h2.text-2xl 需要更多信息
   p.text-lg.text-gray-500.mt-5 如果您有任何疑问或需要了解更多信息，请填写此表格，我们会尽快回复您。
   .grid.grid-cols-2.gap-x-20.gap-y-5
