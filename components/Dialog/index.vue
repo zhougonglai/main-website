@@ -36,10 +36,17 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-@import "https://unpkg.com/open-props/easings.min.css";
-@import "https://unpkg.com/open-props/animations.min.css";
+<style lang="scss">
+@import "open-props/easings.min.css";
+@import "open-props/animations.min.css";
 
+html {
+  &:has(dialog[open][modal-mode="mega"]) {
+    overflow: hidden;
+  }
+}
+</style>
+<style lang="scss" scoped>
 dialog {
   &:not([open]) {
     pointer-events: none;
@@ -59,13 +66,13 @@ dialog {
   z-index: 9;
   transition: opacity .5s var(--ease-3);
 
-  @media (--motionOK) {
+  @media (prefers-reduced-motion: no-preference) {
     animation: var(--animation-scale-down) forwards;
     animation-timing-function: var(--ease-squish-3);
   }
 
   &[open] {
-    @media (--motionOK) {
+    @media (prefers-reduced-motion: no-preference) {
       animation: var(--animation-slide-in-up) forwards;
     }
   }
@@ -81,14 +88,6 @@ dialog {
     margin-block-end: 0;
     border-end-end-radius: 0;
     border-end-start-radius: 0;
-  }
-}
-</style>
-
-<style lang="scss">
-html {
-  &:has(dialog[open][modal-mode="mega"]) {
-    overflow: hidden;
   }
 }
 </style>
