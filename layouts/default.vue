@@ -33,7 +33,7 @@ main.flex.flex-col.items-center
               button.nav-panel-list-item.leading-8.flex.items-center.text-left.cursor-pointer(
                 v-for="(item, i) in activeLink.child.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)"
                 :key="item.id"
-                :class="{ active: activeNav ? item.id == subActive : false }"
+                :class="{ active: activeNav ? item.id == subActive || item.id == activeNav.id : false }"
                 :disabled="!item.child && !route[item.id]"
                 @click="selectSubmenu(item, i)")
                 .flex-1(v-text="item.title")
@@ -42,6 +42,7 @@ main.flex.flex-col.items-center
               button.nav-panel-list-item.leading-8.text-left.cursor-pointer(
                 v-for="(item, i) in subMenus.child.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)"
                 :key="item.id"
+                :class="{ active: activeNav ? item.id == subActive || item.id == activeNav.id : false }"
                 @click="selectLeamenu(item, i)"
                 :disabled="!item.child && !route[item.id]"
                 v-text="item.title")

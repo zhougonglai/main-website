@@ -63,29 +63,6 @@
               <p class="card-desc leading-8 mt-5" v-text="product.title1" />
             </div>
           </div>
-
-          <!-- <div
-            class="card flex flex-col cursor-pointer bg-white border-b-2 border-gray-100 hover:border-blue-300 hover:shadow">
-            <div class="card-cover">
-              <img class="object-center object-cover" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
-            </div>
-            <div class="card-content flex-1 p-5">
-              <h5 class="card-title text-2xl">ME208数字宽带接收机</h5>
-              <p class="card-desc leading-8 mt-5">鹰眼ME208数字宽带接收机是创远仪器经过多年技术积累，充分利用当代射频接收技术和高速数字信号处理技术研制的中等性能无线电接收机</p>
-            </div>
-          </div>
-
-          <div
-            class="card flex flex-col cursor-pointer bg-white border-b-2 border-gray-100 hover:border-blue-300 hover:shadow">
-            <div class="card-cover">
-              <img class="object-center object-cover" src="https://img01.yzcdn.cn/vant/cat.jpeg" />
-            </div>
-            <div class="card-content flex-1 p-5">
-              <h5 class="card-title text-2xl">ME208数字宽带接收机</h5>
-              <p class="card-desc leading-8 mt-5">鹰眼ME208数字宽带接收机是创远仪器经过多年技术积累，充分利用当代射频接收技术和高速数字信号处理技术研制的中等性能无线电接收机</p>
-            </div>
-          </div> -->
-
         </div>
       </div>
     </div>
@@ -95,7 +72,7 @@
 import { mapActions, mapState } from 'vuex';
 
 export default {
-  name: 'wxdjcycx-page',
+  name: 'tzhc-page',
   computed: {
     basePath() {
       return process.env.BASE_API

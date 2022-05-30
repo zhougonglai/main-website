@@ -12,14 +12,12 @@ export default {
   },
   /**
    * 获取产品列表
-   * @param {*} param0
+   * @param {c_id} param0
    * @returns
    */
-  async getProduct({ commit, state }) {
+  async getProduct({ commit }, params = {}) {
     const { data } = await this.$axios.$get("/api.php/api/getProductByCateid", {
-      params: {
-        c_id: state.activeNav.id,
-      },
+      params,
     });
     commit("updateProduct", data);
     return data;
@@ -66,11 +64,9 @@ export default {
    * @param {id} param0
    * @returns
    */
-  async getApply({ state, commit }) {
+  async getApply({ state, commit }, params) {
     const { data } = await this.$axios.$get("/api.php/api/getApply", {
-      params: {
-        id: state.activeNav.id,
-      },
+      params,
     });
     commit("updateApply", data);
     return data;
