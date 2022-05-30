@@ -117,10 +117,10 @@ export default {
     console.log(this.$route)
     const data = await this.getProductDetail({ id: this.$route.params.id })
     this.$store.commit("updateLea", {
-      path: `/production/${this.$route.params.id}`,
+      path: `/prod_wxdjc/${this.$route.params.id}`,
       meta: {
         title: data.name,
-        paths: this.product.map(p => ({ link: `/production/${p.id}`, title: p.name }))
+        paths: this.product.map(p => ({ link: `/prod_wxdjc/${p.id}`, title: p.name }))
       }
     });
   },
