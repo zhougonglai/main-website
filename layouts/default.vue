@@ -6,10 +6,15 @@ main.flex.flex-col.items-center
     .flex-1
     .nav-list.flex.justify-center.items-center
       nuxt-link(to="/contact" class="hover:text-blue-500") 联系我们
-      .search.ml-5.relative.flex.items-center.justify-center(:class="{ input: search.show }")
-        input.search-input.w-0.caret-blue-500.leading-10(ref="search" @blur="search.show = false")
-        .search-icon.inline-flex.items-center.justify-center.cursor-pointer(@click="searcher")
-          ion-icon(v-cloak name="search-outline")
+      button.mx-5(type='button' @click="createdToast")
+        ion-icon(v-cloak name="cart")
+      button(type='button')
+        ion-icon(v-cloak name="search")
+
+      //- .search.relative.flex.items-center.justify-center(:class="{ input: search.show }")
+      //-   //- input.search-input.w-0.caret-blue-500.leading-10(ref="search" @blur="search.show = false")
+      //-   .search-icon.inline-flex.items-center.justify-center.cursor-pointer(@click="searcher")
+      //-     ion-icon(v-cloak name="search-outline")
   .bg-gray-100.w-full.flex.justify-center
     nav.menus.flex.items-center.leading-10.relative(ref="menus" v-if="cate.length" v-cloak)
       .nav-link.px-8.py-4.cursor-pointer.text-lg.text-center(
@@ -69,6 +74,7 @@ main.flex.flex-col.items-center
               nuxt-link.pl-4.leading-10.truncate.block.w-full.h-full(:to="prod.link" class="hover:bg-gray-100") {{ prod.title }}
   nuxt
   AppFooter(:menus="cate")
+  ActionToast(ref="toast")
 </template>
 <script>
 import { mapState, mapActions } from 'vuex';
@@ -119,6 +125,9 @@ export default {
   },
   methods: {
     ...mapActions(['getCate', 'getBanner']),
+    createdToast() {
+      this.$refs.toast.createToast('提交成功, 敬请期待')
+    },
     searcher() {
       if (!this.search.show) {
         this.search.show = true;

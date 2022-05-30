@@ -72,7 +72,7 @@
 import { mapActions, mapState } from 'vuex';
 
 export default {
-  name: 'xhfxyl-page',
+  name: 'apply-page',
   computed: {
     basePath() {
       return process.env.BASE_API

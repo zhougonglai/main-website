@@ -30,18 +30,18 @@ section.w-full.flex.flex-col.pb-20
               //- Checkbox(@change="selectChange($event, prod.id)" :disabled="selected[prod.id] ? false : selectedLength >= 3")
               img.object-center.object-cover(:src="basePath + prod.cover_path" :alt="prod.name")
             td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.bg-gray-50
-              nuxt-link.w-full.h-full.flex.items-center.justify-center.opacity-80(class="text-primary hover:opacity-100" :to="{ path: `/prod/${$route.params.p_id}/detail/${prod.id}` }" v-text="prod.name")
+              nuxt-link.w-full.h-full.flex.items-center.justify-center.transition(class="text-primary hover:text-blue-500" :to="{ path: `/prod/${$route.params.p_id}/detail/${prod.id}` }" v-text="prod.name")
             td.prod-ti.w-20.p-2.h-full.flex.items-center.justify-center.text-center(v-text="prod.content")
             td.prod-ti.w-20.p-2.h-full.flex.items-center.justify-center.text-center.bg-gray-50(v-text="prod.content2")
             td.prod-ti.w-20.p-2.h-full.flex.items-center.justify-center.text-center(v-text="prod.content3")
             td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.bg-gray-50(v-text="prod.content4")
             td.prod-ti.w-28.p-2.h-full.flex.items-center.justify-center
-              button.bg-primary.px-5.py-2.text-white(@click="showModal(prod)") 询价
+              button.bg-primary.px-5.py-2.text-white.transition(class="hover:bg-blue-500" @click="showModal(prod)") 询价
     Dialog(ref="dialog" modal-mode="mega")
       .dialog-header.py-5.px-10.border-b.border-gray-100.flex
         h1.flex-1.text-2xl(v-text="prod.name")
         .dialog-close.cursor-pointer.text-2xl.text-gray-500(class="hover:text-gray-600" @click="closeDialog") &times;
-      Submit.p-10.overflow-auto(style="max-height: 700px")
+      Submit.p-10.overflow-auto(style="max-height: calc(80vh - 160px);")
         //- tfoot.prod-tfd.absolute.w-full.flex.items-center.justify-center
         //-   button.bg-blue-500.px-5.py-2.text-white.-mt-5(:disabled="selectedLength < 2") {{ selectedLength }}/3 产品比较
 </template>

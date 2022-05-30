@@ -1,5 +1,5 @@
 <template lang="pug">
-form.form(novalidate)
+.form
   h2.text-2xl 需要更多信息
   p.text-lg.text-gray-500.mt-5 如果您有任何疑问或需要了解更多信息，请填写此表格，我们会尽快回复您。
   .grid.grid-cols-2.gap-x-20.gap-y-5
@@ -39,7 +39,7 @@ form.form(novalidate)
       Checkbox
         span.text-gray-500 我希望通过电子邮件从创远仪器实体或子公司收到营销或广告信息（例如特价和折扣促销）。有关使用个人数据和撤回程序的更多详细信息，请参见隐私声明和营销许可。
     .flex.items-center.justify-end.mt-5
-      button.bg-primary.px-5.py-2.text-white 获取信息
+      button.bg-primary.px-5.py-2.text-white(class="hover:bg-blue-500") 获取信息
 </template>
 <script>
 export default {
