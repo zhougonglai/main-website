@@ -30,6 +30,9 @@ export default {
   updateApply(state, data) {
     state.apply = data;
   },
+  updateSolution(state, data) {
+    state.solution = data;
+  },
   indexData(state, data) {
     state.indexData = {
       ...data,

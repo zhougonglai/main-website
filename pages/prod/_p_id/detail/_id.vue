@@ -81,9 +81,7 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
             h3.card-title.text-xl.truncate(v-text="solution.name")
 </template>
 <script>
-import productions from '@/assets/constant/productions.json';
 import Dialog from '@/components/Dialog/index.vue';
-import tabs from '@/assets/constant/tabs.json';
 import { mapActions, mapState } from 'vuex';
 
 export default {
@@ -91,11 +89,8 @@ export default {
   components: { Dialog },
   data() {
     return {
-      productions: productions.filter((p, i) => i),
       show: false,
       coverIndex: 0,
-      banner: [],
-      tabs,
       tabActive: 0,
       types: []
     };

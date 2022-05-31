@@ -27,7 +27,8 @@
       <div class="sp-3__block py-10">
         <h1 class="text-4xl">相关解决方案</h1>
         <div class="resolve bg-gray-100 flex items-end justify-center gap-x-10 mt-60 pb-10" v-if="apply.solutions">
-          <nuxt-link v-for="solutions in apply.solutions" :key="solutions.id" :to="`/service/${solutions.id}`"
+          <nuxt-link v-for="solutions in apply.solutions" :key="solutions.id"
+            :to="`/apply/${$route.params.apply}/solution/${solutions.id}`"
             class="card flex flex-col cursor-pointer border-b-2 border-white hover:border-blue-300 hover:shadow">
             <div class="card-cover flex-1">
               <img class="object-center object-cover" :src="basePath + solutions.cover_path" width="100%"
@@ -52,8 +53,9 @@
       <div class="sp-4__block py-10">
         <h1 class="text-4xl">相关产品</h1>
         <div class="products bg-gray-100 flex  gap-x-10 p-10 mt-10">
-          <div v-for="product in apply.products" :key="product.id"
-            class="card flex flex-col cursor-pointer bg-white border-b-2 border-gray-100 hover:border-blue-300 hover:shadow">
+          <nuxt-link v-for="product in apply.products" :key="product.id"
+            class="card flex flex-col cursor-pointer bg-white border-b-2 border-gray-100 hover:border-blue-300 hover:shadow"
+            :to="`/prod/${product.category_id}/detail/${product.id}`">
             <div class="card-cover flex-1">
               <img class="object-center object-contain w-full h-full" :src="basePath + product.cover_path" width="100%"
                 height="100%" />
@@ -62,7 +64,7 @@
               <h5 class="card-title text-2xl" v-text="product.name" />
               <p class="card-desc leading-8 mt-5" v-text="product.title1" />
             </div>
-          </div>
+          </nuxt-link>
         </div>
       </div>
     </div>

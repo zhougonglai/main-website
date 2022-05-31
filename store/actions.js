@@ -77,7 +77,10 @@ export default {
    * @returns
    */
   async getSolution({ commit }, params) {
-    const { data } = await this.$axios.$get("/api.php/api/getSolution");
+    const { data } = await this.$axios.$get("/api.php/api/getSolution", {
+      params,
+    });
+    commit("updateSolution", data);
     return data;
   },
   /**
