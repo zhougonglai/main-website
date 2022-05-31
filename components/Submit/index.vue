@@ -4,35 +4,39 @@ form.form(novalidate @submit.prevent="submit")
   p.text-lg.text-gray-500.mt-5 如果您有任何疑问或需要了解更多信息，请填写此表格，我们会尽快回复您。
   .grid.grid-cols-2.gap-x-20.gap-y-5
     .flex.items-center.col-span-2.my-10
-      input.w-5.h-5.mr-5(type="radio" id="sex-1" v-model="form.sex" value="1")
+      input.w-5.h-5.mr-5(type="radio" id="sex-1" v-model="form.sex" value="男")
       label.text-xl.mr-20(for="sex-1") 男
-      input.w-5.h-5.mr-5(type="radio" id="sex-0" v-model="form.sex" value="0")
+      input.w-5.h-5.mr-5(type="radio" id="sex-0" v-model="form.sex" value="女")
       label.text-xl(for="sex-0") 女
     .flex-1.fex
       label.text-xl(for="name") 姓 名
-      input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="name" class="hover:bg-white")
+      input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="name" v-model="form.name" class="hover:bg-white")
     .flex-1
       label.text-xl(for="company") 公司名称
-      input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="company" class="hover:bg-white")
+      input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="company" v-model="form.company" class="hover:bg-white")
     .flex-1
       label.text-xl(for="email") 公司邮箱
-      input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="email" class="hover:bg-white")
+      input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="email" v-model="form.email" class="hover:bg-white")
     .flex-1
       label.text-xl(for="city") 城市
       submit-select.mt-5(id="city"
+      v-model="form.city"
       content-class="hover:bg-white h-14 border border-gray-500 w-full bg-gray-100 transition pl-5"
       :options="city")
     .flex-1
       label.text-xl(for="phone") 电话号码
-      input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="phone" class="hover:bg-white")
+      input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="phone" v-model.number="form.phone" type="number" class="hover:bg-white")
     .flex-1
       label.text-xl(for="ask") 询问
       submit-select.mt-5(id="ask"
+      v-model="form.question"
       class="hover:bg-white"
       content-class="hover:bg-white h-14 border border-gray-500 w-full bg-gray-100 transition pl-5"
-      :options="ask")
+      :options="question")
   .mt-10
-    textarea.p-5.w-full.border.border-gray-500.bg-gray-100.transition.pl-5(placeholder="具体问题描述" class="hover:bg-white")
+    textarea.p-5.w-full.border.border-gray-500.bg-gray-100.transition.pl-5(
+      v-model="form.description"
+      placeholder="具体问题描述" class="hover:bg-white")
   .flex-1.mt-10
     h4.text-2xl 营销许可
     .w-full.my-5
@@ -51,46 +55,48 @@ export default {
   data() {
     return {
       form: {
-        sex: 1,
+        sex: '男',
+        name: '',
+        company: '',
+        email: '',
+        city: '',
+        phone: '',
+        question: '',
+        description: '',
       },
-      city: [
-        {
-          label: '上海',
-          value: '001'
-        },
-        {
-          label: '北京',
-          value: '002'
-        },
-        {
-          label: '杭州',
-          value: '003'
-        },
-        {
-          label: '武汉',
-          value: '004'
-        },
-      ],
-      ask: [
-        {
-          label: '想具体了解产品报价及指标',
-          value: 'price'
-        },
-        {
-          label: '需要售后指导及维修方面问询',
-          value: 'service'
-        }
-      ],
-      loading: false
+      loading: false,
+      city: [],
+      question: [],
     }
   },
+  mounted() {
+    this.getCity();
+    this.getQuestion();
+  },
   methods: {
+    async getCity() {
+      const { data } = await this.$axios.get('/api.php/api/getCity').then(res => res.data)
+      console.log(data)
+      this.city = data.map(item => ({
+        label: item.city,
+        value: item.city
+      }));
+    },
+    async getQuestion() {
+      const { data } = await this.$axios.get('/api.php/api/getQuestion').then(res => res.data)
+      this.question = data.map(item => ({
+        label: item.title,
+        value: item.title
+      }));
+    },
     submit() {
       this.loading = true;
-      setTimeout(() => {
+      this.$emit('submit', this.form)
+      this.$axios.post('/api.php/api/postFormData', this.form).then(res => res.data).then(data => {
         this.loading = false;
-        this.$emit('submit', this.form)
-      }, 3000);
+        console.log(data);
+        this.$root.$emit('toast', data.msg);
+      });
     }
   }
 }

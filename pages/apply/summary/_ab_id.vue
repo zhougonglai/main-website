@@ -52,7 +52,7 @@ section.w-full
                   | 产品信息
   .sc-6.flex.items-center.justify-center
     .sc-6__block.flex.flex-col.py-20
-      Submit
+      Submit(@submit="submit")
 </template>
 
 <script>
@@ -88,7 +88,10 @@ export default {
     this.getSummaryData({ c_id: this.$route.params.ab_id })
   },
   methods: {
-    ...mapActions(['getSummaryData'])
+    ...mapActions(['getSummaryData']),
+    submit(data) {
+      console.log(data)
+    }
   }
 }
 </script>
