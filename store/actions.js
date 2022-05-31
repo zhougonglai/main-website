@@ -39,11 +39,9 @@ export default {
    * @param {c_id} param0
    * @returns
    */
-  async getSummaryData({ commit, state }) {
+  async getSummaryData({ commit }, params) {
     const { data } = await this.$axios.$get("/api.php/api/getSummaryData", {
-      params: {
-        c_id: state.activeNav.id,
-      },
+      params,
     });
     commit("updateSummary", data);
     return data;
