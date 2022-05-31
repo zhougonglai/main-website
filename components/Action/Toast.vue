@@ -1,6 +1,6 @@
 <template lang="pug">
 div(ref="toast")
-  transition-group.gui-toast-group(name="list" tag="section")
+  transition-group.gui-toast-group.justify-end.grid.flex-col.gap-y-5.justify-items-end(name="list" tag="section")
     output.gui-toast.text-base.rounded.px-5.py-2.list-none.bg-primary.text-white.z-10(role="status" v-for="(toast, i) in toasts" :key="toast.rid" v-text="toast.text")
 </template>
 <script>
@@ -61,11 +61,6 @@ export default {
     z-index: 99;
     right: 15px;
     bottom: 15px;
-
-    display: grid;
-    justify-items: center;
-    justify-content: center;
-    gap: 1vh;
 
     pointer-events: none;
   }
