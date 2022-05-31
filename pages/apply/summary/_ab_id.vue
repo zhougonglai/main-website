@@ -31,14 +31,14 @@ section.w-full
   .sc-4.flex.items-center.justify-center
     .sc-4__block.flex.py-20
       .left.flex-1
-        h1.text-4xl  丰富知识库
-        p.mt-5.text-2xl 探索讨论各种无线通信主题的最新视频。
+        h1.text-4xl(v-text="summary.video_title")
+        p.mt-5.text-2xl(v-text="summary.video_content")
       .right.flex-1
         video(:src="basePath + summary.goods_video" controls)
   .sc-5.flex.items-center.justify-center.bg-gray-100
     .sc-5__block.flex.flex-col.py-20
       h1.text-4xl 推荐产品
-      carousel-card.mt-10(size="3" :max-size="summary.products.length" content-class="flex overflow-hidden content")
+      carousel-card.mt-10(size="3" v-if="summary.products" :max-size="summary.products.length" content-class="flex overflow-hidden content")
         carousel-item(v-for="(p, i) in summary.products" :key="p.id" class="item flex-shrink-0")
           nuxt-link.card.flex.flex-col.bg-white.border-b-2.border-white(class="hover:shadow hover:border-blue-300" :to="`/prod/${p.category_id}/detail/${p.id}`")
             .card-cover
