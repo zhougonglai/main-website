@@ -130,10 +130,6 @@ export default {
     .item {
       width: 300px;
       margin-left: 40px;
-
-      // &:nth-of-type(2n),
-      // &:nth-of-type(3n) {
-      // }
     }
   }
 }
