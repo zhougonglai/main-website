@@ -80,6 +80,7 @@ dialog {
   &::backdrop {
     transition: backdrop-filter .5s ease;
     backdrop-filter: blur(25px);
+    z-index: 9;
   }
 }
 

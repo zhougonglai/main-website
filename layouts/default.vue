@@ -6,7 +6,7 @@ main.flex.flex-col.items-center
     .flex-1
     .nav-list.flex.justify-center.items-center
       nuxt-link(to="/contact" class="hover:text-blue-500") 联系我们
-      button.mx-5(type='button' @click="createdToast")
+      button.mx-5(type='button' @click="createToast(Math.random())")
         ion-icon(v-cloak name="cart")
       button(type='button')
         ion-icon(v-cloak name="search")
@@ -109,6 +109,11 @@ export default {
     },
     ...mapState(['activeNav', 'lea', 'cate'])
   },
+  created() {
+    this.$root.$on('toast', (e) => {
+      this.createToast(e)
+    })
+  },
   mounted() {
     this.closeMenus();
     window.addEventListener('click', e => {
@@ -125,8 +130,8 @@ export default {
   },
   methods: {
     ...mapActions(['getCate', 'getBanner']),
-    createdToast() {
-      this.$refs.toast.createToast('提交成功, 敬请期待')
+    createToast(text) {
+      this.$refs.toast.createToast(text)
     },
     searcher() {
       if (!this.search.show) {

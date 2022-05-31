@@ -41,7 +41,7 @@ section.w-full.flex.flex-col.pb-20
       .dialog-header.py-5.px-10.border-b.border-gray-100.flex
         h1.flex-1.text-2xl(v-text="prod.name")
         .dialog-close.cursor-pointer.text-2xl.text-gray-500(class="hover:text-gray-600" @click="closeDialog") &times;
-      Submit.p-10.overflow-auto(style="max-height: calc(80vh - 160px);")
+      Submit.p-10.overflow-auto(style="max-height: calc(80vh - 160px);" @submit="submit")
         //- tfoot.prod-tfd.absolute.w-full.flex.items-center.justify-center
         //-   button.bg-blue-500.px-5.py-2.text-white.-mt-5(:disabled="selectedLength < 2") {{ selectedLength }}/3 产品比较
 </template>
@@ -80,6 +80,10 @@ export default {
     },
     closeDialog() {
       this.$refs.dialog.close();
+    },
+    submit() {
+      this.closeDialog()
+      this.$root.$emit('toast', '提交成功')
     }
   },
   mounted() {

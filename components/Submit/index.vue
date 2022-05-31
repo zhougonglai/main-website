@@ -1,5 +1,5 @@
 <template lang="pug">
-.form
+form.form(novalidate @submit.prevent="submit")
   h2.text-2xl 需要更多信息
   p.text-lg.text-gray-500.mt-5 如果您有任何疑问或需要了解更多信息，请填写此表格，我们会尽快回复您。
   .grid.grid-cols-2.gap-x-20.gap-y-5
@@ -39,7 +39,11 @@
       Checkbox
         span.text-gray-500 我希望通过电子邮件从创远仪器实体或子公司收到营销或广告信息（例如特价和折扣促销）。有关使用个人数据和撤回程序的更多详细信息，请参见隐私声明和营销许可。
     .flex.items-center.justify-end.mt-5
-      button.bg-primary.px-5.py-2.text-white(class="hover:bg-blue-500") 获取信息
+      button.bg-primary.px-5.py-2.text-white.inline-flex.items-center(class="hover:bg-blue-500" :disabled="loading" :class="{ 'cursor-not-allowed': loading }")
+        svg.animate-spin.-ml-1.mr-3.h-5.w-5.text-white(fill="none" viewBox="0 0 24 24" v-if="loading")
+          circle.opacity-25(cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4")
+          path.opacity-75(fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z")
+        | 获取信息
 </template>
 <script>
 export default {
@@ -76,7 +80,17 @@ export default {
           label: '需要售后指导及维修方面问询',
           value: 'service'
         }
-      ]
+      ],
+      loading: false
+    }
+  },
+  methods: {
+    submit() {
+      this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
+        this.$emit('submit', this.form)
+      }, 3000);
     }
   }
 }

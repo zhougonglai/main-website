@@ -24,7 +24,7 @@ export default {
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
   css: ["@/assets/css/global.scss", "@/assets/css/tailwind.css"],
-  plugins: [],
+  plugins: ["~/plugins/bus"],
   components: true,
   buildModules: [
     // "@nuxtjs/tailwindcss",

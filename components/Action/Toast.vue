@@ -1,7 +1,7 @@
 <template lang="pug">
 div(ref="toast")
   transition-group.gui-toast-group(name="list" tag="section")
-    output.gui-toast.text-base.rounded.px-5.py-2.list-none.bg-primary.text-white(role="status" v-for="(toast, i) in toasts" :key="toast.rid" v-text="toast.text")
+    output.gui-toast.text-base.rounded.px-5.py-2.list-none.bg-primary.text-white.z-10(role="status" v-for="(toast, i) in toasts" :key="toast.rid" v-text="toast.text")
 </template>
 <script>
 export default {
@@ -12,7 +12,7 @@ export default {
     }
   },
   mounted() {
-    document.body.firstElementChild.appendChild(this.$refs.toast)
+    document.body.appendChild(this.$refs.toast)
   },
   methods: {
     createToast(text) {
@@ -52,20 +52,13 @@ export default {
 }
 
 .gui-toast {
-  --bg-lightness: 90%;
-  --duration: 3s;
-  --travel-distance: 0;
-
-  @media (prefers-reduced-motion: no-preference) {
-    --travel-distance: 5vh;
-  }
-
+  z-index: 10;
   will-change: transform;
   max-inline-size: min(25ch, 90vw);
 
   &-group {
     position: fixed;
-    z-index: 1;
+    z-index: 99;
     right: 15px;
     bottom: 15px;
 

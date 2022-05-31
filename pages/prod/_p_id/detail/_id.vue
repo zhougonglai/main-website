@@ -65,7 +65,9 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
 
       h1.text-2xl.mt-10 相关型号
       .types.bg-gray-100.grid.grid-cols-3.my-10.p-10.gap-10
-        .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(class="hover:shadow hover:border-blue-300" v-for="p in prod.products" :key="p.id")
+        .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
+          class="hover:shadow hover:border-blue-300"
+          v-for="p in prod.products" :key="p.id")
           .card-cover.flex-1
             img.object-center.object-contain.h-full(:src="basePath + p.cover_path" width="100%" height="100%")
           .card-content.p-5
@@ -109,7 +111,6 @@ export default {
   },
   async mounted() {
     if (!this.product?.production?.length) this.getProduct({ c_id: this.$route.params.p_id });
-    console.log(this.$route)
     const data = await this.getProductDetail({ id: this.$route.params.id })
     this.$store.commit("updateLea", {
       path: `/prod/${this.$route.params.p_id}/detail/${this.$route.params.id}`,

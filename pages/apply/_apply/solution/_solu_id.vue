@@ -73,9 +73,8 @@ export default {
   async mounted() {
     if (!this.apply) await this.getApply({ id: this.$route.params.apply });
     const data = await this.getSolution({ id: this.$route.params.solu_id });
-    console.log(data, this.apply)
     this.$store.commit("updateLea", {
-      path: `/apply/${this.apply.id}/solution/${data.id}`,
+      path: `/apply/${data.category_id}/solution/${data.id}`,
       meta: {
         title: data.name,
         paths: this.apply.solutions.map((solu) => ({ link: `/apply/${solu.category_id}/solution/${solu.id}`, title: solu.name }))
