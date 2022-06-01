@@ -1,33 +1,50 @@
 <template lang="pug">
-.w-full.flex.flex-col.items-center.pb-20
-  .banner.w-full.h-480.flex.items-center.justify-center.h-480.bg-gradient-to-r.from-blue-300.to-red-300
-    .box
-      h1.text-4xl.text-white 新闻资讯
-      .desc.text-white 及时了解我们所有的新闻发布、产品发布和生态合作——帮助您了解
-        br
-        | 快速发展的测试技术以及创远为国产仪器所作出的卓越贡献。
+.w-full.flex.flex-col.items-center.pb-20(v-if="newsDetail.detail")
+  .banner.w-full.h-480.flex.items-center.justify-center.relative
+    img.absolute.inset-0.object-center.object-cover.w-full.h-full.z-0(:src="basePath + newsDetail.detail.url" width="100%" height="100%")
+    section.con.z-1.text-white
+      h1.text-4xl(v-text="newsDetail.title")
+      pre.text-lg.mt-10(v-text="newsDetail.content")
   article
-    .time 2022年2月13日
-    h1.title 创远仪器参加2021年mwc
-    .content
-      p 新闻概述内容-及时了解我们所有的新闻发布、产品发布和生态合作帮助您了解快速发展的 测试技术以及创远为国产仪器所作出的卓越贡献。
-      img(src="../../assets/img/bg_sunset.jpg")
-      p 新闻概述内容-及时了解我们所有的新闻发布、产品发布和生态合作帮助您了解快速发展的 测试技术以及创远为国产仪器所作出的卓越贡献。
-      p 新闻概述内容-及时了解我们所有的新闻发布、产品发布和生态合作帮助您了解快速发展的 测试技术以及创远为国产仪器所作出的卓越贡献。
-      p 新闻概述内容-及时了解我们所有的新闻发布、产品发布和生态合作帮助您了解快速发展的 测试技术以及创远为国产仪器所作出的卓越贡献。
-      p 新闻概述内容-及时了解我们所有的新闻发布、产品发布和生态合作帮助您了解快速发展的 测试技术以及创远为国产仪器所作出的卓越贡献。
-      p 新闻概述内容-及时了解我们所有的新闻发布、产品发布和生态合作帮助您了解快速发展的 测试技术以及创远为国产仪器所作出的卓越贡献。
-      p 新闻概述内容-及时了解我们所有的新闻发布、产品发布和生态合作帮助您了解快速发展的 测试技术以及创远为国产仪器所作出的卓越贡献。
-      p 新闻概述内容-及时了解我们所有的新闻发布、产品发布和生态合作帮助您了解快速发展的 测试技术以及创远为国产仪器所作出的卓越贡献。
-  section.flex.more
-    a(href="") 上一篇：创远仪器参加国防科技展
-    a(href="") 下一篇：创远仪器参加国防科技展
+    .flex.gap-x-2.text-sm.text-gray-500
+      time(v-text="newsDetail.detail.date")
+      address.not-italic(v-text="newsDetail.detail.addr")
+    h1.my-10.text-4xl(v-text="newsDetail.detail.name")
+    .content(v-html="newsDetail.detail.content")
+  section.con.flex.justify-between
+    nuxt-link.border.border-gray-300.bg-gray-100.text-lg.px-5.py-2(v-if="newsDetail.detail.prve" :to="`/news/${newsDetail.detail.prve.id}`" class="hover:bg-gray-300") 上一篇: {{ newsDetail.detail.prve.name }}
+    .flex-1(v-else)
+    nuxt-link.border.border-gray-300.bg-gray-100.text-lg.px-5.py-2(v-if="newsDetail.detail.next" :to="`/news/${newsDetail.detail.next.id}`" class="hover:bg-gray-300") 下一篇: {{ newsDetail.detail.next.name }}
+    .flex-1(v-else)
 </template>
 <script>
+import { mapActions, mapState } from 'vuex';
+
 export default {
-  mounted() {
-    console.log("id");
+  name: 'news-detail-page',
+  computed: {
+    basePath() {
+      return process.env.BASE_API
+    },
+    ...mapState(['newsDetail'])
   },
+  async mounted() {
+    const data = await this.getNewsDetail(this.$route.params)
+
+    this.$store.commit('updateLea', {
+      path: `/news/${this.$route.params.id}`,
+      meta: {
+        title: data.detail.name,
+        paths: []
+      }
+    })
+  },
+  destroyed() {
+    this.$store.commit('updateLea', '')
+  },
+  methods: {
+    ...mapActions(['getNewsDetail'])
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -37,6 +54,10 @@ export default {
   .box {
     width: 1000px;
   }
+}
+
+.con {
+  width: 1000px;
 }
 
 article {

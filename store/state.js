@@ -11,5 +11,5 @@ export default () => ({
   activeNav: "",
   lea: "",
   news: [],
-  newsDetail: "",
+  newsDetail: {},
 });
