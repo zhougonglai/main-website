@@ -100,6 +100,7 @@ export default {
     const { data } = await this.$axios.$get("/api.php/api/getNewsList", {
       params,
     });
+    commit("updateNews", data);
     return data;
   },
   /**
@@ -111,6 +112,7 @@ export default {
     const { data } = await this.$axios.$get("/api.php/api/getNewsDetail", {
       params,
     });
+    commit("updateNewsDetail", data);
     return data;
   },
 };

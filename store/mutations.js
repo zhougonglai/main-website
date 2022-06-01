@@ -48,4 +48,10 @@ export default {
         .reverse(),
     };
   },
+  updateNews(state, data) {
+    state.news = data;
+  },
+  updateNewsDetail(state, data) {
+    state.newsDetail = data;
+  },
 };

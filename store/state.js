@@ -10,4 +10,6 @@ export default () => ({
   indexData: {},
   activeNav: "",
   lea: "",
+  news: [],
+  newsDetail: "",
 });
