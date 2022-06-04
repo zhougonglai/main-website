@@ -32,7 +32,7 @@ section.w-full.flex.flex-col.pb-20
           nuxt-link.news-action(to="/news") 更多新闻
         .news-item.bg-white.flex.relative.shadow(v-for="(n, i) in indexData.news" :key="i" class="hover:shadow-lg")
           .news-cover
-            img.object-cover.object-center.w-full.h-full(:src="n.url")
+            img.object-cover.object-center.h-full(:src="n.url" :width="i ? '100%' : '200'")
           .flex.flex-col.p-5.flex-1
             .news-info.flex.items-end
               .news-label.text-base 新闻发布
@@ -110,9 +110,11 @@ export default {
 
       .news-cover {
         min-width: 200px;
+      }
 
-        img {
-          width: 100%;
+      &:first-of-type {
+        .news-cover {
+          width: 200px;
         }
       }
 

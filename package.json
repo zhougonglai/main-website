@@ -13,6 +13,7 @@
     "@nuxt/content": "^1.15.1",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/pwa": "^3.3.5",
+    "bowser": "^2.11.0",
     "core-js": "^3.19.3",
     "glob": "7.2.0",
     "lodash": "^4.17.21",

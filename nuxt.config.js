@@ -13,7 +13,9 @@ export default {
     ],
     script: [
       {
-        nomodule: true,
+        src: "https://b.alicdn.com/s/polyfill.min.js?features=default,es2015,Intl",
+      },
+      {
         src: "https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/ionicons/5.5.4/ionicons/ionicons.min.js",
       },
       {

@@ -3,7 +3,7 @@
   button.carousel-prev.cursor-pointer.absolute.left-0.z-10.text-blue-300.flex.items-center.justify-center.z-1(
     class="top-1/2 -translate-y-1/2 hover:text-blue-500" @click="prev")
     ion-icon.v-cloak(name="chevron-back-outline" size="large")
-  .carousel-content.flex.overflow-hidden(:class="[contentClass]" ref="content")
+  .carousel-content.flex.overflow-hidden(:class="[contentClass, browser.name != 'Safari' ? 'smooth' : 'auto']" ref="content")
     slot
   button.carousel-next.cursor-pointer.absolute.right-0.z-10.text-blue-300.flex.items-center.justify-center.z-1(
     class="top-1/2 -translate-y-1/2 hover:text-blue-500" @click="next")
@@ -12,6 +12,8 @@
     .dot.flex.items-center.justify-center.cursor-pointer.transition(v-for="i in maxSize" :key="i" @click="moveTo(i - 1)" :class="{ [dotActiveClass]: (i - 1) == index, [dotClass]: (i - 1) != index }")
 </template>
 <script>
+import Bowser from "bowser";
+
 export default {
   name: "carousel-card",
   props: {
@@ -56,12 +58,16 @@ export default {
     return {
       index: 0,
       timer: 0,
+      ...Bowser.parse(window.navigator.userAgent)
     }
   },
   computed: {
     maxIndex() {
       return Math.ceil(this.maxSize / this.size);
     }
+  },
+  mounted() {
+    console.log(Bowser.parse(window.navigator.userAgent))
   },
   methods: {
     prev() {
@@ -70,16 +76,15 @@ export default {
       this.$refs.content.scroll({
         top: 0,
         left: this.index * this.$refs.content.offsetWidth,
-        behavior: 'smooth'
       })
     },
     next() {
+      console.log(this.$refs.content)
       if (this.index == this.maxIndex - 1) return;
       this.index = this.index + 1;
       this.$refs.content.scroll({
         top: 0,
         left: this.index * this.$refs.content.offsetWidth,
-        behavior: 'smooth'
       })
     },
     moveTo(index) {
@@ -87,7 +92,6 @@ export default {
       this.$refs.content.scroll({
         top: 0,
         left: this.index * this.$refs.content.offsetWidth,
-        behavior: 'smooth'
       })
     }
   }
@@ -95,6 +99,14 @@ export default {
 </script>
 <style lang="scss" scoped>
 .carousel {
-  &-card {}
+  &-content {
+    &.smooth {
+      scroll-behavior: smooth;
+    }
+
+    &.auto {
+      scroll-behavior: auto;
+    }
+  }
 }
 </style>

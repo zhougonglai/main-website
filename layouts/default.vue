@@ -10,11 +10,6 @@ main.flex.flex-col.items-center
         ion-icon(v-cloak name="cart")
       button(type='button')
         ion-icon(v-cloak name="search")
-
-      //- .search.relative.flex.items-center.justify-center(:class="{ input: search.show }")
-      //-   //- input.search-input.w-0.caret-blue-500.leading-10(ref="search" @blur="search.show = false")
-      //-   .search-icon.inline-flex.items-center.justify-center.cursor-pointer(@click="searcher")
-      //-     ion-icon(v-cloak name="search-outline")
   .bg-gray-100.w-full.flex.justify-center
     nav.menus.flex.items-center.leading-10.relative(ref="menus" v-if="cate.length" v-cloak)
       .nav-link.px-8.py-4.cursor-pointer.text-lg.text-center(
@@ -35,22 +30,30 @@ main.flex.flex-col.items-center
           .nav-panel__icon(:style="{ left: stageIndex[active] + 'px' }")
           .nav-panel-content.flex
             .nav-panel-list.flex.flex-col.w-60.p-5
-              button.nav-panel-list-item.leading-8.flex.items-center.text-left.cursor-pointer(
-                v-for="(item, i) in activeLink.child.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)"
-                :key="item.id"
-                :class="{ active: activeNav ? item.id == subActive || item.id == activeNav.id : false }"
-                :disabled="!item.child && !route[item.id]"
-                @click="selectSubmenu(item, i)")
-                .flex-1(v-text="item.title")
-                ion-icon(name="chevron-forward" v-show="i === subActive")
+              template(v-if="activeLink.child.filter(m => m.router).length")
+                nuxt-link.nav-panel-list-item.leading-8.flex.items-center.text-left.cursor-pointer(
+                  v-for="(item, i) in activeLink.child.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)"
+                  :to="item.router"
+                  :key="item.id")
+                  .flex-1(v-text="item.title")
+                  ion-icon(name="chevron-forward" v-show="i === subActive")
+              template(v-else)
+                button.nav-panel-list-item.leading-8.flex.items-center.text-left.cursor-pointer(
+                  v-for="(item, i) in activeLink.child.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)"
+                  :class="{ active: activeNav ? item.id == subActive : false }"
+                  @click="selectSubmenu(item, i)"
+                  :key="item.id")
+                  .flex-1(v-text="item.title")
+                  ion-icon(name="chevron-forward" v-show="i === subActive")
             .nav-panel-list.flex.flex-col.w-60.p-5(v-if="Number.isFinite(subActive)")
-              button.nav-panel-list-item.leading-8.text-left.cursor-pointer(
+              nuxt-link.nav-panel-list-item.leading-8.text-left.cursor-pointer(
                 v-for="(item, i) in subMenus.child.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)"
                 :key="item.id"
-                :class="{ active: activeNav ? item.id == subActive || item.id == activeNav.id : false }"
-                @click="selectLeamenu(item, i)"
-                :disabled="!item.child && !route[item.id]"
+                :to="item.router"
                 v-text="item.title")
+                //- :class="{ active: activeNav ? item.id == subActive || item.id == activeNav.id : false }"
+                //- :disabled="!item.child && !route[item.id]"
+                //- @click="selectLeamenu(item, i)"
   section.breadcrumbs(v-if="$route.name != 'index'")
     nav.py-4.breadcrumb.flex.items-center(aria-label="breadcrumbs")
       nuxt-link(to="/")
@@ -72,6 +75,8 @@ main.flex.flex-col.items-center
           ul.nav-drops.absolute.bg-white.top-full.left-10.w-full.py-2.z-10.shadow-2xl.shadow-slate-600.translate-y-2(v-if="show")
             li.nav-drop(v-for="(prod, i) in lea.meta.paths" :key="i")
               nuxt-link.pl-4.leading-10.truncate.block.w-full.h-full(:to="prod.link" class="hover:bg-gray-100") {{ prod.title }}
+  //- NavBreadcrumbs(:navs="cate")
+  //- SubmitMultiSelect
   nuxt
   AppFooter(:menus="cate")
   ActionToast(ref="toast")
@@ -81,13 +86,13 @@ import { mapState, mapActions } from 'vuex';
 import route from '@/assets/constant/route';
 
 export default {
-  name: 'default',
-  middleware: 'router',
+  name: "default",
+  middleware: "router",
   data() {
     return {
-      active: '',
-      subActive: '',
-      leaActive: '',
+      active: "",
+      subActive: "",
+      leaActive: "",
       route,
       show: false,
       stageIndex: [25, 130, 250, 400, 535],
@@ -95,28 +100,28 @@ export default {
       search: {
         show: false,
       }
-    }
+    };
   },
   computed: {
     activeLink() {
-      return Number.isFinite(this.active) ? this.cate[this.active] : null
+      return Number.isFinite(this.active) ? this.cate[this.active] : null;
     },
     subMenus() {
-      return Number.isFinite(this.subActive) ? this.activeLink.child[this.subActive] : null
+      return Number.isFinite(this.subActive) ? this.activeLink.child[this.subActive] : null;
     },
     leaMenus() {
-      return Number.isFinite(this.leaActive) ? this.subMenus.child[this.leaActive] : null
+      return Number.isFinite(this.leaActive) ? this.subMenus.child[this.leaActive] : null;
     },
-    ...mapState(['activeNav', 'lea', 'cate'])
+    ...mapState(["activeNav", "lea", "cate"])
   },
   created() {
-    this.$root.$on('toast', (e) => {
-      this.createToast(e)
-    })
+    this.$root.$on("toast", (e) => {
+      this.createToast(e);
+    });
   },
   mounted() {
     this.closeMenus();
-    window.addEventListener('click', e => {
+    window.addEventListener("click", e => {
       if (Number.isFinite(this.active) && this.$refs.menus) {
         if (!this.$refs.menus.contains(e.target)) {
           this.closeMenus();
@@ -125,13 +130,13 @@ export default {
       if (!this.$refs?.lea?.contains(e.target)) {
         this.show = false;
       }
-    })
+    });
     this.getCate();
   },
   methods: {
-    ...mapActions(['getCate', 'getBanner']),
+    ...mapActions(["getCate", "getBanner"]),
     createToast(text) {
-      this.$refs.toast.createToast(text)
+      this.$refs.toast.createToast(text);
     },
     searcher() {
       if (!this.search.show) {
@@ -140,47 +145,47 @@ export default {
       }
     },
     closeMenus() {
-      this.leaActive = '';
-      this.subActive = '';
-      this.active = '';
+      this.leaActive = "";
+      this.subActive = "";
+      this.active = "";
     },
     selectMenu(menu, active) {
       if (menu.child) {
-        this.active = active
-        this.subActive = '';
-        this.leaActive = '';
-        return
+        this.active = active;
+        this.subActive = "";
+        this.leaActive = "";
+        return;
       }
       if (menu.id in route) {
         this.$router.push({
           path: route[menu.id].link
-        })
+        });
       }
       this.closeMenus();
     },
     selectSubmenu(menu, active) {
       if (menu.child) {
-        return this.subActive = active
+        return this.subActive = active;
       }
       if (menu.id in route) {
         this.$router.push({
           path: route[menu.id].link
-        })
+        });
       }
       this.closeMenus();
     },
     selectLeamenu(menu, active) {
       if (menu.child) {
-        return this.leaActive = active
+        return this.leaActive = active;
       }
       if (menu.id in route) {
         this.$router.push({
           path: route[menu.id].link
-        })
+        });
       }
       this.closeMenus();
     }
-  }
+  },
 }
 </script>
 
