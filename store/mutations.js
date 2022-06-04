@@ -54,4 +54,7 @@ export default {
   updateNewsDetail(state, data) {
     state.newsDetail = data;
   },
+  updatePosition(state, data) {
+    state.positions = data;
+  },
 };

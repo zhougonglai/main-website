@@ -115,4 +115,62 @@ export default {
     commit("updateNewsDetail", data);
     return data;
   },
+  /**
+   * 招聘类型 1为校招 2为社会招聘
+   * @param {pages, category, type } param0
+   *  category { 1: 业务, 2: 研发, 3:职能 }
+   * @returns
+   */
+
+  async getPosition({ commit }, params) {
+    const { data } = await this.$axios.$get("/api.php/api/getPosition", {
+      params,
+    });
+    commit("updatePosition", data);
+    return data;
+  },
+  /**
+   * 历史
+   * @param {} param0
+   * @returns
+   */
+  async getHistory({ commit }, params) {
+    const { data } = await this.$axios.$get("/api.php/api/getHistory", {
+      params,
+    });
+    return data;
+  },
+  /**
+   * 投资者关系
+   * @param {} param0
+   * @returns
+   */
+  async getInvestor({ commit }, params) {
+    const { data } = await this.$axios.$get("/api.php/api/getInvestor", {
+      params,
+    });
+    return data;
+  },
+  /**
+   * 资质证书
+   * @param {} param0
+   * @returns
+   */
+  async getCert({ commit }, params) {
+    const { data } = await this.$axios.$get("/api.php/api/getCert", {
+      params,
+    });
+    return data;
+  },
+  /**
+   * 联系我们
+   * @param {} param0
+   * @returns
+   */
+  async getContact({ commit }, params) {
+    const { data } = await this.$axios.$get("/api.php/api/getContact", {
+      params,
+    });
+    return data;
+  },
 };
