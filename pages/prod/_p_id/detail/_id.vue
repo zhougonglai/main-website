@@ -65,9 +65,10 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
 
       h1.text-2xl.mt-10 相关型号
       .types.bg-gray-100.grid.grid-cols-3.my-10.p-10.gap-10
-        .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
+        nuxt-link.card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
           class="hover:shadow hover:border-blue-300"
-          v-for="p in prod.products" :key="p.id")
+          v-for="p in prod.products" :key="p.id"
+          :to="`/prod/${p.id}/detail/${p.category_id}`")
           .card-cover.flex-1
             img.object-center.object-contain.h-full(:src="basePath + p.cover_path" width="100%" height="100%")
           .card-content.p-5
@@ -110,13 +111,14 @@ export default {
     }
   },
   async mounted() {
-    if (!this.product?.production?.length) this.getProduct({ id: this.$route.params.p_id });
-    const data = await this.getProductDetail({ c_id: this.$route.params.id })
+    if (!this.product?.production?.length) await this.getProductDetail({ c_id: this.$route.params.id })
+    const data = await this.getProduct({ id: this.$route.params.p_id });
+    console.log(data)
     this.$store.commit("updateLea", {
       path: `/prod/${this.$route.params.p_id}/detail/${this.$route.params.id}`,
       meta: {
         title: data.name,
-        paths: this.product.production.map(p => ({ link: `/prod/${this.$route.params.p_id}/detail/${p.id}`, title: p.name }))
+        paths: this.product.production.map(p => ({ link: `/prod/${p.id}/detail/${p.category_id}`, title: p.name }))
       }
     });
   },
