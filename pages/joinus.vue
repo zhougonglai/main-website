@@ -1,5 +1,5 @@
 <template lang="pug">
-.w-full.flex.flex-col.items-center.pb-20
+.w-full.flex.flex-col.items-center.pb-20(v-cloak)
   Dialog(ref="dialog" class="w-4/5")
     table.m-5.border-collapse.border.border-slate-400(v-if="position" )
       table-body.text-gray-500
@@ -20,16 +20,17 @@
           td.w-40.p-5.border.border-slate-300 要求
           td.flex-1.p-5.border.border-slate-300
             pre(v-text="position.requirement")
-  .banner.w-full.h-480.flex.items-center.justify-center.h-480.bg-gradient-to-r.from-blue-300.to-red-300
-    .box
+  .banner.w-full.h-480.flex.items-center.justify-center.relative
+    img.absolute.inset-0.z-0.object-center.object-cover.h-full(:src="basePath + positions.url" width="100%" height="100%")
+    .box.z-1
       h1.text-4xl.text-white 加入我们
-  section.container.desc
-    h5 为什么要加入我们
-    .content 上海创远仪器技术股份有限公司成立于 2005 年，总部位于上海 G60 科创走廊 5G 产业基地，2015年在新三板挂牌（831961），2020年7月作为首批企业成功晋级新三板精选层，是一家自主研发射频通信测试仪器和提供整体测试解决方案的专业仪器仪表公司。
+  section.container.desc.py-20
+    h1.text-4xl(v-text="positions.title")
+    p.mt-10.text-2xl.leading-10(v-text="positions.content")
   section.container.flex.justify-center.items-center.add
     ion-icon(name="person-add-outline")
-    div(v-if="positions")
-      b(v-text="positions.position.length * positions.totalPage")
+    div
+      b(v-text="positions.total")
       p 职位招聘
   section.container.flex.justify-center.table.text-left
     .header.flex
@@ -111,7 +112,10 @@ export default {
     };
   },
   computed: {
-    ...mapState(['positions'])
+    ...mapState(['positions']),
+    basePath() {
+      return process.env.BASE_API
+    }
   },
   mounted() {
     if (localStorage.star) {
@@ -128,11 +132,13 @@ export default {
     },
     changeType(type) {
       this.pager.type = type.target.value;
+      this.pager.pages = 1
       this.getPosition(this.pager);
       window.scrollTo({ top: 1000, behavior: "smooth" })
     },
     changeCategory(category) {
       this.pager.category = category.target.value;
+      this.pager.pages = 1
       this.getPosition(this.pager);
       window.scrollTo({ top: 1000, behavior: "smooth" })
     },
@@ -156,30 +162,8 @@ export default {
 <style lang="scss" scoped>
 $blue: #005fab;
 
-.banner {
-  background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
-}
-
 .container {
   width: 1200px;
-}
-
-.desc {
-  padding: 0 58px;
-
-  h5 {
-    margin-top: 100px;
-    font-size: 36px;
-    font-weight: 400;
-    color: #262626;
-  }
-
-  .content {
-    margin-top: 75px;
-    font-size: 24px;
-    color: #585858;
-    line-height: 42px;
-  }
 }
 
 .add {

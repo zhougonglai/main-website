@@ -6,23 +6,33 @@
   section.w-full.flex.flex-col.items-center.desc2
     .con.text-4xl.py-20.pl-24 发展历程
     .list
-      .flex.items-center.item(v-for="x in 10" :key="x")
-        .year {{ 2023 - x }}
-        .info
-          p 成功首批登入北交所
-          p 所有国家专项通过审计署审计
-          p 复审通过2021年上海“专精特新” 中小企业评审
-        img.img(src="../assets/img/bg_sunset.jpg")
-
-
+      .flex.items-center.item(v-for="h in history" :key="h.id")
+        .year(v-text="h.name")
+        .info(v-html="h.content")
+        img.img(:src="basePath + h.url")
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: "about-page",
   data() {
-    return {};
+    return {
+      history: []
+    };
   },
+  computed: {
+    basePath() {
+      return process.env.BASE_API
+    }
+  },
+  async mounted() {
+    this.history = await this.getHistory();
+  },
+  methods: {
+    ...mapActions(['getHistory'])
+  }
 };
 </script>
 
