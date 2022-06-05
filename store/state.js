@@ -12,5 +12,5 @@ export default () => ({
   lea: "",
   news: [],
   newsDetail: {},
-  positions: [],
+  positions: "",
 });
