@@ -15,7 +15,7 @@ export default {
    * @param {c_id} param0
    * @returns
    */
-  async getProduct({ commit }, params = {}) {
+  async getProductDetail({ commit }, params = {}) {
     const { data } = await this.$axios.$get("/api.php/api/getProductByCateid", {
       params,
     });
@@ -27,7 +27,7 @@ export default {
    * @param { id:number } params
    * @returns
    */
-  async getProductDetail({ commit }, params) {
+  async getProduct({ commit }, params) {
     const { data } = await this.$axios.$get("/api.php/api/getProduct", {
       params,
     });

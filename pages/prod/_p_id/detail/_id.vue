@@ -110,8 +110,8 @@ export default {
     }
   },
   async mounted() {
-    if (!this.product?.production?.length) this.getProduct({ c_id: this.$route.params.p_id });
-    const data = await this.getProductDetail({ id: this.$route.params.id })
+    if (!this.product?.production?.length) this.getProduct({ id: this.$route.params.p_id });
+    const data = await this.getProductDetail({ c_id: this.$route.params.id })
     this.$store.commit("updateLea", {
       path: `/prod/${this.$route.params.p_id}/detail/${this.$route.params.id}`,
       meta: {

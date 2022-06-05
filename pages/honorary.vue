@@ -40,6 +40,8 @@
             .title {{ l.name }}
 </template>
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: "about-honorary",
   data() {
@@ -58,8 +60,20 @@ export default {
           name: "专利证书",
         },
       ],
+      pageData: ''
     };
   },
+  computed: {
+    basePath() {
+      return process.env.BASE_API
+    }
+  },
+  async mounted() {
+    this.pageData = await this.getCert()
+  },
+  methods: {
+    ...mapActions(['getCert'])
+  }
 };
 </script>
 <style lang="scss" scoped>
