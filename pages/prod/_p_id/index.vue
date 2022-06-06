@@ -1,5 +1,5 @@
 <template lang="pug">
-section.w-full.flex.flex-col.pb-20
+section.w-full.flex.flex-col.pb-20(v-cloak v-if="product")
   .carousels
     img.object-center.object-cover.w-full.h-480(:src="basePath + product.url")
   .sc-1.flex.items-center.justify-center
@@ -16,12 +16,12 @@ section.w-full.flex.flex-col.pb-20
               ion-icon.text-4xl(name="remove-outline")
         thead.prod-thd.bg-gray-100
           tr.flex.leading-relaxed.border-gray-200.border
-            th.prod-td.flex-1.p-5 产品图
-            th.prod-td.flex-1.p-5 产品名称
-            th.prod-td.w-20.py-5 产品形态
-            th.prod-td.w-20.py-5 最大频率
-            th.prod-td.w-20.py-5 端口数
-            th.prod-td.flex-1.p-5 型号
+            th.prod-td.flex-1.p-5(v-text="product.header[0]")
+            th.prod-td.flex-1.p-5(v-text="product.header[1]")
+            th.prod-td.w-20.py-5(v-text="product.header[2]")
+            th.prod-td.w-20.py-5(v-text="product.header[3]")
+            th.prod-td.w-20.py-5(v-text="product.header[4]")
+            th.prod-td.flex-1.p-5(v-text="product.header[5]")
             th.prod-td.w-28.p-5
         tbody.prod-tbd
           tr.prod-tl.border-top.border-gray-200.h-20.flex.items-center(v-for="(prod, i) in product.production" :key="i")
@@ -69,7 +69,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['getProduct']),
+    ...mapActions(['getProductDetail']),
     selectChange(checked, id) {
       console.log('checked', checked, id);
       this.$set(this.selected, id, checked)
@@ -88,7 +88,7 @@ export default {
   },
   mounted() {
     console.log(this.$route)
-    this.getProduct({ c_id: this.$route.params.p_id });
+    this.getProductDetail({ c_id: this.$route.params.p_id });
   }
 }
 </script>
