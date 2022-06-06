@@ -15,11 +15,11 @@ export default {
    * @param {c_id} param0
    * @returns
    */
-  async getProductDetail({ commit }, params = {}) {
+  async getProducts({ commit }, params = {}) {
     const { data } = await this.$axios.$get("/api.php/api/getProductByCateid", {
       params,
     });
-    commit("updateProduct", data);
+    commit("updateProducts", data);
     return data;
   },
   /**
@@ -31,7 +31,7 @@ export default {
     const { data } = await this.$axios.$get("/api.php/api/getProduct", {
       params,
     });
-    commit("updateProducts", data);
+    commit("updateProduct", data);
     return data;
   },
   /**

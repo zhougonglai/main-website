@@ -18,11 +18,11 @@ export default {
     }));
   },
   updateProduct(state, data) {
-    state.product = data;
-  },
-  updateProducts(state, data) {
     state.products[data.id] = data;
     state.prod = data;
+  },
+  updateProducts(state, data) {
+    state.product = data;
   },
   updateSummary(state, data) {
     state.summary = data;

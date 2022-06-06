@@ -2,6 +2,8 @@
 section.w-full.flex.flex-col.items-center.justify-center.pb-20
   Dialog(ref="dialog" modal-mode="mega")
     img(v-if="cover" :src="cover")
+  Dialog.w-full.h-full(ref="fileDialog" modal-mode="mega")
+    embed(:src="file.URL"  v-if="file.URL" width="100%" height="100%" )
   .sc-1.w-full.flex.flex-col.items-center.py-10
     .sc-1__block(v-if="prod")
       h1.text-2xl(v-text="prod.name")
@@ -22,13 +24,13 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
           ul.mt-5.leading-8.flex.flex-col.gap-y-4
             li.pl-4.border-l-4.border-gray-300(v-for="(keyword, i) in prod.keywords" :key="i" v-text="keyword")
       .flex.gap-10.my-10
-        a.flex.items-center.text-blue-500.gap-x-2(target="_blank" :href="basePath + prod.url1")
+        button.flex.items-center.text-blue-500.gap-x-2(@click="openFile(basePath + prod.url1)")
           ion-icon(name="document-text-outline" size='large')
           | Datasheet
-        a.flex.items-center.text-blue-500.gap-x-2(target="_blank" :href="basePath + prod.url2")
+        button.flex.items-center.text-blue-500.gap-x-2(@click="openFile(basePath + prod.url2)")
           ion-icon(name="document-text-outline" size="large")
           | 用户手册
-        a.flex.items-center.text-blue-500.gap-x-2(target="_blank" :href="basePath + prod.url3")
+        button.flex.items-center.text-blue-500.gap-x-2(@click="openFile(basePath + prod.url3)")
           ion-icon(name="document-text-outline" size="large")
           | 解决方案
       h1.text-2xl.mt-10 技术规范
@@ -95,7 +97,10 @@ export default {
       show: false,
       coverIndex: 0,
       tabActive: 0,
-      types: []
+      types: [],
+      file: {
+        URL: '',
+      },
     };
   },
   computed: {
@@ -111,14 +116,14 @@ export default {
     }
   },
   async mounted() {
-    if (!this.product?.production?.length) await this.getProductDetail({ c_id: this.$route.params.id })
-    const data = await this.getProduct({ id: this.$route.params.p_id });
+    if (!this.product?.production?.length) await this.getProducts({ c_id: this.$route.params.p_id })
+    const data = await this.getProduct({ id: this.$route.params.id });
     console.log(data)
     this.$store.commit("updateLea", {
       path: `/prod/${this.$route.params.p_id}/detail/${this.$route.params.id}`,
       meta: {
         title: data.name,
-        paths: this.product.production.map(p => ({ link: `/prod/${p.id}/detail/${p.category_id}`, title: p.name }))
+        paths: this.product.production.map(p => ({ link: `/prod/${p.category_id}/detail/${p.id}`, title: p.name }))
       }
     });
   },
@@ -126,13 +131,17 @@ export default {
     this.$store.commit("updateLea", "");
   },
   methods: {
-    ...mapActions(["getProductDetail", 'getProduct']),
+    ...mapActions(["getProducts", 'getProduct']),
     updateCover(i) {
       this.coverIndex = i;
     },
     openModal() {
       this.$refs.dialog.showModal()
     },
+    openFile(file) {
+      this.file.URL = file;
+      this.$refs.fileDialog.showModal();
+    }
   }
 }
 </script>

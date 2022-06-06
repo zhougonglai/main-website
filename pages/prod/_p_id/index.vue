@@ -69,7 +69,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['getProductDetail']),
+    ...mapActions(['getProducts']),
     selectChange(checked, id) {
       console.log('checked', checked, id);
       this.$set(this.selected, id, checked)
@@ -88,7 +88,7 @@ export default {
   },
   mounted() {
     console.log(this.$route)
-    this.getProductDetail({ c_id: this.$route.params.p_id });
+    this.getProducts({ c_id: this.$route.params.p_id });
   }
 }
 </script>
