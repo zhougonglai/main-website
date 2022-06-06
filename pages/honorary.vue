@@ -1,23 +1,24 @@
 <template lang="pug">
-.w-full.flex.flex-col.items-center.pb-20
-  .banner.w-full.h-480.flex.items-center.justify-center.bg-gradient-to-r.from-blue-300.to-red-300
-    .box.text-white
+.w-full.flex.flex-col.items-center.pb-20(v-cloak v-if="pageData")
+  .banner.w-full.h-480.flex.items-center.justify-center.relative
+    img.object-center.object-cover.absolute.z-0(:src="basePath + pageData.cover_path" width="100%" height="100%")
+    .box.text-white.z-1
       h1.text-4xl 荣誉资质
       br
-      .desc 创远仪器获得多方认可
+      .desc(v-text="title")
   section.container.desc
-    .content.text-gray-500.text-lg 公司自2005年成立以来，一直围绕技术创新和市场开拓优化知识产权布局，力争做到知识产权具有数量规模、质量优势的资源储备，有效支撑企业不断创新发展。
+    .content.text-gray-500.text-lg(v-text="pageData.content")
     hr
   section.w-full.flex.flex-col.items-center.desc2
     .container
-      h2.text-4xl.m-10 国际权威机构测试认证
+      h2.text-4xl.m-10(v-text="pageData.title1")
   section.w-full.flex.flex-col.items-center.desc2.bg-gray-100
     carousel-card.mt-10.mb-10.container( size="4"  content-class="flex-1 mx-10")
-      carousel-item(v-for="l in imgs" :key="l.name" class="w-1/4")
-        .flex.items-center.justify-center.mx-2.hover-border-primary.cursor-pointer
-          .Certificate
-            .img(:alt="l.name")
-            .title {{ l.name }}
+      carousel-item(v-for="img, i in pageData.images1" :key="i" class="w-1/4")
+        .flex.flex-col.items-center.justify-center.mx-2.hover-border-primary.cursor-pointer
+          .flex-1
+            img.object-center.object-cover(:src="basePath + img" alt="专利证书" width="100%")
+          .title 专利证书
   section.w-full.flex.flex-col.items-center.desc2
     .container
       h2.text-4xl.m-10 我们拥有140项已授权行业专利
@@ -93,19 +94,6 @@ $blue: #005fab;
   width: 1200px;
 }
 
-.Certificate {
-  .img {
-    background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
-    width: 222px;
-    height: 281px;
-  }
-
-  .title {
-    border-left: 1px solid #ccc;
-    padding-left: 15px;
-    margin: 10px 0;
-  }
-}
 
 .desc {
   width: 1047px;

@@ -26,7 +26,7 @@ section.w-full.pb-20(v-cloak)
       h1.text-4xl 信息披露
       .flex.mt-10.gap-x-10
         .flex-1
-          img.object-center.object-cover(src="https://img01.yzcdn.cn/vant/cat.jpeg")
+          img.object-center.object-cover(:src="basePath + pageData.images2")
         .flex-1
           ul.flex-col.flex
             li.py-4.text-gray-500.px-5.flex.cursor-pointer.border-b.border-gray-100(

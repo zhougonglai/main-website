@@ -173,4 +173,37 @@ export default {
     });
     return data;
   },
+  /**
+   * 关于我们
+   * @param {} param0
+   * @returns
+   */
+  async getAbout({ commit }, params) {
+    const { data } = await this.$axios.$get("/api.php/api/getAbout", {
+      params,
+    });
+    return data;
+  },
+  /**
+   * 维修校准
+   * @param {} param0
+   * @returns
+   */
+  async getRepair({ commit }, params) {
+    const { data } = await this.$axios.$get("/api.php/api/getRepair", {
+      params,
+    });
+    return data;
+  },
+  /**
+   * 文档下载
+   * @param {} param0
+   * @returns
+   */
+  async getAttachment({ commit }, params) {
+    const { data } = await this.$axios.$get("/api.php/api/getAttachment", {
+      params,
+    });
+    return data;
+  },
 };

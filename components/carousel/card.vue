@@ -67,7 +67,7 @@ export default {
     }
   },
   mounted() {
-    console.log(Bowser.parse(window.navigator.userAgent))
+    // console.log(Bowser.parse(window.navigator.userAgent))
   },
   methods: {
     prev() {

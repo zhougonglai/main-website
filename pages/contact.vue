@@ -1,11 +1,10 @@
 <template lang="pug">
 .w-full.flex.flex-col.items-center.pb-20
-  .banner.w-full.h-480.flex.items-center.justify-center.bg-gradient-to-r.from-blue-300.to-red-300
-    .box
-      h1.text-4xl.text-white  联系我们
-  .container.desc.text-gray-500.text-lg
-    p 上海创远仪器技术股份有限公司（简称创远仪器）成立于 2005 年，总部位于上海，首批北交所上市（831961），是一家自主研发射频通信测试仪器和提供整体测试解决方案的专业仪器仪表公司。专注于无线通信、射频微波、无线电监测、北斗导航及智能制造测试领域，拥有自主品牌和一系列测试仪器核心专利技术，集研发、生产和销售为一体，是一家具有自主知识产权的高新技术企业。荣获 2016 年度国家科学技术进步奖特等奖和 2020 年度江苏省科学技术奖一等奖。
-    p 创远仪器多年承担国家“新一代宽带无线移动通信网”科技重大专项课题开发任务及上海市高新技术产业化专项、战略性新兴产业发展专项、科技创新行动等研发任务，承担上海无线通信测试仪器工程技术研究中心的持续建设任务，全面展开5G/6G 通信测试技术的研究，参与国家 5G/6G 测试规范及标准制定，是国家知识产权优势企业，上海市专利工作示范企业，截止到 2021 年底累计申请国内外专利364 个。2020 年联合东南大学等单位发布了 5G 毫米波技术白皮书。
+  .banner.w-full.h-480.flex.items-center.justify-center.relative
+    img.absolute.z-0.object-center.object-cover.w-full.h-full(:src="basePath + pageData.url" width="100%" height="100%")
+    .box.z-1
+      h1.text-4xl.text-white(v-text="pageData.title")
+  pre.container.whitespace-pre-line.leading-8.desc.text-gray-500.text-lg(v-text="pageData.content")
   .contact
     .item.item1
       .title 总公司
@@ -44,6 +43,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   data() {
     return {
@@ -53,7 +54,19 @@ export default {
         company: "",
         question: "",
       },
+      pageData: ""
     };
+  },
+  computed: {
+    basePath() {
+      return process.env.BASE_API
+    }
+  },
+  async mounted() {
+    this.pageData = await this.getContact();
+  },
+  methods: {
+    ...mapActions(['getContact'])
   },
 };
 </script>
