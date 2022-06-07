@@ -1,44 +1,44 @@
 <template lang="pug">
 .w-full.flex.flex-col.items-center.pb-20(v-cloak v-if="pageData")
   .banner.w-full.h-480.flex.items-center.justify-center.relative
-    img.object-center.object-cover.absolute.z-0(:src="basePath + pageData.cover_path" width="100%" height="100%")
+    img.object-center.object-cover.absolute.z-0.h-full.w-full(:src="basePath + pageData.url" width="100%" height="100%")
     .box.text-white.z-1
-      h1.text-4xl 荣誉资质
+      h1.text-4xl(v-text="pageData.title")
       br
-      .desc(v-text="title")
+      .desc(v-text="pageData.title1")
   section.container.desc
     .content.text-gray-500.text-lg(v-text="pageData.content")
     hr
   section.w-full.flex.flex-col.items-center.desc2
     .container
-      h2.text-4xl.m-10(v-text="pageData.title1")
+      h2.text-4xl.m-10(v-text="pageData.tags1")
   section.w-full.flex.flex-col.items-center.desc2.bg-gray-100
-    carousel-card.mt-10.mb-10.container( size="4"  content-class="flex-1 mx-10")
-      carousel-item(v-for="img, i in pageData.images1" :key="i" class="w-1/4")
+    carousel-card.mt-10.mb-10.container(size="4" :max-size="pageData.industry.length"  content-class="flex-1 mx-10")
+      carousel-item(v-for="industry, i in pageData.industry" :key="industry.id" class="w-1/4")
         .flex.flex-col.items-center.justify-center.mx-2.hover-border-primary.cursor-pointer
           .flex-1
-            img.object-center.object-cover(:src="basePath + img" alt="专利证书" width="100%")
-          .title 专利证书
+            img.object-center.object-cover(:src="basePath + industry.url" :alt="industry.title" width="100%" height="100%")
+          .title.py-5(v-text="industry.title")
   section.w-full.flex.flex-col.items-center.desc2
     .container
-      h2.text-4xl.m-10 我们拥有140项已授权行业专利
+      h2.text-4xl.m-10(v-text="pageData.tags2")
   section.w-full.flex.flex-col.items-center.desc2.bg-gray-100
-    carousel-card.mt-10.mb-10.container( size="4"  content-class="flex-1 mx-10")
-      carousel-item(v-for="l in imgs" :key="l.name" class="w-1/4")
-        .flex.items-center.justify-center.mx-2.hover-border-primary.cursor-pointer
-          .Certificate
-            .img(:alt="l.name")
-            .title {{ l.name }}
+    carousel-card.mt-10.mb-10.container(size="4" :max-size="pageData.international.length"  content-class="flex-1 mx-10")
+      carousel-item(v-for="international in pageData.international" :key="international.id" class="w-1/4")
+        .flex.flex-col.items-center.justify-center.mx-2.hover-border-primary.cursor-pointer
+          .flex-1
+            img.object-center.object-cover(:src="basePath + international.url" :alt="international.title" width="100%" height="100%")
+          .title.py-5(v-text="international.title")
   section.w-full.flex.flex-col.items-center.desc2
     .container
-      h2.text-4xl.m-10 获得奖项
+      h2.text-4xl.m-10(v-text="pageData.tags3")
   section.w-full.flex.flex-col.items-center.desc2.bg-gray-100.mb-20
-    carousel-card.mt-10.mb-10.container( size="4"  content-class="flex-1 mx-10")
-      carousel-item(v-for="l in imgs" :key="l.name" class="w-1/4")
-        .flex.items-center.justify-center.mx-2.hover-border-primary.cursor-pointer
-          .Certificate
-            .img(:alt="l.name")
-            .title {{ l.name }}
+    carousel-card.mt-10.mb-10.container(size="4" :max-size="pageData.reward.length"  content-class="flex-1 mx-10")
+      carousel-item(v-for="reward in pageData.reward" :key="reward.id" class="w-1/4")
+        .flex.flex-col.items-center.justify-center.mx-2.hover-border-primary.cursor-pointer
+          .flex-1
+            img.object-center.object-cover(:src="basePath + reward.url" :alt="reward.title" width="100%" height="100%")
+          .title.py-5(v-text="reward.title")
 </template>
 <script>
 import { mapActions } from 'vuex';
