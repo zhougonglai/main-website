@@ -1,7 +1,7 @@
 <template lang="pug">
-section.w-full.flex.flex-col.pb-20
+section.w-full.flex.flex-col.pb-20(v-if="pageData")
   .carousels
-    img.object-center.object-cover.w-full.h-480(:src="basePath + pageData.image1" width="100%" height="100%")
+    img.object-center.object-cover.w-full.h-480(:src="basePath + pageData.images1" width="100%" height="100%")
   .sc-1.flex.items-center.justify-center
     .sc-1__block.py-10.flex.items-center.flex-col.justify-center
       h1.text-4xl.w-full 简介
@@ -21,7 +21,7 @@ section.w-full.flex.flex-col.pb-20
       .products.bg-gray-100.flex.items-end.justify-center.gap-x-10.p-10.mt-80.w-full
         .card.flex.flex-col.cursor-pointer.border-b-2.border-gray-100(class="hover:shadow hover:border-blue-300")
           .card-cover
-            img.object-center.object-cover(:src="basePath + image2")
+            img.object-center.object-cover(:src="basePath + images2")
           .card-content.flex-1.p-5.bg-white.flex.flex-col
             h4.card-title.text-2xl.font-bold.flex.items-center
               ion-icon.mr-2(name="reload-sharp")
@@ -31,7 +31,7 @@ section.w-full.flex.flex-col.pb-20
               button.card-btn.text-2xl.text-blue-500 了解详情
         .card.flex.flex-col.cursor-pointer.border-b-2.border-gray-100(class="hover:shadow hover:border-blue-300")
           .card-cover
-            img.object-center.object-cover(:src="basePath + image3")
+            img.object-center.object-cover(:src="basePath + images3")
           .card-content.flex-1.p-5.bg-white.flex.flex-col
             h4.card-title.text-2xl.font-bold.flex.items-center
               ion-icon.mr-2(name="locate-sharp")
@@ -45,7 +45,7 @@ section.w-full.flex.flex-col.pb-20
       .products.bg-gray-100.flex.flex-col.justify-end.gap-x-10.p-10.mt-40.w-full
         .card.flex.cursor-pointer.shadow(class="hover:shadow-xl")
           .card-cover
-            img.object-center.object-cover(:src="basePath + pageData.image4")
+            img.object-center.object-cover(:src="basePath + pageData.images4")
           .card-content.flex-1.p-5.bg-white.flex.flex-col
             h4.text-2xl 维修简介
             p.leading-8.text-gray-500.mt-5(v-text="pageData.content4")
