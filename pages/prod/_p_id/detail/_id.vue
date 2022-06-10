@@ -2,6 +2,8 @@
 section.w-full.flex.flex-col.items-center.justify-center.pb-20
   Dialog(ref="dialog" modal-mode="mega")
     img(v-if="cover" :src="cover")
+  Dialog(ref="detail" modal-mode="mega")
+    img(v-if="detail" :src="detail")
   Dialog.w-full.h-full(ref="fileDialog" modal-mode="mega")
     embed(:src="file.URL"  v-if="file.URL" width="100%" height="100%" )
   .sc-1.w-full.flex.flex-col.items-center.py-10
@@ -24,14 +26,14 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
           ul.mt-5.leading-8.flex.flex-col.gap-y-4
             li.pl-4.border-l-4.border-gray-300(v-for="(keyword, i) in prod.keywords" :key="i" v-text="keyword")
       .flex.gap-10.my-10
-        button.flex.items-center.text-blue-500.gap-x-2(@click="openFile(basePath + prod.url1)")
-          ion-icon(name="document-text-outline" size='large')
+        button.flex.items-center.text-primary.gap-x-2(@click="openFile(basePath + prod.url1)")
+          img(src="~/assets/img/prod/datasheet.svg" width="45")
           | Datasheet
-        button.flex.items-center.text-blue-500.gap-x-2(@click="openFile(basePath + prod.url2)")
-          ion-icon(name="document-text-outline" size="large")
+        button.flex.items-center.text-primary.gap-x-2(@click="openFile(basePath + prod.url2)")
+          img(src='~/assets/img/prod/useage.svg' width="45")
           | 用户手册
-        button.flex.items-center.text-blue-500.gap-x-2(@click="openFile(basePath + prod.url3)")
-          ion-icon(name="document-text-outline" size="large")
+        button.flex.items-center.text-primary.gap-x-2(@click="openFile(basePath + prod.url3)")
+          img(src="~/assets/img/prod/resolve.svg" width="45")
           | 解决方案
       h1.text-2xl.mt-10 技术规范
       .tabs.my-10
@@ -40,11 +42,16 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
           .tab.flex-1.pl-5.cursor-pointer(:class="{ 'text-blue-500': 1 === tabActive, 'text-gray-500': 1 !== tabActive }" @click="tabActive = 1") 技术指标
           .tab.flex-1.pl-5.cursor-pointer(:class="{ 'text-blue-500': 2 === tabActive, 'text-gray-500': 2 !== tabActive }" @click="tabActive = 2") 配置清单
           .tab.flex-1.pl-5.cursor-pointer(:class="{ 'text-blue-500': 3 === tabActive, 'text-gray-500': 3 !== tabActive }" @click="tabActive = 3") 面板说明
-        .tab-content.p-5
-          pre.leading-8(v-if="tabActive === 0" v-text="prod.content6")
-          pre.leading-8(v-else-if="tabActive === 1" v-text="prod.content7")
-          pre.leading-8(v-else-if="tabActive === 3" v-text="prod.content8")
-          table.table-auto.border-collapse.w-full.border.border-slate-400(v-else-if="tabActive === 2")
+        .tab-content
+          article.flex(v-if="tabActive === 0")
+            pre.m-5.leading-8(v-text="prod.content6" class="w-1/2")
+            .relative(class="w-1/2 mt-5")
+              img.inset-0(:src="basePath + prod.img1" class="")
+              ion-icon.absolute.cursor-pointer.right-2.bottom-2.text-blue-500(name="expand-sharp" size="large" @click="openDetail(basePath + prod.img1)")
+          pre.leading-8.p-5(v-else-if="tabActive === 1" v-text="prod.content7")
+          article.leading-8(v-else-if="tabActive === 3")
+            img.mt-5(:src="basePath + prod.img2")
+          table.table-auto.border-collapse.w-full.border.border-slate-400.mt-5(v-else-if="tabActive === 2")
             tbody
               tr(v-for="(conf, i) in prod.configuration" :key="i" :class="{ 'bg-gray-100': i % 2 }")
                 td.pl-5.pr-1.py-2(v-text="conf.value")
@@ -101,6 +108,7 @@ export default {
       file: {
         URL: '',
       },
+      detail: '',
     };
   },
   computed: {
@@ -137,6 +145,10 @@ export default {
     },
     openModal() {
       this.$refs.dialog.showModal()
+    },
+    openDetail(detail) {
+      this.detail = detail;
+      this.$refs.detail.showModal()
     },
     openFile(file) {
       this.file.URL = file;
