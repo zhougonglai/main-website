@@ -84,9 +84,10 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
             h3.card-title.text-xl.truncate(v-text="p.name")
       h1.text-2xl.mt-10 相关解决方案
       .types.bg-gray-100.grid.grid-cols-2.my-10.p-10.gap-10
-        .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
+        nuxt-link.card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
           class="hover:shadow hover:border-blue-300"
-          v-for="solution in prod.solutions" :key="solution.id")
+          v-for="solution in prod.solutions" :key="solution.id"
+          :to="`/apply/${solution.category_id}/solution/${solution.id}`")
           .card-cover.flex-1
             img.object-center.object-cover.h-full(:src="basePath + solution.cover_path" width="100%" height="100%")
           .card-content.p-5

@@ -4,7 +4,7 @@
     img.absolute.z-0.object-center.object-cover.w-full.h-full(:src="basePath + pageData.url" width="100%" height="100%")
     .box.z-1
       h1.text-4xl.text-white(v-text="pageData.title")
-  pre.container.whitespace-pre-line.leading-8.desc.text-gray-500.text-lg(v-text="pageData.content")
+  pre.cn-font.container.whitespace-pre-line.leading-8.desc.text-gray-500.text-lg(v-text="pageData.content")
   .contact
     .item.item1
       .title 总公司
