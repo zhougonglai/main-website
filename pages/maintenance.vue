@@ -61,7 +61,7 @@ section.w-full.flex.flex-col.pb-20(v-if="pageData")
           ion-icon.text-blue-500(name="book")
           .text-2xl.mt-5 维修、校准协议书
       h1.text-4xl.w-full FAQ
-      article.bg-gray-100.w-full.py-10.px-5.mt-10.text-gray-500.text-lg
+      article.bg-gray-100.w-full.py-10.px-5.mt-10.text-lg.text-slate-800
         pre(v-text="pageData.content6")
 
 
