@@ -44,8 +44,8 @@ section.w-full
             .card-cover
               img.object-center.object-cover.h-40(:src="basePath + p.cover_path")
             .card-content.p-5
-              .card-title(v-text="p.name")
-              .card-desc.my-5.text-gray-500.leading-6(v-text="p.title1")
+              .card-title.text-xl(v-text="p.name")
+              .card-desc.my-5.text-base.text-gray-500.leading-6(v-text="p.title1")
               .card-action
                 button.card-btn.text-blue-500.flex.items-center(class="hover:text-blue-600")
                   ion-icon.mr-2(name="arrow-forward-outline")
