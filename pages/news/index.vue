@@ -4,7 +4,7 @@
     img.absolute.object-center.object-cover.w-full.h-full.z-0(:src="basePath + news.url" width="100%" height="100%")
     .box.flex.flex-col.justify-center.z-1.cn-font
       h1.text-4xl.text-white(v-text="news.title")
-      pre.text-xl.mt-5.leading-8.desc.text-white(v-text="news.content")
+      pre.cn-font.text-xl.mt-5.leading-8.desc.text-white(v-text="news.content")
   .new-list.grid.grid-cols-3.mt-20.gap-10
     nuxt-link.flex.flex-col.border-b-2.border-white(v-for="n in news.news" :key="n.id" :to="`news/${n.id}`" class="hover:border-blue-300")
       img.object-center.object-contain(:src="basePath + n.url" width="100%" height="100%")
