@@ -72,7 +72,7 @@ main.flex.flex-col.items-center
           leave-active-class="transition duration-75 ease-in"
           leave-from-class="transform scale-100 opacity-100"
           leave-to-class="transform scale-95 opacity-0")
-          ul.nav-drops.absolute.bg-white.top-full.left-10.w-full.py-2.z-10.shadow-2xl.shadow-slate-600.translate-y-2(v-if="show")
+          ul.nav-drops.absolute.bg-white.top-full.left-10.w-full.py-2.z-10.shadow.shadow-gray-300.translate-y-2(v-if="show")
             li.nav-drop(v-for="(prod, i) in lea.meta.paths" :key="i")
               nuxt-link.pl-4.leading-10.truncate.block.w-full.h-full(:to="prod.link" class="hover:bg-gray-100") {{ prod.title }}
   //- NavBreadcrumbs(:navs="cate")

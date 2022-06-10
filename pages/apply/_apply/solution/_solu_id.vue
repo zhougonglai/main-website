@@ -8,7 +8,7 @@ section.w-full.pb-20
     .sc-2__block.flex.flex-col.py-10
       h1.text-4xl(v-text="solution.title")
       article
-        pre.mt-20.text-lg.whitespace-pre-line(v-text="solution.content")
+        pre.mt-10.text-lg.whitespace-pre-line(v-text="solution.content")
 
   .sc-3.flex.items-center.justify-center
     .sc-3__block.flex.flex-col.py-10

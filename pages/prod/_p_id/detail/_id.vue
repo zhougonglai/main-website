@@ -44,14 +44,14 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
           .tab.flex-1.pl-5.cursor-pointer(:class="{ 'text-blue-500': 3 === tabActive, 'text-gray-500': 3 !== tabActive }" @click="tabActive = 3") 面板说明
         .tab-content
           article.flex(v-if="tabActive === 0")
-            pre.m-5.leading-8(v-text="prod.content6" class="w-1/2")
+            pre.m-5.leading-8.cf-font.text-gray-500(v-text="prod.content6" class="w-1/2")
             .relative(class="w-1/2 mt-5")
               img.inset-0(:src="basePath + prod.img1" class="")
               ion-icon.absolute.cursor-pointer.right-2.bottom-2.text-blue-500(name="expand-sharp" size="large" @click="openDetail(basePath + prod.img1)")
-          pre.leading-8.p-5(v-else-if="tabActive === 1" v-text="prod.content7")
+          pre.leading-8.p-5.text-gray-500(v-else-if="tabActive === 1" v-text="prod.content7")
           article.leading-8(v-else-if="tabActive === 3")
             img.mt-5(:src="basePath + prod.img2")
-          table.table-auto.border-collapse.w-full.border.border-slate-400.mt-5(v-else-if="tabActive === 2")
+          table.table-auto.border-collapse.w-full.text-gray-500.border.border-slate-400.mt-5(v-else-if="tabActive === 2")
             tbody
               tr(v-for="(conf, i) in prod.configuration" :key="i" :class="{ 'bg-gray-100': i % 2 }")
                 td.pl-5.pr-1.py-2(v-text="conf.value")
