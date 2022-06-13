@@ -30,7 +30,7 @@ section.w-full.flex.flex-col.pb-20(v-cloak v-if="product")
               //- Checkbox(@change="selectChange($event, prod.id)" :disabled="selected[prod.id] ? false : selectedLength >= 3")
               img.object-center.object-cover(:src="basePath + prod.cover_path" :alt="prod.name")
             td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.bg-gray-50
-              nuxt-link.w-full.h-full.flex.items-center.justify-center.transition(class="text-primary hover:text-blue-500" :to="{ path: `/prod/${$route.params.p_id}/detail/${prod.id}` }" v-text="prod.name")
+              nuxt-link.w-full.h-full.flex.items-center.justify-center.transition(class="text-primary hover:text-blue-500" :to="{ path: `/prod/${$route.params.prod}/detail/${prod.id}` }" v-text="prod.name")
             td.prod-ti.w-20.p-2.h-full.flex.items-center.justify-center.text-center(v-text="prod.content")
             td.prod-ti.w-20.p-2.h-full.flex.items-center.justify-center.text-center.bg-gray-50(v-text="prod.content2")
             td.prod-ti.w-20.p-2.h-full.flex.items-center.justify-center.text-center(v-text="prod.content3")
@@ -88,7 +88,7 @@ export default {
   },
   mounted() {
     console.log(this.$route)
-    this.getProducts({ c_id: this.$route.params.p_id });
+    this.getProducts({ c_id: this.$route.params.prod });
   }
 }
 </script>

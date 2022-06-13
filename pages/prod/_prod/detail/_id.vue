@@ -125,11 +125,11 @@ export default {
     }
   },
   async mounted() {
-    if (!this.product?.production?.length) await this.getProducts({ c_id: this.$route.params.p_id })
+    if (!this.product?.production?.length) await this.getProducts({ c_id: this.$route.params.prod })
     const data = await this.getProduct({ id: this.$route.params.id });
     console.log(data)
     this.$store.commit("updateLea", {
-      path: `/prod/${this.$route.params.p_id}/detail/${this.$route.params.id}`,
+      path: `/prod/${this.$route.params.prod}/detail/${this.$route.params.id}`,
       meta: {
         title: data.name,
         paths: this.product.production.map(p => ({ link: `/prod/${p.category_id}/detail/${p.id}`, title: p.name }))

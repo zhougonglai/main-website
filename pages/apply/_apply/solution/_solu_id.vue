@@ -1,5 +1,5 @@
 <template lang="pug">
-section.w-full.pb-20
+section.w-full.pb-20(v-cloak)
   .sc-1.flex.items-center.justify-center.relative
     img.absolute.inset-0.object-center.object-cover.z-0.h-full(:src="basePath + solution.img" width="100%" height="100%")
     .sc-1__block.h-480.flex.items-center
