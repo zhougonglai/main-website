@@ -30,7 +30,7 @@ main.flex.flex-col.items-center
           .nav-panel__icon(:style="{ left: stageIndex[active] + 'px' }")
           .nav-panel-content.flex
             .nav-panel-list.flex.flex-col.w-60.p-5
-              template(v-if="activeLink.child.filter(m => m.router).length")
+              template(v-if="activeLink.child.filter(m => m.router).length || activeLink.router")
                 nuxt-link.nav-panel-list-item.leading-8.flex.items-center.text-left.cursor-pointer(
                   v-for="(item, i) in activeLink.child.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)"
                   :to="item.router"
@@ -58,9 +58,9 @@ main.flex.flex-col.items-center
     nav.py-4.breadcrumb.flex.items-center(aria-label="breadcrumbs")
       nuxt-link(to="/")
         ion-icon(name="home-sharp" v-cloak)
-      template(v-if="activeNav")
+      template(v-if="cateFlat.length")
         ion-icon.mx-5(name="chevron-forward-sharp"  v-cloak)
-        nuxt-link(:to="activeNav.link") {{ activeNav.label }}
+        nuxt-link(:to="$route.matched.length ? { name: $route.matched[0].name, params: $route.params } : $route.path") {{ cateGetter($route.params.apply || $route.params.ab_id || $route.params.p_id || $route.path).title }}
       .relative.cursor-pointer(v-if="lea" ref="lea" @click.stop="show = !show")
         ion-icon.mx-5(name="chevron-forward-sharp"  v-cloak)
         nuxt-link(:to="lea.path") {{ lea.meta.title }}
@@ -82,7 +82,7 @@ main.flex.flex-col.items-center
   ActionToast(ref="toast")
 </template>
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions, mapGetters } from 'vuex';
 import route from '@/assets/constant/route';
 
 export default {
@@ -112,15 +112,19 @@ export default {
     leaMenus() {
       return Number.isFinite(this.leaActive) ? this.subMenus.child[this.leaActive] : null;
     },
-    ...mapState(["activeNav", "lea", "cate"])
+    ...mapState(["activeNav", "lea", "cate"]),
+    ...mapGetters(['cateFlat', 'cateGetter'])
   },
   created() {
     this.$root.$on("toast", (e) => {
       this.createToast(e);
     });
   },
-  mounted() {
+  async mounted() {
+    await this.getCate();
     this.closeMenus();
+    console.log(this.$route);
+    // this.$store.commit(this.$route.path)
     window.addEventListener("click", e => {
       if (Number.isFinite(this.active) && this.$refs.menus) {
         if (!this.$refs.menus.contains(e.target)) {
@@ -131,7 +135,8 @@ export default {
         this.show = false;
       }
     });
-    this.getCate();
+
+    console.log(this.cateGetter(this.$route.path))
   },
   methods: {
     ...mapActions(["getCate", "getBanner"]),

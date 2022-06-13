@@ -21,7 +21,7 @@ section.w-full.flex.flex-col.pb-20(v-if="pageData")
       .products.bg-gray-100.flex.items-end.justify-center.gap-x-10.p-10.mt-80.w-full
         .card.flex.flex-col.cursor-pointer.border-b-2.border-gray-100(class="hover:shadow hover:border-blue-300")
           .card-cover
-            img.object-center.object-cover(:src="basePath + images2")
+            img.object-center.object-cover(:src="basePath + images[0]")
           .card-content.flex-1.p-5.bg-white.flex.flex-col
             h4.card-title.text-2xl.font-bold.flex.items-center
               ion-icon.mr-2(name="reload-sharp")
@@ -31,7 +31,7 @@ section.w-full.flex.flex-col.pb-20(v-if="pageData")
               button.card-btn.text-2xl.text-blue-500 了解详情
         .card.flex.flex-col.cursor-pointer.border-b-2.border-gray-100(class="hover:shadow hover:border-blue-300")
           .card-cover
-            img.object-center.object-cover(:src="basePath + images3")
+            img.object-center.object-cover(:src="basePath + images[1]")
           .card-content.flex-1.p-5.bg-white.flex.flex-col
             h4.card-title.text-2xl.font-bold.flex.items-center
               ion-icon.mr-2(name="locate-sharp")
@@ -45,7 +45,7 @@ section.w-full.flex.flex-col.pb-20(v-if="pageData")
       .products.bg-gray-100.flex.flex-col.justify-end.gap-x-10.p-10.mt-40.w-full
         .card.flex.cursor-pointer.shadow(class="hover:shadow-xl")
           .card-cover
-            img.object-center.object-cover(:src="basePath + pageData.images4")
+            img.object-center.object-cover(:src="basePath + images[2]")
           .card-content.flex-1.p-5.bg-white.flex.flex-col
             h4.text-2xl 维修简介
             p.leading-8.text-gray-500.mt-5(v-text="pageData.content4")
@@ -79,6 +79,9 @@ export default {
   computed: {
     basePath() {
       return process.env.BASE_API
+    },
+    images() {
+      return this.pageData.images2?.split(',')
     }
   },
   async mounted() {
