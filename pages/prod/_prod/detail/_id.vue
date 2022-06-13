@@ -1,8 +1,8 @@
 <template lang="pug">
 section.w-full.flex.flex-col.items-center.justify-center.pb-20
-  Dialog(ref="dialog" modal-mode="mega")
+  Dialog.overflow-scroll(ref="dialog" modal-mode="mega")
     img(v-if="cover" :src="cover")
-  Dialog(ref="detail" modal-mode="mega")
+  Dialog.overflow-scroll(ref="detail" modal-mode="mega")
     img(v-if="detail" :src="detail")
   Dialog.w-full.h-full(ref="fileDialog" modal-mode="mega")
     embed(:src="file.URL"  v-if="file.URL" width="100%" height="100%" )
@@ -127,7 +127,7 @@ export default {
   async mounted() {
     if (!this.product?.production?.length) await this.getProducts({ c_id: this.$route.params.prod })
     const data = await this.getProduct({ id: this.$route.params.id });
-    console.log(data)
+    // console.log(data)
     this.$store.commit("updateLea", {
       path: `/prod/${this.$route.params.prod}/detail/${this.$route.params.id}`,
       meta: {
