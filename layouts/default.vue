@@ -35,8 +35,7 @@ main.flex.flex-col.items-center
                   v-for="(item, i) in activeLink.child.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)"
                   :to="item.router"
                   :key="item.id")
-                  .flex-1(v-text="item.title"
-                  @click="closeMenus")
+                  .flex-1(v-text="item.title")
                   ion-icon(name="chevron-forward" v-show="i === subActive")
               template(v-else)
                 button.nav-panel-list-item.leading-8.flex.items-center.text-left.cursor-pointer(
@@ -51,35 +50,12 @@ main.flex.flex-col.items-center
                 v-for="(item, i) in subMenus.child.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)"
                 :key="item.id"
                 :to="item.router"
-                @click="closeMenus"
                 v-text="item.title")
                 //- :class="{ active: activeNav ? item.id == subActive || item.id == activeNav.id : false }"
                 //- :disabled="!item.child && !route[item.id]"
                 //- @click="selectLeamenu(item, i)"
   section.breadcrumbs(v-if="$route.name != 'index' && cateFlat.length")
     NavBreadcrumbs(:navs="cateFlat" :nav="lea")
-    //- nav.py-4.breadcrumb.flex.items-center(aria-label="breadcrumbs")
-    //-   nuxt-link(to="/")
-    //-     ion-icon(name="home-sharp" v-cloak)
-    //-   template(v-if="cateFlat.length")
-    //-     ion-icon.mx-5(name="chevron-forward-sharp"  v-cloak)
-    //-     nuxt-link(:to="$route.matched.length ? { name: $route.matched[0].name, params: $route.params } : $route.path") {{ cateGetter($route.params.apply || $route.params.ab_id || $route.params.id || $route.path).title }}
-    //-   .relative.cursor-pointer(v-if="lea" ref="lea" @click.stop="show = !show")
-    //-     ion-icon.mx-5(name="chevron-forward-sharp"  v-cloak)
-    //-     nuxt-link(:to="lea.path") {{ lea.meta.title }}
-    //-     ion-icon.ml-5(name="chevron-down-sharp"  v-cloak v-if="lea.meta.paths.length")
-    //-     transition(
-    //-       enter-active-class="transition duration-100 ease-out"
-    //-       enter-from-class="transform scale-95 opacity-0"
-    //-       enter-to-class="transform scale-100 opacity-100"
-    //-       leave-active-class="transition duration-75 ease-in"
-    //-       leave-from-class="transform scale-100 opacity-100"
-    //-       leave-to-class="transform scale-95 opacity-0")
-    //-       ul.nav-drops.absolute.bg-white.top-full.left-10.w-full.py-2.z-10.shadow.shadow-gray-300.translate-y-2(v-if="show")
-    //-         li.nav-drop(v-for="(prod, i) in lea.meta.paths" :key="i")
-    //-           nuxt-link.pl-4.leading-10.truncate.block.w-full.h-full(:to="prod.link" class="hover:bg-gray-100") {{ prod.title }}
-    //- NavBreadcrumbs(:navs="cate")
-    //- SubmitMultiSelect
   nuxt
   AppFooter(:menus="cate")
   ActionToast(ref="toast")
@@ -126,7 +102,11 @@ export default {
   async mounted() {
     await this.getCate();
     this.closeMenus();
-    console.log(this.$route);
+    // console.log(this.$router);
+    this.$router.beforeEach((to, from, next) => {
+      next();
+      this.closeMenus();
+    })
     // this.$store.commit(this.$route.path)
     window.addEventListener("click", e => {
       if (Number.isFinite(this.active) && this.$refs.menus) {
@@ -138,8 +118,6 @@ export default {
         this.show = false;
       }
     });
-
-    console.log(this.cateGetter(this.$route.path))
   },
   methods: {
     ...mapActions(["getCate", "getBanner"]),
