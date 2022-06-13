@@ -10,21 +10,23 @@ section.w-full.pb-20(v-cloak v-if="pageData")
   .sc-2.flex.justify-center.align-center
     .sc-2__block.flex.p-10.gap-x-10
       aside.w-60
-        .link.leading-10.border-t.cursor-pointer.text-lg(
+        .link.leading-10.border-t.cursor-pointer.text-lg.flex.items-center(
           v-for="(c, i) in category" :key="i"
           :class="{ 'text-blue-500': active === i }"
-          @click="changeCategory(i)"
-          v-text="c.label")
+          @click="changeCategory(i)")
+          .inline-flex.items-center.justify-center.w-10
+            img(:src="c.link" width="20")
+          | {{ c.label }}
       section.flex-1
         .file.flex.border-b.border-gray-300.py-5.cursor-pointer(
           v-for="(file, i) in pageData.attachment" :key="file.id" class="hover:bg-gray-100"
           @click="openFile(file)")
           .file-icon.w-20.h-20.flex.items-center.justify-center
-            ion-icon.text-4xl.text-blue-500(name="document-text-outline")
+            img(:src="category[active].link" width="40")
           .flex.flex-col
             .file-title.text-2xl.text-blue-500(v-text="file.title")
             .file-subtitle.text-lg.text-gray-500.mt-5(v-text="file.name")
-        .flex.mt-20.items-center.justify-center
+        .flex.mt-20.items-center.justify-center(v-if="pageData.totalPage")
           SubmitPagination(:length="pageData.totalPage" :value="pages" @change="changePage")
   Dialog.w-full.h-full(ref="dialog" )
     embed(v-if="file" v-cloak :src="basePath + file.url" width="100%" height="100%")
@@ -43,15 +45,18 @@ export default {
       category: [
         {
           value: 1,
-          label: 'Data Sheet'
+          label: 'Data Sheet',
+          link: require('@/assets/img/prod/datasheet.svg'),
         },
         {
           value: 2,
-          label: '操作手册'
+          label: '操作手册',
+          link: require('@/assets/img/prod/resolve.svg'),
         },
         {
           value: 3,
-          label: '解决方案'
+          label: '解决方案',
+          link: require('@/assets/img/prod/useage.svg'),
         },
       ],
       active: 0,
