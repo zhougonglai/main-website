@@ -1,8 +1,8 @@
 <template lang="pug">
 main.flex.flex-col.items-center
-  header.flex.h-20
-    nuxt-link.logo.flex.items-center(to='/')
-      img(src='~/assets/img/logo.png' alt="创远仪器" width="226")
+  header.flex
+    nuxt-link.logo.flex.items-center.py-2(to='/')
+      img(src='~/assets/img/logo.png' alt="创远仪器" width="300")
     .flex-1
     .nav-list.flex.justify-center.items-center
       nuxt-link(to="/contact" class="hover:text-blue-500") 联系我们

@@ -6,7 +6,7 @@
     <div class="footer-block flex flex-col py-20">
       <div class="fc-0 flex">
         <div class="fb-1">
-          <img class="" src="@/assets/img/logo.png" alt="创远仪器" width="225" />
+          <img class="" src="@/assets/img/logo.png" alt="创远仪器" width="300" />
           <h4 class="tt leading-8 mt-10">服务热线</h4>
           <div class="tl leading-8 text-sm">400-677-8077</div>
           <h4 class="tt leading-8">邮箱</h4>
