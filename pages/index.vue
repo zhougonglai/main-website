@@ -1,7 +1,8 @@
 <template lang="pug">
 section.w-full.flex.flex-col.pb-20
-  carousel-card(size="1" v-if="banner.length" :max-size="banner.length" dot
+  carousel-card.w-full(size="1" v-if="banner.length" :max-size="banner.length" dot
   dot-active-class="w-2 h-2 bg-white rounded-full scale-150"
+  content-class="w-full"
   dot-class="bg-white w-2 h-2 rounded-full hover:scale-125"
   )
     carousel-item.flex.w-full(v-for="b in banner.filter(b => b.status)" :key="b.id")
