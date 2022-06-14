@@ -206,4 +206,15 @@ export default {
     });
     return data;
   },
+  /**
+   * 获取资讯
+   * @param {} param0
+   * @returns
+   */
+  async getInfo({ commit }, params) {
+    const { data } = await this.$axios.$get("/api.php/api/getInfo", {
+      params,
+    });
+    return data;
+  },
 };

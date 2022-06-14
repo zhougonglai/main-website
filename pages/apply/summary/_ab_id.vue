@@ -20,7 +20,7 @@ section.w-full
           class="hover:shadow hover:border-blue-300" v-for="(apply, i) in summary.applys" :key="apply.id"
           :to="`/apply/${apply.category_id}/solution/${apply.id}`")
           .card-cover
-            img.object-center.object-cover(:src="basePath + apply.cover_path")
+            img.object-center.object-cover(:src="basePath + apply.cover_path" width="387" height="261")
           .card-content.p-5
             h3.text-2xl.card-title(v-text="apply.name")
             p.mt-3.card-desc.text-gray-500.leading-8(v-text="apply.title")
@@ -113,6 +113,14 @@ export default {
   &__block {
     width: min(1200px, 100%);
     z-index: 1;
+
+    .card {
+      &-cover {
+        img {
+          height: 261px;
+        }
+      }
+    }
   }
 }
 

@@ -12,7 +12,7 @@
         h2.text-xl 创远仪器参加2021年mwc
         .flex.text-lg.mt-5.justify-between.items-end
           button.border-b.border-gray-500 了解详情
-          time.text-sm.text-gray-500 2022年2月13日
+          time.text-sm.text-gray-500(v-text="n.date")
   section.py-20
     SubmitPagination(:length="news.totalPage" :value="pages" @change="handleChange")
 </template>

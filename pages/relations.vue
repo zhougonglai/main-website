@@ -12,14 +12,28 @@ section.w-full.pb-20(v-cloak)
     .sc-3__bg.absolute.inset-x-0.bottom-0.top-40.bg-gray-100
     .sc-3__block.pb-10.z-1
       h1.text-4xl 投资者服务
-      .grid.grid-cols-3.gap-x-10.mt-10
-        .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
-          class="hover:shadow hover:border-blue-300" v-for="service, i in pageData.service" :key="i")
+      .grid.grid-cols-3.gap-x-10.mt-10(v-if="pageData.service")
+        a.card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
+          class="hover:shadow hover:border-blue-300" :href="`mailto:${pageData.service[0].content}`" target="_blank")
           .card-cover
-            img.object-center.object-cover(:src="basePath + service.url")
+            img.object-center.object-cover(:src="basePath + pageData.service[0].url")
           .card-content.p-5
-            .card-title 邮箱
-            .card-desc(v-text="service.title")
+            .card-title(v-text="pageData.service[0].content")
+            .card-desc(v-text="pageData.service[0].title")
+        a.card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
+          class="hover:shadow hover:border-blue-300" :href='`tel:${pageData.service[1].content}`')
+          .card-cover
+            img.object-center.object-cover(:src="basePath + pageData.service[1].url")
+          .card-content.p-5
+            .card-title(v-text="pageData.service[1].content")
+            .card-desc(v-text="pageData.service[1].title")
+        a.card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
+          class="hover:shadow hover:border-blue-300" href="http://www.bse.cn/disclosure/announcement.html" target="_blank")
+          .card-cover
+            img.object-center.object-cover(:src="basePath + pageData.service[2].url")
+          .card-content.p-5
+            .card-title(v-text="pageData.service[2].content")
+            .card-desc(v-text="pageData.service[2].title")
 
   .sc-4.flex.items-center.justify-center
     .sc-4__block.py-10

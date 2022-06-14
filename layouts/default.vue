@@ -57,7 +57,7 @@ main.flex.flex-col.items-center
   section.breadcrumbs(v-if="$route.name != 'index' && cateFlat.length")
     NavBreadcrumbs(:navs="cateFlat" :nav="lea")
   nuxt
-  AppFooter(:menus="cate")
+  AppFooter(:menus="cate" :info="info")
   ActionToast(ref="toast")
 </template>
 <script>
@@ -78,7 +78,8 @@ export default {
       timer: 0,
       search: {
         show: false,
-      }
+      },
+      info: '',
     };
   },
   computed: {
@@ -98,11 +99,13 @@ export default {
     this.$root.$on("toast", (e) => {
       this.createToast(e);
     });
+    this.$root.basePath = process.env.BASE_API
   },
   async mounted() {
     await this.getCate();
     this.closeMenus();
     // console.log(this.$router);
+    // console.log(this.$root)
     this.$router.beforeEach((to, from, next) => {
       next();
       this.closeMenus();
@@ -118,9 +121,10 @@ export default {
         this.show = false;
       }
     });
+    this.info = await this.getInfo();
   },
   methods: {
-    ...mapActions(["getCate", "getBanner"]),
+    ...mapActions(["getCate", "getBanner", 'getInfo']),
     createToast(text) {
       this.$refs.toast.createToast(text);
     },

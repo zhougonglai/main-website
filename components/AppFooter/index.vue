@@ -1,18 +1,18 @@
 <template>
-  <footer class="flex flex-col justify-center items-center bg-gray-100">
+  <footer class="flex flex-col justify-center items-center bg-gray-100" v-cloak>
     <Dialog ref="qrcode">
-      <img src="@/assets/img/wechat.png" alt="微信公众号">
+      <img :src="$root.basePath + info.url" alt="微信公众号">
     </Dialog>
     <div class="footer-block flex flex-col py-20">
       <div class="fc-0 flex">
         <div class="fb-1">
-          <img class="" src="@/assets/img/logo.png" alt="创远仪器" width="300" />
+          <img class="" :src="$root.basePath + info.title" alt="创远仪器" width="300" />
           <h4 class="tt leading-8 mt-10">服务热线</h4>
-          <div class="tl leading-8 text-sm">400-677-8077</div>
+          <div class="tl leading-8 text-sm" v-text="info.content" />
           <h4 class="tt leading-8">邮箱</h4>
-          <div class="tl leading-8 text-sm">400-677-8077</div>
+          <div class="tl leading-8 text-sm" v-text="info.spare6" />
           <h4 class="tt leading-8">地址</h4>
-          <div class="tl leading-8 text-sm">上海市松江区高技路205弄7号C座</div>
+          <div class="tl leading-8 text-sm" v-text="info.spare1" />
         </div>
 
         <div class="fb-2 flex-1 flex flex-col" v-for="menu in menus.filter(menu => menu.display)" :key="menu.id">
@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="fc-1 flex leading-8">
-        <h4 class="font-bold font-5xl">创远仪器</h4>
+        <h4 class="font-bold font-5xl" v-text="info.spare2" />
         <div class="flex-1" />
         <div class="font-sm cursor-pointer" @click="showQRcode">
           官方公众号
@@ -31,10 +31,10 @@
       </div>
       <hr>
       <div class="fc-2 flex gap-x-5 leading-8">
-        <div class="sage font-sm">版权所有©2005-2022</div>
-        <div class="sage font-sm">上海创远仪器技术股份有限公司</div>
+        <div class="sage font-sm" v-text="info.spare4" />
+        <div class="sage font-sm" v-text="info.spare3" />
         <div class="flex-1"></div>
-        <div class="sage">沪ICP备11027993号</div>
+        <div class="sage" v-text="info.spare5" />
       </div>
     </div>
   </footer>
@@ -43,8 +43,7 @@
 <script>
 export default {
   name: "app-footer",
-  props: ["menus"],
-  // components: { Dialog }
+  props: ["menus", "info"],
   methods: {
     showQRcode() {
       this.$refs.qrcode.showModal();
