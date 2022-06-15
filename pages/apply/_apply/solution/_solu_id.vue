@@ -71,21 +71,24 @@ export default {
     ...mapState(['solution', 'apply'])
   },
   async mounted() {
-    if (!this.apply) await this.getApply({ id: this.$route.params.apply });
-    const data = await this.getSolution({ id: this.$route.params.solu_id });
-    this.$store.commit("updateLea", {
-      path: `/apply/${data.category_id}/solution/${data.id}`,
-      meta: {
-        title: data.name,
-        paths: this.apply.solutions.map((solu) => ({ link: `/apply/${solu.category_id}/solution/${solu.id}`, title: solu.name }))
-      }
-    });
+    if (!this.apply) return await this.getApply({ id: this.$route.params.apply }).then(this.updateLea);
+    this.updateLea();
   },
   beforeDestroy() {
     this.$store.commit("updateLea", "");
   },
   methods: {
-    ...mapActions(['getSolution', 'getApply'])
+    ...mapActions(['getSolution', 'getApply']),
+    async updateLea() {
+      const data = await this.getSolution({ id: this.$route.params.solu_id });
+      this.$store.commit("updateLea", {
+        path: `/apply/${data.category_id}/solution/${data.id}`,
+        meta: {
+          title: data.name,
+          paths: this.apply.solutions?.map((solu) => ({ link: `/apply/${solu.category_id}/solution/${solu.id}`, title: solu.name }))
+        }
+      });
+    }
   }
 }
 </script>
