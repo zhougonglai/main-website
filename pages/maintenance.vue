@@ -1,7 +1,7 @@
 <template lang="pug">
 section.w-full.flex.flex-col.pb-20(v-if="pageData")
   .carousels
-    img.object-center.object-cover.w-full.h-480(:src="basePath + pageData.images1" width="100%" height="100%")
+    img.object-center.object-cover.w-full.h-480(:src="$root.basePath + pageData.images1" width="100%" height="100%")
   .sc-1.flex.items-center.justify-center
     .sc-1__block.py-10.flex.items-center.flex-col.justify-center
       h1.text-4xl.w-full 简介
@@ -21,9 +21,9 @@ section.w-full.flex.flex-col.pb-20(v-if="pageData")
       .products.bg-gray-100.flex.items-end.justify-center.gap-x-10.p-10.mt-80.w-full
         .card.flex.flex-col.cursor-pointer.border-b-2.border-gray-100(
           class="hover:shadow hover:border-blue-300"
-          @click="")
+          @click="openPreview(pageData.url1)")
           .card-cover
-            img.object-center.object-cover(:src="basePath + images[0]")
+            img.object-center.object-cover(:src="$root.basePath + images[0]")
           .card-content.flex-1.p-5.bg-white.flex.flex-col
             h4.card-title.text-2xl.font-bold.flex.items-center
               ion-icon.mr-2(name="reload-sharp")
@@ -31,9 +31,10 @@ section.w-full.flex.flex-col.pb-20(v-if="pageData")
             p.card-desc.flex-1.leading-8.mt-5(v-text="pageData.content2")
             .card-action
               button.card-btn.text-2xl.text-blue-500 了解详情
-        .card.flex.flex-col.cursor-pointer.border-b-2.border-gray-100(class="hover:shadow hover:border-blue-300")
+        .card.flex.flex-col.cursor-pointer.border-b-2.border-gray-100(class="hover:shadow hover:border-blue-300"
+        @click="openPreview(pageData.url2)")
           .card-cover
-            img.object-center.object-cover(:src="basePath + images[1]")
+            img.object-center.object-cover(:src="$root.basePath + images[1]")
           .card-content.flex-1.p-5.bg-white.flex.flex-col
             h4.card-title.text-2xl.font-bold.flex.items-center
               ion-icon.mr-2(name="locate-sharp")
@@ -47,7 +48,7 @@ section.w-full.flex.flex-col.pb-20(v-if="pageData")
       .products.bg-gray-100.flex.flex-col.justify-end.gap-x-10.p-10.mt-40.w-full
         .card.flex.cursor-pointer.shadow(class="hover:shadow-xl")
           .card-cover
-            img.object-center.object-cover(:src="basePath + images[2]")
+            img.object-center.object-cover(:src="$root.basePath + images[2]")
           .card-content.flex-1.p-5.bg-white.flex.flex-col
             h4.text-2xl 维修简介
             p.leading-8.text-gray-500.mt-5(v-text="pageData.content4")
@@ -56,17 +57,17 @@ section.w-full.flex.flex-col.pb-20(v-if="pageData")
     .sc-3__block.py-10.flex.items-center.justify-center.flex-col
       h1.text-4xl.w-full 文档下载区
       .grid.grid-cols-2.justify-center.my-20.justify-items-center
-        .flex.flex-col.text-center.items-center
+        .flex.flex-col.text-center.items-center.cursor-pointer(@click="openPreview(pageData.url3)")
           ion-icon.text-blue-500(name="layers")
           .text-2xl.mt-5 服务流程
-        .flex.flex-col.text-center.items-center
+        .flex.flex-col.text-center.items-center.cursor-pointer(@click="openPreview(pageData.url4)")
           ion-icon.text-blue-500(name="book")
           .text-2xl.mt-5 维修、校准协议书
       h1.text-4xl.w-full FAQ
       article.bg-gray-100.w-full.py-10.px-5.mt-10.text-lg.text-slate-800
         pre(v-text="pageData.content6")
-  //- Dialog(ref="dialog")
-  //-   embed(:src="basePath + pageData.images2")
+  Dialog(ref="dialog" v-cloak)
+    iframe(v-if="preview" :src="$root.basePath + preview")
 
 </template>
 <script>
@@ -76,13 +77,11 @@ export default {
   name: 'fixer-page',
   data() {
     return {
-      pageData: ''
+      pageData: '',
+      preview: ''
     }
   },
   computed: {
-    basePath() {
-      return process.env.BASE_API
-    },
     images() {
       return this.pageData.images2?.split(',')
     }
@@ -91,7 +90,11 @@ export default {
     this.pageData = await this.getRepair()
   },
   methods: {
-    ...mapActions(['getRepair'])
+    ...mapActions(['getRepair']),
+    openPreview(prev) {
+      this.preview = prev;
+      this.$refs.dialog.showModal();
+    }
   }
 }
 </script>
