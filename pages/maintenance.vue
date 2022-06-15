@@ -19,7 +19,9 @@ section.w-full.flex.flex-col.pb-20(v-if="pageData")
         p.text-lg(v-text="pageData.content")
         p.text-lg.leading-8.mt-10(v-text="pageData.content1")
       .products.bg-gray-100.flex.items-end.justify-center.gap-x-10.p-10.mt-80.w-full
-        .card.flex.flex-col.cursor-pointer.border-b-2.border-gray-100(class="hover:shadow hover:border-blue-300")
+        .card.flex.flex-col.cursor-pointer.border-b-2.border-gray-100(
+          class="hover:shadow hover:border-blue-300"
+          @click="")
           .card-cover
             img.object-center.object-cover(:src="basePath + images[0]")
           .card-content.flex-1.p-5.bg-white.flex.flex-col
@@ -63,7 +65,8 @@ section.w-full.flex.flex-col.pb-20(v-if="pageData")
       h1.text-4xl.w-full FAQ
       article.bg-gray-100.w-full.py-10.px-5.mt-10.text-lg.text-slate-800
         pre(v-text="pageData.content6")
-
+  //- Dialog(ref="dialog")
+  //-   embed(:src="basePath + pageData.images2")
 
 </template>
 <script>
