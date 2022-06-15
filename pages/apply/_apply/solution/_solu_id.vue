@@ -79,13 +79,13 @@ export default {
   },
   methods: {
     ...mapActions(['getSolution', 'getApply']),
-    async updateLea() {
+    async updateLea(apply) {
       const data = await this.getSolution({ id: this.$route.params.solu_id });
       this.$store.commit("updateLea", {
         path: `/apply/${data.category_id}/solution/${data.id}`,
         meta: {
           title: data.name,
-          paths: this.apply.solutions?.map((solu) => ({ link: `/apply/${solu.category_id}/solution/${solu.id}`, title: solu.name }))
+          paths: this.apply.solutions ? this.apply.solutions.map((solu) => ({ link: `/apply/${solu.category_id}/solution/${solu.id}`, title: solu.name })) : []
         }
       });
     }
