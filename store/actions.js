@@ -135,10 +135,9 @@ export default {
    * @returns
    */
   async getHistory({ commit }, params) {
-    const { data } = await this.$axios.$get("/api.php/api/getHistory", {
+    return await this.$axios.$get("/api.php/api/getHistory", {
       params,
     });
-    return data;
   },
   /**
    * 投资者关系

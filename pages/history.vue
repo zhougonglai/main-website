@@ -1,15 +1,17 @@
 <template lang="pug">
-.w-full.flex.flex-col.items-center.pb-20
-  .banner.w-full.h-480.flex.items-center.justify-center.h-480.bg-gradient-to-r.from-blue-300.to-red-300
-    .box
-      h1.text-4xl.text-white 公司历史
+.w-full.flex.flex-col.items-center.pb-20(v-cloak)
+  .w-full.h-480.flex.items-center.justify-center.h-480.bg-gradient-to-r.from-blue-300.to-red-300.relative
+    img.z-0.absolute.inset-0.w-full.h-full.object-center.object-cover(:src="$root.basePath + pageData.cover_path" height="100%" width="100%")
+    .con.z-1
+      h1.text-4xl.text-white(v-text="pageData.title")
+      p.mt-5.text-white.text-xl(v-text="pageData.title1")
   section.w-full.flex.flex-col.items-center.desc2
     .con.text-4xl.py-20.pl-24 发展历程
     .list
-      .flex.items-center.item(v-for="h in history" :key="h.id")
+      .flex.items-center.item(v-for="h in pageData.data" :key="h.id")
         .year(v-text="h.name")
         .info(v-html="h.content")
-        img.img(:src="basePath + h.url")
+        img.img(:src="$root.basePath + h.url")
 </template>
 
 <script>
@@ -19,16 +21,11 @@ export default {
   name: "about-page",
   data() {
     return {
-      history: []
+      pageData: ''
     };
   },
-  computed: {
-    basePath() {
-      return process.env.BASE_API
-    }
-  },
   async mounted() {
-    this.history = await this.getHistory();
+    this.pageData = await this.getHistory();
   },
   methods: {
     ...mapActions(['getHistory'])
@@ -43,12 +40,8 @@ $blue: #005fab;
   width: 1200px;
 }
 
-.banner {
-
-  // background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
-  .box {
-    width: 1123px;
-  }
+.box {
+  width: 1123px;
 }
 
 .container {
