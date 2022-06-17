@@ -19,7 +19,7 @@ section.w-full.flex.flex-col.pb-20(v-cloak v-if="product")
             th.prod-td.flex-1.p-5(v-text="product.header[0]")
             th.prod-td.flex-1.p-5(v-text="product.header[1]")
             th.prod-td.w-20.py-5(v-text="product.header[2]")
-            th.prod-td.w-20.py-5(v-text="product.header[3]")
+            th.prod-td.flex-1.py-5(v-text="product.header[3]")
             th.prod-td.w-20.py-5(v-text="product.header[4]")
             th.prod-td.flex-1.p-5(v-text="product.header[5]")
             th.prod-td.w-28.p-5
@@ -32,7 +32,7 @@ section.w-full.flex.flex-col.pb-20(v-cloak v-if="product")
             td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.bg-gray-50
               nuxt-link.w-full.h-full.flex.items-center.justify-center.transition(class="text-primary hover:text-blue-500" :to="{ path: `/prod/${$route.params.prod}/detail/${prod.id}` }" v-text="prod.name")
             td.prod-ti.w-20.p-2.h-full.flex.items-center.justify-center.text-center(v-text="prod.content")
-            td.prod-ti.w-20.p-2.h-full.flex.items-center.justify-center.text-center.bg-gray-50(v-text="prod.content2")
+            td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.text-center.bg-gray-50(v-text="prod.content2")
             td.prod-ti.w-20.p-2.h-full.flex.items-center.justify-center.text-center(v-text="prod.content3")
             td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.bg-gray-50(v-text="prod.content4")
             td.prod-ti.w-28.p-2.h-full.flex.items-center.justify-center

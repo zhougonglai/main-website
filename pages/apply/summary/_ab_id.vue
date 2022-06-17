@@ -42,7 +42,7 @@ section.w-full
         carousel-item(v-for="(p, i) in summary.products" :key="p.id" class="item flex-shrink-0")
           nuxt-link.card.flex.flex-col.bg-white.border-b-2.border-white.h-full(class="hover:shadow hover:border-blue-300" :to="`/prod/${p.category_id}/detail/${p.id}`")
             .card-cover
-              img.object-center.object-cover.h-40(:src="basePath + p.cover_path")
+              img.object-center.object-contain.h-40(:src="basePath + p.cover_path")
             .card-content.p-5.flex-1.flex.flex-col
               .card-title.text-xl(v-text="p.name")
               .card-desc.my-5.text-base.text-gray-500.leading-6.flex-1(v-text="p.title1")
