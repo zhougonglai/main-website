@@ -1,39 +1,52 @@
 <template lang="pug">
 dialog.grid.round.shadow(:open="open" :inert="inert" ref="dialog" @click.stop="dismiss")
-  slot
+  Submit.p-10.overflow-auto(v-if="preview && !token" @post-end="postEnd")
+  slot(v-else)
 </template>
 <script>
+import Submit from '../Submit/index.vue';
+import Cookies from 'js-cookie'
+
 export default {
   name: "app-dialog",
+  components: { Submit },
   props: {
     open: {
+      type: Boolean,
+      default: false
+    },
+    preview: {
       type: Boolean,
       default: false
     }
   },
   data() {
     return {
-      inert: true
-    }
+      inert: true,
+      token: Cookies.get('token') || '',
+    };
   },
   methods: {
     showModal() {
       this.$refs.dialog.showModal();
       this.inert = false;
-      document.body.classList.add('overflow-hidden');
+      this.token = Cookies.get('token');
+      document.body.classList.add("overflow-hidden");
     },
     close() {
       this.$refs.dialog.close();
       this.inert = true;
-      document.body.classList.remove('overflow-hidden');
+      document.body.classList.remove("overflow-hidden");
     },
-
     dismiss(e) {
-      if (e.target.nodeName === 'DIALOG') {
+      if (e.target.nodeName === "DIALOG") {
         this.close();
       }
+    },
+    postEnd() {
+      this.token = Cookies.get('token');
     }
-  }
+  },
 }
 </script>
 <style lang="scss">

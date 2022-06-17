@@ -1,5 +1,5 @@
 <template lang="pug">
-form.form(novalidate @submit.prevent="submit")
+form.form(ref="form" @submit.prevent="submit")
   h2.text-2xl 需要更多信息
   p.text-lg.text-gray-500.mt-5 如果您有任何疑问或需要了解更多信息，请填写此表格，我们会尽快回复您。
   .grid.grid-cols-2.gap-x-20.gap-y-5
@@ -10,13 +10,13 @@ form.form(novalidate @submit.prevent="submit")
       label.text-xl(for="sex-0") 女
     .flex-1.fex
       label.text-xl(for="name") 姓 名
-      input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="name" v-model="form.name" class="hover:bg-white")
+      input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="name" v-model="form.name" class="hover:bg-white" required)
     .flex-1
       label.text-xl(for="company") 公司名称
-      input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="company" v-model="form.company" class="hover:bg-white")
+      input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="company" v-model="form.company" class="hover:bg-white" required)
     .flex-1
       label.text-xl(for="email") 公司邮箱
-      input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="email" v-model="form.email" class="hover:bg-white")
+      input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="email" type="text" autocomplete="username email" v-model="form.email" class="hover:bg-white" required)
     .flex-1
       label.text-xl(for="city") 城市
       submit-select.mt-5(id="city"
@@ -50,6 +50,8 @@ form.form(novalidate @submit.prevent="submit")
         | 获取信息
 </template>
 <script>
+import Cookies from 'js-cookie'
+
 export default {
   name: 'Submit',
   data() {
@@ -92,10 +94,12 @@ export default {
     submit() {
       this.loading = true;
       this.$emit('submit', this.form)
-      this.$axios.post('/api.php/api/postFormData', this.form).then(res => res.data).then(data => {
+      this.$axios.post('/api.php/api/postFormData', this.form).then(res => res.data).then(({ data }) => {
         this.loading = false;
-        console.log(data);
         this.$root.$emit('toast', data.msg);
+        Cookies.set('token', data.token, { expires: new Date(data.expire * 1000) })
+        this.$refs.form.reset();
+        this.$emit('post-end', data);
       });
     }
   }
