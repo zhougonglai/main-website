@@ -27,27 +27,27 @@ section.w-full.pb-20(v-cloak)
             h3.text-2xl.card-title(v-text="solution.title_feature1")
             p.mt-3.card-desc.flex-1.text-gray-500.leading-8(v-text="solution.content_feature1")
       h1.text-4xl.mt-20 典型应用
-      .application.bg-gray-100.flex.items-end.justify-center.gap-x-10.my-10.p-10
+      .application.bg-gray-100.grid.grid-cols-3.justify-center.gap-x-10.my-10.p-10
         .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(class="hover:shadow hover:border-blue-300")
-          .card-cover
-            img.object-center.object-cover(:src="basePath + solution.apply_img1")
+          .card-cover.flex-1
+            img.object-center.object-cover(:src="basePath + solution.apply_img1" width="350" height="200")
           .card-content.p-5
             h3.card-title.text-xl.truncate(v-text="solution.apply_title1")
             p.card-desc.text-lg.text-gray-500.mt-5(v-text="solution.apply_content1")
         .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(class="hover:shadow hover:border-blue-300")
-          .card-cover
-            img.object-center.object-cover(:src="basePath + solution.apply_img2")
+          .card-cover.flex-1
+            img.object-center.object-cover(:src="basePath + solution.apply_img2" width="350" height="200")
           .card-content.p-5
             h3.card-title.text-xl.truncate(v-text="solution.apply_title2")
             p.card-desc.text-lg.text-gray-500.mt-5(v-text="solution.apply_content2")
         .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(class="hover:shadow hover:border-blue-300")
-          .card-cover
-            img.object-center.object-cover(:src="basePath + solution.apply_img3")
+          .card-cover.flex-1
+            img.object-center.object-cover(:src="basePath + solution.apply_img3" width="350" height="200")
           .card-content.p-5
             h3.card-title.text-xl.truncate(v-text="solution.apply_title3")
             p.card-desc.text-lg.text-gray-500.mt-5(v-text="solution.apply_content3")
       h1.text-4xl.mt-20 相关产品
-      .prod.bg-gray-100.flex.gap-x-10.my-10.p-10
+      .prod.bg-gray-100.grid.grid-cols-3.gap-10.my-10.p-10
         nuxt-link.card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
           class="hover:shadow hover:border-blue-300"
           v-for="prod in solution.products" :key="prod.id"
@@ -109,6 +109,17 @@ export default {
 .sc-3 {
   &__block {
     width: min(1200px, 100%);
+
+    .application {
+      .card {
+        &-cover {
+          img {
+            width: 350px;
+            height: 200px;
+          }
+        }
+      }
+    }
   }
 }
 

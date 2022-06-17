@@ -17,7 +17,7 @@ section.w-full.flex.flex-col.pb-20(v-if="pageData")
           .text-2xl.text-center.mt-5 升级
       article.text-gray-600
         p.text-lg(v-text="pageData.content")
-        p.text-lg.leading-8.mt-10(v-text="pageData.content1")
+        p.text-lg.leading-8.mt-10( v-text="pageData.content1")
       .products.bg-gray-100.flex.items-end.justify-center.gap-x-10.p-10.mt-80.w-full
         .card.flex.flex-col.cursor-pointer.border-b-2.border-gray-100(
           class="hover:shadow hover:border-blue-300"
