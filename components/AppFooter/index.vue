@@ -15,10 +15,15 @@
           <div class="tl leading-8 text-sm" v-text="info.spare1" />
         </div>
 
-        <div class="fb-2 flex-1 flex flex-col" v-for="menu in menus.filter(menu => menu.display)" :key="menu.id">
+        <div class="fb-2 flex-1 flex flex-col"
+          v-for="menu in menus.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)" :key="menu.id">
           <h4 class="ft text-2xl font-bold" v-text="menu.title" />
           <ul class="my-5">
-            <li class="text-sm leading-8 cursor-pointer" v-for="nav in menu.child" :key="nav.id" v-text="nav.title" />
+            <li class="text-sm leading-8 cursor-pointer" v-for="nav in menu.child" :key="nav.id">
+
+              <nuxt-link v-if="nav.router" :to="nav.router">{{ nav.title }}</nuxt-link>
+              <!-- <nuxt-link v-else :to="nav.child.find(r => r.type).router">{{ nav.title }}</nuxt-link> -->
+            </li>
           </ul>
         </div>
       </div>

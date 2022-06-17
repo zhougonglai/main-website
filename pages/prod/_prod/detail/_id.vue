@@ -56,21 +56,21 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
               tr(v-for="(conf, i) in prod.configuration" :key="i" :class="{ 'bg-gray-100': i % 2 }")
                 td.pl-5.pr-1.py-2(v-text="conf.value")
                 td.pr-5.py-2(v-text="conf.param")
-
-      h1.text-2xl.mt-10 产品视频
-      .prod.bg-gray-100.flex.items-end.justify-center.gap-x-10.mt-60.pb-10
-        .card.flex.flex-col.cursor-pointer.bg-white(class="hover:shadow hover:border-b-2 hover:border-blue-300")
-          .card-cover
-            video(:src="basePath + prod.goods_video1" controls)
-          .card-content.p-5
-            h3.text-xl.card-title(v-text="prod.video_title1")
-            p.mt-3.card-desc.text-gray-500(v-text="prod.video_content1")
-        .card.flex.flex-col.cursor-pointer.bg-white(class="hover:shadow hover:border-b-2 hover:border-blue-300")
-          .card-cover
-            video(:src="basePath + prod.goods_video2" controls)
-          .card-content.p-5
-            h3.text-xl.card-title(v-text="prod.video_title2")
-            p.mt-3.card-desc.text-gray-500(v-text="prod.video_content2")
+      template(v-if="prod.goods_video2 || prod.goods_video1")
+        h1.text-2xl.mt-10 产品视频
+        .prod.bg-gray-100.flex.items-end.justify-center.gap-x-10.mt-60.pb-10
+          .card.flex.flex-col.cursor-pointer.bg-white(v-if="prod.goods_video1" class="hover:shadow hover:border-b-2 hover:border-blue-300")
+            .card-cover
+              video(:src="basePath + prod.goods_video1" controls)
+            .card-content.p-5
+              h3.text-xl.card-title(v-text="prod.video_title1")
+              p.mt-3.card-desc.text-gray-500(v-text="prod.video_content1")
+          .card.flex.flex-col.cursor-pointer.bg-white(v-if="prod.goods_video2" class="hover:shadow hover:border-b-2 hover:border-blue-300")
+            .card-cover
+              video(:src="basePath + prod.goods_video2" controls)
+            .card-content.p-5
+              h3.text-xl.card-title(v-text="prod.video_title2")
+              p.mt-3.card-desc.text-gray-500(v-text="prod.video_content2")
 
       h1.text-2xl.mt-10 相关型号
       .types.bg-gray-100.grid.grid-cols-3.my-10.p-10.justify-between.justify-items-center
