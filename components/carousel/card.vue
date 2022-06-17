@@ -79,7 +79,7 @@ export default {
       })
     },
     next() {
-      console.log(this.$refs.content)
+      // console.log(this.$refs.content)
       if (this.index == this.maxIndex - 1) return;
       this.index = this.index + 1;
       this.$refs.content.scroll({

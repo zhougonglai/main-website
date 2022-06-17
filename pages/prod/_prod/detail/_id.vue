@@ -73,7 +73,7 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
               p.mt-3.card-desc.text-gray-500(v-text="prod.video_content2")
 
       h1.text-2xl.mt-10 相关型号
-      .types.bg-gray-100.grid.grid-cols-3.my-10.p-10.justify-between.justify-items-center
+      .types.bg-gray-100.grid.grid-cols-3.my-10.p-10.gap-10.justify-between.justify-items-center
         nuxt-link.card.inline-flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
           class="hover:shadow hover:border-blue-300"
           v-for="p in prod.products" :key="p.id"

@@ -44,7 +44,7 @@ section.w-full.pb-20(v-cloak)
         .flex-1
           ul.flex-col.flex
             li.py-4.text-gray-500.px-5.flex.cursor-pointer.border-b.border-gray-100(
-              v-for="(info, i) in pageData.infos" :key="info.id" class="hover:text-blue-500 hover:bg-gray-100")
+              v-for="(info, i) in pageData.infos" :key="info.id" class="hover:text-blue-500 hover:bg-gray-100" @click="showFile(info)")
               .flex-1 {{ info.title }}
               time(v-text="info.time")
           .flex-1.flex.justify-end.px-5.py-5
@@ -52,13 +52,14 @@ section.w-full.pb-20(v-cloak)
       h1.text-4xl.my-10 公司治理
       ul
         li.py-2.text-gray-500.px-5.flex.items-center.cursor-pointer.border-b.border-gray-100(
-          v-for="(govern, i) in pageData.govern" :key="govern.id" class="hover:text-blue-500 hover:bg-gray-100")
+          v-for="(govern, i) in pageData.govern" :key="govern.id" class="hover:text-blue-500 hover:bg-gray-100" @click="showFile(govern)")
           .flex-1 {{ govern.title }}
           time.w-40.text-center(v-text="govern.time")
           a.text-blue-500.rounded.py-2.px-5(class="hover:bg-gray-200" target="_blank" :href="basePath + govern.url" download)
             ion-icon.mr-2(name="download-outline")
             | 下载
-
+  Dialog.w-full.h-full(v-cloak ref="dialog" preview)
+    embed(v-if="preview" :src="$root.basePath + preview" width="100%" height="100%")
 
 </template>
 <script>
@@ -121,6 +122,7 @@ export default {
         },
       ],
       pageData: '',
+      preview: ''
     }
   },
   computed: {
@@ -132,7 +134,11 @@ export default {
     this.pageData = await this.getInvestor()
   },
   methods: {
-    ...mapActions(['getInvestor'])
+    ...mapActions(['getInvestor']),
+    showFile(file) {
+      this.preview = file.url;
+      this.$refs.dialog.showModal();
+    }
   }
 }
 </script>

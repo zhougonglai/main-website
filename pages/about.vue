@@ -32,8 +32,8 @@
     .container.py-10.z-10
       h1.text-4xl 核心技术
       .flex.justify-center.mt-10.gap-x-5
-        .card.cursor-pointer.border-b-2.border-white.bg-white(class="hover:border-blue-300" v-for="(tech, i) in pageData.tech" :key="i")
-          .card-cover
+        .card.cursor-pointer.border-b-2.border-white.bg-white.flex.flex-col(class="hover:border-blue-300" v-for="(tech, i) in pageData.tech" :key="i")
+          .card-cover.flex-1
             img.object-center.object-cover(:src="basePath + tech.url")
           .card-content.p-5
             .card-title.text-xl(v-text="tech.title")
