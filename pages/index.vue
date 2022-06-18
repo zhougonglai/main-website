@@ -22,7 +22,7 @@ section.w-full.flex.flex-col.pb-20
           .content.flex-1
             .title.text-4xl(v-text="b.name")
             .desc.mt-10.text-xl(v-text="b.title1")
-            button.btn.mt-10.px-5.py-2.bg-red-500.text-white(class="hover:bg-red-600") 了解更多
+            nuxt-link.btn.inline-flex.mt-10.px-5.py-2.bg-red-500.text-white(class="hover:bg-red-600" :to="`/prod/${b.category_id}/detail/${b.id}`") 了解更多
           .cover.flex-1
             img.object-contain.object-center.w-full.h-full(:src="b.cover_path")
   .sc-news.flex.items-center.justify-center

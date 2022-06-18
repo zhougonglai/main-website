@@ -6,7 +6,7 @@ main.flex.flex-col.items-center
     .flex-1
     .nav-list.flex.justify-center.items-center
       nuxt-link(to="/contact" class="hover:text-blue-500") 联系我们
-      button.mx-5(type='button' @click="createToast(Math.random())")
+      a.mx-5(type='button' target="_blank" href="https://transcominstruments.tmall.com/")
         ion-icon(v-cloak name="cart")
       button(type='button')
         ion-icon(v-cloak name="search")
