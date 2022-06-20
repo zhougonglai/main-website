@@ -9,6 +9,7 @@ main.flex.flex-col.items-center
             path.opacity-75(fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z")
           ion-icon.text-blue-500(v-cloak v-else name="search" size="large" )
         input.search.rounded.w-full.h-full.pl-16(placeholder="搜索" v-model="search.input" @input="searchWord")
+        ion-icon.text-gray-300.absolute.right-5.cursor-pointer(v-if="search.input" name="close" class="top-1/2 -translate-y-1/2 hover:text-gray-500" size="large" @click="searchClear")
       .dialog-content.w-full.flex-1.overflow-y-auto
         template(v-if="search.results && search.results.apply && search.results.apply.length")
           h5.mt-5.text-xl.text-blue-500 应用
@@ -120,6 +121,7 @@ export default {
         results: '',
         timer: 0,
         loading: false,
+        source: '',
       },
       info: '',
     };
@@ -172,20 +174,27 @@ export default {
       this.$refs.toast.createToast(text);
     },
     searcher() {
-      this.search.input = '';
-      this.search.results = '';
+      this.searchClear();
       this.$refs.search.showModal();
     },
     closeSearch() {
       this.$refs.search?.close();
+    },
+    searchClear() {
+      this.search.input = '';
+      this.search.results = '';
+      if (this.search.timer) clearTimeout(this.search.timer);
+      if (this.search.source) this.search.source?.cancel('取消');
+      this.search.timer = 0;
+      if (this.search.loading) this.search.loading = false;
     },
     async searchWord() {
       if (!this.search.input) return this.search.results = '';
       this.search.loading = true;
       if (this.search.timer) clearTimeout(this.search.timer);
       this.search.timer = setTimeout(async () => {
-        const result = await this.getSearch({ keywords: this.search.input })
-        console.log('data', result);
+        this.search.source = this.$axios.CancelToken.source();
+        const result = await this.getSearch({ keywords: this.search.input, source: this.search.source })
         this.search.results = result;
         this.search.loading = false;
       }, 500);

@@ -232,9 +232,10 @@ export default {
    * @param {} param
    * @returns
    */
-  async getSearch(_, params) {
+  async getSearch(_, { keywords, source }) {
     const { data } = await this.$axios.$get("/api.php/api/search", {
-      params,
+      params: { keywords },
+      cancelToken: source.token,
     });
     return data;
   },
