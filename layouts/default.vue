@@ -1,5 +1,42 @@
 <template lang="pug">
 main.flex.flex-col.items-center
+  Dialog.search-dialog.rounded-xl.overflow-hidden.h-full(ref="search")
+    .p-5.flex.flex-col.overflow-hidden
+      .dialog-header.rounded.h-16.relative.border-gray-500.border(class="hover:border-blue-500 focus-visible:ring")
+        .search-icon.w-10.h-10.flex.items-center.justify-center.absolute.left-5(class="top-1/2 -translate-y-1/2")
+          svg.animate-spin.-ml-1.mr-3.h-5.w-5.text-blue-500(fill="none" viewBox="0 0 24 24" v-if="search.loading")
+            circle.opacity-25(cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4")
+            path.opacity-75(fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z")
+          ion-icon.text-blue-500(v-cloak v-else name="search" size="large" )
+        input.search.rounded.w-full.h-full.pl-16(placeholder="搜索" v-model="search.input" @input="searchWord")
+      .dialog-content.w-full.flex-1.overflow-y-auto
+        template(v-if="search.results && search.results.apply && search.results.apply.length")
+          h5.mt-5.text-xl.text-blue-500 应用
+          ul.search-list.grid.gap-y-2.mt-5
+            li.search-result.rounded.bg-blue-100.text-blue-500(v-for="apply in search.results.apply" :key="apply.id"
+            class="hover:bg-blue-500 hover:text-white" )
+              nuxt-link.px-5.h-12.flex.items-center(:to="`/apply/${apply.id}`")
+                .flex-1(v-text="apply.name")
+                ion-icon(name="send-sharp")
+        template(v-if="search.results && search.results.product && search.results.product.length")
+          h5.mt-5.text-xl.text-blue-500.mt-5 产品
+          ul.search-list.grid.gap-y-2.mt-5
+            li.search-result.rounded.bg-blue-100.text-blue-500(v-for="product in search.results.product" :key="product.id"
+            class="hover:bg-blue-500 hover:text-white" )
+              nuxt-link.px-5.h-12.flex.items-center(:to="`/prod/${product.category_id}/detail/${product.id}`")
+                .flex-1(v-text="product.name")
+                ion-icon(name="send-sharp")
+        template(v-if="search.results && search.results.solution && search.results.solution.length")
+          h5.mt-5.text-xl.text-blue-500.mt-5 解决方案
+          ul.search-list.grid.gap-y-2.mt-5
+            li.search-result.rounded.bg-blue-100.text-blue-500(v-for="solution in search.results.solution" :key="solution.id"
+            class="hover:bg-blue-500 hover:text-white" )
+              nuxt-link.px-5.h-12.flex.items-center(:to="`/apply/${solution.category_id}/solution/${solution.id}`")
+                .flex-1(v-text="solution.name")
+                ion-icon(name="send-sharp")
+        template(v-if="!search.results")
+          img(src="~/assets/img/search-empty.webp")
+
   header.flex
     nuxt-link.logo.flex.items-center.py-2(to='/')
       img(:src='$root.basePath + info.title' alt="创远仪器" width="300")
@@ -8,7 +45,7 @@ main.flex.flex-col.items-center
       nuxt-link(to="/contact" class="hover:text-blue-500") 联系我们
       a.mx-5(type='button' target="_blank" href="https://transcominstruments.tmall.com/")
         ion-icon(v-cloak name="cart")
-      button(type='button')
+      button(type='button' @click="searcher")
         ion-icon(v-cloak name="search")
   .bg-gray-100.w-full.flex.justify-center
     nav.menus.flex.items-center.leading-10.relative(ref="menus" v-if="cate.length" v-cloak)
@@ -79,6 +116,10 @@ export default {
       timer: 0,
       search: {
         show: false,
+        input: '',
+        results: '',
+        timer: 0,
+        loading: false,
       },
       info: '',
     };
@@ -110,6 +151,7 @@ export default {
     this.$router.beforeEach((to, from, next) => {
       next();
       this.closeMenus();
+      this.closeSearch();
     })
     // this.$store.commit(this.$route.path)
     window.addEventListener("click", e => {
@@ -125,15 +167,28 @@ export default {
     this.info = await this.getInfo();
   },
   methods: {
-    ...mapActions(["getCate", "getBanner", 'getInfo']),
+    ...mapActions(["getCate", "getBanner", 'getInfo', 'getSearch']),
     createToast(text) {
       this.$refs.toast.createToast(text);
     },
     searcher() {
-      if (!this.search.show) {
-        this.search.show = true;
-        this.$refs.search.focus();
-      }
+      this.search.input = '';
+      this.search.results = '';
+      this.$refs.search.showModal();
+    },
+    closeSearch() {
+      this.$refs.search?.close();
+    },
+    async searchWord() {
+      if (!this.search.input) return this.search.results = '';
+      this.search.loading = true;
+      if (this.search.timer) clearTimeout(this.search.timer);
+      this.search.timer = setTimeout(async () => {
+        const result = await this.getSearch({ keywords: this.search.input })
+        console.log('data', result);
+        this.search.results = result;
+        this.search.loading = false;
+      }, 500);
     },
     closeMenus() {
       this.leaActive = "";
@@ -184,6 +239,7 @@ export default {
 main {
   header {
     width: 1200px;
+    height: 96px;
 
     ion-icon {
       font-size: 24px;
@@ -266,22 +322,17 @@ main {
 }
 
 .search {
-  &.input {
+  &-dialog {
+    width: 100%;
+    max-width: 650px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
 
-    input {
-      border-radius: 0;
-      border: none;
-      border-bottom: 1px solid var(--color);
-      background: transparent;
-      color: var(--color);
-      padding: 0;
-      font-size: 16px;
-      width: 100%;
-      height: 40px;
-      outline: none;
-
-      &::placeholder {
-        color: var(--color);
+    .dialog-content {
+      b+b {
+        margin-top: 20px;
       }
     }
   }

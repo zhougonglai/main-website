@@ -227,4 +227,15 @@ export default {
     });
     return data;
   },
+  /**
+   * search
+   * @param {} param
+   * @returns
+   */
+  async getSearch(_, params) {
+    const { data } = await this.$axios.$get("/api.php/api/search", {
+      params,
+    });
+    return data;
+  },
 };
