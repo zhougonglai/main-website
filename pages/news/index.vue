@@ -21,6 +21,10 @@ import { mapActions, mapState } from 'vuex';
 
 export default {
   name: "news-page",
+  async asyncData({ route, app }) {
+    const { data } = await app.$axios.$get('/api.php/api/getMate', { params: { router: route.path } });
+    return data
+  },
   data() {
     return {
       pages: 1
@@ -31,6 +35,23 @@ export default {
       return process.env.BASE_API
     },
     ...mapState(['news'])
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.keywords,
+        },
+      ]
+    }
   },
   mounted() {
     this.getNewsList({ pages: this.pages });

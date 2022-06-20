@@ -100,6 +100,10 @@ import { mapActions, mapState } from 'vuex';
 export default {
   name: "production-detail-page",
   components: { Dialog },
+  async asyncData({ route, app }) {
+    const { data } = await app.$axios.$get('/api.php/api/getMate', { params: { router: route.path } });
+    return data
+  },
   data() {
     return {
       show: false,
@@ -111,6 +115,23 @@ export default {
       },
       detail: '',
     };
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.keywords,
+        },
+      ]
+    }
   },
   computed: {
     basePath() {

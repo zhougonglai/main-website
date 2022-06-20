@@ -22,11 +22,32 @@ import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'news-detail-page',
+  async asyncData({ route, app }) {
+    const { data } = await app.$axios.$get('/api.php/api/getMate', { params: { router: route.path } });
+    return data
+  },
   computed: {
     basePath() {
       return process.env.BASE_API
     },
     ...mapState(['newsDetail'])
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.keywords,
+        },
+      ]
+    }
   },
   async mounted() {
     const data = await this.getNewsDetail(this.$route.params)

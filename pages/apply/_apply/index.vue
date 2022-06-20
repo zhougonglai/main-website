@@ -77,11 +77,32 @@ import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'apply-page',
+  async asyncData({ route, app }) {
+    const { data } = await app.$axios.$get('/api.php/api/getMate', { params: { router: route.path } });
+    return data
+  },
   computed: {
     basePath() {
       return process.env.BASE_API
     },
     ...mapState(['apply'])
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.keywords,
+        },
+      ]
+    }
   },
   mounted() {
     this.getApply({ id: this.$route.params.apply });

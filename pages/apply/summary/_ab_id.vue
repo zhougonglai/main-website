@@ -62,6 +62,10 @@ import { mapActions, mapState } from 'vuex';
 
 export default {
   name: "about-page",
+  async asyncData({ route, app }) {
+    const { data } = await app.$axios.$get('/api.php/api/getMate', { params: { router: route.path } });
+    return data
+  },
   data() {
     return {
       communication,
@@ -77,6 +81,23 @@ export default {
         status: false,
       },
     };
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.keywords,
+        },
+      ]
+    }
   },
   computed: {
     basePath() {

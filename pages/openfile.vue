@@ -34,18 +34,21 @@ section.w-full.pb-20(v-cloak v-if="pageData")
 </template>
 
 <script>
-import files from '@/assets/constant/files';
 import { mapActions } from 'vuex'
 
 export default {
   name: "open-file-page",
+  async asyncData({ route, app }) {
+    const { data } = await app.$axios.$get('/api.php/api/getMate', { params: { router: route.path } });
+    return data
+  },
   data() {
     return {
       keywords: '',
       category: [
         {
           value: 1,
-          label: 'Data Sheet',
+          label: 'Datasheet',
           link: require('@/assets/img/prod/datasheet.svg'),
         },
         {
@@ -63,6 +66,23 @@ export default {
       pages: 1,
       file: '',
       pageData: '',
+    }
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.keywords,
+        },
+      ]
     }
   },
   computed: {

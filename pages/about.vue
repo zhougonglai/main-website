@@ -55,64 +55,31 @@ import { mapActions } from 'vuex'
 
 export default {
   name: "about-page",
+  async asyncData({ route, app }) {
+    const { data } = await app.$axios.$get('/api.php/api/getMate', { params: { router: route.path } });
+    return data
+  },
   data() {
     return {
-      logos: [
-        [
-          {
-            name: 'logo-alipay',
-          },
-          {
-            name: 'logo-amazon',
-          },
-          {
-            name: 'logo-amplify',
-          },
-          {
-            name: 'logo-android',
-          },
-          {
-            name: 'logo-angular',
-          },
-          {
-            name: 'logo-apple',
-          },
-          {
-            name: 'logo-apple-appstore',
-          },
-          {
-            name: 'logo-apple-ar',
-          },
-        ],
-        [
-          {
-            name: 'logo-behance',
-          },
-          {
-            name: 'logo-bitbucket',
-          },
-          {
-            name: 'logo-bitcoin',
-          },
-          {
-            name: 'logo-buffer',
-          },
-          {
-            name: 'logo-capacitor',
-          },
-          {
-            name: 'logo-chrome',
-          },
-          {
-            name: 'logo-closed-captioning',
-          },
-          {
-            name: 'logo-codepen',
-          },
-        ],
-      ],
       pageData: ''
     };
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.keywords,
+        },
+      ]
+    }
   },
   computed: {
     basePath() {

@@ -67,6 +67,7 @@ import route from '@/assets/constant/route';
 export default {
   name: "default",
   middleware: "router",
+
   data() {
     return {
       active: "",

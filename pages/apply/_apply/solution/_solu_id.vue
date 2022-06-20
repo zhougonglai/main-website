@@ -64,11 +64,32 @@ import { mapActions, mapState } from 'vuex';
 
 export default {
   name: "solution-page",
+  async asyncData({ route, app }) {
+    const { data } = await app.$axios.$get('/api.php/api/getMate', { params: { router: route.path } });
+    return data
+  },
   computed: {
     basePath() {
       return process.env.BASE_API
     },
     ...mapState(['solution', 'apply'])
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.keywords,
+        },
+      ]
+    }
   },
   async mounted() {
     if (!this.apply) return await this.getApply({ id: this.$route.params.apply }).then(this.updateLea);

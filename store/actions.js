@@ -216,4 +216,15 @@ export default {
     });
     return data;
   },
+  /**
+   * 获取TDK
+   * @param {} param
+   * @returns
+   */
+  async getMate(_, params) {
+    const { data } = await this.$axios.$get("/api.php/api/getMate", {
+      params,
+    });
+    return data;
+  },
 };
