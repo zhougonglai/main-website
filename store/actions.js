@@ -239,4 +239,15 @@ export default {
     });
     return data;
   },
+  /**
+   * links
+   * @param {} param
+   * @returns
+   */
+  async getFriendLk(_, params) {
+    const { data } = await this.$axios.$get("/api.php/api/getFriendLk", {
+      params,
+    });
+    return data;
+  },
 };
