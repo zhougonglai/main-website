@@ -38,18 +38,18 @@ main.flex.flex-col.items-center
         template(v-if="!search.results")
           img(src="~/assets/img/search-empty.webp")
 
-  header.flex
+  header.flex.container
     nuxt-link.logo.flex.items-center.py-2(to='/')
       img(:src='$root.basePath + info.title' alt="创远仪器" width="300")
     .flex-1
-    .nav-list.flex.justify-center.items-center
+    .nav-list.flex.justify-center.items-center.space-x-5
       nuxt-link(to="/contact" class="hover:text-blue-500") 联系我们
-      a.mx-5(type='button' target="_blank" href="https://transcominstruments.tmall.com/")
+      a(type='button' target="_blank" href="https://transcominstruments.tmall.com/")
         ion-icon(v-cloak name="cart")
       button(type='button' @click="searcher")
         ion-icon(v-cloak name="search")
-  .bg-gray-100.w-full.flex.justify-center
-    nav.menus.flex.items-center.leading-10.relative(ref="menus" v-if="cate.length" v-cloak)
+  .bg-gray-100.w-full.justify-center.items-center.hidden(class="lg:flex")
+    nav.container.flex.items-center.leading-10.relative(ref="menus" v-if="cate.length" v-cloak)
       .nav-link.px-8.py-4.cursor-pointer.text-lg.text-center(
         v-for="(menu, i) in cate.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)"
         @click="selectMenu(menu, i)"
@@ -95,7 +95,7 @@ main.flex.flex-col.items-center
   section.breadcrumbs(v-if="$route.name != 'index' && cateFlat.length")
     NavBreadcrumbs(:navs="cateFlat" :nav="lea")
   nuxt
-  AppFooter(:menus="cate" :info="info")
+  AppFooter.hidden(:menus="cate" :info="info" class="lg:flex")
   ActionToast(ref="toast")
 </template>
 <script>
@@ -249,7 +249,6 @@ export default {
 <style lang="scss" scoped>
 main {
   header {
-    width: 1200px;
     height: 96px;
 
     ion-icon {
@@ -257,12 +256,10 @@ main {
     }
   }
 
-  nav.menus {
-    width: 1200px;
-  }
+  nav.menus {}
 
   section.breadcrumbs {
-    width: min(1200px, 100vw);
+    // width: min(1200px, 100vw);
   }
 }
 
