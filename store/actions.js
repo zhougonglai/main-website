@@ -250,4 +250,15 @@ export default {
     });
     return data;
   },
+  /**
+   *
+   * @param {} param
+   * @returns
+   */
+  async getAttachmentImg(_, params) {
+    const { data } = await this.$axios.$get("/api.php/api/getAttachmentImg", {
+      params,
+    });
+    return data;
+  },
 };

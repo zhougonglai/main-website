@@ -1,7 +1,8 @@
 <template lang="pug">
 section.w-full.pb-20(v-cloak v-if="pageData")
-  .sc-1.h-480.bg-gradient-to-r.from-blue-300.to-red-300.flex.flex-col.items-center.justify-center
-    .sc-1__block
+  .sc-1.h-480.flex.flex-col.items-center.justify-center.relative
+    img.absolute.inset-0.z-0.object-center.w-full.h-full(v-if="cover" :src="$root.basePath + cover")
+    .sc-1__block.z-1
       h1.text-4xl 文档搜索
       .search.mt-4.flex
         input.search-input.h-16.flex-1.leading-none.pl-5.caret-blue-500.text-xl.outline-0(type="text" v-model.trim="keywords" placeholder="搜索")
@@ -65,6 +66,7 @@ export default {
       active: 0,
       pages: 1,
       file: '',
+      cover: '',
       pageData: '',
     }
   },
@@ -90,11 +92,12 @@ export default {
       return process.env.BASE_API
     }
   },
-  mounted() {
+  async mounted() {
     this.changeCategory(0)
+    this.cover = (await this.getAttachmentImg()).url;
   },
   methods: {
-    ...mapActions(['getAttachment']),
+    ...mapActions(['getAttachment', 'getAttachmentImg']),
     async changeCategory(index) {
       this.active = index;
       this.pages = 1;

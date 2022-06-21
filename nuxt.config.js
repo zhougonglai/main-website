@@ -23,7 +23,11 @@ export default {
         src: "https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/ionicons/5.5.4/ionicons/ionicons.esm.min.js",
       },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "shortcut icon", href: "/icon.png" },
+      { rel: "apple-touch-icon", href: "/icon.png" },
+    ],
   },
   css: ["@/assets/css/global.scss", "@/assets/css/tailwind.css"],
   plugins: ["~/plugins/bus"],
