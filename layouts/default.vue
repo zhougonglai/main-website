@@ -101,6 +101,7 @@ main.flex.flex-col.items-center
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex';
 import route from '@/assets/constant/route';
+import Bowser from "bowser";
 
 export default {
   name: "default",
@@ -144,6 +145,7 @@ export default {
       this.createToast(e);
     });
     this.$root.basePath = process.env.BASE_API
+    this.$root.ua = Bowser.parse(window.navigator.userAgent)
   },
   async mounted() {
     await this.getCate();

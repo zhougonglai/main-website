@@ -20,7 +20,7 @@ section.w-full.pb-20(v-cloak v-if="pageData")
           | {{ c.label }}
       section.flex-1
         .file.flex.border-b.border-gray-300.py-5.cursor-pointer(
-          v-for="(file, i) in pageData.attachment" :key="file.id" class="hover:bg-gray-100"
+          v-for="file in pageData.attachment" :key="file.id" class="hover:bg-gray-100"
           @click="openFile(file)")
           .file-icon.w-20.h-20.flex.items-center.justify-center
             img(:src="category[active].link" width="40")
