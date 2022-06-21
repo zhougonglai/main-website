@@ -51,7 +51,13 @@ export default {
   },
   pwa: {
     manifest: {
+      name: "创远仪器",
       lang: "zh-cn",
+    },
+    icon: {
+      source: "/icon.png",
+      sizes: [64],
+      purpose: "maskable",
     },
   },
   content: {},
