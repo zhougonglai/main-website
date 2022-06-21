@@ -8,7 +8,7 @@ main.flex.flex-col.items-center
             circle.opacity-25(cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4")
             path.opacity-75(fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z")
           ion-icon.text-blue-500(v-cloak v-else name="search" size="large" )
-        input.search.rounded.w-full.h-full.pl-16(placeholder="搜索" v-model="search.input" @input="searchWord")
+        input.search.rounded.w-full.h-full.pl-16(placeholder="搜索" v-model="search.input" @input="searchWord" autofocus)
         ion-icon.text-gray-300.absolute.right-5.cursor-pointer(v-if="search.input" name="close" class="top-1/2 -translate-y-1/2 hover:text-gray-500" size="large" @click="searchClear")
       .dialog-content.w-full.flex-1.overflow-y-auto
         template(v-if="search.results && search.results.apply && search.results.apply.length")

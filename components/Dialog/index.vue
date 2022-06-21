@@ -74,6 +74,10 @@ dialog {
   margin: auto;
   padding: 0;
   position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   inset: 0;
   z-index: 9;
   transition: opacity .5s var(--ease-3);
