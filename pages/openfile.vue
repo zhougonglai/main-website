@@ -4,7 +4,7 @@ section.w-full.pb-20(v-cloak v-if="pageData")
     .sc-1__block
       h1.text-4xl 文档搜索
       .search.mt-4.flex
-        input.search-input.h-16.flex-1.leading-none.pl-5.caret-blue-500.text-xl(type="text" v-model.trim="keywords" placeholder="搜索")
+        input.search-input.h-16.flex-1.leading-none.pl-5.caret-blue-500.text-xl.outline-0(type="text" v-model.trim="keywords" placeholder="搜索")
         button.search-btn.bg-blue-500.text-white.w-16.flex.items-center.justify-center(@click="search")
           ion-icon(name="search" size='large')
   .sc-2.flex.justify-center.align-center

@@ -56,8 +56,12 @@ html {
   }
 }
 
-body {
-  font-family: "SourceHanSansSC-Light", Arial, Helvetica, sans-serif;
+body,
+code,
+kbd,
+samp,
+pre {
+  font-family: "SourceHanSansSC-Light", Arial, Helvetica, sans-serif !important;
 }
 
 button {
