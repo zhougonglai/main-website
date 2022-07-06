@@ -92,7 +92,7 @@ main.flex.flex-col.items-center
                 //- :class="{ active: activeNav ? item.id == subActive || item.id == activeNav.id : false }"
                 //- :disabled="!item.child && !route[item.id]"
                 //- @click="selectLeamenu(item, i)"
-  section.breadcrumbs(v-if="$route.name != 'index' && cateFlat.length")
+  section.container.breadcrumbs(v-if="$route.name != 'index' && cateFlat.length")
     NavBreadcrumbs(:navs="cateFlat" :nav="lea")
   nuxt
   AppFooter.hidden(:menus="cate" :info="info" class="lg:flex")

@@ -54,8 +54,8 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
           table.table-auto.border-collapse.w-full.text-gray-500.border.border-slate-400.mt-5(v-else-if="tabActive === 2")
             tbody
               tr(v-for="(conf, i) in prod.configuration" :key="i" :class="{ 'bg-gray-100': i % 2 }")
-                td.pl-5.pr-1.py-2(v-text="conf.value")
-                td.pr-5.py-2(v-text="conf.param")
+                td.pl-5.pr-1.py-2(v-text="conf.param")
+                td.pr-5.py-2(v-text="conf.value")
       template(v-if="prod.goods_video2 || prod.goods_video1")
         h1.text-2xl.mt-10 产品视频
         .prod.bg-gray-100.flex.items-end.justify-center.gap-x-10.mt-60.pb-10

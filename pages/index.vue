@@ -12,13 +12,13 @@ section.w-full.flex.flex-col.pb-20
       h1.text-4xl(v-text="indexData.title")
       p.text-xl.mt-10(v-text="indexData.content")
   .sc-carousels.bg-gray-100.flex.items-center.justify-center
-    .sc-block.flex.items-center.justify-center
+    .container.flex.items-center.justify-center
       carousel-card.py-20(size="1" v-if="indexData.products && indexData.products.length" :max-size="indexData.products.length" dot
       dot-active-class="bg-red-600 rounded-full w-2 h-2"
       dot-class="border border-gray-500 w-2 h-2 hover:bg-red-500 rounded-full"
       dot-content-class=""
       contentClass="items-center justify-between")
-        carousel-item.flex.gap-x-10.w-full.px-16(v-for="b in indexData.products" :key="b.id" class="lg:px-0")
+        carousel-item.flex.gap-x-10.w-full(v-for="b in indexData.products" :key="b.id" class="lg:px-16 lg:flex-row px-0 flex-col")
           .content.flex-1
             .title.text-4xl(v-text="b.name")
             .desc.mt-10.text-xl(v-text="b.title1")
