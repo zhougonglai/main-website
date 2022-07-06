@@ -44,7 +44,8 @@ main.flex.flex-col.items-center
     .flex-1
     .nav-list.flex.justify-center.items-center.space-x-5
       nuxt-link(to="/contact" class="hover:text-blue-500") 联系我们
-      a(type='button' target="_blank" href="https://transcominstruments.tmall.com/")
+      //- a(type='button' target="_blank" href="https://transcominstruments.tmall.com/")
+      a(type='button' target="_blank" href="https://shop117778161.taobao.com")
         ion-icon(v-cloak name="cart")
       button(type='button' @click="searcher")
         ion-icon(v-cloak name="search")
