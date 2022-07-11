@@ -142,7 +142,8 @@ export default {
     if (localStorage.star) {
       this.star = JSON.parse(localStorage.getItem('star'));
     }
-    this.getPosition(this.pager);
+    this.pager.type = this.$route.query.type || 1;
+    this.changeType({ target: this.pager.type });
   },
   methods: {
     ...mapActions(['getPosition']),

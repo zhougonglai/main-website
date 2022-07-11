@@ -261,4 +261,18 @@ export default {
     });
     return data;
   },
+  /**
+   *
+   * @param {} param
+   * @returns
+   */
+  async getInvestorFile(_, params) {
+    const { data, totalPage } = await this.$axios.$get(
+      "/api.php/api/getInvestorFile",
+      {
+        params,
+      }
+    );
+    return { data, totalPage };
+  },
 };

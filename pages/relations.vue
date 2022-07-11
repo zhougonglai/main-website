@@ -48,17 +48,19 @@ section.w-full.pb-20(v-cloak)
               .flex-1 {{ info.title }}
               time(v-text="info.time")
           .flex-1.flex.justify-end.px-5.py-5
-            button.text-blue-500 了解更多
+            a.text-blue-500(href="http://www.bse.cn/products/neeq_listed_companies/related_announcement.html?companyCode=831961&typename=C&xxfcbj=2" target="_blank") 了解更多
       h1.text-4xl.my-10 公司治理
-      ul
+      ul(v-if="govern")
         li.py-2.text-gray-500.px-5.flex.items-center.cursor-pointer.border-b.border-gray-100(
-          v-for="(govern, i) in pageData.govern" :key="govern.id" class="hover:text-blue-500 hover:bg-gray-100" @click="showFile(govern)")
+          v-for="(govern, i) in govern" :key="govern.id" class="hover:text-blue-500 hover:bg-gray-100" @click="showFile(govern)")
           .flex-1 {{ govern.title }}
           time.w-40.text-center(v-text="govern.time")
           a.text-blue-500.rounded.py-2.px-5(class="hover:bg-gray-200" target="_blank" :href="basePath + govern.url" download)
             ion-icon.mr-2(name="download-outline")
             | 下载
-  Dialog.w-full.h-full(v-cloak ref="dialog" preview)
+      .flex.mt-20.items-center.justify-center(v-if="totalPage")
+        SubmitPagination(:length="totalPage" :value="pages" @change="changePage")
+  Dialog.w-full.h-full(v-cloak ref="dialog")
     embed(v-if="preview" :src="$root.basePath + preview" width="100%" height="100%")
 
 </template>
@@ -73,60 +75,11 @@ export default {
   },
   data() {
     return {
-      msgs: [
-        {
-          title: "创远仪器2022第一次股东大会",
-          time: "2022/03/06"
-        },
-        {
-          title: "创远仪器2022第一次股东大会",
-          time: "2022/03/06"
-        },
-        {
-          title: "创远仪器2022第一次股东大会",
-          time: "2022/03/06"
-        },
-        {
-          title: "创远仪器2022第一次股东大会",
-          time: "2022/03/06"
-        },
-        {
-          title: "创远仪器2022第一次股东大会",
-          time: "2022/03/06"
-        },
-        {
-          title: "创远仪器2022第一次股东大会",
-          time: "2022/03/06"
-        },
-      ],
-      files: [
-        {
-          title: '上海创远仪器技术股份有限公司2022年第一季度报告',
-          time: "2022/03/06",
-        },
-        {
-          title: '上海创远仪器技术股份有限公司2022年第一季度报告',
-          time: "2022/03/06",
-        },
-        {
-          title: '上海创远仪器技术股份有限公司2022年第一季度报告',
-          time: "2022/03/06",
-        },
-        {
-          title: '上海创远仪器技术股份有限公司2022年第一季度报告',
-          time: "2022/03/06",
-        },
-        {
-          title: '上海创远仪器技术股份有限公司2022年第一季度报告',
-          time: "2022/03/06",
-        },
-        {
-          title: '上海创远仪器技术股份有限公司2022年第一季度报告',
-          time: "2022/03/06",
-        },
-      ],
       pageData: '',
-      preview: ''
+      preview: '',
+      govern: '',
+      totalPage: 0,
+      pages: 1,
     }
   },
   head() {
@@ -153,12 +106,20 @@ export default {
   },
   async mounted() {
     this.pageData = await this.getInvestor()
+    const { data, totalPage } = await this.getInvestorFile();
+    this.govern = data;
+    this.totalPage = totalPage;
   },
   methods: {
-    ...mapActions(['getInvestor']),
+    ...mapActions(['getInvestor', 'getInvestorFile']),
     showFile(file) {
       this.preview = file.url;
       this.$refs.dialog.showModal();
+    },
+    async changePage(page) {
+      this.pages = page;
+      const { data } = await this.getInvestorFile({ pages: this.pages });
+      this.govern = data;
     }
   }
 }
