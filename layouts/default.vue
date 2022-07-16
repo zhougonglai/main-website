@@ -55,6 +55,7 @@ main.flex.flex-col.items-center
         v-for="(menu, i) in cate.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)"
         @click="selectMenu(menu, i)"
         @mouseenter="selectMenu(menu, i)"
+        @mouseleave="leaveMenu"
         v-text="menu.title"
         :class="{ active: activeNav ? i == activeNav.tab : false, 'pl-0': !i }"
         :key="menu.id")
@@ -65,7 +66,8 @@ main.flex.flex-col.items-center
         leave-active-class="transition duration-200 ease-in"
         leave-from-class="transform scale-100 opacity-100"
         leave-to-class="transform scale-95 opacity-0")
-        .nav-panel.absolute.top-20.-left-5.right-0.z-10.bg-white(v-if="Number.isFinite(active)")
+        .nav-panel.absolute.top-20.-left-5.right-0.z-10.bg-white(v-if="Number.isFinite(active)"
+          @mouseenter="clearTimer" @mouseleave="leaveMenu")
           .nav-panel__icon(:style="{ left: stageIndex[active] + 'px' }")
           .nav-panel-content.flex
             .nav-panel-list.flex.flex-col.w-60.p-5
@@ -107,7 +109,6 @@ import Bowser from "bowser";
 export default {
   name: "default",
   middleware: "router",
-
   data() {
     return {
       active: "",
@@ -126,6 +127,7 @@ export default {
         source: '',
       },
       info: '',
+      timer: 0,
     };
   },
   computed: {
@@ -207,7 +209,12 @@ export default {
       this.subActive = "";
       this.active = "";
     },
+    clearTimer() {
+      if (this.timer) clearTimeout(this.timer);
+      this.timer = 0;
+    },
     selectMenu(menu, active) {
+      this.clearTimer();
       if (menu.child) {
         this.active = active;
         this.subActive = "";
@@ -220,6 +227,12 @@ export default {
         });
       }
       this.closeMenus();
+    },
+    leaveMenu() {
+      this.clearTimer();
+      this.timer = setTimeout(() => {
+        this.closeMenus();
+      }, 300);
     },
     selectSubmenu(menu, active) {
       if (menu.child) {

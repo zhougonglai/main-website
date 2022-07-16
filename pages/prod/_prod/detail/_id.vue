@@ -6,7 +6,7 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
     img(v-if="detail" :src="detail")
   Dialog.w-full.h-full(ref="fileDialog" modal-mode="mega" preview)
     embed(:src="file.URL"  v-if="file.URL" width="100%" height="100%" )
-  .sc-1.w-full.flex.flex-col.items-center.py-10
+  .sc-1.container.w-full.flex.flex-col.items-center.py-10
     .sc-1__block(v-if="prod")
       h1.text-2xl(v-text="prod.name")
       .flex.w-full.my-5.gap-x-10
@@ -54,7 +54,8 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
               img.inset-0(:src="basePath + prod.img2" class="")
               ion-icon.absolute.cursor-pointer.right-2.bottom-2.text-blue-500(name="expand-sharp" size="large" @click="openDetail(basePath + prod.img2)")
           article.leading-8(v-else-if="tabActive === 3")
-            img.mt-5(:src="basePath + prod.pannel")
+            template(v-for="p in prod.pannel.split(',')")
+              img.mt-5(:src="basePath + p"  :key="p")
           table.table-auto.border-collapse.w-full.text-gray-500.border.border-slate-400.mt-5(v-else-if="tabActive === 2")
             tbody
               tr(v-for="(conf, i) in prod.configuration" :key="i" :class="{ 'bg-gray-100': i % 2 }")
@@ -200,14 +201,8 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-nav {
-  width: 1200px;
-}
-
 .sc-1 {
   &__block {
-    width: 1200px;
-
     .box {
       height: 400px;
 
