@@ -37,8 +37,9 @@ main.flex.flex-col.items-center
               nuxt-link.px-5.h-12.flex.items-center(:to="`/apply/${solution.category_id}/solution/${solution.id}`")
                 .flex-1(v-text="solution.name")
                 ion-icon(name="arrow-forward")
-        template(v-if="!search.results")
-          img.object-center.object-contain.h-full(src="~/assets/img/search-empty.webp" width="100%" height="100%")
+        .empty(v-if="!search.results")
+
+          //- img.object-center.object-contain.h-full(src="~/assets/img/search-empty.webp" width="100%" height="100%")
 
   header.flex.container
     nuxt-link.logo.flex.items-center.py-2(to='/')
