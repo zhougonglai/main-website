@@ -38,22 +38,24 @@ main.flex.flex-col.items-center
         template(v-if="!search.results")
           img(src="~/assets/img/search-empty.webp")
 
-  header.flex
+  header.flex.container
     nuxt-link.logo.flex.items-center.py-2(to='/')
       img(:src='$root.basePath + info.title' alt="创远仪器" width="300")
     .flex-1
-    .nav-list.flex.justify-center.items-center
+    .nav-list.flex.justify-center.items-center.space-x-5
       nuxt-link(to="/contact" class="hover:text-blue-500") 联系我们
-      a.mx-5(type='button' target="_blank" href="https://transcominstruments.tmall.com/")
+      //- a(type='button' target="_blank" href="https://transcominstruments.tmall.com/")
+      a(type='button' target="_blank" href="https://shop117778161.taobao.com")
         ion-icon(v-cloak name="cart")
       button(type='button' @click="searcher")
         ion-icon(v-cloak name="search")
-  .bg-gray-100.w-full.flex.justify-center
-    nav.menus.flex.items-center.leading-10.relative(ref="menus" v-if="cate.length" v-cloak)
+  .bg-gray-100.w-full.justify-center.items-center.hidden(class="lg:flex")
+    nav.container.flex.items-center.leading-10.relative(ref="menus" v-if="cate.length" v-cloak)
       .nav-link.px-8.py-4.cursor-pointer.text-lg.text-center(
         v-for="(menu, i) in cate.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)"
         @click="selectMenu(menu, i)"
         @mouseenter="selectMenu(menu, i)"
+        @mouseleave="leaveMenu"
         v-text="menu.title"
         :class="{ active: activeNav ? i == activeNav.tab : false, 'pl-0': !i }"
         :key="menu.id")
@@ -64,7 +66,8 @@ main.flex.flex-col.items-center
         leave-active-class="transition duration-200 ease-in"
         leave-from-class="transform scale-100 opacity-100"
         leave-to-class="transform scale-95 opacity-0")
-        .nav-panel.absolute.top-20.-left-5.right-0.z-10.bg-white(v-if="Number.isFinite(active)")
+        .nav-panel.absolute.top-20.-left-5.right-0.z-10.bg-white(v-if="Number.isFinite(active)"
+          @mouseenter="clearTimer" @mouseleave="leaveMenu")
           .nav-panel__icon(:style="{ left: stageIndex[active] + 'px' }")
           .nav-panel-content.flex
             .nav-panel-list.flex.flex-col.w-60.p-5
@@ -92,20 +95,20 @@ main.flex.flex-col.items-center
                 //- :class="{ active: activeNav ? item.id == subActive || item.id == activeNav.id : false }"
                 //- :disabled="!item.child && !route[item.id]"
                 //- @click="selectLeamenu(item, i)"
-  section.breadcrumbs(v-if="$route.name != 'index' && cateFlat.length")
+  section.container.breadcrumbs(v-if="$route.name != 'index' && cateFlat.length")
     NavBreadcrumbs(:navs="cateFlat" :nav="lea")
   nuxt
-  AppFooter(:menus="cate" :info="info")
+  AppFooter.hidden(:menus="cate" :info="info" class="lg:flex")
   ActionToast(ref="toast")
 </template>
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex';
 import route from '@/assets/constant/route';
+import Bowser from "bowser";
 
 export default {
   name: "default",
   middleware: "router",
-
   data() {
     return {
       active: "",
@@ -124,6 +127,7 @@ export default {
         source: '',
       },
       info: '',
+      timer: 0,
     };
   },
   computed: {
@@ -144,6 +148,7 @@ export default {
       this.createToast(e);
     });
     this.$root.basePath = process.env.BASE_API
+    this.$root.ua = Bowser.parse(window.navigator.userAgent)
   },
   async mounted() {
     await this.getCate();
@@ -204,7 +209,12 @@ export default {
       this.subActive = "";
       this.active = "";
     },
+    clearTimer() {
+      if (this.timer) clearTimeout(this.timer);
+      this.timer = 0;
+    },
     selectMenu(menu, active) {
+      this.clearTimer();
       if (menu.child) {
         this.active = active;
         this.subActive = "";
@@ -217,6 +227,12 @@ export default {
         });
       }
       this.closeMenus();
+    },
+    leaveMenu() {
+      this.clearTimer();
+      this.timer = setTimeout(() => {
+        this.closeMenus();
+      }, 300);
     },
     selectSubmenu(menu, active) {
       if (menu.child) {
@@ -247,7 +263,6 @@ export default {
 <style lang="scss" scoped>
 main {
   header {
-    width: 1200px;
     height: 96px;
 
     ion-icon {
@@ -255,12 +270,10 @@ main {
     }
   }
 
-  nav.menus {
-    width: 1200px;
-  }
+  nav.menus {}
 
   section.breadcrumbs {
-    width: min(1200px, 100vw);
+    // width: min(1200px, 100vw);
   }
 }
 

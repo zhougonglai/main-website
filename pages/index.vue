@@ -12,20 +12,20 @@ section.w-full.flex.flex-col.pb-20
       h1.text-4xl(v-text="indexData.title")
       p.text-xl.mt-10(v-text="indexData.content")
   .sc-carousels.bg-gray-100.flex.items-center.justify-center
-    .sc-block.flex.items-center.justify-center
+    .container.flex.items-center.justify-center
       carousel-card.py-20(size="1" v-if="indexData.products && indexData.products.length" :max-size="indexData.products.length" dot
       dot-active-class="bg-red-600 rounded-full w-2 h-2"
       dot-class="border border-gray-500 w-2 h-2 hover:bg-red-500 rounded-full"
       dot-content-class=""
       contentClass="items-center justify-between")
-        carousel-item.flex.gap-x-10.w-full.px-16(v-for="b in indexData.products" :key="b.id")
+        carousel-item.flex.gap-x-10.w-full(v-for="b in indexData.products" :key="b.id" class="lg:px-16 lg:flex-row px-0 flex-col")
           .content.flex-1
             .title.text-4xl(v-text="b.name")
             .desc.mt-10.text-xl(v-text="b.title1")
             nuxt-link.btn.inline-flex.mt-10.px-5.py-2.bg-red-500.text-white(class="hover:bg-red-600" :to="`/prod/${b.category_id}/detail/${b.id}`") 了解更多
           .cover.flex-1
             img.object-contain.object-center.w-full.h-full(:src="b.cover_path")
-  .sc-news.flex.items-center.justify-center
+  .sc-news.items-center.justify-center.hidden(class="lg:flex")
     .news-block.flex.flex-col.justify-center.py-20
       h1.text-4xl.ml-10 新闻
       .news-content.bg-gray-100.flex.flex-col-reverse.items-center.mt-40.relative(v-if="indexData.news && indexData.news.length")

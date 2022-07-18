@@ -18,7 +18,7 @@ section.w-full
       .grid.grid-cols-3.gap-5.mt-10
         nuxt-link.card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
           class="hover:shadow hover:border-blue-300" v-for="(apply, i) in summary.applys" :key="apply.id"
-          :to="`/apply/${apply.category_id}/solution/${apply.id}`")
+          :to="`/apply/${apply.id}`")
           .card-cover
             img.object-center.object-cover(:src="basePath + apply.cover_path" width="387" height="261")
           .card-content.p-5

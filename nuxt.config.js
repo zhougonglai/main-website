@@ -35,8 +35,9 @@ export default {
   buildModules: [
     // "@nuxtjs/tailwindcss",
     "@nuxt/postcss8",
+    // "@nuxtjs/pwa"
   ],
-  modules: ["@nuxtjs/axios", "@nuxtjs/pwa", "@nuxt/content"],
+  modules: ["@nuxtjs/axios", "@nuxt/content"],
   axios: {
     baseURL: process.env.BASE_API,
     proxy: true,
@@ -49,17 +50,17 @@ export default {
   proxy: {
     "/api.php": process.env.BASE_API,
   },
-  pwa: {
-    manifest: {
-      name: "创远仪器",
-      lang: "zh-cn",
-    },
-    icon: {
-      source: "/icon.png",
-      sizes: [64],
-      purpose: "maskable",
-    },
-  },
+  // pwa: {
+  //   manifest: {
+  //     name: "创远仪器",
+  //     lang: "zh-cn",
+  //   },
+  //   icon: {
+  //     source: "/icon.png",
+  //     sizes: [64],
+  //     purpose: "maskable",
+  //   },
+  // },
   content: {},
   build: {
     postcss: {
@@ -68,5 +69,10 @@ export default {
         autoprefixer: {},
       },
     },
+  },
+  server: {
+    port: 3000, // default: 3000
+    host: "127.0.0.1", // default: localhost,
+    // host: "localhost", // default: localhost,
   },
 };

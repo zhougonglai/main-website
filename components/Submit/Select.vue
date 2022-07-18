@@ -1,6 +1,6 @@
 <template lang="pug">
 .app-select.relative
-  ion-icon.absolute.right-5.text-primary(name="chevron-down" class="top-1/2 -translate-y-1/2" size="large")
+  //- ion-icon.absolute.right-5.text-primary(name="chevron-down" class="top-1/2 -translate-y-1/2" size="large")
   select.appearance-none(v-bind="$attrs" :class="contentClass" :value="value"
     @input="inputChange" :placeholder="placeholder")
     option(value="") 请选择

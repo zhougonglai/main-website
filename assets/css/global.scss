@@ -1,14 +1,14 @@
 :root {
-  --primary: #01a0e9;
+  --primary  : #01a0e9;
   --primary-1: #01a0e9;
   --primary-2: #5ec4ff;
-  --color: #606060;
-  --color-1: #262626;
-  --color-2: #777;
-  --color-3: #4b4b4b;
-  --color-4: #181818;
-  --color-5: #242424;
-  --color-6: #021734;
+  --color    : #606060;
+  --color-1  : #262626;
+  --color-2  : #777;
+  --color-3  : #4b4b4b;
+  --color-4  : #181818;
+  --color-5  : #242424;
+  --color-6  : #021734;
 
   --h-480: 480px;
 }
@@ -20,6 +20,7 @@
 .bg-primary {
   background-color: var(--primary) !important;
 }
+
 .hover-bg-primary {
   &:hover {
     background-color: var(--primary) !important;
@@ -77,25 +78,30 @@ button {
 }
 
 .text-clamp-4 {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: -webkit-box;
+  text-overflow     : ellipsis;
+  overflow          : hidden;
+  display           : -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
 }
 
 .text-clamp-5 {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: -webkit-box;
+  text-overflow     : ellipsis;
+  overflow          : hidden;
+  display           : -webkit-box;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
 }
 
 .text-clamp-6 {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: -webkit-box;
+  text-overflow     : ellipsis;
+  overflow          : hidden;
+  display           : -webkit-box;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
+}
+
+
+.break-word {
+  word-break: break-word;
 }

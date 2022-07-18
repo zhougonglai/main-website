@@ -6,7 +6,7 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
     img(v-if="detail" :src="detail")
   Dialog.w-full.h-full(ref="fileDialog" modal-mode="mega" preview)
     embed(:src="file.URL"  v-if="file.URL" width="100%" height="100%" )
-  .sc-1.w-full.flex.flex-col.items-center.py-10
+  .sc-1.container.w-full.flex.flex-col.items-center.py-10
     .sc-1__block(v-if="prod")
       h1.text-2xl(v-text="prod.name")
       .flex.w-full.my-5.gap-x-10
@@ -48,14 +48,19 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
             .relative(class="w-1/2 mt-5")
               img.inset-0(:src="basePath + prod.img1" class="")
               ion-icon.absolute.cursor-pointer.right-2.bottom-2.text-blue-500(name="expand-sharp" size="large" @click="openDetail(basePath + prod.img1)")
-          pre.leading-8.p-5.text-gray-500(v-else-if="tabActive === 1" v-text="prod.content7")
+          article.flex(v-else-if="tabActive === 1")
+            pre.leading-8.p-5.text-gray-500(v-text="prod.content7")
+            .relative(class="w-1/2 mt-5")
+              img.inset-0(:src="basePath + prod.img2" class="")
+              ion-icon.absolute.cursor-pointer.right-2.bottom-2.text-blue-500(name="expand-sharp" size="large" @click="openDetail(basePath + prod.img2)")
           article.leading-8(v-else-if="tabActive === 3")
-            img.mt-5(:src="basePath + prod.img2")
+            template(v-for="p in prod.pannel.split(',')")
+              img.mt-5(:src="basePath + p"  :key="p")
           table.table-auto.border-collapse.w-full.text-gray-500.border.border-slate-400.mt-5(v-else-if="tabActive === 2")
             tbody
               tr(v-for="(conf, i) in prod.configuration" :key="i" :class="{ 'bg-gray-100': i % 2 }")
-                td.pl-5.pr-1.py-2(v-text="conf.value")
-                td.pr-5.py-2(v-text="conf.param")
+                td.pl-5.pr-1.py-2(v-text="conf.param")
+                td.pr-5.py-2(v-text="conf.value")
       template(v-if="prod.goods_video2 || prod.goods_video1")
         h1.text-2xl.mt-10 产品视频
         .prod.bg-gray-100.flex.items-end.justify-center.gap-x-10.mt-60.pb-10
@@ -148,7 +153,7 @@ export default {
   async mounted() {
     if (!this.product?.production?.length) await this.getProducts({ c_id: this.$route.params.prod })
     const data = await this.getProduct({ id: this.$route.params.id });
-    // console.log(data)
+    console.log(this.product.production)
     this.$store.commit("updateLea", {
       path: `/prod/${this.$route.params.prod}/detail/${this.$route.params.id}`,
       meta: {
@@ -196,14 +201,8 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-nav {
-  width: 1200px;
-}
-
 .sc-1 {
   &__block {
-    width: 1200px;
-
     .box {
       height: 400px;
 
