@@ -1,42 +1,43 @@
 <template lang="pug">
 main.flex.flex-col.items-center
-  Dialog.search-dialog.rounded-xl.overflow-hidden.h-full(ref="search")
+  Dialog.search-dialog.overflow-hidden.h-full(ref="search")
     .p-5.flex.flex-col.overflow-hidden
-      .dialog-header.rounded.h-16.relative.border-gray-500.border(class="hover:border-blue-500 focus-visible:ring")
-        .search-icon.w-10.h-10.flex.items-center.justify-center.absolute.left-5(class="top-1/2 -translate-y-1/2")
+      h2.text-xl.font-bold 搜索内容
+      .dialog-header.h-16.relative.border-gray-500.border-b(class="hover:border-blue-500")
+        .search-icon.w-10.h-10.flex.items-center.justify-center.absolute.right-0(class="top-1/2 -translate-y-1/2")
           svg.animate-spin.-ml-1.mr-3.h-5.w-5.text-blue-500(fill="none" viewBox="0 0 24 24" v-if="search.loading")
             circle.opacity-25(cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4")
             path.opacity-75(fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z")
           ion-icon.text-blue-500(v-cloak v-else name="search" size="large" )
-        input.search.rounded.w-full.h-full.pl-16(placeholder="搜索" v-model="search.input" @input="searchWord" autofocus)
-        ion-icon.text-gray-300.absolute.right-5.cursor-pointer(v-if="search.input" name="close" class="top-1/2 -translate-y-1/2 hover:text-gray-500" size="large" @click="searchClear")
+        input.search.w-full.h-full.pl-4.outline-0(placeholder="搜索" v-model="search.input" @input="searchWord" autofocus)
+        ion-icon.text-gray-300.absolute.right-10.cursor-pointer(v-if="search.input" name="close" class="top-1/2 -translate-y-1/2 hover:text-gray-500" size="large" @click="searchClear")
       .dialog-content.w-full.flex-1.overflow-y-auto
         template(v-if="search.results && search.results.apply && search.results.apply.length")
-          h5.mt-5.text-xl.text-blue-500 应用
+          h5.mt-5.text-xl.text-gray-500 应用
           ul.search-list.grid.gap-y-2.mt-5
-            li.search-result.rounded.bg-blue-100.text-blue-500(v-for="apply in search.results.apply" :key="apply.id"
+            li.search-result.bg-gray-100.text-gray-500(v-for="apply in search.results.apply" :key="apply.id"
             class="hover:bg-blue-500 hover:text-white" )
               nuxt-link.px-5.h-12.flex.items-center(:to="`/apply/${apply.id}`")
                 .flex-1(v-text="apply.name")
-                ion-icon(name="send-sharp")
+                ion-icon(name="arrow-forward")
         template(v-if="search.results && search.results.product && search.results.product.length")
-          h5.mt-5.text-xl.text-blue-500.mt-5 产品
+          h5.mt-5.text-xl.text-gray-500.mt-5 产品
           ul.search-list.grid.gap-y-2.mt-5
-            li.search-result.rounded.bg-blue-100.text-blue-500(v-for="product in search.results.product" :key="product.id"
+            li.search-result.bg-gray-100.text-gray-500(v-for="product in search.results.product" :key="product.id"
             class="hover:bg-blue-500 hover:text-white" )
               nuxt-link.px-5.h-12.flex.items-center(:to="`/prod/${product.category_id}/detail/${product.id}`")
                 .flex-1(v-text="product.name")
-                ion-icon(name="send-sharp")
+                ion-icon(name="arrow-forward")
         template(v-if="search.results && search.results.solution && search.results.solution.length")
-          h5.mt-5.text-xl.text-blue-500.mt-5 解决方案
+          h5.mt-5.text-xl.text-gray-500.mt-5 解决方案
           ul.search-list.grid.gap-y-2.mt-5
-            li.search-result.rounded.bg-blue-100.text-blue-500(v-for="solution in search.results.solution" :key="solution.id"
+            li.search-result.bg-blue-100.text-blue-500(v-for="solution in search.results.solution" :key="solution.id"
             class="hover:bg-blue-500 hover:text-white" )
               nuxt-link.px-5.h-12.flex.items-center(:to="`/apply/${solution.category_id}/solution/${solution.id}`")
                 .flex-1(v-text="solution.name")
-                ion-icon(name="send-sharp")
+                ion-icon(name="arrow-forward")
         template(v-if="!search.results")
-          img(src="~/assets/img/search-empty.webp")
+          img.object-center.object-contain(src="~/assets/img/search-empty.webp" width="100%" height="100%")
 
   header.flex.container
     nuxt-link.logo.flex.items-center.py-2(to='/')
@@ -346,7 +347,7 @@ main {
 .search {
   &-dialog {
     width: 100%;
-    max-width: 650px;
+    max-width: 1120px;
     position: fixed;
     top: 0;
     left: 0;
