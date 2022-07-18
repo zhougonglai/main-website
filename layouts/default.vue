@@ -12,6 +12,7 @@ main.flex.flex-col.items-center
         input.search.w-full.h-full.pl-4.outline-0(placeholder="搜索" v-model="search.input" @input="searchWord" autofocus)
         ion-icon.text-gray-300.absolute.right-10.cursor-pointer(v-if="search.input" name="close" class="top-1/2 -translate-y-1/2 hover:text-gray-500" size="large" @click="searchClear")
       .dialog-content.w-full.flex-1.overflow-y-auto
+        h2.text-xl.font-bold.my-4(v-if="search.results") 搜索结果
         template(v-if="search.results && search.results.apply && search.results.apply.length")
           h5.mt-5.text-xl.text-gray-500 应用
           ul.search-list.grid.gap-y-2.mt-5
@@ -37,7 +38,7 @@ main.flex.flex-col.items-center
                 .flex-1(v-text="solution.name")
                 ion-icon(name="arrow-forward")
         template(v-if="!search.results")
-          img.object-center.object-contain(src="~/assets/img/search-empty.webp" width="100%" height="100%")
+          img.object-center.object-contain.h-full(src="~/assets/img/search-empty.webp" width="100%" height="100%")
 
   header.flex.container
     nuxt-link.logo.flex.items-center.py-2(to='/')
