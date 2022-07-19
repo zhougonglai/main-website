@@ -2,18 +2,18 @@
 section.w-full
   .sc-1.flex.items-center.justify-center.relative
     img.absolute.inset-0.object-center.object-cover.h-full.z-0(:src="basePath + summary.cover_path" width="100%" height="100%")
-    .sc-1__block.color-white.z-1.py-32(class="sm:px-10")
+    .sc-1__block.color-white.z-1.py-32.container(class="sm:px-10")
       h1.text-4xl.text-white(v-text="summary.name")
       article.mt-5
         p.text-white.text-2xl.leading-relaxed(v-text='summary.content')
   .sc-2.flex.items-center.justify-center
-    .sc-2__block
+    .sc-2__block.py-10
       h1.text-4xl(v-text="summary.title")
       article.mt-10
         p.text-2xl.leading-relaxed(v-text="summary.title1")
   .sc-3.flex.items-center.justify-center.relative
     .sc-3__bg.bg-gray-100.absolute.inset-x-0.bottom-0.top-80.z-0
-    .sc-3__block.py-20
+    .sc-3__block.py-20.container
       h1.text-4xl 相关应用
       .grid.grid-cols-3.gap-5.mt-10
         nuxt-link.card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
@@ -29,7 +29,7 @@ section.w-full
               ion-icon.mr-2(name="arrow-forward-outline")
               | 更 多 信 息
   .sc-4.flex.items-center.justify-center
-    .sc-4__block.flex.py-20
+    .sc-4__block.flex.py-20.container
       .left.flex-1
         h1.text-4xl(v-text="summary.video_title")
         p.mt-5.text-2xl(v-text="summary.video_content")
@@ -120,7 +120,7 @@ export default {
 <style lang="scss" scoped>
 .sc-1 {
   &__block {
-    width: min(1200px, 100%);
+    // width: min(1200px, 100%);
   }
 }
 
@@ -132,7 +132,7 @@ export default {
 
 .sc-3 {
   &__block {
-    width: min(1200px, 100%);
+    // width: min(1200px, 100%);
     z-index: 1;
 
     .card {
@@ -147,13 +147,13 @@ export default {
 
 .sc-4 {
   &__block {
-    width: min(1200px, 100%);
+    // width: min(1200px, 100%);
   }
 }
 
 .sc-5 {
   &__block::v-deep {
-    width: min(1200px, 100%);
+    // width: min(1200px, 100%);
 
     .content {
       width: 1020px;
@@ -168,7 +168,7 @@ export default {
 
 .sc-6 {
   &__block {
-    width: min(1200px, 100%);
+    // width: min(1200px, 100%);
   }
 }
 </style>
