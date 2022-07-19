@@ -6,7 +6,7 @@ section.w-full.flex.flex-col.pb-20
   dot-class="bg-white w-2 h-2 rounded-full hover:scale-125"
   )
     carousel-item.flex.w-full(v-for="b in banner.filter(b => b.status)" :key="b.id")
-      img.object-center.object-cover.w-full.h-480(:src="b.url")
+      img.object-center.object-cover.w-full(:src="b.url")
   .sc-1.bg-white.flex.items-center.justify-center
     .sc-1-block.h-80.flex.flex-col.justify-center(class="w-1/2")
       h1.text-4xl(v-text="indexData.title")

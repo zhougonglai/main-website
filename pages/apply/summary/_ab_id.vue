@@ -1,13 +1,13 @@
 <template lang="pug">
 section.w-full
-  .sc-1.flex.items-center.justify-center.relative.h-480
+  .sc-1.flex.items-center.justify-center.relative
     img.absolute.inset-0.object-center.object-cover.h-full.z-0(:src="basePath + summary.cover_path" width="100%" height="100%")
-    .sc-1__block.color-white.z-1
+    .sc-1__block.color-white.z-1.py-32(class="sm:px-10")
       h1.text-4xl.text-white(v-text="summary.name")
       article.mt-5
         p.text-white.text-2xl.leading-relaxed(v-text='summary.content')
   .sc-2.flex.items-center.justify-center
-    .sc-2__block.py-10
+    .sc-2__block
       h1.text-4xl(v-text="summary.title")
       article.mt-10
         p.text-2xl.leading-relaxed(v-text="summary.title1")

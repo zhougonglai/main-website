@@ -49,7 +49,7 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
               img.inset-0(:src="basePath + prod.img1" class="")
               ion-icon.absolute.cursor-pointer.right-2.bottom-2.text-blue-500(name="expand-sharp" size="large" @click="openDetail(basePath + prod.img1)")
           article.flex(v-else-if="tabActive === 1")
-            pre.leading-8.p-5.text-gray-500(v-text="prod.content7")
+            pre.leading-8.p-5.text-gray-500.flex-1(v-text="prod.content7")
             .relative(class="w-1/2 mt-5")
               img.inset-0(:src="basePath + prod.img2" class="")
               ion-icon.absolute.cursor-pointer.right-2.bottom-2.text-blue-500(name="expand-sharp" size="large" @click="openDetail(basePath + prod.img2)")
