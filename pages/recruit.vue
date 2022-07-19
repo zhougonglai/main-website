@@ -38,6 +38,10 @@
         ion-icon(name='star-outline')
       .flex-3
         | 职位名称
+        //- span.selector.ml-2.leading-1.inline-grid.items-center
+        //-   ion-icon(name="chevron-down-circle")
+        //-   select(title="职位类型" v-model="pager.type" @change="changeType")
+        //-     option(v-for="t in type" :key="t.id" :selected="t.id == pager.type" :value="t.id") {{ t.name }}
       .flex-1.text-center
         | 职能范围
         span.ml-2.leading-1.inline-grid.items-center.selector
@@ -62,7 +66,7 @@
 import { mapState, mapActions } from 'vuex';
 
 export default {
-  name: 'join-us-page',
+  name: 'recruit-page',
   async asyncData({ route, app }) {
     const { data } = await app.$axios.$get('/api.php/api/getMate', { params: { router: route.path } });
     return data
@@ -140,16 +144,16 @@ export default {
     this.pagerChange(this.pager.pages);
   },
   methods: {
-    ...mapActions(['getPosition']),
+    ...mapActions(['getPositions']),
     pagerChange(pages) {
       this.pager.pages = pages
-      this.getPosition(this.pager);
+      this.getPositions(this.pager);
       window.scrollTo({ top: 1000, behavior: "smooth" })
     },
     changeCategory(category) {
       this.pager.category = category.target.value;
       this.pager.pages = 1
-      this.getPosition(this.pager);
+      this.getPositions(this.pager);
       window.scrollTo({ top: 1000, behavior: "smooth" })
     },
     startPosition(position) {

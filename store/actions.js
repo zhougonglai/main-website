@@ -130,6 +130,20 @@ export default {
     return data;
   },
   /**
+   * 招聘类型 1为校招 2为社会招聘
+   * @param {pages, category, type } param0
+   *  category { 1: 业务, 2: 研发, 3:职能 }
+   * @returns
+   */
+
+  async getPositions({ commit }, params) {
+    const { data } = await this.$axios.$get("/api.php/api/getPositions", {
+      params,
+    });
+    commit("updatePosition", data);
+    return data;
+  },
+  /**
    * 历史
    * @param {} param0
    * @returns
