@@ -2,7 +2,7 @@
 section.w-full
   .sc-1.flex.items-center.justify-center.relative
     img.absolute.inset-0.object-center.object-cover.h-full.z-0(:src="basePath + summary.cover_path" width="100%" height="100%")
-    .sc-1__block.color-white.z-1.py-32.container(class="sm:px-10")
+    .sc-1__block.color-white.z-1.py-32(class="sm:px-2 md:px-4 lg:px-6 xl:px-8 px-10")
       h1.text-4xl.text-white(v-text="summary.name")
       article.mt-5
         p.text-white.text-2xl.leading-relaxed(v-text='summary.content')
