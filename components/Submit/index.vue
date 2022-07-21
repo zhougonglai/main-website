@@ -3,7 +3,7 @@ form.form(ref="form" @submit.prevent="submit")
   h2.text-2xl 需要更多信息
   p.text-lg.text-gray-500.mt-5 如果您有任何疑问或需要了解更多信息，请填写此表格，我们会尽快回复您。
   .grid.grid-cols-1.gap-x-20.gap-y-5(class="lg:grid-cols-2")
-    .flex.items-center.col-span-1.my-10(class="lg:col-span-1")
+    .flex.items-center.col-span-1.my-10(class="lg:col-span-2")
       input.w-5.h-5.mr-5(type="radio" id="sex-1" v-model="form.sex" value="男")
       label.text-xl.mr-20(for="sex-1") 男
       input.w-5.h-5.mr-5(type="radio" id="sex-0" v-model="form.sex" value="女")
