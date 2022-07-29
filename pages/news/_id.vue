@@ -1,17 +1,17 @@
 <template lang="pug">
 .w-full.flex.flex-col.items-center.pb-20(v-if="newsDetail.detail")
-  .banner.w-full.h-480.flex.items-center.justify-center.relative
-    img.absolute.inset-0.object-center.object-cover.w-full.h-full.z-0(:src="basePath + newsDetail.detail.url" width="100%" height="100%")
-    section.con.z-1.text-white
-      h1.text-4xl(v-text="newsDetail.title")
-      pre.text-lg.mt-10(v-text="newsDetail.content")
-  article
+  .banner.w-full.flex.items-center.justify-center.relative
+    img.object-center.object-cover.w-full.h-full.z-0(:src="basePath + newsDetail.detail.url" width="100%" height="100%")
+    //- section.con.z-1.text-white
+    //-   h1.text-4xl(v-text="newsDetail.title")
+    //-   pre.text-lg.mt-10(v-text="newsDetail.content")
+  article.mt-20
     .flex.gap-x-2.text-sm.text-gray-500
       time(v-text="newsDetail.detail.date")
       address.not-italic(v-text="newsDetail.detail.addr")
     h1.my-10.text-4xl(v-text="newsDetail.detail.name")
-    .content(v-html="newsDetail.detail.content")
-  section.con.flex.justify-between
+    .container(v-html="newsDetail.detail.content")
+  section.container.flex.justify-between
     nuxt-link.border.border-gray-300.bg-gray-100.text-lg.px-5.py-2(v-if="newsDetail.detail.prve" :to="`/news/${newsDetail.detail.prve.id}`" class="hover:bg-gray-300") 上一篇: {{ newsDetail.detail.prve.name }}
     .flex-1(v-else)
     nuxt-link.border.border-gray-300.bg-gray-100.text-lg.px-5.py-2(v-if="newsDetail.detail.next" :to="`/news/${newsDetail.detail.next.id}`" class="hover:bg-gray-300") 下一篇: {{ newsDetail.detail.next.name }}
@@ -69,18 +69,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.banner {
-  margin-bottom: 86px;
-
-  .box {
-    width: 1000px;
-  }
-}
-
-.con {
-  width: 1000px;
-}
-
 article {
   margin-bottom: 80px;
 
@@ -95,9 +83,8 @@ article {
     margin: 50px 0 40px;
   }
 
-  .content {
-    width: 1000px;
-    font-size: 24px;
+  .container {
+    // font-size: 24px;
     color: #222222;
 
     p {

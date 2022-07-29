@@ -9,7 +9,7 @@
     nuxt-link.flex.flex-col.border-b-2.border-white(v-for="n in news.news" :key="n.id" :to="`news/${n.id}`" class="hover:border-blue-300")
       img.object-center.object-cover(:src="basePath + n.url" width="373" height="249")
       .bg-gray-100.flex.flex-col.p-5
-        h2.text-xl 创远仪器参加2021年mwc
+        h2.text-xl.truncate(v-text="n.name" :title="n.name")
         .flex.text-lg.mt-5.justify-between.items-end
           button.border-b.border-gray-500 了解详情
           time.text-sm.text-gray-500(v-text="n.date")
