@@ -1,8 +1,8 @@
 <template lang="pug">
 section.w-full
   .sc-1.flex.items-center.justify-center.relative
-    img.absolute.inset-0.object-center.object-cover.h-full.z-0(:src="basePath + summary.cover_path" width="100%" height="100%")
-    .sc-1__block.color-white.z-1.py-32.container(class="sm:px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64")
+    img.object-center.object-cover.h-full.z-0(:src="basePath + summary.cover_path" width="100%" height="100%")
+    .sc-1__block.absolute.inset-0.color-white.z-1.flex.justify-center.flex-col(class="sm:px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64" v-if="$root.ua.platform.type === 'desktop'")
       h1.text-4xl.text-white(v-text="summary.name")
       article.mt-5
         p.text-white.text-2xl.leading-relaxed(v-text='summary.content')
