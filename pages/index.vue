@@ -46,7 +46,7 @@ section.w-full.flex.flex-col.pb-20
   .sc-link.flex.justify-center.py-20(v-if="link.length")
     .link-block
       h1.text-4xl.ml-10 快速链接
-      ul.links.flex.gap-x-5.mt-10
+      ul.links.grid.gap-x-5.mt-10(class="grid-cols-1 lg:grid-cols-5")
         li.link.bg-gray-100.cursor-pointer(v-for="(l, i) in link" :key="i" class="hover:shadow")
           a.block(:href="l.url" v-text="l.title" target="_blank")
 </template>
@@ -191,9 +191,7 @@ export default {
 }
 
 .sc-link {
-  .link-block {
-    width: 1200px;
-  }
+  .link-block {}
 
   .link {
     width: 200px;
