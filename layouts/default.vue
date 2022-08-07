@@ -45,14 +45,16 @@ main.flex.flex-col.items-center
     nuxt-link.logo.flex.items-center.py-2(to='/')
       img(:src='$root.basePath + info.title' alt="创远仪器" width="300")
     .flex-1
-    .nav-list.flex.justify-center.items-center.space-x-5
-      nuxt-link(to="/contact" class="hover:text-blue-500") 联系我们
+    .nav-list.flex.justify-center.items-center.space-x-5.flex-1
+      nuxt-link.hidden(to="/contact" class="hover:text-blue-500 lg:flex" ) 联系我们
       //- a(type='button' target="_blank" href="https://transcominstruments.tmall.com/")
       a(type='button' target="_blank" href="https://shop117778161.taobao.com")
         ion-icon(v-cloak name="cart")
       button(type='button' @click="searcher")
         ion-icon(v-cloak name="search")
-  .bg-gray-100.w-full.justify-center.items-center.hidden(class="lg:flex")
+      button(type="button" @click="showMenu(!menu.visible)")
+        ion-icon(v-cloak name="menu")
+  .bg-gray-100.w-full.justify-center.items-center.hidden(class="lg:flex" lg)
     nav.container.flex.items-center.leading-10.relative(ref="menus" v-if="cate.length" v-cloak)
       .nav-link.px-8.py-4.cursor-pointer.text-lg.text-center(
         v-for="(menu, i) in cate.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)"
@@ -95,9 +97,20 @@ main.flex.flex-col.items-center
                 :key="item.id"
                 :to="item.router"
                 v-text="item.title")
-                //- :class="{ active: activeNav ? item.id == subActive || item.id == activeNav.id : false }"
-                //- :disabled="!item.child && !route[item.id]"
-                //- @click="selectLeamenu(item, i)"
+  .bg-gray-100.w-full.flex.menus.z-20.absolute(class="lg:hidden" v-if="menu.visible" sm)
+    nav.container.flex.flex-col
+      .nav-list.grid.grid-cols-1.divide-y
+        .nav-item(v-for="($menu, i) in cate.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)")
+          .nav-item__content.flex.h-10.py-2.px-4.text-lg(@click="expandMenu($menu)")
+            .nav-item__title.flex-1(v-text="$menu.title")
+            button.nav-item__icon
+              ion-icon(name="add" v-if="menu.expand !== $menu.id")
+              ion-icon(name="remove" v-else)
+          .nav-item-children(v-if="menu.expand === $menu.id")
+            .nav-item-child.bg-gray-200.px-4(v-for="child in $menu.child" :key="child.id")
+              .nav-item-child__content.h-10.py-2.text-lg(@click="expandChild(child)")
+                .nav-item-child__title.text-sm(v-text="child.title")
+              .nav-item-children-c(v-if="menu.child === child.id")
   section.container.breadcrumbs(v-if="$route.name != 'index' && cateFlat.length")
     NavBreadcrumbs(:navs="cateFlat" :nav="lea")
   nuxt
@@ -131,6 +144,11 @@ export default {
       },
       info: '',
       timer: 0,
+      menu: {
+        visible: false,
+        expand: null,
+        child: null,
+      }
     };
   },
   computed: {
@@ -187,6 +205,25 @@ export default {
     },
     closeSearch() {
       this.$refs.search?.close();
+    },
+    showMenu(bool) {
+      this.menu.visible = bool;
+    },
+    expandMenu(menu) {
+      console.log('expandMenu', menu)
+      if (this.menu.expand === menu.id) return this.menu.expand = null;
+      this.menu.expand = menu.id;
+    },
+    expandChild(menu) {
+      console.log('expandMenu', menu)
+      if (this.menu.child === menu.id) return this.menu.child = null;
+      if (!menu.child) {
+        this.menu.visible = false;
+        this.menu.child = null;
+        this.menu.expand = null;
+        return this.$router.push(menu.router);
+      }
+      this.menu.child = menu.id;
     },
     searchClear() {
       this.search.input = '';
@@ -271,12 +308,18 @@ main {
     ion-icon {
       font-size: 24px;
     }
+
+    .nav-list {
+      min-width: 200px;
+    }
   }
 
-  nav.menus {}
+  .menus[sm] {
+    top: 96px;
 
-  section.breadcrumbs {
-    // width: min(1200px, 100vw);
+    .nav {
+      &-item {}
+    }
   }
 }
 
@@ -298,6 +341,7 @@ main {
       color: darkgray;
     }
   }
+
 
   &-panel {
     filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
