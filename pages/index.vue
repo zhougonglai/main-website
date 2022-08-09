@@ -8,7 +8,7 @@ section.w-full.flex.flex-col.pb-20
     carousel-item.flex.w-full(v-for="b in banner.filter(b => b.status)" :key="b.id")
       img.object-center.object-cover.w-full(:src="b.url")
   .sc-1.bg-white.flex.items-center.justify-center
-    .sc-1-block.h-80.flex.flex-col.justify-center(class="w-1/2")
+    .sc-1-block.h-80.flex.flex-col.justify-center.px-4(class="w-full lg:w-1/2")
       h1.text-4xl(v-text="indexData.title")
       p.text-xl.mt-10(v-text="indexData.content")
   .sc-carousels.bg-gray-100.flex.items-center.justify-center
@@ -17,7 +17,8 @@ section.w-full.flex.flex-col.pb-20
       dot-active-class="bg-red-600 rounded-full w-2 h-2"
       dot-class="border border-gray-500 w-2 h-2 hover:bg-red-500 rounded-full"
       dot-content-class=""
-      contentClass="items-center justify-between")
+      contentClass="items-center justify-between"
+      class="px-8 lg:px-4")
         carousel-item.flex.gap-x-10.w-full(v-for="b in indexData.products" :key="b.id" class="lg:px-16 lg:flex-row px-0 flex-col")
           .content.flex-1
             .title.text-4xl(v-text="b.name")
@@ -194,7 +195,6 @@ export default {
   .link-block {}
 
   .link {
-    width: 200px;
     height: 56px;
     line-height: 56px;
     color: var(--color-4);
