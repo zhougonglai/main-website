@@ -52,7 +52,7 @@ main.flex.flex-col.items-center
         ion-icon(v-cloak name="cart")
       button(type='button' @click="searcher")
         ion-icon(v-cloak name="search")
-      button(type="button" @click="showMenu(!menu.visible)")
+      button(class="lg:hidden inline-flex" type="button" @click="showMenu(!menu.visible)")
         ion-icon(v-cloak name="menu")
   .bg-gray-100.w-full.justify-center.items-center.hidden(class="lg:flex" lg)
     nav.container.flex.items-center.leading-10.relative(ref="menus" v-if="cate.length" v-cloak)
