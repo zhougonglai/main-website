@@ -45,9 +45,9 @@ section.w-full.flex.flex-col.pb-20
             .news-desc.leading-7.mt-5(v-if="i" v-text="n.title")
           button.news-btn.absolute.bottom-5.right-5 更多信息
   .sc-link.flex.justify-center.py-20(v-if="link.length")
-    .link-block.container
-      h1.text-4xl.ml-10 快速链接
-      ul.links.grid.gap-x-5.mt-10(class="grid-cols-1 lg:grid-cols-5")
+    .link-block.container.px-0(class="lg:px-20")
+      h1.text-4xl.pl-10.w-full 快速链接
+      ul.links.grid.gap-x-5.mt-10(class="grid-cols-1 lg:grid-cols-5 w-full lg:w-fit")
         li.link.bg-gray-100.cursor-pointer.w-full(v-for="(l, i) in link" :key="i" class="hover:shadow lg:w-48")
           a.block(:href="l.url" v-text="l.title" target="_blank")
 </template>
