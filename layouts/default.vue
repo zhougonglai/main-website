@@ -114,7 +114,7 @@ main.flex.flex-col.items-center
                 .nav-item-children-c__item(v-for="c in child.child" :key="c.id")
                   .nav-item-children-c__content.h-10.py-2.text-sm.text-gray-500(@click="expandChild(c)")
                     .nav-item-children-c__title(v-text="c.title")
-    .flex-1.backdrop.absolute.inset-0.backdrop-blur.backdrop-filter.z-0
+    .flex-1.backdrop.absolute.inset-0.backdrop-blur.backdrop-filter.z-0(@click="showMenu(!menu.visible)")
   section.container.breadcrumbs(v-if="$route.name != 'index' && cateFlat.length")
     NavBreadcrumbs(:navs="cateFlat" :nav="lea")
   nuxt
