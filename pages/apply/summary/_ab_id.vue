@@ -7,13 +7,13 @@ section.w-full
       article.mt-5
         p.text-white.text-2xl.leading-relaxed(v-text='summary.content')
   .sc-2.flex.items-center.justify-center
-    .sc-2__block.py-10
+    .sc-2__block.py-10.px-4(class="lg:px-0")
       h1.text-4xl(v-text="summary.title")
       article.mt-10
         p.text-2xl.leading-relaxed(v-text="summary.title1")
   .sc-3.flex.items-center.justify-center.relative
     .sc-3__bg.bg-gray-100.absolute.inset-x-0.bottom-0.top-80.z-0
-    .sc-3__block.py-20.container
+    .sc-3__block.container.px-4.py-20(class="lg:px-0")
       h1.text-4xl 相关应用
       .grid.gap-5.mt-10(class="lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2")
         nuxt-link.card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
@@ -29,14 +29,14 @@ section.w-full
               ion-icon.mr-2(name="arrow-forward-outline")
               | 更 多 信 息
   .sc-4.flex.items-center.justify-center
-    .sc-4__block.flex.py-20.container(class="flex-col lg:flex-row")
+    .sc-4__block.flex.py-20.container.px-4(class="flex-col lg:flex-row lg:px-0")
       .left.flex-1
         h1.text-4xl(v-text="summary.video_title")
         p.mt-5.text-2xl(v-text="summary.video_content")
       .right.flex-1
         video(:src="basePath + summary.goods_video" controls)
   .sc-5.flex.items-center.justify-center.bg-gray-100
-    .sc-5__block.flex.flex-col.py-20.container
+    .sc-5__block.flex.flex-col.py-20.container.px-4(class="lg:px-0")
       h1.text-4xl 推荐产品
       carousel-card.mt-10(size="4" v-if="summary.products" :max-size="summary.products.length" content-class="flex overflow-hidden content space-x-8 px-4 md:px-0")
         carousel-item(v-for="(p, i) in summary.products" :key="p.id" class="item w-full lg:w-80 flex-shrink-0")
@@ -51,7 +51,7 @@ section.w-full
                   ion-icon.mr-2(name="arrow-forward-outline")
                   | 产品信息
   .sc-6.flex.items-center.justify-center
-    .sc-6__block.flex.flex-col.py-20
+    .sc-6__block.flex.flex-col.py-20.px-4(class="lg:px-0")
       Submit(@submit="submit")
 </template>
 

@@ -3,9 +3,9 @@
     <Dialog ref="qrcode">
       <img :src="$root.basePath + info.url" alt="微信公众号">
     </Dialog>
-    <div class="footer-block flex flex-col py-20">
-      <div class="fc-0 flex">
-        <div class="fb-1">
+    <div class="footer-block container flex flex-col py-20">
+      <div class="fc-0 lg:flex grid grid-cols-2">
+        <div class="fb-1 hidden lg:block">
           <img class="" :src="$root.basePath + info.title" alt="创远仪器" width="300" />
           <h4 class="tt leading-8 mt-10">服务热线</h4>
           <div class="tl leading-8 text-sm" v-text="info.content" />
@@ -62,7 +62,6 @@ footer {
   width: 100%;
 
   .footer-block {
-    width: 1200px;
     color: gray;
   }
 }

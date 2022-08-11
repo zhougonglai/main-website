@@ -118,7 +118,7 @@ main.flex.flex-col.items-center
   section.container.breadcrumbs(v-if="$route.name != 'index' && cateFlat.length")
     NavBreadcrumbs(:navs="cateFlat" :nav="lea")
   nuxt
-  AppFooter.hidden(:menus="cate" :info="info" class="lg:flex")
+  AppFooter(:menus="cate" :info="info")
   ActionToast(ref="toast")
 </template>
 <script>

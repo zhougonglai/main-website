@@ -1,5 +1,5 @@
 <template lang="pug">
-nav.breadcrumbs.py-4.flex.items-center.gap-x-2(role="navigation" v-cloak)
+nav.breadcrumbs.py-4.px-4.flex.items-center.gap-x-2(role="navigation" v-cloak class="lg:px-0")
   nuxt-link(to="/")
     ion-icon(name="home-sharp")
   span.crumb-separator.flex.items-center(aria-hidden="true")
