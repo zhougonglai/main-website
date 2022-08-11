@@ -97,8 +97,8 @@ main.flex.flex-col.items-center
                 :key="item.id"
                 :to="item.router"
                 v-text="item.title")
-  .bg-gray-100.w-full.flex.menus.z-20.absolute(class="lg:hidden" v-if="menu.visible" sm)
-    nav.container.flex.flex-col
+  .menus.z-20.absolute.flex.flex-col.w-full.h-full(class="lg:hidden" v-if="menu.visible" sm)
+    nav.container.flex.flex-col.bg-gray-100.z-10
       .nav-list.grid.grid-cols-1.divide-y
         .nav-item(v-for="($menu, i) in cate.filter(menu => menu.display).sort((a, b) => a.sort - b.sort)")
           .nav-item__content.flex.h-10.py-2.px-4.text-lg(@click="expandMenu($menu)")
@@ -110,7 +110,11 @@ main.flex.flex-col.items-center
             .nav-item-child.bg-gray-200.px-4(v-for="child in $menu.child" :key="child.id")
               .nav-item-child__content.h-10.py-2.text-lg(@click="expandChild(child)")
                 .nav-item-child__title.text-sm(v-text="child.title")
-              .nav-item-children-c(v-if="menu.child === child.id")
+              .nav-item-children-c.px-2(v-if="menu.child === child.id")
+                .nav-item-children-c__item(v-for="c in child.child" :key="c.id")
+                  .nav-item-children-c__content.h-10.py-2.text-sm.text-gray-500(@click="expandChild(c)")
+                    .nav-item-children-c__title(v-text="c.title")
+    .flex-1.backdrop.absolute.inset-0.backdrop-blur.backdrop-filter.z-0
   section.container.breadcrumbs(v-if="$route.name != 'index' && cateFlat.length")
     NavBreadcrumbs(:navs="cateFlat" :nav="lea")
   nuxt
@@ -164,6 +168,15 @@ export default {
     ...mapState(["activeNav", "lea", "cate"]),
     ...mapGetters(['cateFlat', 'cateGetter'])
   },
+  watch: {
+    'menu.visible'(bool) {
+      if (bool) {
+        document.body.classList.add('overflow-hidden')
+      } else {
+        document.body.classList.remove('overflow-hidden')
+      }
+    }
+  },
   created() {
     this.$root.$on("toast", (e) => {
       this.createToast(e);
@@ -215,7 +228,7 @@ export default {
       this.menu.expand = menu.id;
     },
     expandChild(menu) {
-      console.log('expandMenu', menu)
+      console.log('expandChild', menu)
       if (this.menu.child === menu.id) return this.menu.child = null;
       if (!menu.child) {
         this.menu.visible = false;
