@@ -183,6 +183,7 @@ export default {
     });
     this.$root.basePath = process.env.BASE_API
     this.$root.ua = Bowser.parse(window.navigator.userAgent)
+    console.log('ua.platform', this.$root.ua.platform)
   },
   async mounted() {
     await this.getCate();
