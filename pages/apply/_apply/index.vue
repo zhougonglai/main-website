@@ -1,22 +1,22 @@
 <template>
   <section class="sp w-full flex flex-col pb-20">
     <div class="carousels">
-      <img :src="basePath + apply.cover_path" alt="" class="object-center object-cover w-full h-480">
+      <img :src="basePath + apply.cover_path" alt="" class="object-center object-cover w-full">
     </div>
 
     <div class="sp-1 flex items-center justify-center">
-      <div class="sp-1__block py-20">
+      <div class="sp-1__block py-20 px-4 lg:px-0">
         <h1 class="text-4xl" v-text="apply.name" />
         <article class="leading-8 mt-5" v-text="apply.content" />
       </div>
     </div>
 
     <div class="sp-2 flex items-center justify-center bg-gray-100">
-      <div class="sp-2__block py-20 flex">
+      <div class="sp-2__block py-20 flex flex-col lg:flex-row">
         <div class="left flex items-center justify-center flex-1">
           <img :src="basePath + apply.img" />
         </div>
-        <div class="right px-10 flex-1 leading-8">
+        <div class="right px-10 flex-1 leading-8 py-4 lg:py-0">
           <h2 class="text-4xl" v-text="apply.title" />
           <p v-text="apply.title1" class="mt-5" />
         </div>
@@ -24,7 +24,7 @@
     </div>
 
     <div class="sp-3 flex items-center justify-center">
-      <div class="sp-3__block py-10">
+      <div class="sp-3__block py-10 lg:px-0 px-4">
         <h1 class="text-4xl">相关解决方案</h1>
         <div class="resolve bg-gray-100 flex items-end justify-center gap-x-10 mt-60 pb-10 px-10"
           v-if="apply.solutions">
@@ -52,9 +52,9 @@
     </div>
 
     <div class="sp-4 flex items-center justify-center">
-      <div class="sp-4__block py-10">
+      <div class="sp-4__block py-10 container">
         <h1 class="text-4xl">相关产品</h1>
-        <div class="products bg-gray-100 grid grid-cols-3 gap-10 p-10 mt-10">
+        <div class="products bg-gray-100 grid grid-cols-1 lg:grid-cols-3 gap-10 p-10 mt-10">
           <nuxt-link v-for="product in apply.products" :key="product.id"
             class="card flex flex-col cursor-pointer bg-white border-b-2 border-gray-100 hover:border-blue-300 hover:shadow"
             :to="`/prod/${product.category_id}/detail/${product.id}`">
@@ -144,7 +144,7 @@ export default {
       }
 
       .card {
-        width: 450px;
+        max-width: 450px;
 
         &-cover {
           width: 100%;
@@ -164,12 +164,9 @@ export default {
 
   &-4 {
     &__block {
-      width: 1200px;
-
-      .products {}
 
       .card {
-        width: 350px;
+        max-width: 350px;
 
         &-cover {
           width: 100%;
