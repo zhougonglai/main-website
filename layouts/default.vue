@@ -45,7 +45,7 @@ main.flex.flex-col.items-center
     nuxt-link.logo.flex.items-center.py-2(to='/')
       img(:src='$root.basePath + info.title' alt="创远仪器" width="300")
     .flex-1
-    .nav-list.flex.justify-center.items-center.space-x-5.flex-1
+    .nav-list.flex.justify-center.items-center.space-x-5
       nuxt-link.hidden(to="/contact" class="hover:text-blue-500 lg:flex" ) 联系我们
       //- a(type='button' target="_blank" href="https://transcominstruments.tmall.com/")
       a(type='button' target="_blank" href="https://shop117778161.taobao.com")
