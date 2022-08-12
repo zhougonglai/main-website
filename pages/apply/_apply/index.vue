@@ -26,8 +26,7 @@
     <div class="sp-3 flex items-center justify-center">
       <div class="sp-3__block py-10 lg:px-0 px-4">
         <h1 class="text-4xl">相关解决方案</h1>
-        <div class="resolve bg-gray-100 flex items-end justify-center gap-x-10 mt-60 pb-10 px-10"
-          v-if="apply.solutions">
+        <div class="resolve relative grid grid-cols-1 lg:grid-cols-3 gap-10 mt-10 pb-10 px-10" v-if="apply.solutions">
           <nuxt-link v-for="solutions in apply.solutions" :key="solutions.id"
             :to="`/apply/${$route.params.apply}/solution/${solutions.id}`"
             class="card bg-white flex flex-col cursor-pointer border-b-2 border-white hover:border-blue-300 hover:shadow">
@@ -140,7 +139,17 @@ export default {
       width: 1200px;
 
       .resolve {
-        height: 425px;
+        --tw-bg-opacity: 1;
+
+        &::after {
+          content: '';
+          position: absolute;
+          background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+          height: 80%;
+          width: 100%;
+          z-index: -1;
+          bottom: 0;
+        }
       }
 
       .card {
