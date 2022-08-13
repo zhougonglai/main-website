@@ -9,7 +9,7 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
   .sc-1.w-full.flex.flex-col.items-center.py-10
     .sc-1__block.container(v-if="prod")
       h1.text-2xl(v-text="prod.name")
-      .flex.w-full.my-5.gap-x-10
+      .grid.grid-cols-1.w-full.my-5.gap-x-10(class="lg:grid-cols-2")
         .flex.flex-col.flex-1
           .relative.box.rounded.overflow-hidden
             img.object-center.object-contain.overflow-hidden(:src="cover" width="600" height="400")
@@ -24,7 +24,7 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
         .flex.flex-col.flex-1
           h3.text-2xl 关键特性
           ul.mt-5.leading-8.flex.flex-col.gap-y-4
-            li.pl-4.border-l-4.border-gray-300(v-for="(keyword, i) in prod.keywords" :key="i" v-text="keyword")
+            li.pl-4.border-l-4.border-gray-300.break-all(v-for="(keyword, i) in prod.keywords" :key="i" v-text="keyword")
       .flex.gap-10.my-10
         button.flex.items-center.text-primary.gap-x-2(@click="openFile(basePath + prod.url1)")
           img(src="~/assets/img/prod/datasheet.svg" width="45")
@@ -37,7 +37,7 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
           | 解决方案
       h1.text-2xl.mt-10 技术规范
       .tabs.my-10
-        .tab-bar.flex.leading-10.border-b.border-gray-300
+        .tab-bar.flex.leading-10.border-b.border-gray-300.flex-col(class="lg:flex-row")
           .tab.flex-1.pl-5.cursor-pointer(:class="{ 'text-blue-500': 0 === tabActive, 'text-gray-500': 0 !== tabActive }" @click="tabActive = 0") 产品特色及应用
           .tab.flex-1.pl-5.cursor-pointer(:class="{ 'text-blue-500': 1 === tabActive, 'text-gray-500': 1 !== tabActive }" @click="tabActive = 1") 技术指标
           .tab.flex-1.pl-5.cursor-pointer(:class="{ 'text-blue-500': 2 === tabActive, 'text-gray-500': 2 !== tabActive }" @click="tabActive = 2") 配置清单
@@ -78,7 +78,7 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
               p.mt-3.card-desc.text-gray-500(v-text="prod.video_content2")
 
       h1.text-2xl.mt-10 相关型号
-      .types.bg-gray-100.grid.grid-cols-3.my-10.p-10.gap-10.justify-between.justify-items-center
+      .types.bg-gray-100.grid.grid-cols-1.my-10.p-10.gap-10.justify-between.justify-items-center(class="lg:grid-cols-3")
         nuxt-link.card.inline-flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
           class="hover:shadow hover:border-blue-300"
           v-for="p in prod.products" :key="p.id"
@@ -88,7 +88,7 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
           .card-content.p-5
             h3.card-title.text-xl.truncate(v-text="p.name")
       h1.text-2xl.mt-10 相关解决方案
-      .resolves.bg-gray-100.grid.grid-cols-2.my-10.p-10.gap-10
+      .resolves.bg-gray-100.grid.grid-cols-1.my-10.p-10.gap-10(class="lg:grid-cols-2")
         nuxt-link.card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
           class="hover:shadow hover:border-blue-300"
           v-for="solution in prod.solutions" :key="solution.id"
