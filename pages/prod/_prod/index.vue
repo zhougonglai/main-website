@@ -1,13 +1,13 @@
 <template lang="pug">
 section.w-full.flex.flex-col.pb-20(v-cloak v-if="product")
   .carousels
-    img.object-center.object-cover.w-full.h-480(:src="basePath + product.url")
+    img.object-center.object-cover.w-full(:src="basePath + product.url")
   .sc-1.flex.items-center.justify-center
-    .sc-1__block.py-10
+    .sc-1__block.py-10.px-4(class="lg:px-0")
       h1.text-4xl(v-text="product.title")
       article.mt-10.text-gray-600.leading-8(v-text="product.content")
   .sc-2.flex.items-center.justify-center
-    .sc-2__block.py-10.container
+    .sc-2__block.py-10.container.overflow-x-auto
       table.prod.border-collapse.border-gray-200.border.table-fixed.w-full.relative
         thead.prod-header.bg-gray-100
           tr.flex.p-5.flex.items-center.justify-between.text-primary
@@ -123,7 +123,11 @@ export default {
   }
 
   &-2 {
-    &__block {}
+    &__block {
+      table {
+        min-width: 1200px;
+      }
+    }
   }
 }
 
