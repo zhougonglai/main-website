@@ -1,6 +1,6 @@
 <template lang="pug">
 .w-full.flex.flex-col.items-center(v-cloak v-if="pageData")
-  img.w-full.h-480(:src="basePath + pageData.images1")
+  img.w-full(:src="basePath + pageData.images1")
   section.container.desc.py-20
     h1.text-4xl 关于我们
     article.mt-10
@@ -31,7 +31,7 @@
     .bg-gray-100.absolute.z-0.inset-x-0.bottom-0.h-60
     .container.py-10.z-10
       h1.text-4xl 核心技术
-      .flex.justify-center.mt-10.gap-x-5
+      .grid.justify-center.mt-10.gap-x-5.grid-cols-1.px-4(class="lg:grid-cols-4 lg:px-0")
         .card.cursor-pointer.border-b-2.border-white.bg-white.flex.flex-col(class="hover:border-blue-300" v-for="(tech, i) in pageData.tech" :key="i")
           .card-cover.flex-1
             img.object-center.object-cover(:src="basePath + tech.url")
@@ -44,8 +44,8 @@
     .bg-white.absolute.z-0.inset-x-0.bottom-0.h-20
     .container.py-20.z-10
       h2.text-4xl.mb-28 重点客户
-      carousel-card.mt-10(v-for="(logo, i) in pageData.customer" size="4" :max-size="logo.length" :key="i" content-class="flex-1 mx-10")
-        carousel-item(v-for="l in logo" :key="l.name" class="w-1/4")
+      carousel-card.mt-10(v-for="(logo, i) in pageData.customer" :size="$root.ua.platform.type === 'desktop' ? 4 : 1" :max-size="logo.length" :key="i" content-class="flex-1 mx-10")
+        carousel-item(v-for="l in logo" :key="l.name" class="w-full lg:w-1/4")
           .flex.items-center.bg-white.justify-center.mx-2.h-28.hover-border-primary.border-b-2.border-gray-100.cursor-pointer
             img(:src="basePath + l")
 </template>
@@ -105,12 +105,8 @@ $blue: #005fab;
   background: url("../assets/img/bg_sunset.jpg") no-repeat center / cover;
 }
 
-.container {
-  width: 1200px;
-}
-
 .banner2 {
-  width: 1047px;
+  width: min(1047px, 100%);
   height: 562px;
 }
 

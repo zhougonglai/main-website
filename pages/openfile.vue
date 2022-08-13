@@ -9,8 +9,8 @@ section.w-full.pb-20(v-cloak v-if="pageData")
         button.search-btn.bg-blue-500.text-white.w-16.flex.items-center.justify-center(@click="search")
           ion-icon(name="search" size='large')
   .sc-2.flex.justify-center.align-center
-    .sc-2__block.flex.p-10.gap-x-10
-      aside.w-60
+    .sc-2__block.flex.flex-col.p-10.gap-x-10(class="lg:flex-row")
+      aside.w-full(class="lg:w-60")
         .link.leading-10.border-t.cursor-pointer.text-lg.flex.items-center(
           v-for="(c, i) in category" :key="i"
           :class="{ 'text-blue-500': active === i }"
