@@ -1,8 +1,8 @@
 <template lang="pug">
 section.w-full.pb-20(v-cloak)
-  .sc-1.flex.items-center.justify-center.h-480.relative
-    img.object-center.object-cover.absolute.z-0.w-full.h-full(:src="basePath + pageData.images1" width="100%" height="100%")
-    .sc-1__block.z-1
+  .sc-1.flex.items-center.justify-center.relative
+    img.object-center.object-cover.z-0.w-full.h-full(:src="basePath + pageData.images1" width="100%" height="100%")
+    .sc-1__block.z-1.h-480.absolute
       h1.text-4xl.text-white(v-text="pageData.title")
   .sc-2.flex.items-center.justify-center
     .sc-2__block.py-10
@@ -12,7 +12,7 @@ section.w-full.pb-20(v-cloak)
     .sc-3__bg.absolute.inset-x-0.bottom-0.top-40.bg-gray-100
     .sc-3__block.pb-10.z-1
       h1.text-4xl 投资者服务
-      .grid.grid-cols-3.gap-x-10.mt-10(v-if="pageData.service")
+      .grid.grid-cols-1.gap-x-10.mt-10.px-4.gap-y-4(v-if="pageData.service" class="lg:grid-cols-3 lg:px-0 lg:gap-y-0")
         a.card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
           class="hover:shadow hover:border-blue-300" :href="`mailto:${pageData.service[0].content}`" target="_blank")
           .card-cover
@@ -38,7 +38,7 @@ section.w-full.pb-20(v-cloak)
   .sc-4.flex.items-center.justify-center
     .sc-4__block.py-10
       h1.text-4xl 信息披露
-      .flex.mt-10.gap-x-10
+      .flex.mt-10.gap-x-10.flex-col(class="lg:flex-row")
         .flex-1
           img.object-center.object-cover(:src="basePath + pageData.images2")
         .flex-1
