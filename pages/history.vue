@@ -1,14 +1,14 @@
 <template lang="pug">
 .w-full.flex.flex-col.items-center.pb-20(v-cloak)
-  .w-full.h-480.flex.items-center.justify-center.h-480.bg-gradient-to-r.from-blue-300.to-red-300.relative
-    img.z-0.absolute.inset-0.w-full.h-full.object-center.object-cover(:src="$root.basePath + pageData.cover_path" height="100%" width="100%")
-    .con.z-1
+  .w-full.flex.items-center.justify-center.bg-gradient-to-r.from-blue-300.to-red-300.relative
+    img.z-0.inset-0.w-full.h-full.object-center.object-cover(:src="$root.basePath + pageData.cover_path" height="100%" width="100%")
+    .container.z-1.hidden.absolute(class="lg:block")
       h1.text-4xl.text-white(v-text="pageData.title")
       p.mt-5.text-white.text-xl(v-text="pageData.title1")
   section.w-full.flex.flex-col.items-center.desc2
-    .con.text-4xl.py-20.pl-24 发展历程
-    .list
-      .flex.items-center.item(v-for="h in pageData.data" :key="h.id")
+    .container.text-4xl.py-20.pl-24 发展历程
+    .list(:class="$root.ua.platform.type")
+      .flex.items-center.item.flex-col(v-for="h in pageData.data" :key="h.id" class="lg:flex-row")
         .year(v-text="h.name")
         .info(v-html="h.content")
         img.img(:src="$root.basePath + h.url")
@@ -57,17 +57,11 @@ export default {
 <style lang="scss" scoped>
 $blue: #005fab;
 
-.con {
-  width: 1200px;
-}
 
 .box {
   width: 1123px;
 }
 
-.container {
-  width: 1200px;
-}
 
 .desc {
   width: 1047px;
@@ -107,12 +101,21 @@ $blue: #005fab;
 }
 
 .list {
-  width: 1200px;
-  padding-bottom: 100px;
+  &.desktop {
+    width: 1200px;
+    padding-bottom: 100px;
+
+    .item {
+      padding: 0 90px;
+      height: 241px;
+    }
+  }
+
+  &.mobile {
+    .item {}
+  }
 
   .item {
-    padding: 0 90px;
-    height: 241px;
     background: #eaecec;
 
     .year {

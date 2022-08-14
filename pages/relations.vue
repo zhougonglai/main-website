@@ -2,7 +2,7 @@
 section.w-full.pb-20(v-cloak)
   .sc-1.flex.items-center.justify-center.relative
     img.object-center.object-cover.z-0.w-full.h-full(:src="basePath + pageData.images1" width="100%" height="100%")
-    .sc-1__block.z-1.h-480.absolute
+    .sc-1__block.z-1.absolute.hidden(class="lg:block")
       h1.text-4xl.text-white(v-text="pageData.title")
   .sc-2.flex.items-center.justify-center
     .sc-2__block.py-10
