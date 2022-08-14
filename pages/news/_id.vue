@@ -5,7 +5,7 @@
     //- section.con.z-1.text-white
     //-   h1.text-4xl(v-text="newsDetail.title")
     //-   pre.text-lg.mt-10(v-text="newsDetail.content")
-  article.mt-20
+  article.mt-20.px-4(:class="$root.ua.platform.type" class="lg:px-0")
     .flex.gap-x-2.text-sm.text-gray-500
       time(v-text="newsDetail.detail.date")
       address.not-italic(v-text="newsDetail.detail.addr")
@@ -101,7 +101,11 @@ article {
 
 section.more {
   justify-content: space-between;
-  width: 1000px;
+
+  &.desktop {
+    width: 1000px;
+  }
+
   margin-bottom: 100px;
 
   a {

@@ -20,9 +20,9 @@
           td.w-40.p-5.border.border-slate-300 要求
           td.flex-1.p-5.border.border-slate-300
             pre(v-text="position.requirement")
-  .banner.w-full.h-480.flex.items-center.justify-center.relative
-    img.absolute.inset-0.z-0.object-center.object-cover.h-full(:src="basePath + positions.url" width="100%" height="100%")
-    .box.z-1
+  .banner.w-full.flex.items-center.justify-center.relative
+    img.z-0.object-center.object-cover.h-full(:src="basePath + positions.url" width="100%" height="100%")
+    .box.z-1.absolute
       h1.text-4xl.text-white 加入我们
   section.container.desc.py-20
     h1.text-4xl(v-text="positions.title")
@@ -171,10 +171,6 @@ export default {
 
 <style lang="scss" scoped>
 $blue: #005fab;
-
-.container {
-  width: 1200px;
-}
 
 .add {
   margin: 90px 0 40px;
