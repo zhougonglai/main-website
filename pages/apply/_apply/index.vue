@@ -12,7 +12,7 @@
     </div>
 
     <div class="sp-2 flex items-center justify-center bg-gray-100">
-      <div class="sp-2__block py-20 flex flex-col lg:flex-row">
+      <div class="sp-2__block py-20 flex flex-col lg:flex-row container">
         <div class="left flex items-center justify-center flex-1">
           <img :src="basePath + apply.img" />
         </div>
@@ -24,7 +24,7 @@
     </div>
 
     <div class="sp-3 flex items-center justify-center">
-      <div class="sp-3__block py-10 lg:px-0 px-4">
+      <div class="sp-3__block py-10 lg:px-0 px-4 container">
         <h1 class="text-4xl">相关解决方案</h1>
         <div class="resolve relative grid grid-cols-1 lg:grid-cols-3 gap-10 mt-10 pb-10 px-10" v-if="apply.solutions">
           <nuxt-link v-for="solutions in apply.solutions" :key="solutions.id"
@@ -122,7 +122,6 @@ export default {
 
   &-2 {
     &__block {
-      width: 1200px;
 
       .left {
         max-width: 600px;
@@ -136,7 +135,6 @@ export default {
 
   &-3 {
     &__block {
-      width: 1200px;
 
       .resolve {
         --tw-bg-opacity: 1;

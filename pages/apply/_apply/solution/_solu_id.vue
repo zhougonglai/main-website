@@ -149,7 +149,7 @@ export default {
     height: 500px;
 
     .card {
-      max-width: 50%;
+      width: 50%;
 
       &-content {
         height: 350px;
