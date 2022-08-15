@@ -1,45 +1,44 @@
 <template lang="pug">
-.w-full.flex.flex-col.items-center.pb-20
-  .banner.w-full.h-480.flex.items-center.justify-center.relative
-    img.absolute.z-0.object-center.object-cover.w-full.h-full(:src="basePath + pageData.url" width="100%" height="100%")
-    .box.z-1
+.w-full.flex.flex-col.items-center.pb-20(v-if="pageData")
+  .banner.w-full.flex.items-center.justify-center.relative
+    img.z-0.object-center.object-cover.w-full.h-full(:src="basePath + pageData.url" width="100%" height="100%")
+    .box.z-1.absolute
       h1.text-4xl.text-white(v-text="pageData.title")
-  pre.cn-font.container.whitespace-pre-line.leading-8.desc.text-gray-500.text-lg(v-text="pageData.content")
-  .contact
-    .item.item1
-      .title 总公司
-      .row 上海市松江区高技路 205 弄 7 号 C 座
-      .flex.row
-        .flex-1 电话：021-6432 6888
-        .flex-1 传真：021-6432 6777
-      .flex
-        .flex-1 热线电话：400-677-8077
-        .flex-1 邮箱：info@transcom.net.cn
-    .flex.row
-      .flex-1.item
-        .title 南京
-        b 南京分公司
-        .row 南京市江宁区秣周东路 9 号无线谷 A3 楼 3102 室
-        .row 电话：025-84937849
-        .row 传真：025-84937849-804
-      .flex-1.item
-        .title 成都
-        b 成都分公司
-        .row 四川省成都市高新区九兴大道 14 号凯乐国际 3 栋 403 室
-        .row 电话：028-83227390
-        .row 传真：028-85120797
-      .flex-1.item
-        .title 西安
-        b 西安分公司
-        .row 西安市高新区锦业一路 56 号研祥城市广场 B 座 2217 室
-        .row 电话：029- 81028261
-        .row
-    .item
-      .title 深圳
-      b 深圳办事处
-      .row 深圳市南山区桃园街道大学城创客小镇 17 栋 309-2 室
-      .row 电话：13817170735
-  Submit
+  pre.cn-font.container.whitespace-pre-line.leading-8.desc.text-gray-500.text-lg.px-4(class="lg:px-20" v-text="pageData.content")
+  .container.bg-gray-100.grid.grid-cols-1.gap-10.p-4(class="lg:grid-cols-3 lg:p-10" v-if="pageData.comp.length")
+    .col-span-1.bg-white.p-4(class="lg:col-span-3")
+      .font-bold.text-3xl.text-gray-600.py-10(v-text="pageData.comp[0].city")
+      .text-lg.text-gray-500(v-text="pageData.comp[0].addr")
+      .flex.text-lg.text-gray-500.flex-col(class="lg:flex-row")
+        .flex-1 电话：{{ pageData.comp[0].phone }}
+        .flex-1 传真：{{ pageData.comp[0].fox }}
+      .flex.text-lg.text-gray-500.flex-col(class="lg:flex-row")
+        .flex-1 热线电话：{{ pageData.comp[0].hotline }}
+        .flex-1 邮箱：{{ pageData.comp[0].email }}
+    .col-span-1.bg-white.p-4
+      .font-bold.text-3xl.text-gray-600.py-5(v-text="pageData.comp[1].city")
+      .font-bold.text-gray-500.text-xl(v-text="pageData.comp[1].city + pageData.comp[1].type")
+      .text-lg.text-gray-500(v-text="pageData.comp[1].addr")
+      .text-lg.text-gray-500 电话：{{ pageData.comp[1].phone }}
+      .text-lg.text-gray-500 传真：{{ pageData.comp[1].fox }}
+    .col-span-1.bg-white.p-4
+      .font-bold.text-3xl.text-gray-600.py-5(v-text="pageData.comp[2].city")
+      .font-bold.text-gray-500.text-xl(v-text="pageData.comp[2].city + pageData.comp[2].type")
+      .text-lg.text-gray-500(v-text="pageData.comp[2].addr")
+      .text-lg.text-gray-500 电话：{{ pageData.comp[2].phone }}
+      .text-lg.text-gray-500 传真：{{ pageData.comp[2].fox }}
+    .col-span-1.bg-white.p-4
+      .font-bold.text-3xl.text-gray-600.py-5(v-text="pageData.comp[3].city")
+      .font-bold.text-gray-500.text-xl(v-text="pageData.comp[3].city + pageData.comp[3].type")
+      .text-lg.text-gray-500(v-text="pageData.comp[3].addr")
+      .text-lg.text-gray-500 电话：{{ pageData.comp[3].phone }}
+    .col-span-1.bg-white.p-4(class="lg:col-span-3")
+      .font-bold.text-3xl.text-gray-600.py-10(v-text="pageData.comp[4].city")
+      .text-lg.text-gray-500(v-text="pageData.comp[4].addr")
+      .flex.text-lg.text-gray-500
+        .flex-1 电话：{{ pageData.comp[4].phone }}
+  .container.p-10(class="lg:p-4")
+    Submit
 </template>
 
 <script>
@@ -95,18 +94,8 @@ export default {
 <style lang="scss" scoped>
 $blue: #005fab;
 
-.banner {
-  .box {
-    width: 1123px;
-  }
-}
-
-.container {
-  width: 1200px;
-}
 
 .desc {
-  width: 1123px;
   color: #464646;
   margin: 60px 0 70px;
 
@@ -116,7 +105,6 @@ $blue: #005fab;
 }
 
 .contact {
-  width: 1248px;
   background: #f5f5f5;
   border-radius: 6px;
   padding: 78px 56px;
@@ -154,7 +142,6 @@ $blue: #005fab;
 }
 
 .form {
-  width: 1072px;
   padding: 68px 0;
   font-size: 20px;
   color: #252525;
