@@ -41,7 +41,7 @@ form.form(ref="form" @submit.prevent="submit")
     h4.text-2xl 营销许可
     .w-full.my-5
       Checkbox
-        span.text-gray-500 我希望通过电子邮件从创远仪器实体或子公司收到营销或广告信息（例如特价和折扣促销）。有关使用个人数据和撤回程序的更多详细信息，请参见隐私声明和营销许可。
+        span.text-gray-500 我希望通过电子邮件从创远信科实体或子公司收到营销或广告信息（例如特价和折扣促销）。有关使用个人数据和撤回程序的更多详细信息，请参见隐私声明和营销许可。
     .flex.items-center.justify-end.mt-5
       button.bg-primary.px-5.py-2.text-white.inline-flex.items-center(class="hover:bg-blue-500" :disabled="loading" :class="{ 'cursor-not-allowed': loading }")
         svg.animate-spin.-ml-1.mr-3.h-5.w-5.text-white(fill="none" viewBox="0 0 24 24" v-if="loading")
