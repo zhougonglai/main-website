@@ -29,19 +29,19 @@ section.w-full.pb-20(v-cloak)
       h1.text-4xl.mt-20 典型应用
       .application.bg-gray-100.grid.grid-cols-1.justify-center.gap-x-10.gap-y-4.my-10.p-10(class="lg:grid-cols-3 lg:gap-y-0")
         .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(class="hover:shadow hover:border-blue-300")
-          .card-cover.flex-1
+          .card-cover
             img.object-center.object-cover(:src="basePath + solution.apply_img1" width="350" height="200")
           .card-content.p-5
             h3.card-title.text-xl.truncate(v-text="solution.apply_title1")
             p.card-desc.text-lg.text-gray-500.mt-5(v-text="solution.apply_content1")
         .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(class="hover:shadow hover:border-blue-300")
-          .card-cover.flex-1
+          .card-cover
             img.object-center.object-cover(:src="basePath + solution.apply_img2" width="350" height="200")
           .card-content.p-5
             h3.card-title.text-xl.truncate(v-text="solution.apply_title2")
             p.card-desc.text-lg.text-gray-500.mt-5(v-text="solution.apply_content2")
         .card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(class="hover:shadow hover:border-blue-300")
-          .card-cover.flex-1
+          .card-cover
             img.object-center.object-cover(:src="basePath + solution.apply_img3" width="350" height="200")
           .card-content.p-5
             h3.card-title.text-xl.truncate(v-text="solution.apply_title3")
