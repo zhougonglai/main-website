@@ -151,7 +151,7 @@ export default {
     }
 
     .card {
-      height: min(600px, 100%);
+      height: 600px;
       width: min(450px, 100%);
 
       &-cover {
