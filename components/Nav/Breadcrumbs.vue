@@ -43,10 +43,15 @@ export default {
       return this.navs.find(n => n.router === this.$route.path)
     },
     pathClip() {
-      return this.$route.name.split('-').length > 3
-        ? `/${this.$route.name.split('-')[0]}/${this.$route.params.apply || this.$route.params.prod}`
-        : this.$route.path;
+      return this.$route.name === 'news-id'
+        ? '/news'
+        : this.$route.name.split('-').length > 3
+          ? `/${this.$route.name.split('-')[0]}/${this.$route.params.apply || this.$route.params.prod}`
+          : this.$route.path;
     },
+  },
+  mounted() {
+    console.log(this.$route)
   },
   methods: {
     pathChange(e) {
