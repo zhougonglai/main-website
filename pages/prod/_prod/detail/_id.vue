@@ -42,7 +42,7 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
           .tab.flex-1.pl-5.cursor-pointer(:class="{ 'text-blue-500': 1 === tabActive, 'text-gray-500': 1 !== tabActive }" @click="tabActive = 1") 技术指标
           .tab.flex-1.pl-5.cursor-pointer(:class="{ 'text-blue-500': 2 === tabActive, 'text-gray-500': 2 !== tabActive }" @click="tabActive = 2") 配置清单
           .tab.flex-1.pl-5.cursor-pointer(:class="{ 'text-blue-500': 3 === tabActive, 'text-gray-500': 3 !== tabActive }" @click="tabActive = 3") 面板说明
-        .tab-content
+        .tab-content.overflow-hidden
           article.flex(v-if="tabActive === 0")
             pre.m-5.leading-8.cf-font.text-gray-500(v-text="prod.content6" class="w-1/2")
             .relative(class="w-1/2 mt-5")
