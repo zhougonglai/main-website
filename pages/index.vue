@@ -35,7 +35,7 @@ section.w-full.flex.flex-col.pb-20
           nuxt-link.news-action(to="/news") 更多新闻
         nuxt-link.news-item.bg-white.flex.relative.shadow.flex-col(v-for="(n, i) in indexData.news" :key="i" class="hover:shadow-lg lg:flex-row" :to="`/news/${n.id}`")
           .news-cover
-            img.object-container.object-center.h-full(:src="n.url")
+            img.object-container.object-center.h-full.w-full(:src="n.url")
           .flex.flex-col.p-5.flex-1
             .news-info.flex.items-end
               .news-label.text-base 新闻发布
