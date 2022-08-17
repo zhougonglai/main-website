@@ -30,7 +30,7 @@ section.w-full.flex.flex-col.pb-20(v-cloak v-if="product")
               //- Checkbox(@change="selectChange($event, prod.id)" :disabled="selected[prod.id] ? false : selectedLength >= 3")
               img.object-center.object-cover(:src="basePath + prod.cover_path" :alt="prod.name")
             td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.bg-gray-50
-              nuxt-link.w-full.h-full.flex.items-center.justify-center.transition(class="text-primary hover:text-blue-500" :to="{ path: `/prod/${$route.params.prod}/detail/${prod.id}` }" v-text="prod.name")
+              nuxt-link.w-full.h-full.flex.items-center.justify-center.transition.text-center(class="text-primary hover:text-blue-500" :to="{ path: `/prod/${$route.params.prod}/detail/${prod.id}` }" v-text="prod.name")
             td.prod-ti.w-24.p-2.h-full.flex.items-center.justify-center.text-center(v-text="prod.content")
             td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.text-center.bg-gray-50.break-all(v-text="prod.content2" :title="prod.content2")
             td.prod-ti.w-28.p-2.h-full.inline-flex.items-center.justify-center.text-center.break-word(v-text="prod.content3" :title="prod.content3")
