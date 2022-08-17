@@ -27,15 +27,15 @@ section.w-full.flex.flex-col.pb-20
             nuxt-link.btn.inline-flex.mt-10.px-5.py-2.bg-red-500.text-white(class="hover:bg-red-600" :to="`/prod/${b.category_id}/detail/${b.id}`") 了解更多
           .cover.flex-1
             img.object-contain.object-center.w-full.h-full(:src="b.cover_path")
-  .sc-news.items-center.justify-center.hidden(class="lg:flex")
-    .news-block.flex.flex-col.justify-center.py-20
+  .sc-news.items-center.justify-center.flex
+    .news-block.flex.flex-col.justify-center.py-20.container
       h1.text-4xl.ml-10 新闻
-      .news-content.bg-gray-100.flex.flex-col-reverse.items-center.mt-40.relative(v-if="indexData.news && indexData.news.length")
-        .news-more.bg-white.flex.items-center.justify-center.absolute.-bottom-5
+      .news-content.bg-gray-100.flex.flex-col-reverse.items-center.mt-5.relative.p-5(v-if="indexData.news && indexData.news.length" :class="$root.ua.platform.type" class="lg:p-0 lg:mt-40")
+        .news-more.bg-white.flex.items-center.justify-center.absolute.-bottom-5.z-10
           nuxt-link.news-action(to="/news") 更多新闻
-        nuxt-link.news-item.bg-white.flex.relative.shadow(v-for="(n, i) in indexData.news" :key="i" class="hover:shadow-lg" :to="`/news/${n.id}`")
+        nuxt-link.news-item.bg-white.flex.relative.shadow.flex-col(v-for="(n, i) in indexData.news" :key="i" class="hover:shadow-lg lg:flex-row" :to="`/news/${n.id}`")
           .news-cover
-            img.object-cover.object-center.h-full(:src="n.url" :width="i ? '100%' : '200'")
+            img.object-cover.object-center.h-full(:src="n.url")
           .flex.flex-col.p-5.flex-1
             .news-info.flex.items-end
               .news-label.text-base 新闻发布
@@ -102,30 +102,51 @@ export default {
 <style lang="scss" scoped>
 .sc-1 {
   &__block {
-    width: 1200px;
     color: var(--color-1);
   }
 }
 
-.sc-block {
-  width: 1200px;
-}
+.sc-block {}
 
+//- :width="i ? '100%' : '200'“
 .sc-news {
-  .news-block {
-    width: 1200px;
-  }
+  .news-block {}
 
   .news {
     &-content {
-      height: 480px;
-      padding-bottom: 70px;
+
+      &.mobile {
+        height: auto;
+      }
+
+      &.desktop {
+        height: 480px;
+        padding-bottom: 70px;
+
+        .news-item {
+          width: min(1000px, 100%);
+          height: 120px;
+          margin-top: 40px;
+
+          &:first-of-type {
+            .news-cover {
+              width: 200px;
+            }
+          }
+
+          &:last-child {
+            min-height: 315px;
+            margin-top: 0;
+
+            .news-cover {
+              width: 50%;
+            }
+          }
+        }
+      }
     }
 
     &-item {
-      width: 1000px;
-      height: 120px;
-      margin-top: 40px;
       cursor: pointer;
 
       &:hover {
@@ -136,21 +157,6 @@ export default {
 
       .news-cover {
         min-width: 200px;
-      }
-
-      &:first-of-type {
-        .news-cover {
-          width: 200px;
-        }
-      }
-
-      &:last-child {
-        min-height: 315px;
-        margin-top: 0;
-
-        .news-cover {
-          width: 50%;
-        }
       }
     }
 
