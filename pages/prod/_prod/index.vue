@@ -16,13 +16,13 @@ section.w-full.flex.flex-col.pb-20(v-cloak v-if="product")
               ion-icon.text-4xl(name="remove-outline")
         thead.prod-thd.bg-gray-100
           tr.flex.leading-relaxed.border-gray-200.border
-            th.prod-td.flex-1.p-5(v-text="product.header[0]")
-            th.prod-td.flex-1.p-5(v-text="product.header[1]")
-            th.prod-td.w-20.py-5(v-text="product.header[2]")
-            th.prod-td.flex-1.py-5(v-text="product.header[3]")
-            th.prod-td.w-20.py-5(v-text="product.header[4]")
-            th.prod-td.flex-1.p-5(v-text="product.header[5]")
-            th.prod-td.w-28.p-5
+            th.prod-td.flex-1.py-5.px-2(v-text="product.header[0]")
+            th.prod-td.flex-1.py-5.px-2(v-text="product.header[1]")
+            th.prod-td.w-24.py-5.px-2(v-text="product.header[2]")
+            th.prod-td.flex-1.py-5.px-2(v-text="product.header[3]")
+            th.prod-td.w-28.py-5.px-2(v-text="product.header[4]")
+            th.prod-td.flex-1.py-5.px-2(v-text="product.header[5]")
+            th.prod-td.w-28.py-5.px-2
         tbody.prod-tbd
           tr.prod-tl.border-top.border-gray-200.h-20.flex.items-center(v-for="(prod, i) in product.production" :key="i")
             td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center
@@ -31,12 +31,12 @@ section.w-full.flex.flex-col.pb-20(v-cloak v-if="product")
               img.object-center.object-cover(:src="basePath + prod.cover_path" :alt="prod.name")
             td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.bg-gray-50
               nuxt-link.w-full.h-full.flex.items-center.justify-center.transition(class="text-primary hover:text-blue-500" :to="{ path: `/prod/${$route.params.prod}/detail/${prod.id}` }" v-text="prod.name")
-            td.prod-ti.w-20.p-2.h-full.flex.items-center.justify-center.text-center(v-text="prod.content")
+            td.prod-ti.w-24.p-2.h-full.flex.items-center.justify-center.text-center(v-text="prod.content")
             td.prod-ti.flex-1.p-2.h-full.flex.items-center.justify-center.text-center.bg-gray-50.break-all(v-text="prod.content2" :title="prod.content2")
             td.prod-ti.w-28.p-2.h-full.inline-flex.items-center.justify-center.text-center.break-word(v-text="prod.content3" :title="prod.content3")
             td.prod-ti.flex-1.p-2.h-full.inline-flex.items-center.justify-center.bg-gray-50(v-text="prod.content4" :title="prod.content4")
             td.prod-ti.w-28.p-2.h-full.flex.items-center.justify-center
-              button.bg-primary.px-5.py-2.text-white.transition(class="hover:bg-blue-500" @click="showModal(prod)") 询价
+              button.bg-primary.px-5.py-2.text-white.transition(class="hover:bg-blue-500" @click="showModal(prod)") 咨询
     Dialog(ref="dialog" modal-mode="mega")
       .dialog-header.py-5.px-10.border-b.border-gray-100.flex
         h1.flex-1.text-2xl(v-text="prod.name")
