@@ -102,7 +102,7 @@ export default {
     async changeCategory(index) {
       this.active = index;
       this.pages = 1;
-      this.pageData = await this.getAttachment({ category: this.category[this.active].value, keywords: this.keywords, pages: this.pages });
+      this.pageData = await this.getAttachment({ category: this.category[this.active].value, keyword: this.keyword, pages: this.pages });
     },
     openFile(file) {
       this.file = file;
@@ -113,7 +113,7 @@ export default {
     },
     async changePage(page) {
       this.pages = page;
-      this.pageData = await this.getAttachment({ category: this.category[this.active].value, keywords: this.keywords, pages: this.pages });
+      this.pageData = await this.getAttachment({ category: this.category[this.active].value, keyword: this.keyword, pages: this.pages });
     }
   },
 }
