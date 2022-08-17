@@ -32,7 +32,7 @@ main.flex.flex-col.items-center
         template(v-if="search.results && search.results.solution && search.results.solution.length")
           h5.mt-5.text-xl.text-gray-500.mt-5 解决方案
           ul.search-list.grid.gap-y-2.mt-5
-            li.search-result.bg-blue-100.text-blue-500(v-for="solution in search.results.solution" :key="solution.id"
+            li.search-result.bg-gray-100.text-gray-500(v-for="solution in search.results.solution" :key="solution.id"
             class="hover:bg-blue-500 hover:text-white" )
               nuxt-link.px-5.h-12.flex.items-center(:to="`/apply/${solution.category_id}/solution/${solution.id}`")
                 .flex-1(v-text="solution.name")
