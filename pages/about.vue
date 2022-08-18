@@ -1,7 +1,7 @@
 <template lang="pug">
 .w-full.flex.flex-col.items-center(v-cloak v-if="pageData")
   img.w-full(:src="basePath + pageData.images1")
-  section.container.desc.py-20
+  section.container.desc.py-20.px-4(class="lg:px-0")
     h1.text-4xl 关于我们
     article.mt-10
       p.text-xl.leading-8.text-gray-500(v-text='pageData.content')
@@ -12,21 +12,21 @@
   section.w-full.flex.flex-col.items-center.mt-20
     .container
       h1.text-4xl 公司战略
-      .strategy.relative.flex.flex-col.items-center.justify-between.p-10.text-primary
+      .strategy.relative.flex.flex-col.items-center.justify-between.p-10.text-primary.space-y-10(:class="$root.ua.platform.type" class="lg:space-y-0")
         .step-title.text-7xl.text-blue.mt-0.font-bold(v-text="pageData.planTitle")
-        .step.step-1.absolute.flex.flex-col.items-center.justify-center
+        .step.step-1.flex.flex-col.items-center.justify-center
           .step-icon
             img(:src="basePath + pageData.plan[0].url")
           label.mt-5(v-text="pageData.plan[0].title")
-        .step.step-2.absolute.flex.flex-col.items-center.justify-center
+        .step.step-2.flex.flex-col.items-center.justify-center
           .step-icon
             img(:src="basePath + pageData.plan[1].url")
           label.mt-5(v-text="pageData.plan[1].title")
-        .step.step-3.absolute.flex.flex-col.items-center.justify-center
+        .step.step-3.flex.flex-col.items-center.justify-center
           .step-icon
             img(:src="basePath + pageData.plan[2].url")
           label.mt-5(v-text="pageData.plan[2].title")
-        img(src="@/assets/img/about/state.svg" width="775" height="300")
+        img.hidden(class="lg:block" src="@/assets/img/about/state.svg" width="775" height="300")
   section.w-full.flex.flex-col.items-center.bg-white.relative
     .bg-gray-100.absolute.z-0.inset-x-0.bottom-0.h-60
     .container.py-10.z-10
@@ -107,36 +107,50 @@ $blue: #005fab;
 
 .banner2 {
   width: min(1047px, 100%);
-  height: 562px;
 }
 
 .strategy {
-  min-height: 650px;
+  &.desktop {
+    min-height: 650px;
 
-  .step {
-    &-icon {
-      width: 120px;
-      height: 120px;
-      font-size: 120px;
-      line-height: 120px;
+    .step {
+      position: absolute;
+
+      &-icon {
+        width: 120px;
+        height: 120px;
+        font-size: 120px;
+        line-height: 120px;
+      }
+
+      label {
+        font-size: 24px;
+      }
+
+      &-1 {
+        left: 180px;
+        bottom: 400px;
+      }
+
+      &-2 {
+        bottom: 150px;
+      }
+
+      &-3 {
+        right: 180px;
+        bottom: 400px;
+      }
     }
+  }
 
-    label {
-      font-size: 24px;
-    }
-
-    &-1 {
-      left: 180px;
-      bottom: 400px;
-    }
-
-    &-2 {
-      bottom: 150px;
-    }
-
-    &-3 {
-      right: 180px;
-      bottom: 400px;
+  &.mobile {
+    .step {
+      &-icon {
+        width: 120px;
+        height: 120px;
+        font-size: 120px;
+        line-height: 120px;
+      }
     }
   }
 }
