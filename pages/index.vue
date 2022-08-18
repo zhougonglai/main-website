@@ -117,6 +117,16 @@ export default {
 
       &.mobile {
         height: auto;
+
+        .news-item {
+          padding-bottom: 40px;
+
+          &:first-of-type {
+            margin-top: 20px;
+          }
+
+          &:last-child {}
+        }
       }
 
       &.desktop {

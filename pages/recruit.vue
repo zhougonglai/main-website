@@ -176,10 +176,6 @@ export default {
 <style lang="scss" scoped>
 $blue: #005fab;
 
-.container {
-  width: 1200px;
-}
-
 .add {
   margin: 90px 0 40px;
 
