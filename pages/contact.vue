@@ -15,28 +15,12 @@
       .flex.text-lg.text-gray-500.flex-col(class="lg:flex-row")
         .flex-1 热线电话：{{ pageData.comp[0].hotline }}
         .flex-1 邮箱：{{ pageData.comp[0].email }}
-    .col-span-1.bg-white.p-4
-      .font-bold.text-3xl.text-gray-600.py-5(v-text="pageData.comp[1].city")
-      .font-bold.text-gray-500.text-xl(v-text="pageData.comp[1].city + pageData.comp[1].type")
-      .text-lg.text-gray-500(v-text="pageData.comp[1].addr")
-      .text-lg.text-gray-500 电话：{{ pageData.comp[1].phone }}
-      .text-lg.text-gray-500 传真：{{ pageData.comp[1].fox }}
-    .col-span-1.bg-white.p-4
-      .font-bold.text-3xl.text-gray-600.py-5(v-text="pageData.comp[2].city")
-      .font-bold.text-gray-500.text-xl(v-text="pageData.comp[2].city + pageData.comp[2].type")
-      .text-lg.text-gray-500(v-text="pageData.comp[2].addr")
-      .text-lg.text-gray-500 电话：{{ pageData.comp[2].phone }}
-      .text-lg.text-gray-500 传真：{{ pageData.comp[2].fox }}
-    .col-span-1.bg-white.p-4
-      .font-bold.text-3xl.text-gray-600.py-5(v-text="pageData.comp[3].city")
-      .font-bold.text-gray-500.text-xl(v-text="pageData.comp[3].city + pageData.comp[3].type")
-      .text-lg.text-gray-500(v-text="pageData.comp[3].addr")
-      .text-lg.text-gray-500 电话：{{ pageData.comp[3].phone }}
-    .col-span-1.bg-white.p-4(class="lg:col-span-3")
-      .font-bold.text-3xl.text-gray-600.py-10(v-text="pageData.comp[4].city")
-      .text-lg.text-gray-500(v-text="pageData.comp[4].addr")
-      .flex.text-lg.text-gray-500
-        .flex-1 电话：{{ pageData.comp[4].phone }}
+    .col-span-1.bg-white.p-4(v-for="comp in pageData.comp.filter((c, i) => i)" :key="comp.id")
+      .font-bold.text-3xl.text-gray-600.py-5(v-text="comp.city")
+      .font-bold.text-gray-500.text-xl(v-text="comp.city + comp.type")
+      .text-lg.text-gray-500(v-text="comp.addr")
+      .text-lg.text-gray-500 电话：{{ comp.phone }}
+      .text-lg.text-gray-500 传真：{{ comp.fox }}
   .container.p-10(class="lg:p-4")
     Submit
 </template>
