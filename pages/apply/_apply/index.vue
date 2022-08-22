@@ -151,7 +151,6 @@ export default {
       }
 
       .card {
-        max-width: 450px;
 
         &-cover {
           width: 100%;
@@ -173,7 +172,6 @@ export default {
     &__block {
 
       .card {
-        max-width: 350px;
 
         &-cover {
           width: 100%;
