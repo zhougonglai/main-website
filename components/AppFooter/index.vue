@@ -27,18 +27,18 @@
           </ul>
         </div>
       </div>
-      <div class="fc-1 flex leading-8">
+      <div class="fc-1 flex leading-8 px-12 py-4 lg:p-0">
         <h4 class="font-bold font-5xl" v-text="info.spare2" />
         <div class="flex-1" />
         <div class="font-sm cursor-pointer" @click="showQRcode">
           官方公众号
         </div>
       </div>
-      <hr>
-      <div class="fc-2 flex gap-x-5 leading-8">
+      <hr class="mx-10 lg:mx-0">
+      <div class="fc-2 flex flex-col lg:flex-row gap-x-5 leading-8 px-12 py-4 lg:p-0">
         <div class="sage font-sm" v-text="info.spare4" />
         <div class="sage font-sm" v-text="info.spare3" />
-        <div class="flex-1"></div>
+        <div class="flex-1 hidden lg:flex" />
         <div class="sage" v-text="info.spare5" />
       </div>
     </div>
