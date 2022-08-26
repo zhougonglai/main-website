@@ -38,8 +38,8 @@ section.w-full
   .sc-5.flex.items-center.justify-center.bg-gray-100
     .sc-5__block.flex.flex-col.py-20.container.px-4(class="lg:px-0")
       h1.text-4xl 推荐产品
-      carousel-card.mt-10(size="4" v-if="summary.products" :max-size="summary.products.length" content-class="flex overflow-hidden content space-x-8 px-4 md:px-0")
-        carousel-item(v-for="(p, i) in summary.products" :key="p.id" class="item w-full lg:w-80 flex-shrink-0")
+      carousel-card.mt-10(size="4" v-if="summary.products" :max-size="summary.products.length" content-class="flex overflow-hidden content px-4 lg:px-0")
+        carousel-item(v-for="(p, i) in summary.products" :key="p.id" class="item w-full lg:w-1/3 px-4 flex-shrink-0")
           nuxt-link.card.flex.flex-col.bg-white.border-b-2.border-white.h-full(class="hover:shadow hover:border-blue-300" :to="`/prod/${p.category_id}/detail/${p.id}`")
             .card-cover
               img.object-center.object-contain.h-40.w-full(:src="basePath + p.cover_path")
