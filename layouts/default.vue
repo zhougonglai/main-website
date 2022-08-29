@@ -186,6 +186,8 @@ export default {
     console.log('ua.platform', this.$root.ua.platform)
   },
   async mounted() {
+    var dialog = document.querySelector('dialog');
+    dialogPolyfill.registerDialog(dialog);
     await this.getCate();
     this.closeMenus();
     // console.log(this.$router);
@@ -224,12 +226,10 @@ export default {
       this.menu.visible = bool;
     },
     expandMenu(menu) {
-      console.log('expandMenu', menu)
       if (this.menu.expand === menu.id) return this.menu.expand = null;
       this.menu.expand = menu.id;
     },
     expandChild(menu) {
-      console.log('expandChild', menu)
       if (this.menu.child === menu.id) return this.menu.child = null;
       if (!menu.child) {
         this.menu.visible = false;

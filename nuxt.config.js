@@ -16,6 +16,9 @@ export default {
         src: "https://b.alicdn.com/s/polyfill.min.js?features=default,es2015,Intl",
       },
       {
+        src: "https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/dialog-polyfill/0.5.6/dialog-polyfill.min.js",
+      },
+      {
         src: "https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/ionicons/5.5.4/ionicons/ionicons.min.js",
       },
       {
@@ -27,6 +30,9 @@ export default {
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       { rel: "shortcut icon", href: "/icon.png" },
       { rel: "apple-touch-icon", href: "/icon.png" },
+      {
+        href: "https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/dialog-polyfill/0.5.6/dialog-polyfill.min.css",
+      },
     ],
   },
   css: ["@/assets/css/global.scss", "@/assets/css/tailwind.css"],
