@@ -186,8 +186,6 @@ export default {
     console.log('ua.platform', this.$root.ua.platform)
   },
   async mounted() {
-    var dialog = document.querySelector('dialog');
-    dialogPolyfill.registerDialog(dialog);
     await this.getCate();
     this.closeMenus();
     // console.log(this.$router);

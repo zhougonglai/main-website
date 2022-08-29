@@ -26,6 +26,9 @@ export default {
       token: Cookies.get('token') || '',
     };
   },
+  mounted() {
+    dialogPolyfill.registerDialog(this.$refs.dialog)
+  },
   methods: {
     showModal() {
       this.$refs.dialog.showModal();
