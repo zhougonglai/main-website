@@ -104,7 +104,7 @@ export default {
     },
     submit() {
       this.closeDialog()
-      this.$root.$emit('toast', '提交成功')
+      // this.$root.$emit('toast', '提交成功')
     }
   },
   mounted() {

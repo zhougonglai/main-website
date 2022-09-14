@@ -39,7 +39,13 @@
         <div class="sage font-sm" v-text="info.spare4" />
         <div class="sage font-sm" v-text="info.spare3" />
         <div class="flex-1 hidden lg:flex" />
-        <div class="sage" v-text="info.spare5" />
+        <div class="sage font-sm">
+          <img src="/gongan.jpeg" class="inline" width="15" height="15" />
+          公安备案号31010402001303
+        </div>
+        <div class="sage">
+          <a href="https://beian.miit.gov.cn/" v-text="info.spare5" target="_blank" />
+        </div>
       </div>
     </div>
   </footer>
@@ -52,7 +58,7 @@ export default {
   methods: {
     showQRcode() {
       this.$refs.qrcode.showModal();
-    }
+    },
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template lang="pug">
-section.w-full.flex.flex-col.pb-20
+section.w-full.flex.flex-col.pb-20(v-if="$root.ua")
   carousel-card.w-full(size="1" v-if="banner.length" :max-size="banner.length" dot
   dot-active-class="w-2 h-2 bg-white rounded-full scale-150"
   content-class="w-full"

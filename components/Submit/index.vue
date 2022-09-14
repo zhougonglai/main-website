@@ -94,9 +94,9 @@ export default {
     submit() {
       this.loading = true;
       this.$emit('submit', this.form)
-      this.$axios.post('/api.php/api/postFormData', this.form).then(res => res.data).then(({ data }) => {
+      this.$axios.post('/api.php/api/postFormData', this.form).then(res => res.data).then(({ data, msg }) => {
         this.loading = false;
-        this.$root.$emit('toast', data.msg);
+        this.$root.$emit('toast', msg);
         Cookies.set('token', data.token, { expires: new Date(data.expire * 1000) })
         this.$refs.form.reset();
         this.$emit('post-end', data);
