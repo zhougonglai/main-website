@@ -68,8 +68,9 @@ section.w-full.flex.flex-col.pb-20(v-if="pageData")
       h1.text-4xl.w-full FAQ
       article.bg-gray-100.w-full.py-10.px-5.mt-10.text-lg.text-slate-800
         pre.overflow-ellipsis.overflow-hidden(v-text="pageData.content6")
-  Dialog(ref="dialog" v-cloak preview)
-    iframe(v-if="preview" :src="$root.basePath + preview")
+  Dialog.w-full.h-full(ref="dialog" v-cloak preview)
+    iframe.w-full.h-full(v-if="preview" :src="$root.basePath + preview")
+    //- embed(v-if="preview" :src="$root.basePath + preview")
 
 </template>
 <script>

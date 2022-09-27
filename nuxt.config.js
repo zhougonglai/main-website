@@ -4,7 +4,7 @@ export default {
     BASE_API: process.env.BASE_API,
   },
   head: {
-    title: "创远仪器",
+    title: "创远信科",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },

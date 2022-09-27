@@ -93,7 +93,7 @@ export default {
   },
   async mounted() {
     if (!this.apply) return await this.getApply({ id: this.$route.params.apply }).then(this.updateLea);
-    this.updateLea();
+    this.updateLea(this.apply);
   },
   beforeDestroy() {
     this.$store.commit("updateLea", "");
@@ -102,6 +102,7 @@ export default {
     ...mapActions(['getSolution', 'getApply']),
     async updateLea(apply) {
       const data = await this.getSolution({ id: this.$route.params.solu_id });
+      console.log('apply', apply)
       this.$store.commit("updateLea", {
         path: `/apply/${data.category_id}/solution/${data.id}`,
         meta: {

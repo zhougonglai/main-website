@@ -27,12 +27,62 @@
           </ul>
         </div>
       </div>
-      <div class="fc-1 flex leading-8 px-12 py-4 lg:p-0">
-        <h4 class="font-bold font-5xl" v-text="info.spare2" />
+      <div class="fc-1 flex space-x-4 leading-8 px-12 mt-5 py-4 lg:p-0">
+        <h4 class="font-bold font-5xl inline-flex items-center" v-text="info.spare2" />
         <div class="flex-1" />
-        <div class="font-sm cursor-pointer" @click="showQRcode">
-          官方公众号
+        <div class="social inline-flex space-x-4 py-4">
+          <button class="social-bili relative" @click="toggleSocial('bili', true)"
+            @mouseenter="toggleSocial('bili', true)" @mouseleave="toggleSocial('bili', false)">
+            <img src="/bili.svg" width="45" height="45" />
+            <transition enter-active-class="transition duration-200 ease-out" enter-from-class="translate-y-1 opacity-0"
+              enter-to-class="translate-y-0 opacity-100" leave-active-class="transition duration-150 ease-in"
+              leave-from-class="translate-y-0 opacity-100" leave-to-class="translate-y-1 opacity-0">
+              <div
+                class="social-popup absolute p-4 left-1/2 -ml-2 bottom-10 z-10 -translate-x-1/2 transform lg:max-w-3xl overflow-hidden"
+                v-show="social.bili">
+                <div
+                  class="popup-content p-4 relative w-60 max-w-sm bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                  <img src="/BILIBILI.png" />
+                </div>
+              </div>
+            </transition>
+          </button>
+          <button class="social-wechat relative" @click="toggleSocial('wechat', true)"
+            @mouseenter="toggleSocial('wechat', true)" @mouseleave="toggleSocial('wechat', false)">
+            <img src="/wechat.svg" width="45" height="45" />
+            <transition enter-active-class="transition duration-200 ease-out" enter-from-class="translate-y-1 opacity-0"
+              enter-to-class="translate-y-0 opacity-100" leave-active-class="transition duration-150 ease-in"
+              leave-from-class="translate-y-0 opacity-100" leave-to-class="translate-y-1 opacity-0">
+              <div
+                class="social-popup absolute p-4 left-1/2 -ml-2 bottom-10 z-10 -translate-x-1/2 transform lg:max-w-3xl overflow-hidden"
+                v-show="social.wechat">
+                <div
+                  class="popup-content p-4 relative w-60 max-w-sm bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                  <img src="/wechat.png" />
+                </div>
+              </div>
+            </transition>
+          </button>
+          <button class="social-douyin relative" type="button" @click="toggleSocial('douyin', true)"
+            @mouseenter="toggleSocial('douyin', true)" @mouseleave="toggleSocial('douyin', false)">
+            <img src="/douyin.svg" width="45" height="45" />
+            <transition enter-active-class="transition duration-200 ease-out" enter-from-class="translate-y-1 opacity-0"
+              enter-to-class="translate-y-0 opacity-100" leave-active-class="transition duration-150 ease-in"
+              leave-from-class="translate-y-0 opacity-100" leave-to-class="translate-y-1 opacity-0">
+              <div
+                class="social-popup absolute p-4 -right-4 lg:right-1/2 mr-2 bottom-10 z-10 transform-none lg:translate-x-1/2 lg:transform lg:max-w-3xl overflow-hidden"
+                v-show="social.douyin">
+                <div :class="$root.ua.platform.type"
+                  class="popup-content p-4 relative w-60 max-w-sm bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                  <img src="/douyin.png" />
+                </div>
+              </div>
+            </transition>
+          </button>
         </div>
+        <!-- <div class="font-sm cursor-pointer" @click="showQRcode">
+          官方公众号
+        </div> -->
       </div>
       <hr class="mx-10 lg:mx-0">
       <div class="fc-2 flex flex-col lg:flex-row gap-x-5 leading-8 px-12 py-4 lg:p-0">
@@ -55,10 +105,33 @@
 export default {
   name: "app-footer",
   props: ["menus", "info"],
+  data() {
+    return {
+      social: {
+        bili: false,
+        wechat: false,
+        douyin: false,
+        timer: 0
+      }
+    }
+  },
   methods: {
     showQRcode() {
       this.$refs.qrcode.showModal();
     },
+    toggleSocial(target, status) {
+      if (!status) {
+        if (this.social.timer) clearTimeout(this.social.timer)
+        return this.social.timer = setTimeout(() => {
+          this.social[target] = status;
+        }, 15)
+      }
+      this.social.bili = false;
+      this.social.wechat = false;
+      this.social.douyin = false;
+      this.social.timer = 0;
+      this.social[target] = status;
+    }
   }
 }
 </script>
@@ -87,6 +160,30 @@ footer {
   li {
     &:hover {
       color: var(--primary);
+    }
+  }
+}
+
+.popup {
+  &-content {
+
+    &.mobile {
+      &::after {
+        left: 86%;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -16px;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-top: 8px solid white;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid transparent;
     }
   }
 }

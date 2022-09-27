@@ -8,16 +8,16 @@ form.form(ref="form" @submit.prevent="submit")
       label.text-xl.mr-20(for="sex-1") 男
       input.w-5.h-5.mr-5(type="radio" id="sex-0" v-model="form.sex" value="女")
       label.text-xl(for="sex-0") 女
-    .flex-1.fex
+    .flex-1.fex.is-required
       label.text-xl(for="name") 姓 名
       input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="name" v-model="form.name" class="hover:bg-white" required)
-    .flex-1
+    .flex-1.is-required
       label.text-xl(for="company") 公司名称
       input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="company" v-model="form.company" class="hover:bg-white" required)
-    .flex-1
+    .flex-1.is-required
       label.text-xl(for="email") 公司邮箱
       input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="email" type="text" autocomplete="username email" v-model="form.email" class="hover:bg-white" required)
-    .flex-1
+    .flex-1.is-required
       label.text-xl(for="city") 城市
       submit-select.mt-5(id="city"
       v-model="form.city"
@@ -26,7 +26,7 @@ form.form(ref="form" @submit.prevent="submit")
     .flex-1
       label.text-xl(for="phone") 电话号码
       input.h-14.mt-5.border.border-gray-500.w-full.bg-gray-100.transition.pl-5(id="phone" v-model.number="form.phone" type="number" class="hover:bg-white")
-    .flex-1
+    .flex-1.is-required
       label.text-xl(for="ask") 询问
       submit-select.mt-5(id="ask"
       v-model="form.question"
@@ -94,7 +94,10 @@ export default {
     submit() {
       this.loading = true;
       this.$emit('submit', this.form)
-      this.$axios.post('/api.php/api/postFormData', this.form).then(res => res.data).then(({ data, msg }) => {
+      this.$axios.post('/api.php/api/postFormData', {
+        ...this.form,
+        url: location.pathname
+      }).then(res => res.data).then(({ data, msg }) => {
         this.loading = false;
         this.$root.$emit('toast', msg);
         Cookies.set('token', data.token, { expires: new Date(data.expire * 1000) })
@@ -105,3 +108,17 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.is-required {
+  label {
+    position: relative;
+
+    &::after {
+      content: "*";
+      color: #f56c6c;
+      margin-left: 4px;
+      position: absolute;
+    }
+  }
+}
+</style>
