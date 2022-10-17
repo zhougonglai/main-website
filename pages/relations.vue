@@ -7,7 +7,7 @@ section.w-full.pb-20(v-cloak)
   .sc-2.flex.items-center.justify-center
     .sc-2__block.py-10
       article
-        pre.text-gray-500.leading-8.text-lg.text-center(v-text="pageData.content")
+        pre.text-gray-500.leading-8.text-lg.text-left(v-text="pageData.content")
   .sc-3.flex.items-center.justify-center.relative
     .sc-3__bg.absolute.inset-x-0.bottom-0.top-40.bg-gray-100
     .sc-3__block.pb-10.z-1
@@ -137,7 +137,12 @@ export default {
 
 .sc-2 {
   &__block {
-    width: min(900px, 100%);
+    width: min(1200px, 100%);
+
+    pre {
+      word-break: break-word;
+      white-space: pre-wrap;
+    }
   }
 }
 
