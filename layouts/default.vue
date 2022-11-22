@@ -186,6 +186,11 @@ export default {
     console.log('process.isClient', process.isClient)
   },
   async mounted() {
+    var _hmt = _hmt || [];
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?7482376fddc4555bfbd007614380e725";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
     await this.getCate();
     this.closeMenus();
     // console.log(this.$router);
