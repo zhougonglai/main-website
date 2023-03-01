@@ -35,6 +35,9 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
         button.flex.items-center.text-primary.gap-x-2(@click="openFile(basePath + prod.url3)")
           img(src="~/assets/img/prod/resolve.svg" width="45")
           | 解决方案
+        button.flex.items-center.text-primary.gap-x-2(@click="scrollToDownload")
+          ion-icon.mr-2(name="download-outline")
+          | 下载
       h1.text-2xl.mt-10 技术规范
       .tabs.my-10
         .tab-bar.flex.leading-10.border-b.border-gray-300.flex-col(class="lg:flex-row")
@@ -88,7 +91,7 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
           .card-content.p-5
             h3.card-title.text-xl.truncate(v-text="p.name")
       h1.text-2xl.mt-10 相关解决方案
-      .resolves.bg-gray-100.grid.grid-cols-1.my-10.p-10.gap-10(class="lg:grid-cols-2")
+      .resolves.bg-gray-100.grid.grid-cols-1.my-10.p-10.gap-10(class="lg:grid-cols-3")
         nuxt-link.card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
           class="hover:shadow hover:border-blue-300"
           v-for="solution in prod.solutions" :key="solution.id"
@@ -97,6 +100,8 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
             img.object-center.object-cover.w-full.h-full(:src="basePath + solution.cover_path" width="100%" height="100%")
           .card-content.p-5
             h3.card-title.text-xl.truncate(v-text="solution.name")
+      h1.text-2xl.mt-10#download 相关软件
+
 </template>
 <script>
 import Dialog from '@/components/Dialog/index.vue';
@@ -180,6 +185,9 @@ export default {
     openFile(file) {
       this.file.URL = file;
       this.$refs.fileDialog.showModal();
+    },
+    scrollToDownload() {
+      this.$router.replace(this.$route.path + '#download')
     }
   }
 }
