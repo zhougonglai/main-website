@@ -85,11 +85,11 @@
         </div> -->
       </div>
       <hr class="mx-10 lg:mx-0">
-      <div class="fc-2 flex flex-col lg:flex-row gap-x-5 leading-8 px-12 py-4 lg:p-0">
-        <div class="sage font-sm" v-text="info.spare4" />
-        <div class="sage font-sm" v-text="info.spare3" />
+      <div class="fc-2 flex flex-col lg:flex-row gap-x-5 px-12 py-4 lg:p-0">
+        <div class="sage text-sm py-1" v-text="info.spare4" />
+        <div class="sage text-sm py-1" v-text="info.spare3" />
         <div class="flex-1 hidden lg:flex" />
-        <div class="sage font-sm">
+        <div class="sage text-sm py-1">
           <img src="/gongan.jpeg" class="inline" width="15" height="15" />
           公安备案号31010402001303
         </div>

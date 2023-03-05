@@ -44,10 +44,32 @@
     .bg-white.absolute.z-0.inset-x-0.bottom-0.h-20
     .container.py-20.z-10
       h2.text-4xl.mb-28 重点客户
-      carousel-card.mt-10(v-for="(logo, i) in pageData.customer" :size="$root.ua.platform.type === 'desktop' ? 4 : 1" :max-size="logo.length" :key="i" content-class="flex-1 mx-10")
-        carousel-item(v-for="l in logo" :key="l.name" class="w-full lg:w-1/4")
-          .flex.items-center.bg-white.justify-center.mx-2.h-28.hover-border-primary.border-b-2.border-gray-100.cursor-pointer
-            img(:src="basePath + l")
+      //- v-for="(logo, i) in pageData.customer"
+      carousel-card.mt-10(:size="$root.ua.platform.type === 'desktop' ? 4 : 1" :max-size="pageData.line1.length" content-class="flex-1 mx-10")
+        carousel-item(v-for="(l,i) in pageData.line1" :key="i" class="w-full lg:w-1/4")
+          a.flex.items-center.bg-white.justify-center.mx-2.h-28.hover-border-primary.border-b-2.border-gray-100.cursor-pointer(:href="l.url" target="_blank")
+            //- img(:src="basePath + l.images")
+            img(:src="l.images")
+      carousel-card.mt-10(:size="$root.ua.platform.type === 'desktop' ? 4 : 1" :max-size="pageData.line2.length" content-class="flex-1 mx-10")
+        carousel-item(v-for="(l,i) in pageData.line2" :key="i" class="w-full lg:w-1/4")
+          a.flex.items-center.bg-white.justify-center.mx-2.h-28.hover-border-primary.border-b-2.border-gray-100.cursor-pointer(:href="l.url" target="_blank")
+            img(:src="l.images")
+      carousel-card.mt-10(:size="$root.ua.platform.type === 'desktop' ? 4 : 1" :max-size="pageData.line3.length" content-class="flex-1 mx-10")
+        carousel-item(v-for="(l,i) in pageData.line3" :key="i" class="w-full lg:w-1/4")
+          a.flex.items-center.bg-white.justify-center.mx-2.h-28.hover-border-primary.border-b-2.border-gray-100.cursor-pointer(:href="l.url" target="_blank")
+            img(:src="l.images")
+      carousel-card.mt-10(:size="$root.ua.platform.type === 'desktop' ? 4 : 1" :max-size="pageData.line4.length" content-class="flex-1 mx-10")
+        carousel-item(v-for="(l,i) in pageData.line4" :key="i" class="w-full lg:w-1/4")
+          a.flex.items-center.bg-white.justify-center.mx-2.h-28.hover-border-primary.border-b-2.border-gray-100.cursor-pointer(:href="l.url" target="_blank")
+            img(:src="l.images")
+      carousel-card.mt-10(:size="$root.ua.platform.type === 'desktop' ? 4 : 1" :max-size="pageData.line5.length" content-class="flex-1 mx-10")
+        carousel-item(v-for="(l,i) in pageData.line5" :key="i" class="w-full lg:w-1/4")
+          a.flex.items-center.bg-white.justify-center.mx-2.h-28.hover-border-primary.border-b-2.border-gray-100.cursor-pointer(:href="l.url" target="_blank")
+            img(:src="l.images")
+      carousel-card.mt-10(:size="$root.ua.platform.type === 'desktop' ? 4 : 1" :max-size="pageData.line6.length" content-class="flex-1 mx-10")
+        carousel-item(v-for="(l,i) in pageData.line6" :key="i" class="w-full lg:w-1/4")
+          a.flex.items-center.bg-white.justify-center.mx-2.h-28.hover-border-primary.border-b-2.border-gray-100.cursor-pointer(:href="l.url" target="_blank")
+            img(:src="l.images")
 </template>
 
 <script>

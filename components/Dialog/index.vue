@@ -1,7 +1,7 @@
 <template lang="pug">
 dialog.grid.round.shadow(:open="open" :inert="inert" ref="dialog" @click.stop="dismiss")
-  Submit.p-10.overflow-auto(v-if="preview && !token" @post-end="postEnd")
-  slot(v-else)
+  //- Submit.p-10.overflow-auto(v-if="preview && !token" @post-end="postEnd")
+  slot
 </template>
 <script>
 import Submit from '../Submit/index.vue';
