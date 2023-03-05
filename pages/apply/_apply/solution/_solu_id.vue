@@ -2,7 +2,7 @@
 section.w-full.pb-20(v-cloak)
   .sc-1.flex.items-center.justify-center.relative
     .sc-1__block.flex.items-center.absolute.hidden.z-1(class="lg:block")
-      h1.text-4xl.text-white.z-1(v-text="solution.name")
+      //- h1.text-4xl.text-white.z-1(v-text="solution.name")
     img.inset-0.object-center.object-cover.z-0.h-full(:src="basePath + solution.img" width="100%" height="100%")
   .sc-2.flex.items-center.justify-center
     .sc-2__block.flex.flex-col.py-10.px-4(class="lg:px-0")
