@@ -35,8 +35,8 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
         button.flex.items-center.text-primary.gap-x-2(@click="openFile(basePath + prod.url3)")
           img(src="~/assets/img/prod/resolve.svg" width="45")
           | 解决方案
-        button.flex.items-center.text-primary.gap-x-2(@click="scrollToDownload")
-          img(src="~/assets/img/prod/resolve.svg" width="45")
+        button.flex.items-center.text-primary.gap-x-2(@click="scrollToDownload" v-if="prod.software.length")
+          img(src="~/assets/img/prod/download.svg" width="45")
           | 下载
       h1.text-2xl.mt-10 技术规范
       .tabs.my-10

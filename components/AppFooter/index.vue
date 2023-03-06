@@ -119,6 +119,17 @@ export default {
     showQRcode() {
       this.$refs.qrcode.showModal();
     },
+    openTarget(target) {
+      this.toggleSocial(target, true);
+      switch (target) {
+        case 'bili':
+          window.open('https://space.bilibili.com/1188912525?spm_id_from=333.1007.0.0', '_blank');
+          break
+        case 'douyin':
+          window.open('https://www.douyin.com/user/self')
+          break
+      }
+    },
     toggleSocial(target, status) {
       if (!status) {
         if (this.social.timer) clearTimeout(this.social.timer)
