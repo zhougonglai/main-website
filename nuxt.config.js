@@ -2,6 +2,8 @@ export default {
   ssr: false,
   env: {
     BASE_API: process.env.BASE_API,
+    BILIBILI: process.env.BILIBILI,
+    DOUYIN: process.env.DOUYIN,
   },
   head: {
     title: "创远信科",

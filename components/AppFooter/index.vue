@@ -31,8 +31,8 @@
         <h4 class="font-bold font-5xl inline-flex items-center" v-text="info.spare2" />
         <div class="flex-1" />
         <div class="social inline-flex space-x-4 py-4">
-          <button class="social-bili relative" @click="toggleSocial('bili', true)"
-            @mouseenter="toggleSocial('bili', true)" @mouseleave="toggleSocial('bili', false)">
+          <button class="social-bili relative" @click="openTarget('bili', true)" @mouseenter="toggleSocial('bili', true)"
+            @mouseleave="toggleSocial('bili', false)">
             <img src="/bili.svg" width="45" height="45" />
             <transition enter-active-class="transition duration-200 ease-out" enter-from-class="translate-y-1 opacity-0"
               enter-to-class="translate-y-0 opacity-100" leave-active-class="transition duration-150 ease-in"
@@ -63,7 +63,7 @@
               </div>
             </transition>
           </button>
-          <button class="social-douyin relative" type="button" @click="toggleSocial('douyin', true)"
+          <button class="social-douyin relative" type="button" @click="openTarget('douyin', true)"
             @mouseenter="toggleSocial('douyin', true)" @mouseleave="toggleSocial('douyin', false)">
             <img src="/douyin.svg" width="45" height="45" />
             <transition enter-active-class="transition duration-200 ease-out" enter-from-class="translate-y-1 opacity-0"
@@ -93,7 +93,7 @@
           <img src="/gongan.jpeg" class="inline" width="15" height="15" />
           公安备案号31010402001303
         </div>
-        <div class="sage">
+        <div class="sage text-sm py-1">
           <a href="https://beian.miit.gov.cn/" v-text="info.spare5" target="_blank" />
         </div>
       </div>
@@ -123,10 +123,10 @@ export default {
       this.toggleSocial(target, true);
       switch (target) {
         case 'bili':
-          window.open('https://space.bilibili.com/1188912525?spm_id_from=333.1007.0.0', '_blank');
+          window.open(process.env.BILIBILI, '_blank');
           break
         case 'douyin':
-          window.open('https://www.douyin.com/user/self')
+          window.open(process.env.DOUYIN, '_blank')
           break
       }
     },
