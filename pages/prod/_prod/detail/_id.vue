@@ -37,7 +37,7 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
           | 解决方案
         button.flex.items-center.text-primary.gap-x-2(@click="scrollToDownload" v-if="prod.software.length")
           img(src="~/assets/img/prod/download.jpeg" width="45")
-          | 下载
+          | 软件下载
       h1.text-2xl.mt-10 技术规范
       .tabs.my-10
         .tab-bar.flex.leading-10.border-b.border-gray-300.flex-col(class="lg:flex-row")
