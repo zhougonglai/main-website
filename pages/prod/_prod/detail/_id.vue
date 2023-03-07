@@ -4,7 +4,7 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
     img(v-if="cover" :src="cover")
   Dialog.overflow-scroll(ref="detail" modal-mode="mega")
     img(v-if="detail" :src="detail")
-  Dialog.w-full.h-full(ref="fileDialog" modal-mode="mega" preview)
+  Dialog.w-full.h-full(ref="fileDialog" modal-mode="mega")
     embed(:src="file.URL"  v-if="file.URL" width="100%" height="100%" )
   .sc-1.w-full.flex.flex-col.items-center.py-10
     .sc-1__block.container(v-if="prod")
@@ -105,7 +105,12 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
         ul.flex.space-x-4.mt-4
           li.w-full.py-2.text-gray-500.px-5.flex.items-center.cursor-pointer.border-b.border-gray-100(
             v-for="software in prod.software" :key="software.id" class="hover:text-blue-500 hover:bg-gray-100")
-            .flex-1 {{ software.name }}
+            .flex-1.flex.space-x-8.items-end
+              .inline-flex.text-gray-600 {{ software.name }}
+              .flex-1.truncate.text-gray-500.text-sm(class="max-w-[680px]" :title="software.title") {{ software.title }}
+            //- .flex-1.flex.flex-col.space-y-1
+            //-   h3.truncate.text-gray-500.text-md(class="max-w-[680px]" :title="software.title") {{ software.title }}
+            //-   small.text-sm.text-gray-400
             time.w-40.text-center(v-text="software.create_time")
             a.flex.text-center.items-center.text-primary.gap-x-2.h-8.leading-8.px-2.rounded(class="hover:bg-gray-200" :download="software.name" :href="basePath + software.path" target="_blank")
               ion-icon.mr-2(name="download-outline")
