@@ -54,6 +54,9 @@ import Cookies from 'js-cookie'
 
 export default {
   name: 'Submit',
+  props: {
+    url: String
+  },
   data() {
     return {
       form: {
@@ -96,7 +99,7 @@ export default {
       this.$emit('submit', this.form)
       this.$axios.post('/api.php/api/postFormData', {
         ...this.form,
-        url: location.pathname
+        url: this.url || location.pathname
       }).then(res => res.data).then(({ data, msg }) => {
         this.loading = false;
         this.$root.$emit('toast', msg);
