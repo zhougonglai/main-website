@@ -29,7 +29,7 @@ section.w-full.pb-20(v-cloak v-if="pageData")
             .file-subtitle.text-lg.text-gray-500.mt-5(v-text="file.name")
         .flex.mt-20.items-center.justify-center(v-if="pageData.totalPage")
           SubmitPagination(:length="pageData.totalPage" :value="pages" @change="changePage")
-  Dialog.w-full.h-full(ref="dialog" preview)
+  Dialog.w-full.h-full(ref="dialog" preview :url="file.url")
     embed(v-if="file" v-cloak :src="basePath + file.url" width="100%" height="100%")
 
 </template>

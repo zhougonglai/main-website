@@ -4,8 +4,8 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
     img(v-if="cover" :src="cover")
   Dialog.overflow-scroll(ref="detail" modal-mode="mega")
     img(v-if="detail" :src="detail")
-  Dialog.w-full.h-full(ref="fileDialog" modal-mode="mega")
-    embed(:src="file.URL"  v-if="file.URL" width="100%" height="100%" )
+  Dialog.w-full.h-full(ref="fileDialog" modal-mode="mega" preview)
+    embed(:src="file.URL"  v-if="file.URL" width="100%" height="100%")
   .sc-1.w-full.flex.flex-col.items-center.py-10
     .sc-1__block.container(v-if="prod")
       h1.text-2xl(v-text="prod.name")

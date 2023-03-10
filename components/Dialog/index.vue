@@ -1,6 +1,6 @@
 <template lang="pug">
 dialog.grid.round.shadow(:open="open" :inert="inert" ref="dialog" @click.stop="dismiss")
-  Submit.p-10.overflow-auto(v-if="preview && !token" @post-end="postEnd")
+  Submit.p-10.overflow-auto(v-if="preview && !token" @post-end="postEnd" :url="url")
   slot(v-else)
 </template>
 <script>
@@ -18,7 +18,8 @@ export default {
     preview: {
       type: Boolean,
       default: false
-    }
+    },
+    url: String
   },
   data() {
     return {
