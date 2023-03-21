@@ -101,8 +101,8 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
           .card-content.p-5
             h3.card-title.text-xl.truncate(v-text="solution.name")
       template(v-if="prod.software.length")
-        h1.text-2xl.mt-10#download 相关软件
-        ul.flex.space-x-4.mt-4
+        h1.text-2xl.mt-10#download(ref="download") 相关软件
+        ul.flex.flex-col.space-x-4.mt-4
           li.w-full.py-2.text-gray-500.px-5.flex.items-center.cursor-pointer.border-b.border-gray-100(
             v-for="software in prod.software" :key="software.id" class="hover:text-blue-500 hover:bg-gray-100")
             .flex-1.flex.space-x-8.items-end
@@ -202,7 +202,7 @@ export default {
     },
     scrollToDownload() {
       // this.$router.replace(this.$route.path + '#download')
-      window.scrollTo(0, 1800)
+      window.scrollTo(0, this.$refs.download.offsetTop)
     }
   }
 }
