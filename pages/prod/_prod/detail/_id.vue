@@ -20,6 +20,7 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
                 :src="img"
                 width="100%"
                 height="100%"
+                class="max-h-[5rem]"
                 @mouseenter="updateCover(i)")
         .flex.flex-col.flex-1
           h3.text-2xl 关键特性
@@ -102,12 +103,12 @@ section.w-full.flex.flex-col.items-center.justify-center.pb-20
             h3.card-title.text-xl.truncate(v-text="solution.name")
       template(v-if="prod.software.length")
         h1.text-2xl.mt-10#download(ref="download") 相关软件
-        ul.flex.flex-col.space-x-4.mt-4
+        ul.flex.flex-col.mt-4
           li.w-full.py-2.text-gray-500.px-5.flex.items-center.cursor-pointer.border-b.border-gray-100(
             v-for="software in prod.software" :key="software.id" class="hover:text-blue-500 hover:bg-gray-100")
             .flex-1.flex.space-x-8.items-end
-              .inline-flex.text-gray-600 {{ software.name }}
-              .flex-1.truncate.text-gray-500.text-sm(class="max-w-[680px]" :title="software.title") {{ software.title }}
+              .flex-1.inline-flex.text-gray-600 {{ software.name }}
+              .text-center.w-80.truncate.text-gray-500.text-sm(class="max-w-[680px]" :title="software.title") {{ software.title }}
             //- .flex-1.flex.flex-col.space-y-1
             //-   h3.truncate.text-gray-500.text-md(class="max-w-[680px]" :title="software.title") {{ software.title }}
             //-   small.text-sm.text-gray-400
