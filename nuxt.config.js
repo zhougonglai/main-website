@@ -4,6 +4,7 @@ export default {
     BASE_API: process.env.BASE_API,
     BILIBILI: process.env.BILIBILI,
     DOUYIN: process.env.DOUYIN,
+    INVISE: process.env.INVISE,
   },
   head: {
     title: "创远信科",

@@ -28,7 +28,7 @@ section.w-full.pb-20(v-cloak)
             .card-title(v-text="pageData.service[1].content")
             .card-desc(v-text="pageData.service[1].title")
         a.card.flex.flex-col.cursor-pointer.bg-white.border-b-2.border-white(
-          class="hover:shadow hover:border-blue-300" href="http://www.bse.cn/disclosure/announcement.html" target="_blank")
+          class="hover:shadow hover:border-blue-300" :href="inviteURL" target="_blank")
           .card-cover
             img.object-center.object-cover(:src="basePath + pageData.service[2].url")
           .card-content.p-5
@@ -102,6 +102,9 @@ export default {
   computed: {
     basePath() {
       return process.env.BASE_API
+    },
+    inviteURL() {
+      return process.env.INVISE
     }
   },
   async mounted() {
